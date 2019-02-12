@@ -5,7 +5,7 @@
 
 [role="arc42help"]
 ****
-
+****
 === Whitebox Overall System
 
 [role="arc42help"]
@@ -17,9 +17,9 @@ Motivation::
 Software must be adaptable, maintainable, scalable... For this reason, it is
 usualy layered.
 A first vision of our app divides it in three parts:
-** _<Graphic User Interface (GUI):>_ defines what the user will see (f.e css).
-** _<Logical:>_ this part is focused on calculus and operations.
-** _<Persistence:>_ conexion with different systems to store data
+** _Graphic User Interface (GUI):_ defines what the user will see (f.e css).
+** _Logical:_ this part is focused on calculus and operations.
+** _Persistence:_ conexion with different systems to store datas
 
 
 
