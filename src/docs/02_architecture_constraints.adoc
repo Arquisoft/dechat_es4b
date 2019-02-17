@@ -17,25 +17,21 @@ There are some constraints that limit the way we can implement our application. 
 [options="header"]
 |===
 |Constraint|Explanation      
-|The app must be decentralized   | The data can't be centralized on a server. Each user must be the one who keeps their information and the information they are sent.
-|Constraint 2    |Explanation 2     
-|Constraint 3    |Explanation 3      
+|Decentralized architecture  | The data can't be centralized on a server. Each user must be the one who keeps their information and the information they are sent.
 |===
 
 .Organitazional and political constraints
 [options="header"]
 |===
 |Constraint|Explanation      
-|Use Git and GitHub   | It's very important to be well organized, so we have to use this these technologies to mantain version control and check that everything goes as planned|Constraint 2    |Explanation 2     
-|Constraint 3    |Explanation 3     
+|Use Git and GitHub   | It is very important to be well organized, so we have to use this these technologies to mantain version control and check that everything goes as planned|Constraint 2    |Explanation 2     
+|Time restriction   | A deadline date is set for completion of the project and there are some points in which project's progress will be reviewed
 |===
 
 .Conventions
 [options="header"]
 |===
 |Constraint|Explanation      
-|Use arc42 as a template for documentation| We must use this template to maintain an order and make sure than anyone who reads it can find what they are looking for,  knowing the section in which it is located
-|Constraint2    |Exp 2     
-|Constraint3    |Exp 3     
+|Use of Arc42 template for documentation| We must use this template to maintain an order and make sure than anyone who reads it can find what they are looking for,  knowing the section in which it is located    
 |===
 ***
