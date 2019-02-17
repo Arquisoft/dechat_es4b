@@ -24,7 +24,7 @@ There are some constraints that limit the way we can implement our application. 
 [options="header"]
 |===
 |Constraint|Explanation      
-|Use Git and GitHub   | It is very important to be well organized, so we have to use this these technologies to mantain version control and check that everything goes as planned|Constraint 2    |Explanation 2     
+|Use Git and GitHub   | It is very important to be well organized, so we have to use this these technologies to mantain version control and check that everything goes as planned   
 |Time restriction   | A deadline date is set for completion of the project and there are some points in which project's progress will be reviewed
 |===
 
