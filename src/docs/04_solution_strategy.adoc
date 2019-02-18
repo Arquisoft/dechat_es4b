@@ -3,5 +3,6 @@
 
 
 [role="arc42help"]
-
-=== TO BE DONE
+===4.1 Introduction
+In this part we will documentate a short summary and explanation of the decisions and solutions in our project like technology decisions, architectonical decisions or organizational decisions.
+ 
