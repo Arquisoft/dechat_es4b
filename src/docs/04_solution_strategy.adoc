@@ -8,7 +8,8 @@ In this part we will documentate a short summary and explanation of the decision
 
 ***
 === 4.2 Decisions
-Short explanation of the decisions of the project:
+Short explanation of the decisions of the project
+
 * Javascript: Is a lenguage based on ECMASCRIPT, with it we can do 
 applications in the web. 
 We will use Javascript because in the project we will implementate 
