@@ -4,14 +4,16 @@
 
 [role="arc42help"]
 ****
-.Contents
-A list of identified technical risks or technical debts, ordered by priority
+This page contains a list of all the risks we can encounter during the project as well as measures to try to minimize and solve them
 
-.Motivation
-“Risk management is project management for grown-ups” (Tim Lister, Atlantic Systems Guild.) 
+.Risks
+* Solid is a completely new technology to the group and it might take us time until we get used to its functionality
+* Although, we've used Javascript in the past, it's not our go-to programming language
+* Angular is a new Framework we haven't used before.
+* None of us have worked with this many people before and some of us didn't know each other  before, which can lead to 
+* English is not our first language and it can lead to some errors in the documentation
 
-This should be your motto for systematic detection and evaluation of risks and technical debts in the architecture, which will be needed by management stakeholders (e.g. project managers, product owners) as part of the overall risk analysis and measurement planning.
-
-.Form
-List of risks and/or technical debts, probably including suggested measures to minimize, mitigate or avoid risks or reduce technical debts.
+.Measures to solve them
+* Try to learn as much as possible about Solid, Angular, and Javascript before starting to work on the actual code, and keep researching and learning during the whole project,
+* Increasing the communication in the group so everyone know what everyone is doing and has to do.
 ****
