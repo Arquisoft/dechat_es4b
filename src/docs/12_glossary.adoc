@@ -10,6 +10,8 @@
 | Term         | Definition
 | Arc42    |  A template for architecture communication and documentation. https://arc42.org/[Arc42^]
 | POD    | Personal online data store . It allows users to save their information and the information they are
-sent
+sent. A POD can store photos, text, contacts or calendar events and many other things
+|SOLID |  A technology whose goal is to change the way applications interact with user data, giving more decision-making
+ power to users as they are able to decide where their data is stored or who can read it or write it.
 
 |===
