@@ -17,7 +17,9 @@ There are some constraints that limit the way we can implement our application. 
 [options="header"]
 |===
 |Constraint|Explanation      
-|Decentralized architecture  | The data can't be centralized on a server. Each user must be the one who keeps their information and the information they are sent.
+|Decentralized architecture  |We will use SOLID technology so user data can't be centralized on a server. User data
+is not included in the application, so each user must be the one who keeps their information and the information they are sent.
+According to SOLID, that information will be stored in a POD
 |===
 
 .Organitazional and political constraints
@@ -26,6 +28,7 @@ There are some constraints that limit the way we can implement our application. 
 |Constraint|Explanation      
 |Use Git and GitHub   | It is very important to be well organized, so we have to use this these technologies to mantain version control and check that everything goes as planned   
 |Time restriction   | A deadline date is set for completion of the project and there are some points in which project's progress will be reviewed
+|Budget | Budget is not existant, so we have to limit ourselves to the use of free tools.
 |===
 
 .Conventions
