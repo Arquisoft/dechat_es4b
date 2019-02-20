@@ -5,42 +5,24 @@
 
 [role="arc42help"]
 ****
+
+.Advise
+This part of the documentation can not be done until the development has moved on a little. It will be growing with the project.
 ****
+
 === Whitebox Overall System
-
-[role="arc42help"]
-
-_**<Overview Diagram>**_
-
-Motivation::
-
-Software must be adaptable, maintainable, scalable... For this reason, it is
-usualy layered.
-A first vision of our app divides it in three parts:
-** _Graphic User Interface (GUI):_ defines what the user will see (f.e css).
-** _Logical:_ this part is focused on calculus and operations.
-** _Persistence:_ conexion with different systems to store datas
-
-
-
-
-Contained Building Blocks::
-_<Description of contained building block (black boxes)>_
-
-Important Interfaces::
-_<Description of important interfaces>_
-
-[role="arc42help"]
-****
-
-[cols="1,2" options="header"]
-|===
-| **Name** | **Responsibility**
-| GUI | View
-| Services | Logical
-| Persistence | DB
-|===
+_TO BE DONE_
 
 === Level 2
 
+[role="arc42help"]
+****
+_TO BE DONE_
+****
+
 === Level 3
+
+[role="arc42help"]
+****
+_TO BE DONE_
+****
