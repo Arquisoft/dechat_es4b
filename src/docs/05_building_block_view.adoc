@@ -11,6 +11,12 @@ DeChat is a descentralized chat created with SOLID. SOLID is a project led by Ti
 To make this posible, as a first part of the project, SOLID has created SOLID Pods. In a future part of the development these pods will not be
 neccesary.
 After this introduction, let's talk about our project and how all will work.
+The App will have three main elements: pods, users and the app. These parts will comunicate with each other.
+* User: users will use DeChat App to comunicate to other users.
+* DeChat App: the app will provide all the funcionality to users and will comunicate with SOLID Pods.
+* SOLID Pods: they will work as an intermediary between the diferent apps of users.
+
+
 
 === Level 2
 
