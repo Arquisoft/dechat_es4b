@@ -73,8 +73,9 @@ These stakeholders determine the extent and the level of detail of your work and
 .Form
 The following table contains the persons who are specifically targeted by the application
 
-|Role/Name|Contact|Expectations
-| _ Project sponsor _ | _ Tim Berners-Lee _ | _ Determine which is the best chat and which best meets the requirements _
-| _Professor_ | _Jose Emilio Labra Gayo_ | _Proof that the requirements are met_
-| _Community Manager at Solid_ | _Mitzi_ | _ Proof that the requirements are met _
+|Role/Name   |Contact     |Expectations   |
+| -----------| ---------- | ------------- |
+| Project sponsor  |  Tim Berners-Lee  |  Determine which is the best chat and which best meets the requirements  |
+| Professor  | Jose Emilio Labra Gayo_| Proof that the requirements are met|
+| Community Manager at Solid | Mitzi | Proof that the requirements are met |
 
