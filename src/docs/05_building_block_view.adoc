@@ -4,14 +4,13 @@
 == Building Block View
 
 [role="arc42help"]
-****
-
-.Advise
-This part of the documentation can not be done until the development has moved on a little. It will be growing with the project.
-****
 
 === Whitebox Overall System
-_TO BE DONE_
+
+DeChat is a descentralized chat created with SOLID. SOLID is a project led by Tim Berners-Lee wich aims to change the way Web Apps work today.
+To make this posible, as a first part of the project, SOLID has created SOLID Pods. In a future part of the development these pods will not be
+neccesary.
+After this introduction, let's talk about our project and how all will work.
 
 === Level 2
 
