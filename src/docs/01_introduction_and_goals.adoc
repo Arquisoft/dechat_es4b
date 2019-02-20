@@ -75,7 +75,7 @@ The following table contains the persons who are specifically targeted by the ap
 
 |Role/Name   |Contact     |Expectations   |
 | -----------| ---------- | ------------- |
-| Project sponsor  |  Tim Berners-Lee  |  Determine which is the best chat and which best meets the requirements  |
-| Professor  | Jose Emilio Labra Gayo_| Proof that the requirements are met|
-| Community Manager at Solid | Mitzi | Proof that the requirements are met |
+| Project sponsor  |  Tim Berners-Lee  |  Determine which is the best chat and which best meets the requirements  
+| Professor  | Jose Emilio Labra Gayo_| Proof that the requirements are met
+| Community Manager at Solid | Mitzi | Proof that the requirements are met 
 
