@@ -3,11 +3,8 @@
 
 [role="arc42help"]
 ****
-Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
+This document describes the work carried out in the Software Architecture course project. The project consists in the development of a decentralized chat. The objetive of this chat is to provide a service in which the messages are not stored in a server but in each one of the nodes (users) of the system. The idea behind is similar to the Peer-to-Peer (P2P) approach for sharing content over the Internet.
 
-* underlying business goals, essential features and functional requirements for the system
-* quality goals for the architecture
-* relevant stakeholders and their expectations
 ****
 
 === Requirements Overview
@@ -15,19 +12,29 @@ Describes the relevant requirements and the driving forces that software archite
 [role="arc42help"]
 ****
 .Contents
-Short description of the functional requirements, driving forces, extract (or abstract)
-of requirements. Link to (hopefully existing) requirements documents
-(with version number and information where to find it).
+The main requirement is to provide a system for sending and recieving messages with any server storing this data. Therefore the system will be based on a decentralized architecture where the data storage take place locally in each node.
+General overview of high-level requirements:
+* Users can store their data related with their chats in their own storage Pods.
+* Through the chat, users will be able to share photos, videos or any other type of files with their contacts
+* When a user wants to chat with a friend, the friend will be notified by an alert
+* Users can create new chat groups adding new people to them
 
 .Motivation
-From the point of view of the end users a system is created or modified to
-improve support of a business activity and/or improve the quality.
+With this project we want to achieve a private and point to point communication, i.e. without going through a server, thus avoiding information leaks and security problems.
 
 .Form
-Short textual description, probably in tabular use-case format.
-If requirements documents exist this overview should refer to these documents.
+Use cases				
+UC1. Add Friends
+UC2. Delete Friend
+UC3. New Chat
+	REQ001. The user will be able to add friend to the chat tool
+	REQ002. The user will be able to start a chat with one or more Friends
+	REQ003. The user will be able to créate new chat groups
+UC4. Replay message
+	REQ004. The user will be able to answer to a message sent to him
+UC5. Multimedia files to a message
+	REQ005. The user will be able to send multimedia files in an attachment
 
-Keep these excerpts as short as possible. Balance readability of this document with potential redundancy w.r.t to requirements documents.
 ****
 
 === Quality Goals

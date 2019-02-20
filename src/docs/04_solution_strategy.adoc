@@ -5,4 +5,17 @@
 [role="arc42help"]
 === 4.1 Introduction
 In this part we will documentate a short summary and explanation of the decisions and solutions in our project like technology decisions, architectonical decisions or organizational decisions.
- 
+
+***
+=== 4.2 Decisions
+Short explanation of the decisions of the project
+
+* Javascript: Is a lenguage based on ECMASCRIPT, with it we can do 
+applications in the web. 
+We will use Javascript because in the project we will implementate 
+a chat, as we know, and this language is the best and easiest for web 
+applications.
+
+* Angular: is an open-source framework based on Type-Script.
+  
+*** 
