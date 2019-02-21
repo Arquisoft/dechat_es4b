@@ -1,26 +1,12 @@
 [[section-design-decisions]]
 == Design Decisions
+At this stage of the project few design decisions have been taken. 
 
+We will follow a P2P architecture without a dedicated database, all users information will be stores in their PODs. If this approach does not fit well as the project progresses, we could use https://www.mongodb.com/[MongoDB] because it connects well with Angular and it is also a popular combination part of the https://en.wikipedia.org/wiki/MEAN_(software_bundle)[MEAN stack].
 
-[role="arc42help"]
-****
-.Contents
-Important, expensive, large scale or risky architecture decisions including rationals.
-With "decisions" we mean selecting one alternative based on given criteria.
-
-Please use your judgement to decide whether an architectural decision should be documented
-here in this central section or whether you better document it locally
-(e.g. within the white box template of one building block).
-
-Avoid redundancy. Refer to section 4, where you already captured the most important decisions of your architecture.
-
-.Motivation
-Stakeholders of your system should be able to comprehend and retrace your decisions.
-
-.Form
-Various options:
-
-* List or table, ordered by importance and consequences or:
-* more detailed in form of separate sections per decision
-* ADR (architecture decision record) for every important decision
-****
+|===
+| Property | Decision | Explanation
+| Architecture | Peer-to-Peer (P2P) | It is mandatory in a decentralized Solid app
+| Framework | Angular | We chose Angular because it is one of the most popular frameworks in javaScript world and there are some examples of Solid apps built over it
+|Database | None | There is no need for a database, each chat user will store their data and messages in their personal POD
+|===
