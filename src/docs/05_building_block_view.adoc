@@ -4,43 +4,32 @@
 == Building Block View
 
 [role="arc42help"]
-****
-****
+
 === Whitebox Overall System
 
-[role="arc42help"]
+DeChat is a descentralized chat created with SOLID. SOLID is a project led by Tim Berners-Lee wich aims to change the way Web Apps work today.
+To make this posible, as a first part of the project, SOLID has created SOLID Pods. In a future stage of the development these pods will not be
+neccesary.
 
-_**<Overview Diagram>**_
+After this introduction, let's talk about our project and how all will work.
+The App will have three main elements: pods, users and DeChat App. These parts will comunicate with each other.
 
-Motivation::
+- User: users will use DeChat App to comunicate to other users.
+- DeChat App: the app will provide all the funcionality to users and will comunicate with SOLID Pods.
+- SOLID Pods: they will work as an intermediary between the diferent apps of users.
 
-Software must be adaptable, maintainable, scalable... For this reason, it is
-usualy layered.
-A first vision of our app divides it in three parts:
-** _Graphic User Interface (GUI):_ defines what the user will see (f.e css).
-** _Logical:_ this part is focused on calculus and operations.
-** _Persistence:_ conexion with different systems to store datas
-
-
-
-
-Contained Building Blocks::
-_<Description of contained building block (black boxes)>_
-
-Important Interfaces::
-_<Description of important interfaces>_
-
-[role="arc42help"]
-****
-
-[cols="1,2" options="header"]
-|===
-| **Name** | **Responsibility**
-| GUI | View
-| Services | Logical
-| Persistence | DB
-|===
+image::images/05-GeneralBlockView.png[]
 
 === Level 2
 
+[role="arc42help"]
+****
+_TO BE DONE_
+****
+
 === Level 3
+
+[role="arc42help"]
+****
+_TO BE DONE_
+****

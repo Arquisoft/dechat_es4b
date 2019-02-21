@@ -2,11 +2,18 @@
 == Quality Requirements
 
 
-[role="arc42help"]
-=== TO BE DONE
-
 === Quality Tree
+****
+- Availability: the system will have to be available most of the time
+- Maintainability: software will change and to be able to do these changes software should be manteinable
+- Usability: everyone should use the app whithout problems and fast
+- Testability: all software must be testable
 
+A first version of the Quality Tree:
+
+
+
+****
 [role="arc42help"]
 === TO BE DONE
 
