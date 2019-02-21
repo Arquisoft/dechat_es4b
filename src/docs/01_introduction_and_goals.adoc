@@ -55,6 +55,7 @@ If you as an architect do not know how the quality of your work will be judged â
 | 1   |  Functionality   | Users will be able to communicate effectively with others
 | 2 | Descentrality  |  Avoid security issues, among others
 | 3 | Usability   | We want it to be able to be used and understood by any user
+| 4 | Maintanability	| We follow a model view controller with which we can revising and extending funcionalities it's easier
 |======================
 
 ****
