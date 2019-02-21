@@ -25,4 +25,7 @@ environment that executes JavaScript code outside of a browser.
 * Solid: Is a web decentralization project, just what we need to do the 
 project.
   
-*** 
+***
+=== 4.3 Solution Aproaches
+
+TO BE DONE 
