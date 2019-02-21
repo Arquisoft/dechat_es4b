@@ -13,5 +13,7 @@
 sent. A POD can store photos, text, contacts or calendar events and many other things
 |SOLID |  A technology whose goal is to change the way applications interact with user data, giving more decision-making
  power to users as they are able to decide where their data is stored or who can read it or write it.
-
+| Type-Script | An open-source programming language, is a strict 
+syntactical superset of JavaScript, and adds optional static typing to the language.
+| MEAN | Set of 4 open source tools used for web development. Its components are MongoDB, Express.js, Angular.js and Node.js.
 |===
