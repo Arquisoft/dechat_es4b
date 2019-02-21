@@ -49,7 +49,14 @@ You should know the quality goals of your most important stakeholders, since the
 If you as an architect do not know how the quality of your work will be judged …
 
 .Form
-A table with quality goals and concrete scenarios, ordered by priorities
+
+|======================
+|Priority   |Quality            |Motivation                                                             
+| 1   |  Functionality   | Users will be able to communicate effectively with others
+| 2 | Descentrality  |  Avoid security issues, among others
+| 3 | Usability   | We want it to be able to be used and understood by any user
+|======================
+
 ****
 
 === Stakeholders
