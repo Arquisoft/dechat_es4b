@@ -2,15 +2,15 @@
 == Architecture Constraints
 
 
-[role="arc42help"]
-***
+
+
 
 
 === 2.1 Introduction
 
 There are some constraints that limit the way we can implement our application. These constraints are different in type and scope, some of them are technical,some are organizational and others are conventions. The following tables detail these constraints.
 
-***
+
 === 2.2 Tables
 
 .Technical Constraints
