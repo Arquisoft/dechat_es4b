@@ -534,30 +534,56 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#requirements-overview">1.1. Requirements Overview</a></li>
 <li><a href="#quality-goals">1.2. Quality Goals</a></li>
 <li><a href="#stakeholders">1.3. Stakeholders</a></li>
-<li><a href="#to-be-done">1.4. TO BE DONE</a></li>
 </ul>
 </li>
-<li><a href="#section-concepts">2. Cross-cutting Concepts</a>
+<li><a href="#section-architecture-constraints">2. Architecture Constraints</a>
 <ul class="sectlevel2">
-<li><a href="#to-be-done-2">2.1. TO BE DONE</a></li>
+<li><a href="#introduction">2.1. Introduction</a></li>
+<li><a href="#tables">2.2. Tables</a></li>
 </ul>
 </li>
-<li><a href="#section-design-decisions">3. Design Decisions</a></li>
-<li><a href="#section-quality-scenarios">4. Quality Requirements</a>
+<li><a href="#section-system-scope-and-context">3. System Scope and Context</a>
 <ul class="sectlevel2">
-<li><a href="#quality-tree">4.1. Quality Tree</a></li>
-<li><a href="#to-be-done-3">4.2. TO BE DONE</a></li>
-<li><a href="#quality-scenarios">4.3. Quality Scenarios</a></li>
-<li><a href="#to-be-done-4">4.4. TO BE DONE</a></li>
+<li><a href="#business-context">3.1. Business Context</a></li>
+<li><a href="#technical-context">3.2. Technical Context</a></li>
 </ul>
 </li>
-<li><a href="#section-technical-risks">5. Risks and Technical Debts</a>
+<li><a href="#section-solution-strategy">4. Solution Strategy</a>
 <ul class="sectlevel2">
-<li><a href="#11-1-risks">5.1. 11.1 Risks:</a></li>
-<li><a href="#11-2-measures-to-solve-them">5.2. 11.2 Measures to solve them:</a></li>
+<li><a href="#introduction-2">4.1. Introduction</a></li>
+<li><a href="#decisions">4.2. Decisions</a></li>
+<li><a href="#solution-aproaches">4.3. Solution Aproaches</a></li>
 </ul>
 </li>
-<li><a href="#section-glossary">6. Glossary</a></li>
+<li><a href="#section-building-block-view">5. Building Block View</a>
+<ul class="sectlevel2">
+<li><a href="#whitebox-overall-system">5.1. Whitebox Overall System</a></li>
+<li><a href="#level-2">5.2. Level 2</a></li>
+<li><a href="#level-3">5.3. Level 3</a></li>
+</ul>
+</li>
+<li><a href="#section-runtime-view">6. Runtime View</a></li>
+<li><a href="#section-deployment-view">7. Deployment View</a>
+<ul class="sectlevel2">
+<li><a href="#infrastructure-level-1">7.1. Infrastructure Level 1</a></li>
+<li><a href="#infrastructure-level-2">7.2. Infrastructure Level 2</a></li>
+</ul>
+</li>
+<li><a href="#section-concepts">8. Cross-cutting Concepts</a></li>
+<li><a href="#section-design-decisions">9. Design Decisions</a></li>
+<li><a href="#section-quality-scenarios">10. Quality Requirements</a>
+<ul class="sectlevel2">
+<li><a href="#quality-tree">10.1. Quality Tree</a></li>
+<li><a href="#quality-scenarios">10.2. Quality Scenarios</a></li>
+</ul>
+</li>
+<li><a href="#section-technical-risks">11. Risks and Technical Debts</a>
+<ul class="sectlevel2">
+<li><a href="#risks">11.1. Risks:</a></li>
+<li><a href="#measures-to-solve-them">11.2. Measures to solve them:</a></li>
+</ul>
+</li>
+<li><a href="#section-glossary">12. Glossary</a></li>
 </ul>
 </div>
 </div>
@@ -600,17 +626,11 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <div class="sect1">
 <h2 id="section-introduction-and-goals"><a class="anchor" href="#section-introduction-and-goals"></a>1. Introduction and Goals</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
-<div class="content">
 <div class="paragraph">
 <p>This document describes the work carried out in the Software Architecture course project. The project consists in the development of a decentralized chat. The objetive of this chat is to provide a service in which the messages are not stored in a server but in each one of the nodes (users) of the system. The idea behind is similar to the Peer-to-Peer (P2P) approach for sharing content over the Internet.</p>
 </div>
-</div>
-</div>
 <div class="sect2">
 <h3 id="requirements-overview"><a class="anchor" href="#requirements-overview"></a>1.1. Requirements Overview</h3>
-<div class="sidebarblock arc42help">
-<div class="content">
 <div class="paragraph">
 <div class="title">Contents</div>
 <p>The main requirement is to provide a system for sending and recieving messages with any server storing this data. Therefore the system will be based on a decentralized architecture where the data storage take place locally in each node.
@@ -639,12 +659,8 @@ UC5. Multimedia files to a message
 	REQ005. The user will be able to send multimedia files in an attachment</p>
 </div>
 </div>
-</div>
-</div>
 <div class="sect2">
 <h3 id="quality-goals"><a class="anchor" href="#quality-goals"></a>1.2. Quality Goals</h3>
-<div class="sidebarblock arc42help">
-<div class="content">
 <div class="paragraph">
 <div class="title">Contents</div>
 <p>The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. We really mean quality goals for the architecture. Don&#8217;t confuse them with project goals. They are not necessarily identical.</p>
@@ -690,12 +706,8 @@ If you as an architect do not know how the quality of your work will be judged â
 </tbody>
 </table>
 </div>
-</div>
-</div>
 <div class="sect2">
 <h3 id="stakeholders"><a class="anchor" href="#stakeholders"></a>1.3. Stakeholders</h3>
-<div class="sidebarblock arc42help">
-<div class="content">
 <div class="paragraph">
 <div class="title">Contents</div>
 <p>Explicit overview of stakeholders of the system, i.e. all person, roles or organizations that</p>
@@ -759,18 +771,20 @@ These stakeholders determine the extent and the level of detail of your work and
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
-<div id="section-architecture-constraints" class="paragraph">
-<p>== Architecture Constraints</p>
 </div>
-<div class="paragraph">
-<p>=== 2.1 Introduction</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="section-architecture-constraints"><a class="anchor" href="#section-architecture-constraints"></a>2. Architecture Constraints</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="introduction"><a class="anchor" href="#introduction"></a>2.1. Introduction</h3>
 <div class="paragraph">
 <p>There are some constraints that limit the way we can implement our application. These constraints are different in type and scope, some of them are technical,some are organizational and others are conventions. The following tables detail these constraints.</p>
 </div>
-<div class="paragraph">
-<p>=== 2.2 Tables</p>
 </div>
+<div class="sect2">
+<h3 id="tables"><a class="anchor" href="#tables"></a>2.2. Tables</h3>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 2. Technical Constraints</caption>
 <colgroup>
@@ -846,20 +860,20 @@ know who did any change on the code and of course, GitHub makes easier the colab
 </table>
 <hr>
 <div style="page-break-after: always;"></div>
-<div id="section-system-scope-and-context" class="paragraph">
-<p>== System Scope and Context</p>
-</div>
-<div class="paragraph">
-<p>=== Business Context</p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="section-system-scope-and-context"><a class="anchor" href="#section-system-scope-and-context"></a>3. System Scope and Context</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="business-context"><a class="anchor" href="#business-context"></a>3.1. Business Context</h3>
 <div class="paragraph">
 <p>There are different functions in the application.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="./images/images/03-BusinessContext.JPG" alt="03 BusinessContext">
+<img src="https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/docs/images/03-BusinessContext.JPG" alt="03 BusinessContext">
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -896,64 +910,68 @@ know who did any change on the code and of course, GitHub makes easier the colab
 </tr>
 </tbody>
 </table>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p>=== Technical Context</p>
 </div>
-<div class="paragraph arc42help">
-<p>=== TO BE DONE</p>
+<div class="sect2">
+<h3 id="technical-context"><a class="anchor" href="#technical-context"></a>3.2. Technical Context</h3>
+<div class="paragraph">
+<p><strong>TO BE DONE</strong></p>
 </div>
 <div style="page-break-after: always;"></div>
-<div id="section-solution-strategy" class="paragraph">
-<p>== Solution Strategy</p>
 </div>
-<div class="paragraph arc42help">
-<p>=== 4.1 Introduction
-In this part we will documentate a short summary and explanation of the decisions and solutions in our project like technology decisions, architectonical decisions or organizational decisions.</p>
 </div>
-<hr>
+</div>
+<div class="sect1">
+<h2 id="section-solution-strategy"><a class="anchor" href="#section-solution-strategy"></a>4. Solution Strategy</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="introduction-2"><a class="anchor" href="#introduction-2"></a>4.1. Introduction</h3>
 <div class="paragraph">
-<p>=== 4.2 Decisions
-Short explanation of the decisions of the project</p>
+<p>In this part we will documentate a short summary and explanation of the decisions and solutions in our project like technology decisions, architectonical decisions or organizational decisions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="decisions"><a class="anchor" href="#decisions"></a>4.2. Decisions</h3>
+<div class="paragraph">
+<p>Short explanation of the decisions of the project</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Angular: Is an open-source framework based on Type-Script. We use it
+<p><strong>Angular</strong>: Is an open-source framework based on Type-Script. We use it
 because is the easiest way to create web-apps for us and is intuitive.</p>
 </li>
 <li>
-<p>Javascript: Is a lenguage based on ECMASCRIPT, with it we can do
+<p><strong>Javascript</strong>: Is a lenguage based on ECMASCRIPT, with it we can do
 applications in the web.
 We will use Javascript because in the project we will implementate
 a chat, as we know, and this language is the best and easiest for client
 applications.</p>
 </li>
 <li>
-<p>Node.js: Is an open-source, cross-platform JavaScript run-time
+<p><strong>Node.js</strong>: Is an open-source, cross-platform JavaScript run-time
 environment that executes JavaScript code outside of a browser.</p>
 </li>
 <li>
-<p>Solid: Is a web decentralization project, just what we need to do the
+<p><strong>Solid</strong>: Is a web decentralization project, just what we need to do the
 project.</p>
 </li>
 </ul>
 </div>
-<hr>
-<div class="paragraph">
-<p>=== 4.3 Solution Aproaches</p>
 </div>
+<div class="sect2">
+<h3 id="solution-aproaches"><a class="anchor" href="#solution-aproaches"></a>4.3. Solution Aproaches</h3>
 <div class="paragraph">
 <p>TO BE DONE</p>
 </div>
 <div style="page-break-after: always;"></div>
-<div id="section-building-block-view" class="paragraph">
-<p>== Building Block View</p>
 </div>
-<div class="paragraph arc42help">
-<p>=== Whitebox Overall System</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="section-building-block-view"><a class="anchor" href="#section-building-block-view"></a>5. Building Block View</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="whitebox-overall-system"><a class="anchor" href="#whitebox-overall-system"></a>5.1. Whitebox Overall System</h3>
 <div class="paragraph">
 <p>DeChat is a descentralized chat created with SOLID. SOLID is a project led by Tim Berners-Lee wich aims to change the way Web Apps work today.
 To make this posible, as a first part of the project, SOLID has created SOLID Pods. In a future stage of the development these pods will not be
@@ -966,84 +984,78 @@ The App will have three main elements: pods, users and DeChat App. These parts w
 <div class="ulist">
 <ul>
 <li>
-<p>User: users will use DeChat App to comunicate to other users.</p>
+<p><strong>User</strong>: users will use DeChat App to comunicate to other users.</p>
 </li>
 <li>
-<p>DeChat App: the app will provide all the funcionality to users and will comunicate with SOLID Pods.</p>
+<p><strong>DeChat App</strong>: the app will provide all the funcionality to users and will comunicate with SOLID Pods.</p>
 </li>
 <li>
-<p>SOLID Pods: they will work as an intermediary between the diferent apps of users.</p>
+<p><strong>SOLID Pods</strong>: they will work as an intermediary between the diferent apps of users.</p>
 </li>
 </ul>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="./images/images/05-GeneralBlockView.png" alt="05 GeneralBlockView">
-</div>
-</div>
-<div class="paragraph">
-<p>=== Level 2</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p><em>TO BE DONE</em></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p>=== Level 3</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p><em>TO BE DONE</em></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div style="page-break-after: always;"></div>
-<div id="section-runtime-view" class="paragraph">
-<p>== Runtime View</p>
-</div>
-<div class="paragraph arc42help">
-<p>=== TO BE DONE</p>
-</div>
-<div style="page-break-after: always;"></div>
-<div id="section-deployment-view" class="paragraph">
-<p>== Deployment View</p>
-</div>
-<div class="paragraph arc42help">
-<p>=== TO BE DONE</p>
-</div>
-<div class="paragraph">
-<p>=== Infrastructure Level 1</p>
-</div>
-<div class="paragraph arc42help">
-<p>=== TO BE DONE</p>
-</div>
-<div class="paragraph">
-<p>=== Infrastructure Level 2</p>
-</div>
+<img src="https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/docs/images/05-GeneralBlockView.png" alt="05 GeneralBlockView">
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="to-be-done"><a class="anchor" href="#to-be-done"></a>1.4. TO BE DONE</h3>
+<h3 id="level-2"><a class="anchor" href="#level-2"></a>5.2. Level 2</h3>
+<div class="paragraph">
+<p><strong><em>TO BE DONE</em></strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="level-3"><a class="anchor" href="#level-3"></a>5.3. Level 3</h3>
+<div class="paragraph">
+<p><strong><em>TO BE DONE</em></strong></p>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-concepts"><a class="anchor" href="#section-concepts"></a>2. Cross-cutting Concepts</h2>
+<h2 id="section-runtime-view"><a class="anchor" href="#section-runtime-view"></a>6. Runtime View</h2>
 <div class="sectionbody">
-<div class="sect2 arc42help">
-<h3 id="to-be-done-2"><a class="anchor" href="#to-be-done-2"></a>2.1. TO BE DONE</h3>
+<div class="paragraph">
+<p><strong>TO BE DONE</strong></p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-deployment-view"><a class="anchor" href="#section-deployment-view"></a>7. Deployment View</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>TO BE DONE</strong></p>
+</div>
+<div class="sect2">
+<h3 id="infrastructure-level-1"><a class="anchor" href="#infrastructure-level-1"></a>7.1. Infrastructure Level 1</h3>
+<div class="paragraph">
+<p><strong>TO BE DONE</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="infrastructure-level-2"><a class="anchor" href="#infrastructure-level-2"></a>7.2. Infrastructure Level 2</h3>
+<div class="paragraph">
+<p><strong>TO BE DONE</strong></p>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-design-decisions"><a class="anchor" href="#section-design-decisions"></a>3. Design Decisions</h2>
+<h2 id="section-concepts"><a class="anchor" href="#section-concepts"></a>8. Cross-cutting Concepts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>TO BE DONE</strong></p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="section-design-decisions"><a class="anchor" href="#section-design-decisions"></a>9. Design Decisions</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>At this stage of the project few design decisions have been taken.</p>
@@ -1084,12 +1096,10 @@ The App will have three main elements: pods, users and DeChat App. These parts w
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-quality-scenarios"><a class="anchor" href="#section-quality-scenarios"></a>4. Quality Requirements</h2>
+<h2 id="section-quality-scenarios"><a class="anchor" href="#section-quality-scenarios"></a>10. Quality Requirements</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="quality-tree"><a class="anchor" href="#quality-tree"></a>4.1. Quality Tree</h3>
-<div class="sidebarblock">
-<div class="content">
+<h3 id="quality-tree"><a class="anchor" href="#quality-tree"></a>10.1. Quality Tree</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1109,38 +1119,32 @@ The App will have three main elements: pods, users and DeChat App. These parts w
 <div class="paragraph">
 <p>A first version of the Quality Tree:</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="./images/images/first_quality_tree.png" alt="first quality tree">
+<img src="https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/docs/images/first_quality_tree.png" alt="first quality tree">
 </div>
 </div>
+<div class="paragraph">
+<p><strong>TO BE DONE</strong></p>
 </div>
-</div>
-</div>
-<div class="sect2 arc42help">
-<h3 id="to-be-done-3"><a class="anchor" href="#to-be-done-3"></a>4.2. TO BE DONE</h3>
-
 </div>
 <div class="sect2">
-<h3 id="quality-scenarios"><a class="anchor" href="#quality-scenarios"></a>4.3. Quality Scenarios</h3>
-
+<h3 id="quality-scenarios"><a class="anchor" href="#quality-scenarios"></a>10.2. Quality Scenarios</h3>
+<div class="paragraph">
+<p><strong>TO BE DONE</strong></p>
 </div>
-<div class="sect2 arc42help">
-<h3 id="to-be-done-4"><a class="anchor" href="#to-be-done-4"></a>4.4. TO BE DONE</h3>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-technical-risks"><a class="anchor" href="#section-technical-risks"></a>5. Risks and Technical Debts</h2>
+<h2 id="section-technical-risks"><a class="anchor" href="#section-technical-risks"></a>11. Risks and Technical Debts</h2>
 <div class="sectionbody">
-<hr>
 <div class="paragraph">
 <p>This page contains a list of all the risks we can encounter during the project as well as measures to try to minimize and solve them.</p>
 </div>
-<hr>
 <div class="sect2">
-<h3 id="11-1-risks"><a class="anchor" href="#11-1-risks"></a>5.1. 11.1 Risks:</h3>
+<h3 id="risks"><a class="anchor" href="#risks"></a>11.1. Risks:</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1162,7 +1166,7 @@ The App will have three main elements: pods, users and DeChat App. These parts w
 </div>
 </div>
 <div class="sect2">
-<h3 id="11-2-measures-to-solve-them"><a class="anchor" href="#11-2-measures-to-solve-them"></a>5.2. 11.2 Measures to solve them:</h3>
+<h3 id="measures-to-solve-them"><a class="anchor" href="#measures-to-solve-them"></a>11.2. Measures to solve them:</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1178,9 +1182,9 @@ The App will have three main elements: pods, users and DeChat App. These parts w
 </div>
 </div>
 <div class="sect1">
-<h2 id="section-glossary"><a class="anchor" href="#section-glossary"></a>6. Glossary</h2>
+<h2 id="section-glossary"><a class="anchor" href="#section-glossary"></a>12. Glossary</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch arc42help">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1250,7 +1254,7 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-22 10:32:00 CET
+Last updated 2019-02-22 15:23:47 CET
 </div>
 </div>
 </body>

@@ -1,7 +1,5 @@
 [[section-runtime-view]]
 == Runtime View
 
-
-[role="arc42help"]
-=== TO BE DONE
+*TO BE DONE*
 

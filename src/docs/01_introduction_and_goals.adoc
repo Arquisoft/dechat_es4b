@@ -1,16 +1,11 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
 
-[role="arc42help"]
-****
 This document describes the work carried out in the Software Architecture course project. The project consists in the development of a decentralized chat. The objetive of this chat is to provide a service in which the messages are not stored in a server but in each one of the nodes (users) of the system. The idea behind is similar to the Peer-to-Peer (P2P) approach for sharing content over the Internet.
-
-****
 
 === Requirements Overview
 
-[role="arc42help"]
-****
+
 .Contents
 The main requirement is to provide a system for sending and recieving messages with any server storing this data. Therefore the system will be based on a decentralized architecture where the data storage take place locally in each node.
 General overview of high-level requirements:
@@ -35,12 +30,10 @@ UC4. Replay message
 UC5. Multimedia files to a message
 	REQ005. The user will be able to send multimedia files in an attachment
 
-****
 
 === Quality Goals
 
-[role="arc42help"]
-****
+
 .Contents
 The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. We really mean quality goals for the architecture. Don't confuse them with project goals. They are not necessarily identical.
 
@@ -58,12 +51,8 @@ If you as an architect do not know how the quality of your work will be judged â
 | 4 | Maintanability	| We follow a model view controller with which we can revising and extending funcionalities it's easier
 |======================
 
-****
-
 === Stakeholders
 
-[role="arc42help"]
-****
 .Contents
 Explicit overview of stakeholders of the system, i.e. all person, roles or organizations that
 
