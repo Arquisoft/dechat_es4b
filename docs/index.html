@@ -632,46 +632,84 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <div class="sect2">
 <h3 id="requirements-overview"><a class="anchor" href="#requirements-overview"></a>1.1. Requirements Overview</h3>
 <div class="paragraph">
-<div class="title">Contents</div>
 <p>The main requirement is to provide a system for sending and recieving messages with any server storing this data. Therefore the system will be based on a decentralized architecture where the data storage take place locally in each node.
-General overview of high-level requirements:
-* Users can store their data related with their chats in their own storage Pods.
-* Through the chat, users will be able to share photos, videos or any other type of files with their contacts
-* When a user wants to chat with a friend, the friend will be notified by an alert
-* Users can create new chat groups adding new people to them</p>
+General overview of high-level requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Users can store their data related with their chats in their own storage Pods.</p>
+</li>
+<li>
+<p>Through the chat, users will be able to share photos, videos or any other type of files with their contacts</p>
+</li>
+<li>
+<p>When a user wants to chat with a friend, the friend will be notified by an alert</p>
+</li>
+<li>
+<p>Users can create new chat groups adding new people to them</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<div class="title">Motivation</div>
 <p>With this project we want to achieve a private and point to point communication, i.e. without going through a server, thus avoiding information leaks and security problems.</p>
 </div>
-<div class="paragraph">
-<div class="title">Form</div>
-<p>Use cases
-UC1. Add Friends
-UC2. Delete Friend
-UC3. New Chat
-	REQ001. The user will be able to add friend to the chat tool
-	REQ002. The user will be able to start a chat with one or more Friends
-	REQ003. The user will be able to cr√©ate new chat groups
-UC4. Replay message
-	REQ004. The user will be able to answer to a message sent to him
-UC5. Multimedia files to a message
-	REQ005. The user will be able to send multimedia files in an attachment</p>
+<div class="ulist">
+<div class="title">Use cases</div>
+<ul>
+<li>
+<p>UC1. Add Friends</p>
+</li>
+<li>
+<p>UC2. Delete Friend</p>
+</li>
+<li>
+<p>UC3. New Chat</p>
+<div class="ulist">
+<ul>
+<li>
+<p>REQ001. The user will be able to add friend to the chat tool</p>
+</li>
+<li>
+<p>REQ002. The user will be able to start a chat with one or more Friends</p>
+</li>
+<li>
+<p>REQ003. The user will be able to cr√©ate new chat groups</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>UC4. Replay message</p>
+<div class="ulist">
+<ul>
+<li>
+<p>REQ004. The user will be able to answer to a message sent to him</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>UC5. Multimedia files to a message</p>
+<div class="ulist">
+<ul>
+<li>
+<p>REQ005. The user will be able to send multimedia files in an attachment</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
 <h3 id="quality-goals"><a class="anchor" href="#quality-goals"></a>1.2. Quality Goals</h3>
 <div class="paragraph">
-<div class="title">Contents</div>
-<p>The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. We really mean quality goals for the architecture. Don&#8217;t confuse them with project goals. They are not necessarily identical.</p>
-</div>
-<div class="paragraph">
-<div class="title">Motivation</div>
-<p>You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. Make sure to be very concrete about these qualities, avoid buzzwords.
+<p>The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. We really mean quality goals for the architecture. Don&#8217;t confuse them with project goals. They are not necessarily identical.
+You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. Make sure to be very concrete about these qualities, avoid buzzwords.
 If you as an architect do not know how the quality of your work will be judged ‚Ä¶</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Form</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -709,7 +747,6 @@ If you as an architect do not know how the quality of your work will be judged ‚
 <div class="sect2">
 <h3 id="stakeholders"><a class="anchor" href="#stakeholders"></a>1.3. Stakeholders</h3>
 <div class="paragraph">
-<div class="title">Contents</div>
 <p>Explicit overview of stakeholders of the system, i.e. all person, roles or organizations that</p>
 </div>
 <div class="ulist">
@@ -732,13 +769,11 @@ If you as an architect do not know how the quality of your work will be judged ‚
 </ul>
 </div>
 <div class="paragraph">
-<div class="title">Motivation</div>
 <p>You should know all parties involved in development of the system or affected by the system.
 Otherwise, you may get nasty surprises later in the development process.
 These stakeholders determine the extent and the level of detail of your work and its results.</p>
 </div>
 <div class="paragraph">
-<div class="title">Form</div>
 <p>The following table contains the persons who are specifically targeted by the application</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -786,7 +821,7 @@ These stakeholders determine the extent and the level of detail of your work and
 <div class="sect2">
 <h3 id="tables"><a class="anchor" href="#tables"></a>2.2. Tables</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Technical Constraints</caption>
+<caption class="title">Table 1. Technical Constraints</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -807,7 +842,7 @@ According to SOLID, that information will be stored in a POD</p></td>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Organitazional and political constraints</caption>
+<caption class="title">Table 2. Organitazional and political constraints</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -840,7 +875,7 @@ know who did any change on the code and of course, GitHub makes easier the colab
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Conventions</caption>
+<caption class="title">Table 3. Conventions</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -858,7 +893,6 @@ know who did any change on the code and of course, GitHub makes easier the colab
 </tr>
 </tbody>
 </table>
-<hr>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1254,7 +1288,7 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-22 15:23:47 CET
+Last updated 2019-02-12 11:38:34 CET
 </div>
 </div>
 </body>

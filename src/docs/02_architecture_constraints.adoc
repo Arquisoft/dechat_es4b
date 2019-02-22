@@ -40,4 +40,4 @@ know who did any change on the code and of course, GitHub makes easier the colab
 |Constraint|Explanation      
 |Use of Arc42 template for documentation| We must use this template to maintain an order and make sure than anyone who reads it can find what they are looking for,  knowing the section in which it is located    
 |===
-***
+
