@@ -2,6 +2,11 @@
 == Risks and Technical Debts
 
 
+***
+
+This page contains a list of all the risks we can encounter during the project as well as measures to try to minimize and solve them.
+
+***
 === Risks:
 * Solid is a completely new technology to the group and it might take us time until we get used to its functionality.
 * Although we've used Javascript in the past, it's not our go-to programming language.
