@@ -2,30 +2,27 @@
 == Solution Strategy
 
 
-[role="arc42help"]
-=== 4.1 Introduction
+=== Introduction
 In this part we will documentate a short summary and explanation of the decisions and solutions in our project like technology decisions, architectonical decisions or organizational decisions.
 
-***
-=== 4.2 Decisions
+=== Decisions
 Short explanation of the decisions of the project
 
-* Angular: Is an open-source framework based on Type-Script. We use it 
+* *Angular*: Is an open-source framework based on Type-Script. We use it 
 because is the easiest way to create web-apps for us and is intuitive.
 
-* Javascript: Is a lenguage based on ECMASCRIPT, with it we can do
+* *Javascript*: Is a lenguage based on ECMASCRIPT, with it we can do
 applications in the web.
 We will use Javascript because in the project we will implementate
 a chat, as we know, and this language is the best and easiest for client
 applications.
 
-* Node.js: Is an open-source, cross-platform JavaScript run-time 
+* *Node.js*: Is an open-source, cross-platform JavaScript run-time 
 environment that executes JavaScript code outside of a browser.
 
-* Solid: Is a web decentralization project, just what we need to do the 
+* *Solid*: Is a web decentralization project, just what we need to do the 
 project.
   
-***
-=== 4.3 Solution Aproaches
+=== Solution Aproaches
 
 TO BE DONE 
