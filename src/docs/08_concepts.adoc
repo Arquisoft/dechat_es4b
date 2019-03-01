@@ -1,4 +1,7 @@
 [[section-concepts]]
 == Cross-cutting Concepts
 
-*TO BE DONE*
+
+[role="arc42help"]
+
+=== TO BE DONE

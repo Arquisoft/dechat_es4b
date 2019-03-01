@@ -3,10 +3,11 @@
 
 === Business Context
 
-
+[role="arc42help"]
+****
 There are different functions in the application.
 
-image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/docs/images/03-BusinessContext.JPG[align="center"]
+image::images/03-BusinessContext.JPG[]
 
 [options="header"]
 |===
@@ -18,6 +19,8 @@ image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/docs/image
 | Store data| This function needs connection to your PODs. It saves the data into your private POD when you send a message or a file.
 |===
 
+****
 === Technical Context
 
-*TO BE DONE*
+[role="arc42help"]
+=== TO BE DONE
