@@ -3,22 +3,26 @@
 
 
 [role="arc42help"]
-****
-.Contents
-A short summary and explanation of the fundamental decisions and solution strategies, that shape the system's architecture. These include
+=== 4.1 Introduction
+In this part we will documentate a short summary and explanation of the decisions and solutions in our project like technology decisions, architectonical decisions or organizational decisions.
 
-* technology decisions
-* decisions about the top-level decomposition of the system, e.g. usage of an architectural pattern or design pattern
-* decisions on how to achieve key quality goals
-* relevant organizational decisions, e.g. selecting a development process or delegating certain tasks to third parties.
+***
+=== 4.2 Decisions
+Short explanation of the decisions of the project
 
-.Motivation
-These decisions form the cornerstones for your architecture. They are the basis for many other detailed decisions or implementation rules.
+* Angular: Is an open-source framework based on Type-Script. We use it 
+because is the easiest way to create web-apps for us and is intuitive.
 
-.Form
-Keep the explanation of these key decisions short.
+* Javascript: Is a lenguage based on ECMASCRIPT, with it we can do
+applications in the web.
+We will use Javascript because in the project we will implementate
+a chat, as we know, and this language is the best and easiest for client
+applications.
 
-Motivate what you have decided and why you decided that way,
-based upon your problem statement, the quality goals and key constraints.
-Refer to details in the following sections.
-****
+* Node.js: Is an open-source, cross-platform JavaScript run-time 
+environment that executes JavaScript code outside of a browser.
+
+* Solid: Is a web decentralization project, just what we need to do the 
+project.
+  
+*** 
