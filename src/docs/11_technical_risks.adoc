@@ -1,21 +1,16 @@
 [[section-technical-risks]]
 == Risks and Technical Debts
 
-
-[role="arc42help"]
-***
-
 This page contains a list of all the risks we can encounter during the project as well as measures to try to minimize and solve them.
 
-***
-=== 11.1 Risks:
+=== Risks:
 * Solid is a completely new technology to the group and it might take us time until we get used to its functionality.
 * Although we've used Javascript in the past, it's not our go-to programming language.
 * Angular is a new Framework we haven't used before.
 * None of us have worked with this many people before and some of us didn't know each other  before.
 * English is not our first language and it can lead to some errors in the documentation.
 
-=== 11.2 Measures to solve them:
+=== Measures to solve them:
 * Try to learn as much as possible about Solid, Angular, and Javascript before starting to work on the actual code, and keep researching and learning during the whole project.
 * Increasing the communication in the group so everyone know what everyone is doing and has to do.
 
