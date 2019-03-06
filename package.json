@@ -1,34 +1,28 @@
 {
-  "name": "dechatjs_0",
-  "version": "0.0.0",
-  "description": "A decentralized chat",
+  "name": "dechat_es4b",
+  "version": "0.2.0",
+  "description": "A Solid-based chat",
   "main": "index.js",
-  "presets": [
-    "@babel/preset-es2016"
-  ],
   "scripts": {
-    "start": "node index.js",
-    "test": "standard && nyc --reporter lcov mocha --require @babel/register -R spec",
-    "coverage": "nyc --reporter text-lcov node_modules/.bin/_mocha --require @babel/register -R spec --timeout 100 | coveralls",
-    "test-with-coverage": "nyc --reporter text-lcov node_modules/.bin/_mocha --require @babel/register -R spec --timeout 100 && cat ./coverage/lcov.info | codacy-coverage && rm -rf ./coverage",
-    "travisRepo": "./test/travisRepo.sh",
-    "travis-deploy-once": "travis-deploy-once",
-    "puml": "./node_modules/.bin/puml",
-    "docs": "./node_modules/.bin/asciidoctorjs  adocs/index.adoc --destination-dir docs"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:web": "webpack --config webpack.config.js",
+    "doc": "./node_modules/.bin/jsdoc -c jsdoc.json ./lib"
   },
-  "bin": {},
+  "bin": {
+    "solid-chat": "bin/cli.js"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arquisoft/dechatjs_0.git"
+    "url": "git+https://github.com/arquisoft/dechat_es4b.git"
   },
-  "author": "Jose Emilio Labra Gayo <labra@uniovi.es>",
+  "author": "Mario Díaz Ceñera<mariodc98@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/arquisoft/dechatjs_0/issues"
+    "url": "https://github.com/arquisoft/dechat_es4b/issues"
   },
-  "homepage": "https://github.com/arquisoft/dechatjs_0",
+ "homepage": "https://github.com/arquisoft/dechat_es4b",
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
+	"@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
@@ -50,9 +44,27 @@
     "node-plantuml": "^0.8.1",
     "nyc": "^13.3.0",
     "standard": "*"
+    "minami": "^1.2.3",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2"
   },
   "dependencies": {
-    "build": "^0.1.4",
+    "@comunica/actor-init-sparql-rdfjs": "1.4.2",
+    "@solid/cli": "^0.1.0",
+    "@solid/query-ldflex": "^1.1.1",
+    "chess.js": "jhlywa/chess.js#master",
+    "date-fns": "^2.0.0-alpha.25",
+    "inquirer": "^6.2.0",
+    "n3": "^1.0.2",
+    "prefix-ns": "^0.1.2",
+    "q": "^1.5.1",
+    "semantic-chess": "0.2.0",
+    "solid-auth-client": "^2.2.10",
+    "streamify-array": "^1.0.1",
+    "uniqid": "^5.0.3",
+    "uri-js": "^4.2.2",
+    "winston": "^3.1.0"
+	"build": "^0.1.4",
     "codacy-coverage": "^3.4.0",
     "istanbul": "^0.4.5",
     "standard": "^12.0.1",
