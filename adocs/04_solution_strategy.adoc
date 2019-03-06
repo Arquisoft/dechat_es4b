@@ -8,9 +8,6 @@ In this part we will documentate a short summary and explanation of the decision
 === Decisions
 Short explanation of the decisions of the project
 
-* *Angular*: Is an open-source framework based on Type-Script. We use it 
-because is the easiest way to create web-apps for us and is intuitive.
-
 * *Javascript*: Is a lenguage based on ECMASCRIPT, with it we can do
 applications in the web.
 We will use Javascript because in the project we will implementate

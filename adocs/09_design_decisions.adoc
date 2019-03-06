@@ -7,6 +7,5 @@ We will follow a P2P architecture without a dedicated database, all users inform
 |===
 | Property | Decision | Explanation
 | Architecture | Peer-to-Peer (P2P) | It is mandatory in a decentralized Solid app
-| Framework | Angular | We chose Angular because it is one of the most popular frameworks in javaScript world and there are some examples of Solid apps built over it
 |Database | None | There is no need for a database, each chat user will store their data and messages in their personal POD
 |===
