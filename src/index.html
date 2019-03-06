@@ -26,7 +26,6 @@
                 <i class="fas fa-user"></i><span id='user-name' class="hidden"></span>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <button id="theme-btn" class="dropdown-item btn btn-outline-success my-2 my-sm-0" type="button">Theme</button>
                 <button id="clear-inbox-btn" class="dropdown-item btn btn-outline-danger my-2 my-sm-0" type="button">Clear inbox <i class="fas fa-exclamation-triangle"></i></button>
                 <button id="logout-btn" class="dropdown-item btn btn-outline-success my-2 my-sm-0" type="button">Log out</button>
               </div>
@@ -36,33 +35,31 @@
       </nav>
 
       <div id="content" class="row justify-content-center align-items-center">
-        <div id="game-options" class="col-6 text-center">
+        <div id="chat-options" class="col-6 text-center">
           <button id="new-btn" type="button" class="btn btn-dark btn-lg"> New chat</button>
           <button id="join-btn" type="button" class="btn btn-dark btn-lg">Join chat</button>
+          <button id="open-btn" type="button" class="btn btn-dark btn-lg">Open chat</button>
         </div>
 
-        <div id="new-game-options" class="col-6 hidden">
+        <div id="new-chat-options" class="col-6 hidden">
           <form>
             <div class="form-group">
-              <label for="game-name">Chat name</label>
-              <input type="text" class="form-control rounded-0" id="game-name" placeholder="Enter the game's name">
+              <label for="possible-people">Your conversation partner</label>
+              <select id="possible-people"></select>
             </div>
             <div class="form-group">
-              <label for="possible-opps">Your conversation partner</label>
-              <!-- <input type="text" class="form-control rounded-0" id="opp-webid" placeholder="Enter opponent's WebID" value="https://ph2.solid.community/profile/card#me"> -->
-              <select id="possible-opps"></select>
-            </div>
-            <div class="form-group">
+              <label for="data-name">Name of the chat</label>
+              <input type="text" class="form-control rounded-0" id="data-name" aria-describedby="pathHelp" placeholder="Enter chat name">
               <label for="data-url">Path on your POD to store the game</label>
               <input type="text" class="form-control rounded-0" id="data-url" aria-describedby="pathHelp" placeholder="Enter path">
-              <small id="pathHelp" class="form-text">This is the path of the file on your Solid POD where your personal game data will be stored. Data will be appended if the file exists.</small>
+              <small id="pathHelp" class="form-text">Your information will be here</small>
             </div>
-            <button id="start-new-game-btn" type="button" class="btn btn-dark">Start chatting!!</button>
+            <button id="start-new-chat-btn" type="button" class="btn btn-dark">Start chatting!!</button>
             <button type="button" class="btn-cancel btn btn-dark">Cancel</button>
           </form>
         </div>
 
-        <div id="join-game-options" class="col-6 hidden">
+        <div id="join-chat-options" class="col-6 hidden">
           <div id='join-loading'>
             <span id="join-looking">Looking for chats to join...</span>
             <span id="no-join" class="hidden">No chats to join were found.</span>
@@ -72,20 +69,20 @@
           </div>
           <form id="join-form" class="hidden">
             <div class="form-group">
-              <label for="game-urls">Chat you want to join</label>
-              <select id="game-urls"></select>
+              <label for="chat-urls">Chat you want to join</label>
+              <select id="chat-urls"></select>
             </div>
             <div class="form-group">
-              <label for="join-data-url">Path on your POD to store the game</label>
+              <label for="join-data-url">Path on your POD to store the chat</label>
               <input type="text" class="form-control rounded-0" id="join-data-url" aria-describedby="pathHelp2" placeholder="Enter path">
-              <small id="pathHelp2" class="form-text">This is the path of the file on your Solid POD where your personal game data will be stored. Data will be appended if the file exists.</small>
+              <small id="pathHelp2" class="form-text">This is the path of the file on your Solid POD where your personal chat data will be stored. Data will be appended if the file exists.</small>
             </div>
-            <button id="join-game-btn" type="button" class="btn btn-dark">Join!</button>
+            <button id="join-chat-btn" type="button" class="btn btn-dark">Join!</button>
             <button type="button" class="btn-cancel btn btn-dark">Cancel</button>
           </form>
         </div>
 
-        <div id="continue-game-options" class="col-6 hidden">
+        <div id="continue-chat-options" class="col-6 hidden">
           <div id='continue-loading'>
             <span id="continue-looking">Looking for chats to continue...</span>
             <span id="no-continue" class="hidden">No chat to join were found.</span>
@@ -93,9 +90,9 @@
               <button type="button" class="btn-cancel btn btn-dark">Cancel</button>
             </div>
           </div>
-          <div id="continue-games" class="hidden">
+          <div id="continue-chat" class="hidden">
             <span>Select the chat you want to continue</span>
-            <table id="continue-game-table" class="table table-hover">
+            <table id="continue-chat-table" class="table table-hover">
               <thead>
                 <tr>
                   <th scope="col" id="table-title" >Title</th>
@@ -108,18 +105,19 @@
           </div>
         </div>
 
-        <div id='game-loading' class="hidden">
+        <div id='chat-loading' class="hidden">
           <span>Loading your chat...</span>
         </div>
 
-        <div id="game" class="hidden" >
-          <p>Name: <span id="name-of-the-game"></span></p>
-          <div id="board" style="width: 400px"></div>
-          <div id="game-details">
+        <div id="chat" class="hidden" >
+          <p>Name: <span id="name-of-the-chat"></span></p>
+          <div id="conversation" style="width: 400px"></div>
+          <div id="chat-details">
             <p>Status: <span id="status"></span></p>
-            <p>Partner: <span id="opponent-name"></span></p>
+            <p>Partner: <span id="partner-name"></span></p>
           </div>
-          <button id="stop-playing" type="button" class="btn btn-dark">Stop</button>
+          <button id="send-message" type="button" class="btn btn-dark">Send message</button>
+          <button id="stop-chatting" type="button" class="btn btn-dark">Stop!</button>
         </div>
       </div>
 
@@ -127,8 +125,8 @@
         <div class="col-6" typeof="SoftwareApplication Chat" about="https://arquisoft.github.io/dechat_es4b/">
           <h3>Start chatting</h3>
           <p class="text-justify">
-            Do you want to play the game in your <b>browser</b>? Great!
-            Just log in (top right) and start playing.
+            Do you want to play the chat in your <b>browser</b>? Great!
+            Just log in (top right) and start chatting.
           </p>
 
           <h3>How it works</h3>
@@ -155,7 +153,7 @@
               </button>
             </div>
             <div class="modal-body">
-              Please login to play a game.
+              Please login to play a chat.
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
