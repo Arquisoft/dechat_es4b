@@ -15,7 +15,7 @@ a {
   padding-bottom: 20px;
 }
 
-#login-required, #theme-selector, #write-permission, #invitation-response, #real-time-setup, #real-time-quit, #real-time-opponent-quit {
+#login-required, #theme-selector, #write-permission, #invitation-response {
   color: black;
 }
 
@@ -44,21 +44,12 @@ a {
   margin-top: 50px;
 }
 
-#custom-position-chk-group, #real-time-chk-group {
-  margin-bottom: 15px;
-}
-
 #chat-details {
   margin-top: 20px;
 }
 
 .hidden {
   display: none!important;
-}
-
-#board {
-  width: 95vw;
-  max-width: 500px;
 }
 
 #continue-chat-table {

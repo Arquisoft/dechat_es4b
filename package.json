@@ -52,8 +52,10 @@
     "standard": "*"
   },
   "dependencies": {
+    "build": "^0.1.4",
     "codacy-coverage": "^3.4.0",
     "istanbul": "^0.4.5",
-    "standard": "^12.0.1"
+    "standard": "^12.0.1",
+    "web": "0.0.2"
   }
 }
