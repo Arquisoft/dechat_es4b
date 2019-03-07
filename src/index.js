@@ -266,10 +266,14 @@ auth.trackSession(async session => {
     $('#login-required').modal('hide');
 
     userWebId = session.webId;
-    const name = await core.getFormattedName(userWebId);
+
+    // No finaliza el método
+    //const name = await core.getFormattedName(userWebId);
+
+
+    const name = await core.getUsername(session);
 
     if (name) {
-      $('#user-name').removeClass('hidden');
       $('#user-name').text(name);
     }
 
@@ -291,6 +295,7 @@ auth.trackSession(async session => {
     clearInterval(refreshIntervalId);
     refreshIntervalId = null;
   }
+  
 });
 
 /**
