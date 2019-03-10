@@ -3,24 +3,30 @@ body {
   background-repeat: repeat;
   background-color: ghostwhite;
   color: white;
+  border-radius: 25px;
 }
 
 a {
   color: white!important;
   text-decoration: underline;
 }
-
+navbar{
+	color: #363b3f;
+	 border-radius: 25px;
+}
 .container {
-  background-color: darkcyan;
-  padding-bottom: 20px;
+  background-color: #0d4261;
+  border-radius: 50px;
 }
 
 #login-required, #theme-selector, #write-permission, #invitation-response {
-  color: black;
+  color: #363b3f;
+  border-radius: 50px;
 }
 
 #navbarDropdown {
   color: white
+  border-radius: 50px;
 }
 
 .fa-user {
@@ -71,6 +77,7 @@ tr.clickable-row {
 
 .btn-cancel, #start-new-game-btn, #join-game-btn, #stop-playing {
   margin-bottom: 25px;
+
 }
 
 table.table > thead > tr > th{
