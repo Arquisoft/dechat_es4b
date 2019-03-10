@@ -1,5 +1,6 @@
 //const {Loader} = require('semantic-chat');
 const auth = require('solid-auth-client');
+const fc = require('solid-file-client');
 const DataSync = require('../lib/datasync');
 const namespaces = require('../lib/namespaces');
 const { default: data } = require('@solid/query-ldflex');
@@ -8,6 +9,8 @@ const Core = require('../lib/core');
 const WebRTC = require('../lib/webrtc');
 
 let userWebId;
+let myUsername;
+let friendList;
 let semanticChat;
 let dataSync = new DataSync(auth.fetch);
 let board;
@@ -92,7 +95,7 @@ $('#save-theme-btn').click(() => {
  */
 function setUpForEveryChatOption() {
   $('#chat-loading').removeClass('hidden');
-  // $('#chat').removeClass('hidden');
+  $('#chat').removeClass('hidden');
 }
 
 /**
@@ -150,6 +153,7 @@ async function setUpNewChessChat() {
     $('#real-time-setup .modal-body ul').append('<li>Invitation sent</li>');
     $('#real-time-setup').modal('show');
   }
+  
 
   setUpBoard(semanticChat);
   setUpAfterEveryChatOptionIsSetUp();
@@ -258,24 +262,24 @@ async function setUpBoard(semanticChat) {
 
 auth.trackSession(async session => {
   const loggedIn = !!session;
-  //console.log(`logged in: ${loggedIn}`);
 
   if (loggedIn) {
-    $('#user-menu').removeClass('hidden');
-    $('#nav-login-btn').addClass('hidden');
-    $('#login-required').modal('hide');
+    // Para sacar el nombre
+    //const name = await core.getFormattedName(userWebId);
+    // Para sacar el username
+    myUsername = await core.getUsername(session.webId);    
+
+    if (myUsername) {
+      $('#user-name').text(myUsername);
+    }
 
     userWebId = session.webId;
+    if(friendList == null)
+      await getFriends(); 
 
-    // No finaliza el método
-    //const name = await core.getFormattedName(userWebId);
-
-
-    const name = await core.getUsername(session);
-
-    if (name) {
-      $('#user-name').text(name);
-    }
+    $('#user-menu').removeClass('hidden');
+    $('#nav-login-btn').addClass('hidden');
+    $('#login-required').modal('hide');  
 
     checkForNotifications();
     // refresh every 5sec
@@ -309,25 +313,26 @@ function afterChatOption() {
 function afterChatSpecificOptions() {
 }
 
-$('#new-btn').click(async () => {
+$('#new-btn').click(async () => { 
   if (userWebId) {
     afterChatOption();
-    $('#new-chat-options').removeClass('hidden');
-    $('#data-url').prop('value', core.getDefaultDataUrl(userWebId));
-
-    const $select = $('#possible-opps');
-
-    for await (const friend of data[userWebId].friends) {
-        let name = await core.getFormattedName(friend.value);
-
-        $select.append(`<option value="${friend}">${name}</option>`);
+    $('#possible-people').empty();
+    for await (const friend of friendList) {
+        $('#possible-people').append('<option value='+friend.username+'>'+friend.name+'</option>');
+        console.log('<option value='+friend.username+'>'+friend.name+'</option>');
     }
+
+   $('#new-chat-options').removeClass('hidden');
+   $('#data-url').prop('value', core.getDefaultDataUrl(userWebId));
+
   } else {
     $('#login-required').modal('show');
   }
 });
 
 $('#start-new-chat-btn').click(async () => {
+  /*
+  TO DELETE
   const dataUrl = $('#data-url').val();
 
   if (await core.writePermission(dataUrl, dataSync)) {
@@ -340,7 +345,21 @@ $('#start-new-chat-btn').click(async () => {
   } else {
     $('#write-permission-url').text(dataUrl);
     $('#write-permission').modal('show');
+  }*/
+  var message = $('#data-name').val();
+  var a = $("#possible-people option:selected").val();
+  var receiver = core.getFriendOfList(friendList, a);
+  var intro1 = "<chatting with "+userWebId+">\n"
+  var intro2 = "<chatting with "+receiver.card+">\n"
+  try {
+    dataSync.sendToOpponentsInbox(receiver.inbox, intro1 + message);
+    dataSync.sendToOpponentsInbox("https://"+myUsername+".solid.community/inbox/", intro2 + message);
+  } catch (e) {
+    core.logger.error(`Could not send message to the user.`);
+    core.logger.error(e);
   }
+
+
 });
 
 $('#join-btn').click(async () => {
@@ -667,9 +686,9 @@ $('#clear-inbox-btn').click(async () => {
   const resources = await core.getAllResourcesInInbox(await core.getInboxUrl(userWebId));
 
   resources.forEach(async r => {
-    if (await core.fileContainsChessInfo(r)) {
+    //if (await core.fileContainsChessInfo(r)) {
       dataSync.deleteFileForUser(r);
-    }
+    //}
   });
 });
 
@@ -746,11 +765,39 @@ function getNewChatPosition() {
   } else {
     return null;
   }
-}
+};
 
 function getRealTime() {
   return $('#real-time-chk').prop('checked');
-}
+};
+
+
+async function getFriends() { 
+  var subject = userWebId;
+  var predicate = "http://xmlns.com/foaf/0.1/name";
+
+  var friends = null;
+  
+  fc.fetchAndParse( subject ).then( store => {
+      searchFriendsOnList(store.statements);
+  }, err => console.log("could not fetch : "+err) ) ;
+
+  /*
+  if(friends != null)
+    searchFriendsOnList(friends.statements, myUser);
+    */
+};
+
+async function searchFriendsOnList(possibleList) {
+  friendList = new Array();
+  for(var i=0; i<possibleList.length; i++){
+    if(core.isFriend(possibleList[i].object.value, myUsername))
+      friendList.push({card: possibleList[i].object.value, 
+                        username: core.getUsername(possibleList[i].object.value), 
+                        name: await core.getFormattedName(possibleList[i].object.value),
+                        inbox: "https://"+core.getUsername(possibleList[i].object.value)+".solid.community/inbox/"});
+  }
+};
 
 // todo: this is an attempt to cleanly exit the chat, but this doesn't work at the moment
 window.onunload = window.onbeforeunload = () => {
