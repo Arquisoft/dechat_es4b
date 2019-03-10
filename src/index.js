@@ -323,7 +323,7 @@ $('#new-btn').click(async () => {
     }
 
    $('#new-chat-options').removeClass('hidden');
-   $('#data-url').prop('value', core.getDefaultDataUrl(userWebId));
+   //$('#data-url').prop('value', core.getDefaultDataUrl(userWebId));
 
   } else {
     $('#login-required').modal('show');
