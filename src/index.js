@@ -264,6 +264,8 @@ auth.trackSession(async session => {
   const loggedIn = !!session;
 
   if (loggedIn) {
+    $('#chat-options').addClass('hidden');
+    $('#loading-gif').removeClass('hidden');
     // Para sacar el nombre
     //const name = await core.getFormattedName(userWebId);
     // Para sacar el username
@@ -319,7 +321,6 @@ $('#new-btn').click(async () => {
     $('#possible-people').empty();
     for await (const friend of friendList) {
         $('#possible-people').append('<option value='+friend.username+'>'+friend.name+'</option>');
-        console.log('<option value='+friend.username+'>'+friend.name+'</option>');
     }
 
    $('#new-chat-options').removeClass('hidden');
@@ -331,21 +332,6 @@ $('#new-btn').click(async () => {
 });
 
 $('#start-new-chat-btn').click(async () => {
-  /*
-  TO DELETE
-  const dataUrl = $('#data-url').val();
-
-  if (await core.writePermission(dataUrl, dataSync)) {
-    $('#new-chat-options').addClass('hidden');
-    oppWebId = $('#possible-opps').val();
-    userDataUrl = dataUrl;
-    chatName = $('#chat-name').val();
-    afterChatSpecificOptions();
-    setUpNewChessChat();
-  } else {
-    $('#write-permission-url').text(dataUrl);
-    $('#write-permission').modal('show');
-  }*/
   var message = $('#data-name').val();
   var a = $("#possible-people option:selected").val();
   var receiver = core.getFriendOfList(friendList, a);
@@ -354,12 +340,12 @@ $('#start-new-chat-btn').click(async () => {
   try {
     dataSync.sendToOpponentsInbox(receiver.inbox, intro1 + message);
     dataSync.sendToOpponentsInbox("https://"+myUsername+".solid.community/inbox/", intro2 + message);
+    //dataSync.createEmptyFileForUser("https://"+myUsername+".solid.community/inbox/"+receiver.username+".ttl");
+    //dataSync.executeSPARQLUpdateForUser("https://"+myUsername+".solid.community/inbox/"+receiver.username+".ttl", 'INSERT DATA {'+message+'}');
   } catch (e) {
     core.logger.error(`Could not send message to the user.`);
     core.logger.error(e);
   }
-
-
 });
 
 $('#join-btn').click(async () => {
@@ -781,11 +767,6 @@ async function getFriends() {
   fc.fetchAndParse( subject ).then( store => {
       searchFriendsOnList(store.statements);
   }, err => console.log("could not fetch : "+err) ) ;
-
-  /*
-  if(friends != null)
-    searchFriendsOnList(friends.statements, myUser);
-    */
 };
 
 async function searchFriendsOnList(possibleList) {
@@ -797,6 +778,8 @@ async function searchFriendsOnList(possibleList) {
                         name: await core.getFormattedName(possibleList[i].object.value),
                         inbox: "https://"+core.getUsername(possibleList[i].object.value)+".solid.community/inbox/"});
   }
+  $('#chat-options').removeClass('hidden');
+  $('#loading-gif').addClass('hidden');
 };
 
 // todo: this is an attempt to cleanly exit the chat, but this doesn't work at the moment
