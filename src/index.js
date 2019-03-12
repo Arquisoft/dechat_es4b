@@ -13,7 +13,6 @@ let myUsername;
 let friendList;
 let semanticChat;
 let dataSync = new DataSync(auth.fetch);
-let board;
 let userDataUrl;
 let oppWebId;
 let chatsToJoin = [];
@@ -21,30 +20,7 @@ let chatName;
 let refreshIntervalId;
 let selectedTheme = 'default';
 let core = new Core(auth.fetch);
-let webrtc = null;
 
-const fullColor = {
-  'w': 'white',
-  'b': 'black'
-};
-const possibleThemes = {
-  default: {
-    name: 'Classic',
-    pieceTheme: 'web-app/img/chesspieces/wikipedia/{piece}.png',
-    color: {
-      black: '#b58863',
-      white: '#f0d9b5'
-    }
-  },
-  modern: {
-    name: 'Modern',
-    pieceTheme: 'web-app/img/chesspieces/freevector/{piece}.png',
-    color: {
-      black: 'deepskyblue',
-      white: 'lightskyblue'
-    }
-  }
-};
 
 $('.login-btn').click(() => {
   auth.popupLogin({ popupUri: 'popup.html' });
@@ -56,38 +32,6 @@ $('#logout-btn').click(() => {
 
 $('#refresh-btn').click(checkForNotifications);
 
-/**
- * THIS IS NOT USED
- */
-$('#theme-btn').click(() => {
-  const $modalBody = $('#theme-selector .modal-body');
-  $modalBody.empty();
-
-  const keys = Object.keys(possibleThemes);
-
-  keys.forEach(k => {
-    const theme = possibleThemes[k];
-
-    const $radio = `<div class="form-check">
-                <input type="radio" class="form-check-input" name="theme" id="${k}-theme" value="${k}" ${k === selectedTheme ? 'checked' : ''}>
-                <label class="form-check-label" for="${k}-theme">${theme.name}</label>
-              </div>`;
-
-    $modalBody.append($radio);
-  });
-
-  $('#theme-selector').modal('show');
-});
-
-$('#save-theme-btn').click(() => {
-  const newTheme = $('input[name="theme"]:checked').val();
-
-  if (newTheme !== selectedTheme) {
-    selectedTheme = newTheme;
-  }
-
-  $('#theme-selector').modal('hide');
-});
 
 /**
  * This method does the necessary updates of the UI when the different Chat options are shown.
