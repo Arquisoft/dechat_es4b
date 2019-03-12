@@ -338,8 +338,12 @@ $('#start-new-chat-btn').click(async () => {
   var intro1 = "<chatting with "+userWebId+">\n"
   var intro2 = "<chatting with "+receiver.card+">\n"
   try {
+	
+	
     dataSync.sendToOpponentsInbox(receiver.inbox, intro1 + message);
     dataSync.sendToOpponentsInbox("https://"+myUsername+".solid.community/inbox/", intro2 + message);
+	document.getElementById("data-name").value = "";
+	$("#sent-messages").val($("#sent-messages").val() + "\n" + message);
     //dataSync.createEmptyFileForUser("https://"+myUsername+".solid.community/inbox/"+receiver.username+".ttl");
     //dataSync.executeSPARQLUpdateForUser("https://"+myUsername+".solid.community/inbox/"+receiver.username+".ttl", 'INSERT DATA {'+message+'}');
   } catch (e) {

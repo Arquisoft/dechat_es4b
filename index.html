@@ -51,11 +51,15 @@
               <label for="possible-people">Your conversation partner</label>
               <select id="possible-people"></select>
             </div>
+			<div class="form-group">
+				<label for="sent-messages">Mensajes enviados:</label>
+				<textarea  readonly class="form-control" rows="5" id="sent-messages"></textarea>
+			</div>
             <div class="form-group">
               <label for="data-name">Message:</label>
               <input type="text" class="form-control rounded-0" id="data-name" aria-describedby="pathHelp" placeholder="Message">
             </div>
-            <button id="start-new-chat-btn" type="button" class="btn btn-dark">Send message!!</button>
+            <button id="start-new-chat-btn" type="button" class="btn btn-dark">Send message</button>
             <button type="button" class="btn-cancel btn btn-dark">Cancel</button>
           </form>
         </div>
