@@ -10,9 +10,9 @@ a {
   color: white!important;
   text-decoration: underline;
 }
-navbar{
+nav{
 	color: #363b3f;
-	 border-radius: 25px;
+	 border-radius: 50px;
 }
 .container {
   background-color: #0d4261;
@@ -25,7 +25,7 @@ navbar{
 }
 
 #navbarDropdown {
-  color: white
+  color: white;
   border-radius: 50px;
 }
 
