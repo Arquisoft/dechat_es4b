@@ -118,26 +118,110 @@ $('#start-new-chat-btn').click(async () => {
    await sendMessage();
 });
 
+var structMessage = {
+	message_user: [],
+	message_friend: [],
+	message: []
+}
+
+var information = {
+  person_user: "",
+  person_name: "" ,
+  person_uri:"" ,
+  person_receiver:""  ,
+  person_receiver_name:"" ,
+  person_receiber_uri:""
+}
+
 async function sendMessage(){
-  var message = $('#data-name').val();
-  var a = $("#possible-people option:selected").val();
-  var receiver = core.getFriendOfList(friendList, a);
-  var intro1 = "<chatting with "+userWebId+">\n"
-  var intro2 = "<chatting with "+receiver.card+">\n"
-  try {
-    dataSync.sendToOpponentsInbox(receiver.inbox, intro1 + message);
-    dataSync.sendToOpponentsInbox("https://"+myUsername+".solid.community/inbox/", intro2 + message);
-    document.getElementById("data-name").value = "";
-    if($("#sent-messages").val()=="")
-      $("#sent-messages").val(message);
-    else
-	    $("#sent-messages").val($("#sent-messages").val() + "\n" + message);
-    //dataSync.createEmptyFileForUser("https://"+myUsername+".solid.community/inbox/"+receiver.username+".ttl");
-    //dataSync.executeSPARQLUpdateForUser("https://"+myUsername+".solid.community/inbox/"+receiver.username+".ttl", 'INSERT DATA {'+message+'}');
-  } catch (e) {
-    core.logger.error(`Could not send message to the user.`);
-    core.logger.error(e);
-  }
+	var chatting=information.person_uri+"public/messages/";
+	var folder= chatting+information.person_receiver.replace(/ /g, "-")+"/";
+	try{
+        var thereIsAnError = await readFolder(chatting);
+        if(!thereIsAnError){
+            throw("error")
+        }
+    }catch(error){
+        await createChatFolder(solidChat);
+	}
+    try{
+        var thereIsAnError2 = await readFolder(folder);
+        if(!thereIsAnError2){
+            throw("error")
+        }
+    }catch(error){
+         await createChatFolder(folder);
+	}
+	await writeMessage(folder+"/"+(new Date().getTime()), text);
+}
+
+async function writeMessage(url,content){
+    await fc.createFile(url,content,"text/plain").then( fileCreated => {
+      }, err => console.log(err) );
+}
+
+  // var message = $('#data-name').val();
+  // var a = $("#possible-people option:selected").val();
+  // var receiver = core.getFriendOfList(friendList, a);
+  // var intro1 = "<chatting with "+userWebId+">\n"
+  // var intro2 = "<chatting with "+receiver.card+">\n"
+  // try {
+    // dataSync.sendToOpponentsInbox(receiver.inbox, intro1 + message);
+    // dataSync.sendToOpponentsInbox("https://"+myUsername+".solid.community/inbox/", intro2 + message);
+    // document.getElementById("data-name").value = "";
+    // if($("#sent-messages").val()=="")
+      // $("#sent-messages").val(message);
+    // else
+	    // $("#sent-messages").val($("#sent-messages").val() + "\n" + message);
+    // //dataSync.createEmptyFileForUser("https://"+myUsername+".solid.community/inbox/"+receiver.username+".ttl");
+    // //dataSync.executeSPARQLUpdateForUser("https://"+myUsername+".solid.community/inbox/"+receiver.username+".ttl", 'INSERT DATA {'+message+'}');
+  // } catch (e) {
+    // core.logger.error(`Could not send message to the user.`);
+    // core.logger.error(e);
+  // }
+// }
+
+async function receiveMessages(){
+	
+    var sender_folder=information.person_uri+"public/messages/"+information.person_receiver_name.trim().replace(/ /g, "-")+"/";
+	var receiver_folder_no_read=information.person_receiber_uri+"public/messages/"+information.person_name.trim().replace(/ /g, "-")+"/";
+
+        var user_folder = await readFolder(sender_folder);
+
+		if(user_folder){
+            structMessage.message_user = user_folder.files;
+        }else{
+			structMessage.message_user = [];
+        }
+		
+		var receiver_folder = await readFolder(receiver_folder_no_read);
+		if(receiver_folder){
+            structMessage.message_friend = receiver_folder.files;
+        }else{
+			structMessage.message_friend = [];
+        }
+    
+    //Order las 10(n) msg by time order (file.mtime=TimeStamp)
+	var u = 0;
+	var f = 0;
+    structMessage.message = [];
+	for(var i = 0; i < 10 && (u < MESSAGES.userMSG.length || f < MESSAGES.friendMSG.length) ; i++){
+		if(!(f < MESSAGES.friendMSG.length)){
+			MESSAGES.toShow[i] = INFO.userName + ":  " + await readMessage(uFolder+MESSAGES.userMSG[u].name);
+			u++;
+		}else if(!(u < MESSAGES.userMSG.length)){
+			MESSAGES.toShow[i] = INFO.receiverName + ":  " + await readMessage(rFolder+MESSAGES.friendMSG[f].name);
+			f++;
+		}else if(MESSAGES.userMSG[u].mtime < MESSAGES.friendMSG[f].mtime){
+			MESSAGES.toShow[i] = INFO.userName + ":  " + await readMessage(uFolder+MESSAGES.userMSG[u].name);
+			u++;
+		}else{
+			MESSAGES.toShow[i] = INFO.receiverName + ":  " + await readMessage(rFolder+MESSAGES.friendMSG[f].name);
+			f++;
+		}			
+	}
+    
+	return structMessage.message;
 }
 
 $('#join-btn').click(async () => {
