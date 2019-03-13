@@ -4,11 +4,10 @@
   "description": "Decentralized, solid-based chat",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha",
-    "test:watch": "mocha -w",
+    "start": "webpack && node loader.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build:web": "webpack --config webpack.config.js",
-    "doc": "./node_modules/.bin/jsdoc -c jsdoc.json ./lib",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "doc": "./node_modules/.bin/jsdoc -c jsdoc.json ./lib"
   },
   "repository": {
     "type": "git",
@@ -23,7 +22,6 @@
     "@11ty/eleventy": "^0.7.1",
     "jsdoc": "^3.5.5",
     "minami": "^1.2.3",
-    "mocha": "^3.5.3",
     "webpack": "^4.23.1",
     "webpack-cli": "^3.1.2"
   },
@@ -32,6 +30,7 @@
     "@solid/cli": "^0.1.0",
     "@solid/query-ldflex": "^1.1.1",
     "date-fns": "^2.0.0-alpha.25",
+    "express": "^4.16.4",
     "inquirer": "^6.2.0",
     "n3": "^1.0.2",
     "prefix-ns": "^0.1.2",
@@ -42,7 +41,6 @@
     "streamify-array": "^1.0.1",
     "uniqid": "^5.0.3",
     "uri-js": "^4.2.2",
-    "winston": "^3.1.0",
-    "coveralls": "^2.13.1"
+    "winston": "^3.1.0"
   }
 }
