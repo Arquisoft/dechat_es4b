@@ -26,7 +26,7 @@ let alertInvitations = false;
 
 
 $('.login-btn').click(() => {
-  auth.popupLogin({ popupUri: 'popup.html' });
+  auth.popupLogin({ popupUri: 'https://solid.github.io/solid-auth-client/dist/popup.html' });
 });
 
 $('#logout-btn').click(() => {
