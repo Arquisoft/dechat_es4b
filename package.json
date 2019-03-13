@@ -4,9 +4,11 @@
   "description": "Decentralized, solid-based chat",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nyc mocha",
+	"test:watch": "mocha -w",
     "build:web": "webpack --config webpack.config.js",
-    "doc": "./node_modules/.bin/jsdoc -c jsdoc.json ./lib"
+    "doc": "./node_modules/.bin/jsdoc -c jsdoc.json ./lib",
+	"coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -39,6 +41,8 @@
     "streamify-array": "^1.0.1",
     "uniqid": "^5.0.3",
     "uri-js": "^4.2.2",
-    "winston": "^3.1.0"
+    "winston": "^3.1.0",
+	"mocha": "^3.4.1",
+	"coveralls": "^2.13.1"
   }
 }
