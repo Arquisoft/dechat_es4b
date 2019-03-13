@@ -41,7 +41,7 @@
         </div>
         <div id="chat-options" class="col-6 text-center">
           <button id="new-btn" type="button" class="btn btn-dark btn-lg"> New chat</button>
-          <button id="join-btn" type="button" class="btn btn-dark btn-lg">Join chat</button>
+          <button id="join-btn" type="button" class="btn btn-dark btn-lg hidden">Accept invitations</button>
           <button id="open-btn" type="button" class="btn btn-dark btn-lg">Open chat</button>
         </div>
 
@@ -63,49 +63,12 @@
         </div>
 
         <div id="join-chat-options" class="col-6 hidden">
-          <div id='join-loading'>
-            <span id="join-looking">Looking for chats to join...</span>
-            <span id="no-join" class="hidden">No chats to join were found.</span>
-            <div class="form-group">
-              <button type="button" class="btn-cancel btn btn-dark">Cancel</button>
-            </div>
+          <div class="form-group">
+            <label for="people-invites">Your partner</label>
+            <select id="people-invites"></select>
           </div>
-          <form id="join-form" class="hidden">
-            <div class="form-group">
-              <label for="chat-urls">Chat you want to join</label>
-              <select id="chat-urls"></select>
-            </div>
-            <div class="form-group">
-              <label for="join-data-url">Path on your POD to store the chat</label>
-              <input type="text" class="form-control rounded-0" id="join-data-url" aria-describedby="pathHelp2" placeholder="Enter path">
-              <small id="pathHelp2" class="form-text">This is the path of the file on your Solid POD where your personal chat data will be stored. Data will be appended if the file exists.</small>
-            </div>
-            <button id="join-chat-btn" type="button" class="btn btn-dark">Join!</button>
-            <button type="button" class="btn-cancel btn btn-dark">Cancel</button>
-          </form>
-        </div>
-
-        <div id="continue-chat-options" class="col-6 hidden">
-          <div id='continue-loading'>
-            <span id="continue-looking">Looking for chats to continue...</span>
-            <span id="no-continue" class="hidden">No chat to join were found.</span>
-            <div class="form-group">
-              <button type="button" class="btn-cancel btn btn-dark">Cancel</button>
-            </div>
-          </div>
-          <div id="continue-chat" class="hidden">
-            <span>Select the chat you want to continue</span>
-            <table id="continue-chat-table" class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col" id="table-title" >Title</th>
-                  <th scope="col">Partner</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-            <button type="button" class="btn-cancel btn btn-dark">Cancel</button>
-          </div>
+          <button id="accept-inv" type="submit" class="btn btn-dark">Accept it</button>     
+          <button type="button" class="btn-cancel btn btn-dark">Cancel</button>
         </div>
 
         <div id='chat-loading' class="hidden">

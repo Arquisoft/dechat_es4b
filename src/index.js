@@ -20,10 +20,13 @@ let chatName;
 let refreshIntervalId;
 let selectedTheme = 'default';
 let core = new Core(auth.fetch);
+let invitations;
+let alertInvitations = false;
+
 
 
 $('.login-btn').click(() => {
-  auth.popupLogin({ popupUri: 'https://solid.github.io/solid-auth-client/dist/popup.html' });
+  auth.popupLogin({ popupUri: 'popup.html' });
 });
 
 $('#logout-btn').click(() => {
@@ -66,7 +69,7 @@ auth.trackSession(async session => {
 
     checkForNotifications();
     // refresh every 5sec
-    refreshIntervalId = setInterval(checkForNotifications, 5000);
+    refreshIntervalId = setInterval(checkForNotifications, 10000);
   } else {
     $('#nav-login-btn').removeClass('hidden');
     $('#user-menu').addClass('hidden');
@@ -122,11 +125,8 @@ async function sendMessage(){
   var message = $('#data-name').val();
   var a = $("#possible-people option:selected").val();
   var receiver = core.getFriendOfList(friendList, a);
-  var intro1 = "<chatting with "+userWebId+">\n"
-  var intro2 = "<chatting with "+receiver.card+">\n"
   try {
-    dataSync.sendToOpponentsInbox(receiver.inbox, intro1 + message);
-    dataSync.sendToOpponentsInbox("https://"+myUsername+".solid.community/inbox/", intro2 + message);
+    sendInvitation(receiver);
     document.getElementById("data-name").value = "";
     if($("#sent-messages").val()=="")
       $("#sent-messages").val(message);
@@ -144,30 +144,17 @@ $('#join-btn').click(async () => {
   if (userWebId) {
     afterChatOption();
     $('#join-chat-options').removeClass('hidden');
-    $('#join-data-url').prop('value', core.getDefaultDataUrl(userWebId));
-    $('#join-looking').addClass('hidden');
-
-    if (chatsToJoin.length > 0) {
-      $('#join-loading').addClass('hidden');
-      $('#join-form').removeClass('hidden');
-      const $select = $('#chat-urls');
-      $select.empty();
-
-      chatsToJoin.forEach(chat => {
-        let name = chat.name;
-
-        if (!name) {
-          name = chat.chatUrl;
-        }
-
-        $select.append($(`<option value="${chat.chatUrl}">${name} (${chat.realTime ? `real time, ` : ''}${chat.opponentsName})</option>`));
-      });
-    } else {
-      $('#no-join').removeClass('hidden');
+    $('#people-invites').empty();
+    for await (const inv of invitations) {
+      $('#people-invites').append('<option value='+inv+'>'+inv+'</option>');
     }
   } else {
     $('#login-required').modal('show');
   }
+});
+
+$('#accept-inv').click(async () => {
+  acceptInvitation();
 });
 
 $('#continue-btn').click(async () => {
@@ -256,44 +243,31 @@ $('#continue-chat-btn').click(async () => {
 async function checkForNotifications() {
   console.log('Checking for new notifications');
 
-  const updates = await core.checkUserInboxForUpdates(await core.getInboxUrl(userWebId));
-/*
+  const updates = await core.getAllResourcesInInbox(await core.getInboxUrl(userWebId));
+
+  console.log('Checked');
+
+  invitations = new Array();
+
   updates.forEach(async (fileurl) => {
-    let newMoveFound = false;
-    // check for new moves
-    await core.checkForNewMove(semanticChat, userWebId, fileurl, userDataUrl, dataSync, (san, url) => {
-      semanticChat.loadMove(san, {url});
-      board.position(semanticChat.getChess().fen());
-      updateStatus();
-      newMoveFound = true;
-    });
-
-    if (!newMoveFound) {
-      // check for acceptances of invitations
-      const response = await core.getResponseToInvitation(fileurl);
-
-      if (response) {
-        processResponseInNotification(response, fileurl);
-      } else {
-        // check for chats to join
-        const chatToJoin = await core.getJoinRequest(fileurl, userWebId);
-
-        if (chatToJoin) {
-          chatsToJoin.push(await core.processChatToJoin(chatToJoin, fileurl));
-        }
+    fc.readFile(fileurl).then(  body => {
+      if(body.includes("ZXCVB")){
+        invitations.push(fileurl);
+        if(!alertInvitations){
+          alertInvitations = !alertInvitations
+          alert("New invitations!!");
+          $('#join-btn').removeClass('hidden')
+        }  
       }
-    }
-  
-  });*/
+   }, err => console.log(err) );
+  });
 }
 
 $('#clear-inbox-btn').click(async () => {
   const resources = await core.getAllResourcesInInbox(await core.getInboxUrl(userWebId));
 
   resources.forEach(async r => {
-    //if (await core.fileContainsChessInfo(r)) {
       dataSync.deleteFileForUser(r);
-    //}
   });
 });
 
@@ -330,6 +304,75 @@ async function searchFriendsOnList(possibleList) {
   $('#chat-options').removeClass('hidden');
   $('#loading-gif').addClass('hidden');
 };
+
+function sendInvitation(receiver){
+  var myInbox = "https://"+myUsername+".solid.community/inbox/";
+  var message = "\n@@@\n" + $('#data-name').val();
+  //dataSync.createFileForUser(receiver.inbox + myUsername + ".txt", myInbox + message + "ZXCVB");
+  fc.updateFile(receiver.inbox + myUsername + ".txt", myInbox + message + "ZXCVB").then( success => {
+    console.log( `Send message to their PODs.`)
+  }, err => console.log(err) );
+  fc.updateFile(myInbox + receiver.username + ".txt", receiver.inbox + message).then( success => {
+    console.log( `Send message to your POD.`)
+  }, err => console.log(err) );
+  fc.updateFile(myInbox + receiver.username + ".txt.acl", templatePermission(receiver.username, receiver.username + ".txt")).then( success => {
+    console.log( `Send message to your POD.`)
+  }, err => console.log(err) );
+}
+
+function acceptInvitation(receiver){
+  var urlFile = $('#people-invites').val();
+  var text = "";
+  /*
+  fc.updateFile("https://trokentest.solid.community/inbox/troken11.txt", 'QWERTY' + text).then( success => {
+    console.log( `Permissions changed your POD.`)
+  }, err => console.log(err) );
+  */
+  fc.readFile(urlFile).then( success => {
+    text = success.replace('ZXCVB','');
+    for(var i=0; i<friendList.length; i++){
+      if(urlFile.includes(friendList[i].username)){
+        givePermission(text, urlFile, friendList[i].username, friendList[i].inbox);
+      }
+    }
+    console.log( `Read invitation from my PODs.` + urlFile);
+  }, err => console.log(err) );
+}
+
+function givePermission(text, urlFile, other, otherInbox){
+  var array = urlFile.split('/');
+  var nameFile = array[array.length-1];
+  var myInbox = "https://"+myUsername+".solid.community/inbox/";
+  fc.updateFile(urlFile + ".acl", templatePermission(other, nameFile)).then( success => {
+    console.log( `Permissions changed your POD.`)
+  }, err => console.log(err) );
+  fc.updateFile(myInbox + urlFile, 'QWERTY' + text).then( success => {
+    console.log( `Permissions changed your POD.`)
+  }, err => console.log(err) );
+  /*
+  fc.updateFile(otherInbox + urlFile, 'QWERTY' + text).then( success => {
+    console.log( `Permissions changed your POD.`)
+  }, err => console.log(err) );
+  */
+}
+
+function templatePermission(other, file){
+  var textPer = "@prefix : <#>.\n"+
+                "@prefix n0: <http://www.w3.org/ns/auth/acl#>.\n"+
+                "@prefix c: </profile/card#>.\n"+
+                "@prefix c0: <https://"+other+".solid.community/profile/card#>.\n\n"+
+                ":ControlReadWrite\n"+
+                  "\ta n0:Authorization;\n"+
+                  "\tn0:accessTo <"+file+">;\n"+
+                  "\tn0:agent c:me, c0:me;\n"+
+                  "\tn0:mode n0:Control, n0:Read, n0:Write.\n"/*+
+                ":ReadWrite\n"+
+                  "\ta n0:Authorization;\n"+
+                  "\tn0:accessTo <"+file+">;\n"+
+                  "\tn0:agent c0:me;\n"+
+                  "\tn0:mode n0:Read, n0:Write.\n"*/;
+  return textPer;
+}
 
 // todo: this is an attempt to cleanly exit the chat, but this doesn't work at the moment
 window.onunload = window.onbeforeunload = () => {
