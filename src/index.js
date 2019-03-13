@@ -114,11 +114,39 @@ $('#new-btn').click(async () => {
   }
 });
 
-$('#start-new-chat-btn').click(async () => {
-   await sendMessage();
-});
+// $('#start-new-chat-btn').click(async () => {
+   // await sendMessage();
+// });
 
 // Chat functionality
+
+function updateMessages(toShow){
+  var messages="";
+	$('#sent-messages').empty();
+	toShow.forEach( (message) => {
+	  messages=messages+ "<p>"+message+"<p/>";
+  });
+  $('#sent-messages').append(messages);
+}
+
+$('#start-new-chat-btn').click(
+  async function sendFunc()  {
+	  if (document.getElementById("possible-people").value == "") 
+		  alert("Debe seleccionar un usuario."); 
+	  else{
+		var text = $('#data-name').val();
+
+		//Send MSG
+		await sendMessage(text);
+		
+		//Erase input field
+		$('#data-name').val('');
+		updateMessages(await receiveMessages());
+	  }
+  }
+);
+
+
 
 var structMessage = {
 	message_user: [],
