@@ -118,6 +118,8 @@ $('#start-new-chat-btn').click(async () => {
    await sendMessage();
 });
 
+// Chat functionality
+
 var structMessage = {
 	message_user: [],
 	message_friend: [],
@@ -160,27 +162,6 @@ async function writeMessage(url,content){
       }, err => console.log(err) );
 }
 
-  // var message = $('#data-name').val();
-  // var a = $("#possible-people option:selected").val();
-  // var receiver = core.getFriendOfList(friendList, a);
-  // var intro1 = "<chatting with "+userWebId+">\n"
-  // var intro2 = "<chatting with "+receiver.card+">\n"
-  // try {
-    // dataSync.sendToOpponentsInbox(receiver.inbox, intro1 + message);
-    // dataSync.sendToOpponentsInbox("https://"+myUsername+".solid.community/inbox/", intro2 + message);
-    // document.getElementById("data-name").value = "";
-    // if($("#sent-messages").val()=="")
-      // $("#sent-messages").val(message);
-    // else
-	    // $("#sent-messages").val($("#sent-messages").val() + "\n" + message);
-    // //dataSync.createEmptyFileForUser("https://"+myUsername+".solid.community/inbox/"+receiver.username+".ttl");
-    // //dataSync.executeSPARQLUpdateForUser("https://"+myUsername+".solid.community/inbox/"+receiver.username+".ttl", 'INSERT DATA {'+message+'}');
-  // } catch (e) {
-    // core.logger.error(`Could not send message to the user.`);
-    // core.logger.error(e);
-  // }
-// }
-
 async function receiveMessages(){
 	
     var sender_folder=information.person_uri+"public/messages/"+information.person_receiver_name.trim().replace(/ /g, "-")+"/";
@@ -205,24 +186,90 @@ async function receiveMessages(){
 	var u = 0;
 	var f = 0;
     structMessage.message = [];
-	for(var i = 0; i < 10 && (u < MESSAGES.userMSG.length || f < MESSAGES.friendMSG.length) ; i++){
-		if(!(f < MESSAGES.friendMSG.length)){
-			MESSAGES.toShow[i] = INFO.userName + ":  " + await readMessage(uFolder+MESSAGES.userMSG[u].name);
+	for(var i = 0; i < 10 && (u < structMessage.message_user.length || f < structMessage.message_friend.length) ; i++){
+		if(!(f < structMessage.message_friend.length)){
+			structMessage.message[i] = information.message_user + ":  " + await readMessage(sender_folder+structMessage.message_user[u].name);
 			u++;
-		}else if(!(u < MESSAGES.userMSG.length)){
-			MESSAGES.toShow[i] = INFO.receiverName + ":  " + await readMessage(rFolder+MESSAGES.friendMSG[f].name);
+		}else if(!(u < structMessage.message_user.length)){
+			structMessage.message[i] = information.receiverName + ":  " + await readMessage(receiver_folder_no_read+structMessage.receiverName[f].name);
 			f++;
-		}else if(MESSAGES.userMSG[u].mtime < MESSAGES.friendMSG[f].mtime){
-			MESSAGES.toShow[i] = INFO.userName + ":  " + await readMessage(uFolder+MESSAGES.userMSG[u].name);
+		}else if(structMessage.message_user[u].mtime < structMessage.message_friend[f].mtime){
+			structMessage.message[i] = information.message_user + ":  " + await readMessage(sender_folder+structMessage.message_user[u].name);
 			u++;
 		}else{
-			MESSAGES.toShow[i] = INFO.receiverName + ":  " + await readMessage(rFolder+MESSAGES.friendMSG[f].name);
+			structMessage.message[i] = information.receiverName + ":  " + await readMessage(receiver_folder_no_read+structMessage.receiverName[f].name);
 			f++;
 		}			
 	}
     
 	return structMessage.message;
 }
+
+async function createChatFolder(url) {
+    await fc.createFolder(url).then(success => {
+      }, err => console.log(err) );
+}
+
+async function readFolder(url){
+    return await fc.readFolder(url).then(folder => {
+        return folder;
+      }, err => console.log(err) );
+}
+
+async function deleteFolder(url){
+	await fc.deleteFolder(url).then(success => {
+	}, err => console.log(err) );
+}
+
+async function writeMessage(url,content){
+    await fc.createFile(url,content,"text/plain").then( fileCreated => {
+      }, err => console.log(err) );
+}
+
+//We have to know about what returns the method fileClient.readFile(url)
+async function readMessage(url){
+	return await fc.readFile(url).then(  body => {
+	  return body;
+	}, err => console.log(err) );
+}
+
+//I've put this method here in case we end up using it.
+async function updateMessage(url){
+	await fc.updateFile( url, newContent, contentType ).then( success => {
+	}, err => console.log(err) );
+}
+
+async function deleteMessage(url){
+	await fc.deleteFile(url).then(success => {
+	}, err => console.log(err) );
+}
+
+//
+////////////////////////////////////////////////////////////////////////////
+//
+
+
+  // var message = $('#data-name').val();
+  // var a = $("#possible-people option:selected").val();
+  // var receiver = core.getFriendOfList(friendList, a);
+  // var intro1 = "<chatting with "+userWebId+">\n"
+  // var intro2 = "<chatting with "+receiver.card+">\n"
+  // try {
+    // dataSync.sendToOpponentsInbox(receiver.inbox, intro1 + message);
+    // dataSync.sendToOpponentsInbox("https://"+myUsername+".solid.community/inbox/", intro2 + message);
+    // document.getElementById("data-name").value = "";
+    // if($("#sent-messages").val()=="")
+      // $("#sent-messages").val(message);
+    // else
+	    // $("#sent-messages").val($("#sent-messages").val() + "\n" + message);
+    // //dataSync.createEmptyFileForUser("https://"+myUsername+".solid.community/inbox/"+receiver.username+".ttl");
+    // //dataSync.executeSPARQLUpdateForUser("https://"+myUsername+".solid.community/inbox/"+receiver.username+".ttl", 'INSERT DATA {'+message+'}');
+  // } catch (e) {
+    // core.logger.error(`Could not send message to the user.`);
+    // core.logger.error(e);
+  // }
+// }
+
 
 $('#join-btn').click(async () => {
   if (userWebId) {
