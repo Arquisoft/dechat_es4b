@@ -1,5 +1,8 @@
 //const {Loader} = require('semantic-chat');
 const auth = require('solid-auth-client');
+const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
+const store = $rdf.graph();
+const fetcher = new $rdf.Fetcher(store);
 const fc = require('solid-file-client');
 const DataSync = require('../lib/datasync');
 const namespaces = require('../lib/namespaces');
@@ -146,7 +149,12 @@ $('#start-new-chat-btn').click(
   }
 );
 
-
+async function loadProfile() {
+    information.person_user = userWebId;
+    await fetcher.load(information.person_user);
+	information.person_uri = information.person.substr(0,(information.person.length-15));
+    information.person_name = store.any($rdf.sym(information.person_user), FOAF('name')).toString();
+}
 
 var structMessage = {
 	message_user: [],
@@ -318,8 +326,25 @@ $('#join-btn').click(async () => {
         if (!name) {
           name = chat.chatUrl;
         }
+		
+		const friends = store.each($rdf.sym(information.user), FOAF('knows'));
+		$('#possible-people').empty();
+			friends.forEach(
+			  async (friend) => {
+				await fetcher.load(friend);
+					$('#possible-people').append(
+					$('<option>').text(store.any(friend, FOAF('name')))
+					.click(
+						async function () {
+						  information.person_receiver = friend.value;
+						  information.person_receiver_name = store.any(friend, FOAF('name')).toString().trim();
+						  information.person_receiber_uri = information.receiver.substr(0,(information.receiver.length-15));
+						  updateMessages(await chatM.receiveMessages());
+						}
+					  ));
+		});
 
-        $select.append($(`<option value="${chat.chatUrl}">${name} (${chat.realTime ? `real time, ` : ''}${chat.opponentsName})</option>`));
+       // $select.append($(`<option value="${chat.chatUrl}">${name} (${chat.realTime ? `real time, ` : ''}${chat.opponentsName})</option>`))
       });
     } else {
       $('#no-join').removeClass('hidden');
