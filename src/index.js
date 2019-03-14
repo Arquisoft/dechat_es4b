@@ -251,7 +251,6 @@ $('#continue-chat-btn').click(async () => {
  * The necessarily data is stored and the UI is updated.
  * @returns {Promise<void>}
  */
-
 async function checkForNotifications() {
   if(document.getElementById("possible-people").value != "")
     await loadMessages();
@@ -296,6 +295,9 @@ $('.btn-cancel').click(() => {
   $('#how-it-works').removeClass('hidden');
 });
 
+/**
+* This method obtein the list of friends
+*/
 async function getFriends() { 
   var subject = userWebId;
   var predicate = "http://xmlns.com/foaf/0.1/name";
@@ -322,6 +324,9 @@ async function searchFriendsOnList(possibleList) {
   $('#loading-gif').addClass('hidden');
 };
 
+/**
+* This method sends an invitation to an user
+*/
 function sendInvitation(receiver){
   var myInbox = "https://"+myUsername+".solid.community/inbox/";
   var message = "\n@@@\n" + $('#data-name').val();
