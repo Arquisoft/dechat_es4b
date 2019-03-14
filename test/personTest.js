@@ -14,7 +14,7 @@ var credentials = {
 
 describe('Obtain friends test!', function () {
   it('obtainSomething', function () {
-	fc.login(credentials)
+	fc.login(credentials);
     index.getFriends();
 	assert(index.friendList.length > 0);
   })

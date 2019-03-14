@@ -117,7 +117,7 @@ $('#new-btn').click(async () => {
   }
 });
 
-$('#start-new-chat-btn').click(async () => {
+$('#sendMessageButton').click(async () => {
    await sendMessage();
 });
 
@@ -359,7 +359,6 @@ function sendMessageToMyPod(receiver){
 }
 
 $("#possible-people-btn").click( async () => {
-	alert("Cambiado");
 	
 	// Routes of users inbox
 	var myInbox = "https://"+myUsername+".solid.community/inbox/"; 
@@ -372,14 +371,34 @@ $("#possible-people-btn").click( async () => {
 	var fileWithMessagesSentByTheOtherUSer = otherInbox + myUsername + ".txt";	// Example: https://dechat-es4b.solid.community/inbox/mariodiaz98.txt
 	
 	fc.readFile(fileWithMessagesSentByMe).then(  body => {
-		$("#sent-messages").append(body);
-		console.log(`File content is : ${body}.`);
-			}, err => console.log(err) );
-			
+		var lines = body.split("\n");
+		var i = 0;
+		for ( var linea of lines ) {
+			if ( i===0 || i===1 ||linea === "" )
+				console.log(linea);
+			else {
+				var toAppend = "<p>"+linea+"</p>" + "<span id='userName' class='badge badge-secondary'>"+myUsername+"</span>";			
+				$("#addOurMessages").append(toAppend);
+				console.log("Añadida linea: " + linea);
+			}
+			i++;
+		}
+	}, err => console.log(err) );
+	
 	fc.readFile(fileWithMessagesSentByTheOtherUSer).then(  body => {
-		$("#sent-messages").append(body);
-		console.log(`File content is : ${body}.`);
-			}, err => console.log(err) );
+		var lines = body.split("\n");
+		var i = 0;
+		for ( var linea of lines ) {
+			if ( i===0 || i===1 || linea === "")
+				console.log(linea);
+			else {
+				var toAppend = "<p>"+linea+"</p>" + "<span id='userName' class='badge badge-secondary'>"+otherUser+"</span>";			
+				$("#addOtherMessages").append(toAppend);
+				console.log("Añadida linea: " + linea);
+			}
+			i++;
+		}
+	}, err => console.log(err) );					
 });
 
 // async function loadMessages(){
