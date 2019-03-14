@@ -372,10 +372,12 @@ $("#possible-people-btn").click( async () => {
 	var fileWithMessagesSentByTheOtherUSer = otherInbox + myUsername + ".txt";	// Example: https://dechat-es4b.solid.community/inbox/mariodiaz98.txt
 	
 	fc.readFile(fileWithMessagesSentByMe).then(  body => {
+		$("#sent-messages").append(body);
 		console.log(`File content is : ${body}.`);
 			}, err => console.log(err) );
 			
 	fc.readFile(fileWithMessagesSentByTheOtherUSer).then(  body => {
+		$("#sent-messages").append(body);
 		console.log(`File content is : ${body}.`);
 			}, err => console.log(err) );
 });
