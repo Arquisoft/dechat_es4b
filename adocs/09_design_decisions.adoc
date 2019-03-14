@@ -7,5 +7,7 @@ We will follow a P2P architecture without a dedicated database, all users inform
 |===
 | Property | Decision | Explanation
 | Architecture | Peer-to-Peer (P2P) | It is mandatory in a decentralized Solid app
-|Database | None | There is no need for a database, each chat user will store their data and messages in their personal POD
+| Framework | None | We started the project with Angular in mind, but we rejected it after see its complexity, the lack of previous experience by all of us and after see other groups complaining about the same decision
+| Run-time environment | Node.js | Although Node is not a framework, we chose this technology after abandon Angular because of its simplicity that allows us to deploy a 0.1 version fast.
+| Database | None | There is no need for a database, each chat user will store their data and messages in their personal POD
 |===

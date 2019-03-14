@@ -6,13 +6,22 @@
 | Term         | Definition
 | Arc42    |  Template for architecture communication and documentation. It divides the documentation of the architecture in diferentiated sections
 | ECMASCRIPT | Trademarked scripting-language specification standarized by ECMA International. It was created to standardize JavaScript.
+| JQuery | Is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and Ajax.
+| Decentralized computing | Decentralized computing is the allocation of resources, both hardware and software, to each individual workstation, or office location. In contrast, centralized computing exists when the majority of functions are carried out, or obtained from a remote centralized location.
 | MEAN | Set of 4 open source tools used for web development. Its components are MongoDB, Express.js, Angular.js and Node.js.
 | POD    | Personal online data store . It allows users to save their information and the information they are
 sent. A POD can store photos, text, contacts or calendar events and many other things
-|SOLID |  Technology whose goal is to change the way applications interact with user data, giving more decision-making
+| POD Provider | A person or company that has one or more solid pod servers and uses them to host consumer data.
+| POD Server | Server that allows the application store POD information on it.
+| SOLID |  Technology whose goal is to change the way applications interact with user data, giving more decision-making
  power to users as they are able to decide where their data is stored or who can read it or write it.
- | Stakeholder |Person with an interest or concern in something, in the area we are working on, the decentralized chat. 
+| SOLID file client | Library that provides a simple interface for logging in and out of a Solid data store, maintaining a persistent session, and for managing files and folders.
+| Stakeholder |Person with an interest or concern in something, in the area we are working on, the decentralized chat.
+| User | A person who uses a particular application or computer system.
 | Type-Script | An open-source programming language, is a strict 
 syntactical superset of JavaScript, and adds optional static typing to the language.
+| HTML | Hyper Text Markup Language (HTML) describes the structure of Web pages using markup.
+| MVC architecture | The MVC or Model-View-Controller is a software architecture pattern that, using 3 components (Views, Models and Controllers) separates the logic of the application from the logic of the view in an application.
+| Integration testing | Is the phase in software testing in which individual software modules are combined and tested as a group.
 
 |===

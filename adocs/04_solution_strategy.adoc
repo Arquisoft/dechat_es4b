@@ -14,12 +14,21 @@ We will use Javascript because in the project we will implementate
 a chat, as we know, and this language is the best and easiest for client
 applications.
 
+* *MochaJs*: is a JavaScript test framework for Node.js programs, featuring browser support, asynchronous testing, test coverage reports, and use of any assertion library.
+
 * *Node.js*: Is an open-source, cross-platform JavaScript run-time 
 environment that executes JavaScript code outside of a browser.
 
 * *Solid*: Is a web decentralization project, just what we need to do the 
 project.
+
+* *Travis*: is a hosted, distributed continuous integration service used to build and test software projects hosted at GitHub.
+
+
   
 === Solution Aproaches
 
-TO BE DONE 
+Once we started to do the project of the chat, we took some direct solutions. We started to programming 
+in Javascript based in the project of a Solid Chess.  We will implement some integration test with Travis to take advantage of
+the continuous integration service using Mocha and his assertion library to help us to prove and improve the code. We can connect to the pod and 
+we can send messages with Javascript using JQuery.
