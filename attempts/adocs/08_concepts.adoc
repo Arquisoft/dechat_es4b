@@ -1,4 +1,0 @@
-[[section-concepts]]
-== Cross-cutting Concepts
-
-*TO BE DONE*
