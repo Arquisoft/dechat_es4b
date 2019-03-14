@@ -352,6 +352,9 @@ function sendInvitation(receiver){
   }, err => console.log(err) );
 }
 
+/**
+* Sends a message to an user
+*/
 function sendMessageToMyPod(receiver){
   var myInbox = "https://"+myUsername+".solid.community/inbox/";
   var body = "";
@@ -372,6 +375,9 @@ function sendMessageToMyPod(receiver){
 
 $("#possible-people-btn").click( async () => loadMessages());
 
+/**
+* Loads messages into the inbox
+*/
 async function loadMessages(){
 	// Routes of users inbox
 	var myInbox = "https://"+myUsername+".solid.community/inbox/"; 
