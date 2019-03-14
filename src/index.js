@@ -141,10 +141,7 @@ async function sendMessage() {
       core.logger.error(e);
     }   
   }
-  if($("#sent-messages").val()=="")
-      $("#sent-messages").val(message);
-  else
-	    $("#sent-messages").val($("#sent-messages").val() + "\n" + message);
+  loadMessages();
     //dataSync.createEmptyFileForUser("https://"+myUsername+".solid.community/inbox/"+receiver.username+".ttl");
     //dataSync.executeSPARQLUpdateForUser("https://"+myUsername+".solid.community/inbox/"+receiver.username+".ttl", 'INSERT DATA {'+message+'}');
   
@@ -358,8 +355,11 @@ function sendMessageToMyPod(receiver){
   }, err => console.log(err) );
 }
 
-$("#possible-people-btn").click( async () => {
-	
+$("#possible-people-btn").click( async () => loadMessages());
+
+async function loadMessages(){
+	$("addOurMessages").empty();
+	$("addOtherMessages").empty();
 	// Routes of users inbox
 	var myInbox = "https://"+myUsername+".solid.community/inbox/"; 
 	var otherUser = document.getElementById("possible-people").value;
@@ -398,34 +398,10 @@ $("#possible-people-btn").click( async () => {
 			}
 			i++;
 		}
-	}, err => console.log(err) );					
-});
+	}, err => console.log(err) );	
+}
 
-// async function loadMessages(){
-	
-	// alert("Cambiado");
-	
-	// // Routes of users inbox
-	// var myInbox = "https://"+myUsername+".solid.community/inbox/"; 
-	// var otherUser = $("possible-people").val();
-	// var otherInbox = "https://"+otherUser+".solid.community/inbox/";
-	
-	// // Let's read each message file
-	
-	// var fileWithMessagesSentByMe = myInbox + otherUser + ".txt";	// Example: https://mariodiaz98.solid.community/inbox/dechat-es4b.txt
-	// var fileWithMessagesSentByTheOtherUSer = otherInbox + myUsername + ".txt";	// Example: https://dechat-es4b.solid.community/inbox/mariodiaz98.txt
-	
-	// fc.readFile(fileWithMessagesSentByMe).then(  body => {
-		// console.log(`File content is : ${body}.`);
-			// }, err => console.log(err) );
-			
-	// fc.readFile(fileWithMessagesSentByTheOtherUSer).then(  body => {
-		// console.log(`File content is : ${body}.`);
-			// }, err => console.log(err) );
-	
-	
-	
-// }
+
 /*
 function acceptInvitation(receiver){
   var urlFile = $('#people-invites').val();

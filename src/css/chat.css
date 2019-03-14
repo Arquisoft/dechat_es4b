@@ -134,6 +134,10 @@ img{ max-width:100%;}
   overflow-y: auto;
 }
 
+#mensaje{
+	color: white;
+}
+
 #userName{
 	margin-bottom: 10px;
 }
