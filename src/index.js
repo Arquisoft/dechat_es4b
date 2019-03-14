@@ -443,6 +443,9 @@ function acceptInvitation(receiver){
   }, err => console.log(err) );
 }*/
 
+/**
+* Give permissions to an user over an especific inbox
+*/
 function givePermission(myInbox, receiver){
   fc.updateFile(myInbox + receiver.username + ".txt.acl", 
                 templatePermission(receiver.username, receiver.username+".txt")).then( success => {
@@ -474,6 +477,9 @@ function templatePermission(other, file){
   return textPer;
 }
 
+/**
+* Establish the communication with a receiver
+*/
 async function communicationEstablished(receiver){
   var exists = false;
   fc.readFile("https://"+myUsername+".solid.community/inbox/"+receiver.username+".txt").then(  body => {
