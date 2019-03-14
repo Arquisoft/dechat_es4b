@@ -127,6 +127,10 @@ $('#start-new-chat-btn').click(async () => {
 	// var readingRoute = "https://" + userName + ".solid.community/inbox/" + userName + ".txt";
 // }
 
+/**
+* This method sends a message to a friend
+* Returns an error message if I can not send the message to the user
+*/
 async function sendMessage() {
   var message = $('#data-name').val();
   var a = $("#possible-people option:selected").val();
@@ -301,6 +305,9 @@ async function getFriends() {
   }, err => console.log("could not fetch : "+err) ) ;
 };
 
+/**
+* This method 
+*/
 async function searchFriendsOnList(possibleList) {
   friendList = new Array();
   for(var i=0; i<possibleList.length; i++){
