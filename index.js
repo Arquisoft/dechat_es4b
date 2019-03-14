@@ -11,3 +11,8 @@ const server = http.createServer((req, res) => {
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`)
 })
+
+module.exports = {
+  Core: require('./lib/core'),
+  DataSync: require('./lib/datasync')
+};
