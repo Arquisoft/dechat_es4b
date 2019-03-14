@@ -357,6 +357,25 @@ function sendMessageToMyPod(receiver){
     }, err => console.log(err) );
   }, err => console.log(err) );
 }
+
+$("possible-people").change(loadMessages());
+
+async function loadMessages(){
+	
+	// Routes of users inbox
+	var myInbox = "https://"+myUsername+".solid.community/inbox/"; 
+	var otherUser = $("possible-people").val();
+	var otherInbox = "https://"+otherUser+".solid.community/inbox/";
+	
+	// Let's read each message file
+	
+	var fileWithMessagesSentByMe = myInbox + otherUser + ".txt";	// Example: https://mariodiaz98.solid.community/inbox/dechat-es4b.txt
+	var fileWithMessagesSentByTheOtherUSer = otherInbox + myUsername + ".txt";	// Example: https://dechat-es4b.solid.community/inbox/mariodiaz98.txt
+	
+	var messagesSentByMe = await fc.readFile(fileWithMessagesSentByMe);
+	var messagesSentByMe = await fc.readFile(fileWithMessagesSentByTheOtherUSer);
+	
+}
 /*
 function acceptInvitation(receiver){
   var urlFile = $('#people-invites').val();
