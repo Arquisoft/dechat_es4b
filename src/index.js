@@ -465,6 +465,11 @@ function templatePermission(other, file){
 
 async function communicationEstablished(receiver){
   var exists = false;
+  fc.readFile("https://"+myUsername+".solid.community/inbox/"+receiver.username+".txt").then(  body => {
+		exists = true;
+	}, err => console.log('The file does not exist') );
+  /*
+  var exists = false;
   await core.getAllResourcesInInbox(await core.getInboxUrl(userWebId)).then(files => {
     files.forEach(async (fileurl) => {
       if(fileurl.includes(receiver.username)){
@@ -472,7 +477,7 @@ async function communicationEstablished(receiver){
       }
     });
   } 
-  );
+  );*/
   return exists;
 }
 
