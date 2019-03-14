@@ -310,7 +310,8 @@ async function getFriends() {
 };
 
 /**
-* This method search friends o
+* This method search friends of the user's list
+* @param possibleList is the list of friends of the user
 */
 async function searchFriendsOnList(possibleList) {
   friendList = new Array();
