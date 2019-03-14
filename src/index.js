@@ -130,19 +130,24 @@ async function sendMessage() {
   var message = $('#data-name').val();
   var a = $("#possible-people option:selected").val();
   var receiver = core.getFriendOfList(friendList, a);
-  try {
-    sendInvitation(receiver);
-    document.getElementById("data-name").value = "";
-    if($("#sent-messages").val()=="")
+  if(await communicationEstablished(receiver)){
+    sendMessageToMyPod(receiver);
+  }
+  else{
+    try {
+      sendInvitation(receiver);  
+    } catch (e) {
+      core.logger.error(`Could not send message to the user.`);
+      core.logger.error(e);
+    }   
+  }
+  if($("#sent-messages").val()=="")
       $("#sent-messages").val(message);
-    else
+  else
 	    $("#sent-messages").val($("#sent-messages").val() + "\n" + message);
     //dataSync.createEmptyFileForUser("https://"+myUsername+".solid.community/inbox/"+receiver.username+".ttl");
     //dataSync.executeSPARQLUpdateForUser("https://"+myUsername+".solid.community/inbox/"+receiver.username+".ttl", 'INSERT DATA {'+message+'}');
-  } catch (e) {
-    core.logger.error(`Could not send message to the user.`);
-    core.logger.error(e);
-  }
+  
 }
 
 $('#join-btn').click(async () => {
@@ -313,20 +318,21 @@ async function searchFriendsOnList(possibleList) {
 function sendInvitation(receiver){
   var myInbox = "https://"+myUsername+".solid.community/inbox/";
   var message = "\n@@@\n" + $('#data-name').val();
-  //dataSync.createFileForUser(receiver.inbox + myUsername + ".txt", myInbox + message + "ZXCVB");
+  document.getElementById("data-name").value = "";   
   
+  /*
   // Prueba de crear carpeta
   var userRoute = "https://" + "mariodiaz98" + ".solid.community/";
   var folder = userRoute + "public/chat/" + receiver.username +"/";
+
   fc.createFolder(folder);
-  
-	  
   fc.createFile(folder+"/"+(new Date().getTime()), message);
+  */
   
-  fc.updateFile(receiver.inbox + myUsername + ".txt", myInbox + message + "ZXCVB").then( success => {
+  fc.updateFile(receiver.inbox + myUsername + ".txt", myInbox + receiver.username + ".txt" + "\n@@@\n").then( success => {
     console.log( `Send message to their PODs.`)
   }, err => console.log(err) );
-  fc.updateFile(myInbox + receiver.username + ".txt", receiver.inbox + message).then( success => {
+  fc.updateFile(myInbox + receiver.username + ".txt", receiver.inbox + myUsername + ".txt" + message).then( success => {
     console.log( `Send message to your POD.`)
   }, err => console.log(err) );
   fc.updateFile(myInbox + receiver.username + ".txt.acl", templatePermission(receiver.username, receiver.username + ".txt")).then( success => {
@@ -334,14 +340,32 @@ function sendInvitation(receiver){
   }, err => console.log(err) );
 }
 
+function sendMessageToMyPod(receiver){
+  var myInbox = "https://"+myUsername+".solid.community/inbox/";
+  var body = "";
+  fc.readFile(myInbox + receiver.username + ".txt").then( success => {
+    if(success.split('\n').length < 7){
+      console.log(success.split('\n').length);
+      givePermission(myInbox, receiver);
+    }
+
+      
+    body = success + "\n" + $('#data-name').val();
+    fc.updateFile(myInbox + receiver.username + ".txt", body).then( success => {
+      console.log( `Send message to your POD.`);
+      document.getElementById("data-name").value = "";
+    }, err => console.log(err) );
+  }, err => console.log(err) );
+}
+/*
 function acceptInvitation(receiver){
   var urlFile = $('#people-invites').val();
   var text = "";
-  /*
+
   fc.updateFile("https://trokentest.solid.community/inbox/troken11.txt", 'QWERTY' + text).then( success => {
     console.log( `Permissions changed your POD.`)
   }, err => console.log(err) );
-  */
+
   fc.readFile(urlFile).then( success => {
     text = success.replace('ZXCVB','');
     for(var i=0; i<friendList.length; i++){
@@ -351,41 +375,50 @@ function acceptInvitation(receiver){
     }
     console.log( `Read invitation from my PODs.` + urlFile);
   }, err => console.log(err) );
-}
+}*/
 
-function givePermission(text, urlFile, other, otherInbox){
-  var array = urlFile.split('/');
-  var nameFile = array[array.length-1];
-  var myInbox = "https://"+myUsername+".solid.community/inbox/";
-  fc.updateFile(urlFile + ".acl", templatePermission(other, nameFile)).then( success => {
-    console.log( `Permissions changed your POD.`)
+function givePermission(myInbox, receiver){
+  fc.updateFile(myInbox + receiver.username + ".txt.acl", 
+                templatePermission(receiver.username, receiver.username+".txt")).then( success => {
+      console.log( `Permissions changed your POD.`)
   }, err => console.log(err) );
-  fc.updateFile(myInbox + urlFile, 'QWERTY' + text).then( success => {
-    console.log( `Permissions changed your POD.`)
-  }, err => console.log(err) );
-  /*
-  fc.updateFile(otherInbox + urlFile, 'QWERTY' + text).then( success => {
-    console.log( `Permissions changed your POD.`)
-  }, err => console.log(err) );
-  */
 }
 
 function templatePermission(other, file){
   var textPer = "@prefix : <#>.\n"+
                 "@prefix n0: <http://www.w3.org/ns/auth/acl#>.\n"+
+                "@prefix n1: <http://xmlns.com/foaf/0.1/>.\n"+
                 "@prefix c: </profile/card#>.\n"+
                 "@prefix c0: <https://"+other+".solid.community/profile/card#>.\n\n"+
                 ":ControlReadWrite\n"+
                   "\ta n0:Authorization;\n"+
                   "\tn0:accessTo <"+file+">;\n"+
                   "\tn0:agent c:me, c0:me;\n"+
-                  "\tn0:mode n0:Control, n0:Read, n0:Write.\n"/*+
+                  "\tn0:mode n0:Control, n0:Read, n0:Write.\n"+
+                ":Read\n"+
+                  "\ta n0:Authorization;\n"+
+                  "\tn0:accessTo <"+file+">;\n"+
+                  "\tn0:agentClass n1:Agent;\n"+
+                  "\tn0:mode n0:Read.\n"/*+
                 ":ReadWrite\n"+
                   "\ta n0:Authorization;\n"+
                   "\tn0:accessTo <"+file+">;\n"+
                   "\tn0:agent c0:me;\n"+
                   "\tn0:mode n0:Read, n0:Write.\n"*/;
   return textPer;
+}
+
+async function communicationEstablished(receiver){
+  var exists = false;
+  await core.getAllResourcesInInbox(await core.getInboxUrl(userWebId)).then(files => {
+    files.forEach(async (fileurl) => {
+      if(fileurl.includes(receiver.username)){
+        exists = true;
+      }
+    });
+  } 
+  );
+  return exists;
 }
 
 // todo: this is an attempt to cleanly exit the chat, but this doesn't work at the moment
