@@ -89,7 +89,7 @@ auth.trackSession(async session => {
 });
 
 /**
- * This method updates the UI after a chat option has been selected by the player.
+ * This method updates the UI after a chat option has been selected by the user.
  */
 function afterChatOption() {
   $('#chat-options').addClass('hidden');
@@ -296,7 +296,7 @@ $('.btn-cancel').click(() => {
 });
 
 /**
-* This method obtein the list of friends
+* This method obtains the list of friends
 */
 async function getFriends() { 
   var subject = userWebId;
@@ -310,7 +310,8 @@ async function getFriends() {
 };
 
 /**
-* This method 
+* This method search friends of the user's list
+* @param possibleList is the list of friends of the user
 */
 async function searchFriendsOnList(possibleList) {
   friendList = new Array();
@@ -326,6 +327,7 @@ async function searchFriendsOnList(possibleList) {
 
 /**
 * This method sends an invitation to an user
+* @param receiver is the user who recives the invitation
 */
 function sendInvitation(receiver){
   var myInbox = "https://"+myUsername+".solid.community/inbox/";
@@ -353,7 +355,8 @@ function sendInvitation(receiver){
 }
 
 /**
-* Sends a message to an user
+* Sends a message to the Pod of the user
+* @param receiver is the person who recives message
 */
 function sendMessageToMyPod(receiver){
   var myInbox = "https://"+myUsername+".solid.community/inbox/";
@@ -445,6 +448,8 @@ function acceptInvitation(receiver){
 
 /**
 * Give permissions to an user over an especific inbox
+* @param myInbox the inbox of the user
+* @param receiver is the person who recives messages
 */
 function givePermission(myInbox, receiver){
   fc.updateFile(myInbox + receiver.username + ".txt.acl", 
@@ -479,6 +484,7 @@ function templatePermission(other, file){
 
 /**
 * Establish the communication with a receiver
+* @param receiver is the person who recives messages
 */
 async function communicationEstablished(receiver){
   var exists = false;
