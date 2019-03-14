@@ -10,7 +10,7 @@ const WebRTC = require('../lib/webrtc');
 
 let userWebId;
 let myUsername;
-let friendList;
+let friendList = null;
 let semanticChat;
 let dataSync = new DataSync(auth.fetch);
 let userDataUrl;
@@ -81,6 +81,7 @@ auth.trackSession(async session => {
     $('#how-it-works').removeClass('hidden');
     userWebId = null;
     board = null;
+    friendList = null;
     clearInterval(refreshIntervalId);
     refreshIntervalId = null;
   }
