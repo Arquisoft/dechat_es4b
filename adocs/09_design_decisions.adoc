@@ -7,5 +7,5 @@ We will follow a P2P architecture without a dedicated database, all users inform
 |===
 | Property | Decision | Explanation
 | Architecture | Peer-to-Peer (P2P) | It is mandatory in a decentralized Solid app
-|Database | None | There is no need for a database, each chat user will store their data and messages in their personal POD
+| Database | None | There is no need for a database, each chat user will store their data and messages in their personal POD
 |===
