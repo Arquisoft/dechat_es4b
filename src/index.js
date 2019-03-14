@@ -117,7 +117,7 @@ $('#new-btn').click(async () => {
   }
 });
 
-$('#sendMessageButton').click(async () => {
+$('#start-new-chat-btn').click(async () => {
    await sendMessage();
 });
 
@@ -141,7 +141,7 @@ async function sendMessage() {
       core.logger.error(e);
     }   
   }
-  loadMessages();
+  await loadMessages();
     //dataSync.createEmptyFileForUser("https://"+myUsername+".solid.community/inbox/"+receiver.username+".ttl");
     //dataSync.executeSPARQLUpdateForUser("https://"+myUsername+".solid.community/inbox/"+receiver.username+".ttl", 'INSERT DATA {'+message+'}');
   
@@ -249,6 +249,7 @@ $('#continue-chat-btn').click(async () => {
 
 async function checkForNotifications() {
   console.log('Checking for new notifications');
+  await loadMessages();
 
   const updates = await core.getAllResourcesInInbox(await core.getInboxUrl(userWebId));
 
@@ -358,8 +359,8 @@ function sendMessageToMyPod(receiver){
 $("#possible-people-btn").click( async () => loadMessages());
 
 async function loadMessages(){
-	$("addOurMessages").empty();
-	$("addOtherMessages").empty();
+	$("#addOurMessages").empty();
+	$("#addOtherMessages").empty();
 	// Routes of users inbox
 	var myInbox = "https://"+myUsername+".solid.community/inbox/"; 
 	var otherUser = document.getElementById("possible-people").value;
@@ -467,8 +468,8 @@ async function communicationEstablished(receiver){
 }
 
 // todo: this is an attempt to cleanly exit the chat, but this doesn't work at the moment
-window.onunload = window.onbeforeunload = () => {
-  if (semanticChat.isRealTime() && webrtc) {
-    giveUp();
-  }
-};
+// window.onunload = window.onbeforeunload = () => {
+  // if (semanticChat.isRealTime() && webrtc) {
+    // giveUp();
+  // }
+// };
