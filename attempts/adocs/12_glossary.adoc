@@ -1,0 +1,18 @@
+[[section-glossary]]
+== Glossary
+
+[options="header"]
+|===
+| Term         | Definition
+| Arc42    |  Template for architecture communication and documentation. It divides the documentation of the architecture in diferentiated sections
+| ECMASCRIPT | Trademarked scripting-language specification standarized by ECMA International. It was created to standardize JavaScript.
+| MEAN | Set of 4 open source tools used for web development. Its components are MongoDB, Express.js, Angular.js and Node.js.
+| POD    | Personal online data store . It allows users to save their information and the information they are
+sent. A POD can store photos, text, contacts or calendar events and many other things
+|SOLID |  Technology whose goal is to change the way applications interact with user data, giving more decision-making
+ power to users as they are able to decide where their data is stored or who can read it or write it.
+ | Stakeholder |Person with an interest or concern in something, in the area we are working on, the decentralized chat. 
+| Type-Script | An open-source programming language, is a strict 
+syntactical superset of JavaScript, and adds optional static typing to the language.
+
+|===

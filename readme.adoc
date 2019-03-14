@@ -1,39 +1,20 @@
-= dechatjs_0
+= dechatjs_4B
 
-image:https://travis-ci.org/Arquisoft/dechatjs_0.svg?branch=master["Build Status", link="https://travis-ci.org/Arquisoft/dechatjs_0"]
-image:https://coveralls.io/repos/github/Arquisoft/dechatjs_0/badge.svg["Coverage status", link="https://coveralls.io/github/Arquisoft/dechatjs_0"]
+image:https://travis-ci.org/Arquisoft/dechat_es4b.svg?branch=master["Build Status", link="https://travis-ci.org/Arquisoft/dechat_es4b"]
+image:https://coveralls.io/repos/github/Arquisoft/dechat_es4b/badge.svg["Coverage status", link="https://coveralls.io/github/Arquisoft/dechat_es4b"]
 image:https://api.codacy.com/project/badge/Grade/da6fef0ea42a4139b6a7535530ce3466["Codacy code quality", link="https://www.codacy.com/app/jelabra/dechatjs_0?utm_source=github.com&utm_medium=referral&utm_content=Arquisoft/dechatjs_0&utm_campaign=Badge_Grade"]
-image:https://inch-ci.org/github/arquisoft/dechatjs_0.svg?branch=master["Docs", link="https://inch-ci.org/github/arquisoft/dechatjs_0"]
 
-Skeleton of application using Javascript technologies
 
-== Running tests
 
-It requires link:http://nodejs.org[NodeJs] and `npm` (npm comes with NodeJs).
+== Introduction
+The project consists in the development of a decentralized chat. The objetive of this chat is to provide a service in which the messages are not stored in a server but in each one of the nodes (users) of the system. The idea behind is similar to the Peer-to-Peer (P2P) approach for sharing content over the Internet. Documentation is stored on /src/docs folder. 
 
-----
-npm test
-----
+== Authors:
+- Avello Díaz, Enrique
+- De Benito Álvarez, Carlos
+- Díaz Ceñera, Mario
+- Lera Cuesta, Daniel De
+- Marín Iglesias, Óscar
+- Menéndez De Luarca Trabanco, Lino
+- Menéndez Martínez, Carlos
 
-== Generating documentation
-
-The skeleton documentation is based on link:http://arc42.org[arc42] templates.
-Some diagrams are created using link:http://plantuml.com/[PlantUML].
-
-Pre-requisites
-
-- Install link:https://www.graphviz.org/[Graphviz] and ensure that the `dot` executable can be found in the PATH.
-
-- Install `gulp` using:
-
-----
-npm install -g gulp
-----
-
-Once installed, running `gulp` creates the documentation.
-
-----
-gulp
-----
-
-Generates documentation in `docs` folder.

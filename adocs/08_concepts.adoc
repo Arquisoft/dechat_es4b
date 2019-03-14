@@ -1,4 +1,33 @@
 [[section-concepts]]
 == Cross-cutting Concepts
 
-*TO BE DONE*
+This section describes regulation and solution ideas that are relevant in multiple
+parts of our system.
+
+=== Domain concepts
+
+Domain models, business data model.
+
+=== User Experience concepts
+
+User interface, internationalization...
+
+=== Safety and security concepts
+
+Security and safety.
+
+=== Architecture and design patterns
+
+TO BE DONE
+
+=== “Under-the-hood” concepts
+
+TO BE DONE
+
+=== Development concepts
+
+Build, code generation, migration, configurability.
+
+=== Operational concepts
+
+Administration, management, scaling, clustering, logging.
