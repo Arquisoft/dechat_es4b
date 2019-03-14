@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack && node loader.js",
-
     "test": "mocha \"./test/*\"",
     "build:web": "webpack --config webpack.config.js",
     "doc": "./node_modules/.bin/jsdoc -c jsdoc.json ./lib"
@@ -20,7 +19,6 @@
   },
   "homepage": "https://github.com/Arquisoft/dechat_es4b/blob/master/readme.adoc",
   "devDependencies": {
-
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/node": "^7.2.2",
@@ -56,6 +54,5 @@
     "winston": "^3.1.0",
     "nyc": "^13.3.0",
     "standard": "*"
-
   }
 }
