@@ -27,4 +27,3 @@ Launch server:
 - Lera Cuesta, Daniel De
 - Marín Iglesias, Óscar
 - Menéndez De Luarca Trabanco, Lino
-- Menéndez Martínez, Carlos
