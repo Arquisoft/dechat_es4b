@@ -104,7 +104,7 @@ $('#new-btn').click(async () => {
     afterChatOption();
     $('#possible-people').empty();
     for await (const friend of friendList) {
-        $('#possible-people').append('<option value='+friend.username+'>'+friend.name+'</option>');
+        $('#possible-people').append('<option value='+friend.username+'>'+friend.username+'</option>');
     }
     
     $("#data-name").keydown(function (e) {
@@ -253,13 +253,15 @@ $('#continue-chat-btn').click(async () => {
  */
 
 async function checkForNotifications() {
+  if(document.getElementById("possible-people").value != "")
+    await loadMessages();
+
+/*
   console.log('Checking for new notifications');
-  await loadMessages();
 
   const updates = await core.getAllResourcesInInbox(await core.getInboxUrl(userWebId));
 
   console.log('Checked');
-
   invitations = new Array();
 
   updates.forEach(async (fileurl) => {
@@ -273,7 +275,7 @@ async function checkForNotifications() {
         }  
       }
    }, err => console.log(err) );
-  });
+  }); */
 }
 
 $('#clear-inbox-btn').click(async () => {
@@ -312,9 +314,8 @@ async function searchFriendsOnList(possibleList) {
   friendList = new Array();
   for(var i=0; i<possibleList.length; i++){
     if(core.isFriend(possibleList[i].object.value, myUsername))
-      friendList.push({card: possibleList[i].object.value, 
-                        username: core.getUsername(possibleList[i].object.value), 
-                        name: await core.getFormattedName(possibleList[i].object.value),
+      friendList.push({username: core.getUsername(possibleList[i].object.value), 
+                        //name: await core.getFormattedName(possibleList[i].object.value),
                         inbox: "https://"+core.getUsername(possibleList[i].object.value)+".solid.community/inbox/"});
   }
   $('#chat-options').removeClass('hidden');
@@ -369,7 +370,7 @@ $("#possible-people-btn").click( async () => loadMessages());
 async function loadMessages(){
 	// Routes of users inbox
 	var myInbox = "https://"+myUsername+".solid.community/inbox/"; 
-	var otherUser = document.getElementById("possible-people").value;
+  var otherUser = document.getElementById("possible-people").value;
 	var otherInbox = "https://"+otherUser+".solid.community/inbox/";
 	
 	// Let's read each message file
