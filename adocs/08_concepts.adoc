@@ -6,19 +6,26 @@ parts of our system.
 
 === Domain concepts
 
-Domain models, business data model.
+* Domain models
+
+* Business data model
 
 === User Experience concepts
 
-User interface, internationalization...
+* *User interface* As user interface we can understand the interface of the application, in this case the interface is a
+ normal chat interface like other chats applications.
+
+* *Internationalization* For the moment we are not interested in the internacionalization of the project.
 
 === Safety and security concepts
 
-Security and safety.
+* *Security and safety* The security and safety in the project is key because this application is based in Solid which is
+decentralized and safe.
 
 === Architecture and design patterns
 
-TO BE DONE
+* *P2P Architecture* is a commonly used computer networking architecture in which each workstation, or node, has the same capabilities 
+and responsibilities.
 
 === “Under-the-hood” concepts
 
@@ -26,7 +33,7 @@ TO BE DONE
 
 === Development concepts
 
-Build, code generation, migration, configurability.
+* *Build and code generation* The build and code generation in our project is done in javascript.
 
 === Operational concepts
 
