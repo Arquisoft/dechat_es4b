@@ -363,7 +363,7 @@ $("#possible-people-btn").click( async () => {
 	
 	// Routes of users inbox
 	var myInbox = "https://"+myUsername+".solid.community/inbox/"; 
-	var otherUser = $("possible-people").text();
+	var otherUser = document.getElementById("possible-people").value;
 	var otherInbox = "https://"+otherUser+".solid.community/inbox/";
 	
 	// Let's read each message file
