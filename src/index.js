@@ -68,8 +68,8 @@ auth.trackSession(async session => {
     $('#login-required').modal('hide');  
 
     checkForNotifications();
-    // refresh every 5sec
-    refreshIntervalId = setInterval(checkForNotifications, 10000);
+    // refresh every 8sec
+    refreshIntervalId = setInterval(checkForNotifications, 8000);
   } else {
     $('#nav-login-btn').removeClass('hidden');
     $('#user-menu').addClass('hidden');
@@ -488,7 +488,7 @@ function templatePermission(other, file){
 */
 async function communicationEstablished(receiver){
   var exists = false;
-  fc.readFile("https://"+myUsername+".solid.community/inbox/"+receiver.username+".txt").then(  body => {
+  await fc.readFile("https://"+myUsername+".solid.community/inbox/"+receiver.username+".txt").then(  body => {
 		exists = true;
 	}, err => console.log('The file does not exist') );
   /*
