@@ -359,8 +359,6 @@ function sendMessageToMyPod(receiver){
 $("#possible-people-btn").click( async () => loadMessages());
 
 async function loadMessages(){
-	$("#addOurMessages").empty();
-	$("#addOtherMessages").empty();
 	// Routes of users inbox
 	var myInbox = "https://"+myUsername+".solid.community/inbox/"; 
 	var otherUser = document.getElementById("possible-people").value;
@@ -373,7 +371,8 @@ async function loadMessages(){
 	
 	fc.readFile(fileWithMessagesSentByMe).then(  body => {
 		var lines = body.split("\n");
-		var i = 0;
+    var i = 0;
+    $("#addOurMessages").empty();
 		for ( var linea of lines ) {
 			if ( i===0 || i===1 ||linea === "" )
 				console.log(linea);
@@ -388,7 +387,8 @@ async function loadMessages(){
 	
 	fc.readFile(fileWithMessagesSentByTheOtherUSer).then(  body => {
 		var lines = body.split("\n");
-		var i = 0;
+    var i = 0;
+    $("#addOtherMessages").empty();
 		for ( var linea of lines ) {
 			if ( i===0 || i===1 || linea === "")
 				console.log(linea);
