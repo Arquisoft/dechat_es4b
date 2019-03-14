@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack && node loader.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+
+    "test": "mocha \"./test/*\"",
     "build:web": "webpack --config webpack.config.js",
     "doc": "./node_modules/.bin/jsdoc -c jsdoc.json ./lib"
   },
@@ -19,6 +20,14 @@
   },
   "homepage": "https://github.com/Arquisoft/dechat_es4b/blob/master/readme.adoc",
   "devDependencies": {
+
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "asciidoctor-cli": "^1.5.6-rc.1",
+    "asciidoctor.js": "^1.5.9",
+    "@babel/register": "^7.0.0",
     "@11ty/eleventy": "^0.7.1",
     "jsdoc": "^3.5.5",
     "minami": "^1.2.3",
@@ -34,13 +43,19 @@
     "inquirer": "^6.2.0",
     "n3": "^1.0.2",
     "prefix-ns": "^0.1.2",
+    "chai": "4.2.x",
     "q": "^1.5.1",
+    "mocha": "^5.2.0",
+    "mocha-lcov-reporter": "^1.3.0",
     "semantic-chess": "0.2.0",
     "solid-auth-client": "^2.2.10",
     "solid-file-client": "^0.4.9",
     "streamify-array": "^1.0.1",
     "uniqid": "^5.0.3",
     "uri-js": "^4.2.2",
-    "winston": "^3.1.0"
+    "winston": "^3.1.0",
+    "nyc": "^13.3.0",
+    "standard": "*"
+
   }
 }

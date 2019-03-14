@@ -66,8 +66,8 @@ The following table contains the persons who are specifically targeted by the ap
 
 |======================
 |Role/Name   |Contact            |Expectations                                                             
-| Project sponsor  |  Tim Berners-Lee  |  Determine which is the best chat and which best meets the requirements 
-| Professor  | Jose Emilio Labra Gayo  | Proof that the requirements are met 
-| Community Manager at Solid | Mitzi   | Proof that the requirements are met 
+| Project sponsor  |  SOLID |  Determine which is the best chat and which best meets the requirements 
+| Professor  | Jose Emilio Labra Gayo  | Proof that the requirements are met and follow the project evolution
+| Development Team | Team4B   | To develop the application that has been entrusted to us in the framework of the subject of architecture of the software
 |======================
 
