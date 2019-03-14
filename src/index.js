@@ -121,7 +121,12 @@ $('#start-new-chat-btn').click(async () => {
    await sendMessage();
 });
 
-async function sendMessage(){
+// async function readMessagesBetweenUsers(userFrom, userTo) {
+	// var file = await fileClient.readFile(url);
+	// var readingRoute = "https://" + userName + ".solid.community/inbox/" + userName + ".txt";
+// }
+
+async function sendMessage() {
   var message = $('#data-name').val();
   var a = $("#possible-people option:selected").val();
   var receiver = core.getFriendOfList(friendList, a);
@@ -309,6 +314,15 @@ function sendInvitation(receiver){
   var myInbox = "https://"+myUsername+".solid.community/inbox/";
   var message = "\n@@@\n" + $('#data-name').val();
   //dataSync.createFileForUser(receiver.inbox + myUsername + ".txt", myInbox + message + "ZXCVB");
+  
+  // Prueba de crear carpeta
+  var userRoute = "https://" + "mariodiaz98" + ".solid.community/";
+  var folder = userRoute + "public/chat/" + receiver.username +"/";
+  fc.createFolder(folder);
+  
+	  
+  fc.createFile(folder+"/"+(new Date().getTime()), message);
+  
   fc.updateFile(receiver.inbox + myUsername + ".txt", myInbox + message + "ZXCVB").then( success => {
     console.log( `Send message to their PODs.`)
   }, err => console.log(err) );
