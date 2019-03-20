@@ -1,8 +1,7 @@
 module.exports = class Message {
-  constructor(sender, receiver, content) {
-    this._sender = sender;
-    this._receiver = receiver;
-    this._content = content;
+  constructor(content) {
+    this.content = content;
+	this.date = new Date();
   }
 
   get sender() {
@@ -28,4 +27,11 @@ module.exports = class Message {
   set sender(newContent) {
     this._content = newContent;
   }
+  
+    serialize(){
+        return JSON.stringify({
+            "sch:text":this.content,
+            "sch:date":this.date
+        });
+	}
 }
