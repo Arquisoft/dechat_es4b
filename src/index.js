@@ -31,19 +31,8 @@ $('#logout-btn').click(() => {
 
 $('#refresh-btn').click(checkForNotifications);
 
-
-/**
- * This method does the necessary updates of the UI when the different Chat options are shown.
- */
-function setUpForEveryChatOption() {
-  $('#chat-loading').removeClass('hidden');
-  $('#chat').removeClass('hidden');
-}
-
 auth.trackSession(async session => {
   const loggedIn = !!session;
-
-  //$('#nav-item dropdown').addClass('hidden');
 
   if (loggedIn) {
     $('#chat-options').addClass('hidden');
@@ -52,17 +41,12 @@ auth.trackSession(async session => {
     personal.loadNames(session.webId).then(name => {
       $('#user-name').text(name);
       $('#nav-login-btn').addClass('hidden');
-      //$('#nav-item dropdown').removeClass('hidden');
-      console.log("NOMBRES CARGADOS");   
     });
 
     personal.loadFriendList(session.webId).then(() => {
-      console.log("ESTAN CARGADOS");
       $('#chat-options').removeClass('hidden');
       $('#loading-gif').addClass('hidden');
     });
-
-    //await personal.loadInbox();
 
     $('#user-menu').removeClass('hidden');
     $('#login-required').modal('hide');  
