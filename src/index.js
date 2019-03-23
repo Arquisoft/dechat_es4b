@@ -1,7 +1,6 @@
 //const {Loader} = require('semantic-chat');
 const auth = require('solid-auth-client');
 const fc = require('solid-file-client');
-const DataSync = require('../lib/datasync');
 const namespaces = require('../lib/namespaces');
 const { default: data } = require('@solid/query-ldflex');
 const Core = require('../lib/core');
@@ -11,14 +10,10 @@ const Communication = require('../lib/communication');
 
 //const WebRTC = require('../lib/webrtc');
 
-let semanticChat;
-let dataSync = new DataSync(auth.fetch);
-let userDataUrl;
 let refreshIntervalId;
-let selectedTheme = 'default';
 let core = new Core(auth.fetch);
 let personal = new Personal(core);
-let comm = new Communication();
+let comm = new Communication(auth.fetch);
 
 
 $('.login-btn').click(() => {
