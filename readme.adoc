@@ -2,7 +2,7 @@
 
 image:https://travis-ci.org/Arquisoft/dechat_es4b.svg?branch=master["Build Status", link="https://travis-ci.org/Arquisoft/dechat_es4b"]
 image:https://coveralls.io/repos/github/Arquisoft/dechat_es4b/badge.svg["Coverage status", link="https://coveralls.io/github/Arquisoft/dechat_es4b"]
-image:https://api.codacy.com/project/badge/Grade/da6fef0ea42a4139b6a7535530ce3466["Codacy code quality", link="https://www.codacy.com/app/jelabra/dechatjs_0?utm_source=github.com&utm_medium=referral&utm_content=Arquisoft/dechatjs_0&utm_campaign=Badge_Grade"]
+image:https://api.codacy.com/project/badge/Grade/93ebff33027e4bffa7bbf77e3463d345["Codacy code quality", link="https://www.codacy.com/app/troken11/dechat_es4b?utm_source=github.com&utm_medium=referral&utm_content=Arquisoft/dechat_es4b&utm_campaign=Badge_Grade"]
 
 
 
