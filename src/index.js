@@ -40,7 +40,7 @@ $('#open-btn').click(() => {
   <${namespaces.schema}recipient> <${firstId}>;
   <${namespaces.storage}storeIn> <${userDataUrl}>.}`);
   */
-
+/*
  var messageUrl = "MESSAGE_URL2";
  var time = "TIME2";
  var psUsername = "PS_USERNAME2";
@@ -50,6 +50,11 @@ $('#open-btn').click(() => {
  `INSERT DATA {<${messageUrl}> a <${namespaces.schema}Message>;<${namespaces.schema}dateSent> <${time}>;<${namespaces.schema}givenName> <${psUsername}>; <${namespaces.schema}text> <${messageTx}>.}`);
 
  getNewMessage("https://trokentest.solid.community/inbox/" + "test.ttl", );
+*/
+var message = $('#data-name').val();
+var a = $("#possible-people option:selected").val();
+var receiver = core.getFriendOfList(personal.friendList, a);
+comm.sendFirstMessage(personal, receiver);
 });
 
 
