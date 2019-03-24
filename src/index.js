@@ -10,6 +10,10 @@ const Communication = require('../lib/communication');
 
 //const WebRTC = require('../lib/webrtc');
 
+const DataSync = require('../lib/datasync');
+
+    
+let dataSync = new DataSync(auth.fetch);
 let refreshIntervalId;
 let core = new Core(auth.fetch);
 let personal = new Personal(core);
@@ -25,6 +29,30 @@ $('#logout-btn').click(() => {
 });
 
 $('#refresh-btn').click(checkForNotifications);
+
+$('#open-btn').click(() => {
+  /*
+  var chatUrl = "CHAT_URL";
+  var userWebId = "USER_WEB_ID";
+  var firstId = "FIRST_ID";
+  var userDataUrl = "USER_DATA_URL";
+  dataSync.executeSPARQLUpdateForUser("https://trokentest.solid.community/inbox/" + "test.ttl", `INSERT DATA { <${chatUrl}> <${namespaces.schema}contributor> <${userWebId}>;
+  <${namespaces.schema}recipient> <${firstId}>;
+  <${namespaces.storage}storeIn> <${userDataUrl}>.}`);
+  */
+
+ var messageUrl = "MESSAGE_URL2";
+ var time = "TIME2";
+ var psUsername = "PS_USERNAME2";
+ var messageTx = "MESSAGE_TX2";
+
+ dataSync.executeSPARQLUpdateForUser("https://trokentest.solid.community/inbox/" + "test.ttl", 
+ `INSERT DATA {<${messageUrl}> a <${namespaces.schema}Message>;<${namespaces.schema}dateSent> <${time}>;<${namespaces.schema}givenName> <${psUsername}>; <${namespaces.schema}text> <${messageTx}>.}`);
+
+ getNewMessage("https://trokentest.solid.community/inbox/" + "test.ttl", );
+});
+
+
 
 auth.trackSession(async session => {
   const loggedIn = !!session;
@@ -124,7 +152,58 @@ $('.btn-cancel').click(() => {
 
 
 
+async function getNewMessage(fileurl) {
+  const deferred = Q.defer();
+  const rdfjsSource = await rdfjsSourceFromUrl(fileurl, this.fetch);
 
+  if (rdfjsSource) {
+    const engine = newEngine();
+    let messageFound = false;
+    //const self = this;
+    engine.query(`SELECT * {
+        ?message a <${namespaces.schema}Message>;
+          <${namespaces.schema}dateSent> ?time;
+          <${namespaces.schema}givenName> ?username;
+          <${namespaces.schema}text> ?msgtext.
+      }`, {
+        sources: [{
+          type: 'rdfjsSource',
+          value: rdfjsSource
+        }]
+      })
+      .then(function(result) {
+        result.bindingsStream.on('data', async function(result) {
+          console.log(result);
+          /*
+          messageFound = true;
+          result = result.toObject();
+          const messageUrl = result['?message'].value;
+          const messagetext = result['?msgtext'].value.split("/inbox/")[1].replace(/U\+0020/g, " ").replace(/U\+003A/g, ":");
+          const author = result['?username'].value.replace(/U\+0020/g, " ");
+          const time = result['?time'].value.split("/")[4];
+          const inboxUrl = fileurl;
+          deferred.resolve({
+            inboxUrl,
+            messagetext,
+            messageUrl,
+            author,
+            time
+          });
+          */
+        });
+
+        result.bindingsStream.on('end', function() {
+          if (!messageFound) {
+            deferred.resolve(null);
+          }
+        });
+      });
+  } else {
+    deferred.resolve(null);
+  }
+
+  return deferred.promise;
+}
 
 
 
