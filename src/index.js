@@ -31,15 +31,6 @@ $('#logout-btn').click(() => {
 $('#refresh-btn').click(checkForNotifications);
 
 $('#open-btn').click(() => {
-  /*
-  var chatUrl = "CHAT_URL";
-  var userWebId = "USER_WEB_ID";
-  var firstId = "FIRST_ID";
-  var userDataUrl = "USER_DATA_URL";
-  dataSync.executeSPARQLUpdateForUser("https://trokentest.solid.community/inbox/" + "test.ttl", `INSERT DATA { <${chatUrl}> <${namespaces.schema}contributor> <${userWebId}>;
-  <${namespaces.schema}recipient> <${firstId}>;
-  <${namespaces.storage}storeIn> <${userDataUrl}>.}`);
-  */
 /*
  var messageUrl = "MESSAGE_URL2";
  var time = "TIME2";
@@ -51,7 +42,6 @@ $('#open-btn').click(() => {
 
  getNewMessage("https://trokentest.solid.community/inbox/" + "test.ttl", );
 */
-var message = $('#data-name').val();
 var a = $("#possible-people option:selected").val();
 var receiver = core.getFriendOfList(personal.friendList, a);
 comm.sendFirstMessage(personal, receiver);
@@ -137,7 +127,8 @@ $('#start-new-chat-btn').click(async () => {
  * @returns {Promise<void>}
  */
 async function checkForNotifications() {
-  if($("#possible-people").val() != "")
+  var length = $('#mySelectList > option').length;
+  if(length === 0)
     await comm.loadMessages(personal.username);
 }
 
