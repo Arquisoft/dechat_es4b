@@ -1,9 +1,17 @@
-require('chai');
+var chai = require('chai');
 const Message = require('../src/message')
 const Core = require('../lib/core');
+const Personal = require ('../lib/personal');
 const chat = new Core();
-var assert = require('assert');
-const testMessage = new Message('Juan', 'Ana', 'Buenas noches')
+const personal = new Personal(chat);
+var assert = chai.assert;
+const testMessage = new Message('Juan', 'Ana', 'Buenas noches');
+
+var friendList = new Array();
+friendList.push({username: "enriquead", 
+				inbox: "https://enriequad.solid.community/inbox/"});  
+friendList.push({username: "userfortesting", 
+				inbox: "https://userfortesting.solid.community/inbox/"});
 
 describe('Simple chat testing', function () {
   //Message Test
@@ -30,6 +38,20 @@ describe('Simple chat testing', function () {
   it('Check not me when it must return false', function() {
 	   assert.equal(chat.checkNotMe("https://userfortesting.solid.community/profile/card#me","userfortesting"),false);
   })
+  
+  it('Friend from list is expected',function() {
+	var friend = chat.getFriendOfList(friendList,"enriquead");
+	assert.isNotNull(friend);
+  })
+  
+  it('Friend does not exist on list',function() {
+	var friend = chat.getFriendOfList(friendList,"thisUserDoesNotExist");
+	assert.isNull(friend);
+  })
+  
+ 
+  
+  
   
   
   
