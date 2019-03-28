@@ -42,9 +42,12 @@ $('#open-btn').click(() => {
 
  getNewMessage("https://trokentest.solid.community/inbox/" + "test.ttl", );
 */
+/*
 var a = $("#possible-people option:selected").val();
 var receiver = core.getFriendOfList(personal.friendList, a);
 comm.sendFirstMessage(personal, receiver);
+*/
+getTestText();
 });
 
 
@@ -205,6 +208,26 @@ async function getNewMessage(fileurl) {
 
 $("#possible-people-btn").click( async () => comm.loadMessages(personal.username));
 
-
+function getTestText(){
+  var fileContain = '@prefix : <#>.\n@prefix inbox: <./>.\n@prefix stor: <http://example.org/storage/>.\n@prefix schem: <http://schema.org/>.\n@prefix c: <https://troken11.solid.community/profile/card#>.\n@prefix c0: </profile/card#>.\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n\n:CHAT\n stor:storeIn <https://troken11.solid.community/inbox/trokentest.ttl>;\n schem:contributor c:me;\n schem:recipient c0:me;\n\n schem:dateRead \"2012-11-31T23:56:00\"^^xsd:dateTime .\n\n\n:M1 a \t\tschem:Message;\n\tschem:dateSent\t\"2012-11-31T23:57:00\"^^xsd:dateTime ;\n\tschem:givenName\t\"trokentest\";\n schem:text \"Holaaaa\".\n\n:M2 a \t\tschem:Message;\n\tschem:dateSent\t\"2012-11-31T23:58:00\"^^xsd:dateTime ;\n\tschem:givenName\t\"trokentest\";\n schem:text \"Adioooos\".\n\n:M3 a \t\tschem:Message;\n\tschem:dateSent\t\"2012-11-31T23:57:00\"^^xsd:dateTime ;\n\tschem:givenName\t\"trokentest\";\n\tschem:text \"Espero que funcione\".';
+  var res = fileContain.split("\n\n\n");
+  //res[1] => CHAT INFO
+  //res[2] => MENSAJES (MXXXX)
+  var msgs = res[2].split("\n\n");
+  for(var i=0; i<msgs.length; i++){
+    var lines = msgs[i].split("\n");
+    //Get ID
+    var temp = lines[0].split(" a ")[0];
+    temp = temp.replace(":", "");
+    //Get Time
+    var dateTime = lines[1].split('"')[1];
+    //Get Sender
+    var sender = lines[2].split('"')[1];
+    //Get Message
+    var aux = lines[3].split('\t"')[1];
+    var message = aux.replace('"\t.', "");
+    console.log(temp, dateTime, sender, message);
+  }
+}
 
 
