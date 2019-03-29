@@ -114,7 +114,8 @@ $('#create-button').click(async () => {
   }
   $('#create-new-group').addClass('hidden');
   // CREAR EL GRUPO AQUI
-  console.log(friendsGroup);
+  core.createGroup(personal, friendsGroup);
+  console.log(groupName, friendsGroup);
 });
 
 $('#start-new-chat-btn').click(async () => {
@@ -146,6 +147,10 @@ $('.btn-cancel').click(() => {
   $('#continue-chat-options').addClass('hidden');
   $('#chat-options').removeClass('hidden');
   $('#how-it-works').removeClass('hidden');
+});
+
+$("#cancel-group-menu").click(() => {
+  $('#create-new-group').addClass('hidden');
 });
 
 $("#possible-people-btn").click( async () => core.loadMessages(personal));
