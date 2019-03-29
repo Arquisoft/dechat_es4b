@@ -118,6 +118,29 @@ $('#new-btn').click(async () => {
   }
 });
 
+$('#create-group').click(async () => { 
+  if (personal.username) {
+    afterChatOption();
+    $('#check-people-group').empty();
+    for await (const friend of personal.friendList) {
+      $('#check-people-group').append('<input class="form-check-input" type="checkbox" id="'+friend.username+'"><label class="form-check-label" for="'+friend.username+'">'+friend.username+'</label><br>');
+    }
+    $('#create-new-group').removeClass('hidden');
+  } else {
+    $('#login-required').modal('show');
+  }
+});
+
+$('#create-button').click(async () => { 
+  var friendsGroup = new Array();
+  for await (const friend of personal.friendList) {
+    if($('#'+friend.username).prop('checked'))
+      friendsGroup.push(friend);
+  }
+  $('#create-new-group').addClass('hidden');
+  console.log(friendsGroup);
+});
+
 $('#start-new-chat-btn').click(async () => {
    await comm.sendMessage(personal, core);
 });
