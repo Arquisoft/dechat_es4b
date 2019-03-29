@@ -8,8 +8,18 @@ var assert = chai.assert;
 
 describe('Simple personal testing', function () {
   
-    it('Simple', function() {
-	   assert.equal(2,2);
+    it('Clear info test', function() {
+       personal.username = "NameToClear";
+       personal.friendList.push({username: "enriquead", 
+				inbox: "https://enriquead.solid.community/inbox/"});  
+       personal.friendList.push({username: "userfortesting", 
+				inbox: "https://userfortesting.solid.community/inbox/"});
+       assert.isNotNull(personal.username);
+       assert.equal(personal.friendList.length,2);        
+	   personal.clearInfo();
+       assert.isNull(personal.username);
+       assert.equal(personal.friendList.length,0);
+    
   })
   
 
