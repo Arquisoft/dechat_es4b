@@ -35,6 +35,7 @@ auth.trackSession(async session => {
     $('#loading-gif').removeClass('hidden');
 
     personal.loadNames(session.webId).then(name => {
+      personal.loadInbox();
       $('#user-name').text(name);
       $('#nav-login-btn').addClass('hidden');
     });
@@ -77,7 +78,15 @@ function afterChatOption() {
 $('#new-btn').click(async () => { 
   if (personal.username) {
     afterChatOption();
+    
     $('#possible-people').empty();
+    core.getChatGroups(personal).then(groupNames => {
+      for(const chat of groupNames) {
+        core.getChatName(chat).then(chatName => {
+          $('#possible-people').append('<option value='+chatName+'>'+chatName+'</option>');
+        });       
+      }
+    });
     for await (const friend of personal.friendList) {
         $('#possible-people').append('<option value='+friend.username+'>'+friend.username+'</option>');
     }
@@ -115,7 +124,6 @@ $('#create-button').click(async () => {
   $('#create-new-group').addClass('hidden');
   // CREAR EL GRUPO AQUI
   core.createGroup(personal, friendsGroup);
-  console.log(groupName, friendsGroup);
 });
 
 $('#start-new-chat-btn').click(async () => {
