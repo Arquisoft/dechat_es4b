@@ -24,6 +24,8 @@ project.
 
 * *Travis*: is a hosted, distributed continuous integration service used to build and test software projects hosted at GitHub.
 
+* *Cucumber*: it runs automated acceptance tests written in a behavior-driven development style
+
 
   
 === Solution Aproaches
@@ -31,4 +33,6 @@ project.
 Once we started to do the project of the chat, we took some direct solutions. We started to programming 
 in Javascript based in the project of a Solid Chess.  We will implement some integration test with Travis to take advantage of
 the continuous integration service using Mocha and his assertion library to help us to prove and improve the code. We can connect to the pod and 
-we can send messages with Javascript using JQuery.
+we can send messages with Javascript using JQuery. We added some TDD testing with cucumber too.
+The project is implementated in Node.js which is better for us than use Angular for all the problems Angular can have for us
+while Node is not difficult because we know some JavaScript.

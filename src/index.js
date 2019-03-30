@@ -1,24 +1,16 @@
-//const {Loader} = require('semantic-chat');
 const auth = require('solid-auth-client');
 const fc = require('solid-file-client');
-const DataSync = require('../lib/datasync');
 const namespaces = require('../lib/namespaces');
 const { default: data } = require('@solid/query-ldflex');
 const Core = require('../lib/core');
+const DataSync = require('../lib/datasync');
 
 const Personal = require('../lib/personal');
-const Communication = require('../lib/communication');
 
-//const WebRTC = require('../lib/webrtc');
-
-let semanticChat;
-let dataSync = new DataSync(auth.fetch);
-let userDataUrl;
 let refreshIntervalId;
-let selectedTheme = 'default';
 let core = new Core(auth.fetch);
 let personal = new Personal(core);
-let comm = new Communication();
+let dataSync= new DataSync(auth.fetch);
 
 
 $('.login-btn').click(() => {
@@ -31,38 +23,29 @@ $('#logout-btn').click(() => {
 
 $('#refresh-btn').click(checkForNotifications);
 
+$('#open-btn').click(() => {
+  //USE IT FOR TESTING
+});
 
-/**
- * This method does the necessary updates of the UI when the different Chat options are shown.
- */
-function setUpForEveryChatOption() {
-  $('#chat-loading').removeClass('hidden');
-  $('#chat').removeClass('hidden');
-}
+
 
 auth.trackSession(async session => {
   const loggedIn = !!session;
-
-  //$('#nav-item dropdown').addClass('hidden');
 
   if (loggedIn) {
     $('#chat-options').addClass('hidden');
     $('#loading-gif').removeClass('hidden');
 
     personal.loadNames(session.webId).then(name => {
+      personal.loadInbox();
       $('#user-name').text(name);
       $('#nav-login-btn').addClass('hidden');
-      //$('#nav-item dropdown').removeClass('hidden');
-      console.log("NOMBRES CARGADOS");   
     });
 
     personal.loadFriendList(session.webId).then(() => {
-      console.log("ESTAN CARGADOS");
       $('#chat-options').removeClass('hidden');
       $('#loading-gif').addClass('hidden');
     });
-
-    //await personal.loadInbox();
 
     $('#user-menu').removeClass('hidden');
     $('#login-required').modal('hide');  
@@ -97,14 +80,20 @@ function afterChatOption() {
 $('#new-btn').click(async () => { 
   if (personal.username) {
     afterChatOption();
+    
     $('#possible-people').empty();
+    core.getChatGroups(personal).then(groupNames => {
+      for(const chat of groupNames) {
+        $('#possible-people').append('<option value='+chat.file.url+'>'+chat.name+'</option>');      
+      }
+    });
     for await (const friend of personal.friendList) {
         $('#possible-people').append('<option value='+friend.username+'>'+friend.username+'</option>');
     }
     
     $("#data-name").keydown(function (e) {
       if (e.keyCode == 13) {
-        comm.sendMessage(personal, core);
+        core.sendMessage(personal);
       }
     });
     $('#new-chat-options').removeClass('hidden');
@@ -113,8 +102,32 @@ $('#new-btn').click(async () => {
   }
 });
 
+$('#create-group').click(async () => { 
+  if (personal.username) {
+    afterChatOption();
+    $('#check-people-group').empty();
+    for await (const friend of personal.friendList) {
+      $('#check-people-group').append('<input class="form-check-input" type="checkbox" id="'+friend.username+'"><label class="form-check-label" for="'+friend.username+'">'+friend.username+'</label><br>');
+    }
+    $('#create-new-group').removeClass('hidden');
+  } else {
+    $('#login-required').modal('show');
+  }
+});
+
+$('#create-button').click(async () => { 
+  var friendsGroup = new Array();
+  for await (const friend of personal.friendList) {
+    if($('#'+friend.username).prop('checked'))
+      friendsGroup.push(friend);
+  }
+  $('#create-new-group').addClass('hidden');
+  // CREAR EL GRUPO AQUI
+  core.createGroup(personal, friendsGroup);
+});
+
 $('#start-new-chat-btn').click(async () => {
-   await comm.sendMessage(personal, core);
+   await core.sendMessage(personal);
 });
 
 
@@ -125,12 +138,13 @@ $('#start-new-chat-btn').click(async () => {
  * @returns {Promise<void>}
  */
 async function checkForNotifications() {
-  if($("#possible-people").val() != "")
-    await comm.loadMessages(personal.username);
+  var length = $('#mySelectList > option').length;
+  if(length === 0)
+    await core.loadMessages(personal);
 }
 
 $('#clear-inbox-btn').click(async () => {
-  await comm.clearInbox(core, personal);
+  await personal.clearInbox(dataSync);
 });
 
 
@@ -143,14 +157,10 @@ $('.btn-cancel').click(() => {
   $('#how-it-works').removeClass('hidden');
 });
 
+$("#cancel-group-menu").click(() => {
+  $('#create-new-group').addClass('hidden');
+});
 
-
-
-
-
-
-$("#possible-people-btn").click( async () => comm.loadMessages(personal.username));
-
-
+$("#possible-people-btn").click( async () => core.loadMessages(personal));
 
 

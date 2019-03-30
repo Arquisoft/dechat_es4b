@@ -1,0 +1,20 @@
+[[section-quality-scenarios]]
+== Quality Requirements
+
+
+=== Quality Tree
+
+- Availability: the system will have to be available most of the time
+- Maintainability: software will change and to be able to do these changes software should be manteinable
+- Usability: everyone should use the app whithout problems and fast
+- Testability: all software must be testable
+
+A first version of the Quality Tree:
+
+image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/docs/images/first_quality_tree.png[align="center"]
+
+*TO BE DONE*
+
+=== Quality Scenarios
+
+*TO BE DONE*

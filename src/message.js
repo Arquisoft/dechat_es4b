@@ -1,40 +1,46 @@
 module.exports = class Message {
-  constructor(content,date,sender) {
-    this.content = content;
-	this.sender = sender;
-	if (date==null)
-		this.date = new Date();
+  constructor(sender, receiver, content) {
+    this._sender = sender;
+    this._receiver = receiver;
+    this._content = content;
+  }
+
+  constructor(sender, receiver, content, dateTime) {
+    this._sender = sender;
+    this._receiver = receiver;
+    this._content = content;
+    this._dateTime = dateTime;
   }
 
   get sender() {
-    return this.sender;
+    return this._sender;
   }
 
   set sender(newSender) {
-    this.sender = newSender;
+    this._sender = newSender;
+  }
+
+  get dateTime() {
+    return this._dateTime;
+  }
+
+  set sender(newDateTime) {
+    this._dateTime = newDateTime;
   }
 
   get receiver() {
-    return this.receiver;
+    return this._receiver;
   }
 
   set receiver(newReceiver) {
-    this.receiver = newReceiver;
+    this._receiver = newReceiver;
   }
 
   get content() {
-    return this.content;
+    return this._content;
   }
 
   set sender(newContent) {
-    this.content = newContent;
+    this._content = newContent;
   }
-  
-    serialize(){
-        return JSON.stringify({
-            "sch:text":this.content,
-            "sch:dateSent":this.date,
-			"sch:sender":this.sender
-        });
-	}
 }
