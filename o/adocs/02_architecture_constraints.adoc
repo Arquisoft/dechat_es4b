@@ -1,0 +1,43 @@
+[[section-architecture-constraints]]
+== Architecture Constraints
+
+
+
+
+
+
+=== Introduction
+
+There are some constraints that limit the way we can implement our application. These constraints are different in type and scope, some of them are technical,some are organizational and others are conventions. The following tables detail these constraints.
+
+
+=== Tables
+
+.Technical Constraints
+[options="header"]
+|===
+|Constraint|Explanation      
+|Decentralized architecture  |We will use SOLID technology so user data can't be centralized on a server. User data
+is not included in the application, so each user must be the one who keeps their information and the information they are sent.
+According to SOLID, that information will be stored in a POD
+|===
+
+.Organitazional and political constraints
+[options="header"]
+|===
+|Constraint|Explanation      
+|Use Git as version control system   |  Code evolution is going to be controlled by Git, leading to a colaborative development, allowing the team
+to have different code versions and to know exactly who changed the code in each moment.
+|Use GitHub as Configuration Management system | Our project must be managed using GitHub so we can be well organized as a team
+know who did any change on the code and of course, GitHub makes easier the colaborative development.
+|Time restriction   | A deadline date is set for completion of the project and there are some points in which project's progress will be reviewed. The deadline for our team is May 3rd
+|Budget | Budget is not existant, so we have to limit ourselves to the use of free tools.
+|===
+
+.Conventions
+[options="header"]
+|===
+|Constraint|Explanation      
+|Use of Arc42 template for documentation| We must use this template to maintain an order and make sure than anyone who reads it can find what they are looking for,  knowing the section in which it is located    
+|===
+
