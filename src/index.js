@@ -3,12 +3,14 @@ const fc = require('solid-file-client');
 const namespaces = require('../lib/namespaces');
 const { default: data } = require('@solid/query-ldflex');
 const Core = require('../lib/core');
+const DataSync = require('../lib/datasync');
 
 const Personal = require('../lib/personal');
 
 let refreshIntervalId;
 let core = new Core(auth.fetch);
 let personal = new Personal(core);
+let dataSync= new DataSync(auth.fetch);
 
 
 $('.login-btn').click(() => {
@@ -82,9 +84,7 @@ $('#new-btn').click(async () => {
     $('#possible-people').empty();
     core.getChatGroups(personal).then(groupNames => {
       for(const chat of groupNames) {
-        core.getChatName(chat).then(chatName => {
-          $('#possible-people').append('<option value='+chatName+'>'+chatName+'</option>');
-        });       
+        $('#possible-people').append('<option value='+chat.id+'>'+chat.name+'</option>');      
       }
     });
     for await (const friend of personal.friendList) {
@@ -144,7 +144,7 @@ async function checkForNotifications() {
 }
 
 $('#clear-inbox-btn').click(async () => {
-  await core.clearInbox(core, personal);
+  await personal.clearInbox(dataSync);
 });
 
 
