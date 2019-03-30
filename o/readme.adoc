@@ -1,0 +1,29 @@
+= dechatjs_4B
+
+image:https://travis-ci.org/Arquisoft/dechat_es4b.svg?branch=master["Build Status", link="https://travis-ci.org/Arquisoft/dechat_es4b"]
+image:https://coveralls.io/repos/github/Arquisoft/dechat_es4b/badge.svg["Coverage status", link="https://coveralls.io/github/Arquisoft/dechat_es4b"]
+image:https://api.codacy.com/project/badge/Grade/da6fef0ea42a4139b6a7535530ce3466["Codacy code quality", link="https://www.codacy.com/app/jelabra/dechatjs_0?utm_source=github.com&utm_medium=referral&utm_content=Arquisoft/dechatjs_0&utm_campaign=Badge_Grade"]
+
+
+
+== Introduction
+The project consists in the development of a decentralized chat. The objetive of this chat is to provide a service in which the messages are not stored in a server but in each one of the nodes (users) of the system. The idea behind is similar to the Peer-to-Peer (P2P) approach for sharing content over the Internet. Documentation is stored on /src/docs folder. 
+
+== Compile and run
+Install node dependencies:
+----
+ npm i
+----
+
+Launch server:
+----
+ start.bat
+----
+
+== Authors:
+- Avello Díaz, Enrique
+- De Benito Álvarez, Carlos
+- Díaz Ceñera, Mario
+- Lera Cuesta, Daniel De
+- Marín Iglesias, Óscar
+- Menéndez De Luarca Trabanco, Lino
