@@ -84,7 +84,7 @@ $('#new-btn').click(async () => {
     $('#possible-people').empty();
     core.getChatGroups(personal).then(groupNames => {
       for(const chat of groupNames) {
-        $('#possible-people').append('<option value='+chat.id+'>'+chat.name+'</option>');      
+        $('#possible-people').append('<option value='+chat.file.url+'>'+chat.name+'</option>');      
       }
     });
     for await (const friend of personal.friendList) {
