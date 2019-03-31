@@ -2,7 +2,7 @@ var chai = require('chai');
 const Message = require('../src/message')
 
 var assert = chai.assert;
-const testMessage = new Message('Juan', 'Ana', 'Buenas noches');
+var testMessage = new Message('Juan', 'Ana', 'Buenas noches');
 
 describe('Message testing', function () {
   it('Message class test sender', function() {
@@ -14,7 +14,23 @@ describe('Message testing', function () {
   })
 
   it('Message class test content', function() {
-    assert.equal(testMessage.content, 'Buenas noches')
+    assert.equal(testMessage.content, "Buenas noches")
+  })
+  
+  
+  it('Message class test set sender', function() {
+	testMessage.sender = "Pedro";
+    assert.equal(testMessage.sender, "Pedro")
+  })
+
+  it('Message class test set receiver', function() {
+	testMessage.receiver = "Manuel";
+    assert.equal(testMessage.receiver, "Manuel")
+  })
+
+  it('Message class test set content', function() {
+	testMessage.content = "Buenos dias";
+    assert.equal(testMessage.content, "Buenos dias");
   })
  
 })

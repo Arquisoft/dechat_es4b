@@ -25,7 +25,7 @@ module.exports = class Message {
     return this._content;
   }
 
-  set sender(newContent) {
+  set content(newContent) {
     this._content = newContent;
   }
 }

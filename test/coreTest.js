@@ -1,6 +1,8 @@
 var chai = require('chai');
+const auth = require('solid-auth-client');
 const Core = require('../lib/core');
-const chat = new Core();
+
+const chat = new Core(auth.fetch);
 var assert = chai.assert;
 
 
@@ -24,15 +26,16 @@ describe('Core testing', function () {
 	   assert.equal(chat.checkNotMe("https://userfortesting.solid.community/profile/card#me","userfortesting"),false);
   })
   
-  it('Friend from list is expected',function() {
+  it("Friend from list is expected",function() {
 	var friend = chat.getFriendOfList(friendList,"enriquead");
 	assert.isNotNull(friend);
   })
   
-  it('Friend does not exist on list',function() {
+  it("Friend does not exist on list",function() {
 	var friend = chat.getFriendOfList(friendList,"thisUserDoesNotExist");
 	assert.isNull(friend);
   })
+  
   
  
   
