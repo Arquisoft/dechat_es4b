@@ -123,7 +123,8 @@ $('#create-button').click(async () => {
   }
   $('#create-new-group').addClass('hidden');
   // CREAR EL GRUPO AQUI
-  core.createGroup(personal, friendsGroup);
+  if(friendsGroup.length > 0 && $('#group-name').val().length > 0 &&  $('#group-name').val().trim().length > 0)
+    core.createGroup(personal, friendsGroup);
 });
 
 $('#start-new-chat-btn').click(async () => {
