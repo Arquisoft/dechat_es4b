@@ -13,12 +13,15 @@ The project consists in the development of a decentralized chat. The objetive of
 Install node dependencies:
 ----
  npm i
+ npm install http-server --global
 ----
 
-Launch server:
+Launch server locally:
 ----
- start.bat
+ npm run build:web
+ http-server
 ----
+The application is available in the IP address shown after previous command.
 
 == Authors:
 - Avello Díaz, Enrique
