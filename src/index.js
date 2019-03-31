@@ -197,7 +197,7 @@ function dropped(e){
 	e.preventDefault();
 	var files = e.dataTransfer.files;
 	for ( var f=0; f<files.length; f++){
-		await core.storePhoto(personal,files[f]);
+		core.storePhoto(personal,files[f]);
 	}
 }
 		// var photoUbication = storePhoto(files[f]);
