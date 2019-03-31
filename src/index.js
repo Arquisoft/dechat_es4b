@@ -197,6 +197,7 @@ function dropped(e){
 	e.preventDefault();
 	var files = e.dataTransfer.files;
 	for ( var f=0; f<files.length; f++){
+		console.log("Storing photo");
 		core.storePhoto(personal,files[f]);
 	}
 }
