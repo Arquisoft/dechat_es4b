@@ -17,4 +17,12 @@ image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/docs/image
 
 === Quality Scenarios
 
-*TO BE DONE*
+Here you can see a little more in depth the main quality scenarios that have already been seen before in the quality tree.
+
+|======================
+| Reference | Quality |Scenario | Priority                                                           
+| 1 | Availability | The system must be accessible most of the time | Hight
+| 2| Maintainability | Software will change and to be able to do these changes software should be manteinable | Hight
+| 3 | Testability | All software must be testable | Hight
+| 4 | Usability| Everyone should use the app whithout problems and fast | Medium
+|======================
