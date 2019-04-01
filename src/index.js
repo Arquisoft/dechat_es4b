@@ -132,6 +132,9 @@ $('#start-new-chat-btn').click(async () => {
 });
 
 
+//Aquí añadiría la funcionalidad al botón
+
+
 
 /**
  * This method checks if a new move has been made by the opponent.
