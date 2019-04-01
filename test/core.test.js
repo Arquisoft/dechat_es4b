@@ -5,6 +5,8 @@ const namespaces = require("../lib/namespaces");
 
 const chat = new Core(auth.fetch);
 var assert = chai.assert;
+const Personal = require('../lib/personal');
+let personal = new Personal(chat);
 
 
 var friendList = new Array();
@@ -40,14 +42,28 @@ describe('Core testing', function () {
   it("Random string generates string",function(){
 	var rdom = chat.randomString(5);
 	assert.equal(rdom.length,5);
+
  
   })
   
-  it("Inbox URL",async function(){
-	  const inboxUrls = [];
-		inboxUrls["https://enriquead.solid.community/profile/card#me"]= await chat.getInboxUrl("https://enriquead.solid.community/profile/card#me");
-    
+  it("Someone is not my friend",function(){
+	var result = chat.isFriend ("https://userfortesting.solid.community","https://enriquead.solid.community/profile/card#me");
+	assert.equal(result,false);
+	  
   })
+  
+  
+  it("Obtain chat groups",async function(){
+	 var username = await personal.loadNames("https://enriquead.solid.community/profile/card#me")
+	 console.log(username);
+	 await personal.loadInbox();
+	 var chats = await chat.getChatGroups(personal);
+	 assert.isNotNull(chats);
+	  
+  })
+
+  
+  
 
   
   
