@@ -1,6 +1,7 @@
 var chai = require('chai');
 const auth = require('solid-auth-client');
 const Core = require('../lib/core');
+const namespaces = require("../lib/namespaces");
 
 const chat = new Core(auth.fetch);
 var assert = chai.assert;
@@ -36,8 +37,6 @@ describe('Core testing', function () {
 	assert.isNull(friend);
   })
   
-  
- 
   
 
 })

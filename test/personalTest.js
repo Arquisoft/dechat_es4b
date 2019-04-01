@@ -1,12 +1,20 @@
 var chai = require('chai');
 const Core = require('../lib/core');
 const Personal = require ('../lib/personal');
-const chat = new Core();
+const auth = require('solid-auth-client');
+const chat = new Core(auth.fetch);
 const personal = new Personal(chat);
 var assert = chai.assert;
 
 
 describe('Simple personal testing', function () {
+	
+	
+	it('Test constructor', function() {
+	 
+	  assert.isNotNull(personal);
+    
+  })
   
     it('Clear info test', function() {
        personal.username = "NameToClear";
@@ -21,6 +29,10 @@ describe('Simple personal testing', function () {
        assert.equal(personal.friendList.length,0);
     
   })
+  
+  
+  
+  
   
 
 })
