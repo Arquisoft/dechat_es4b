@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack && node loader.js",
-    "test": "nyc ./node_modules/mocha/bin/_mocha \"./test/*test.js\" --report lcovonly -- -R spec",
+    "test": "nyc --reporter=html --reporter=text mocha",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "build:web": "webpack --config webpack.config.js",
     "doc": "./node_modules/.bin/jsdoc -c jsdoc.json ./lib"
