@@ -66,11 +66,14 @@
             </div>
 			      <div class="form-group">
 				      <label for="sent-messages">Messages:</label>
-					  <div class="container">
+					  <div id="drop_zone" accept="image/*" class="container">
 						<div class="messaging">
 							<div class="inbox_msg">
 								<div class="mesgs" id="messages">
-									<div class="msg_history">
+									<div class="msg_history" id="addMessages">										
+									</div>
+									
+									<div class="msg_history" id="addMessagesGroup">
 											<div class="incoming_msg" id="incoming_msg">	
 												<div class="received_msg">
 													<div class="received_withd_msg" id="addOurMessages">
@@ -82,6 +85,8 @@
 												</div>
 											</div>
 									</div>
+									
+									
 									<div class="type_msg">
 										<div class="input_msg_write">
 											<input type="text" name="data-name" id="data-name" class="write_msg" placeholder="Type a message">

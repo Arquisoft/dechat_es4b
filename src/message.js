@@ -1,16 +1,16 @@
 module.exports = class Message {
-  constructor(sender, receiver, content) {
+  constructor(sender, dateTime, content) {
     this._sender = sender;
-    this._receiver = receiver;
+    this._dateTime = dateTime;
     this._content = content;
   }
 
-  constructor(sender, receiver, content, dateTime) {
-    this._sender = sender;
-    this._receiver = receiver;
-    this._content = content;
-    this._dateTime = dateTime;
-  }
+  // constructor(sender, receiver, content, dateTime) {
+    // this._sender = sender;
+    // this._receiver = receiver;
+    // this._content = content;
+    // this._dateTime = dateTime;
+  // }
 
   get sender() {
     return this._sender;
