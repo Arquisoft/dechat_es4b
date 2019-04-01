@@ -24,7 +24,7 @@ module.exports = class Message {
     return this._dateTime;
   }
 
-  set sender(newDateTime) {
+  set dateTime(newDateTime) {
     this._dateTime = newDateTime;
   }
 

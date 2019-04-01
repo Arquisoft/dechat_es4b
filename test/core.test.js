@@ -37,6 +37,19 @@ describe('Core testing', function () {
 	assert.isNull(friend);
   })
   
+  it("Random string generates string",function(){
+	var rdom = chat.randomString(5);
+	assert.equal(rdom.length,5);
+ 
+  })
+  
+  it("Inbox URL",async function(){
+	  const inboxUrls = [];
+		inboxUrls["https://enriquead.solid.community/profile/card#me"]= await chat.getInboxUrl("https://enriquead.solid.community/profile/card#me");
+    
+  })
+
+  
   
 
 })
