@@ -23,8 +23,9 @@ sent. A POD can store photos, text, contacts or calendar events and many other t
 | SOLID |  Technology whose goal is to change the way applications interact with user data, giving more decision-making
  power to users as they are able to decide where their data is stored or who can read it or write it.
 | SOLID file client | Library that provides a simple interface for logging in and out of a Solid data store, maintaining a persistent session, and for managing files and folders.
-| TDD  | Software development process that relies on the repetition of a very short development cycle: requirements are turned into very specific test cases, then the software is improved to pass the new tests, only.
 | Stakeholder |Person with an interest or concern in something, in the area we are working on, the decentralized chat.
+| TDD  | Software development process that relies on the repetition of a very short development cycle: requirements are turned into very specific test cases, then the software is improved to pass the new tests, only.
+| Turtle | is a syntax and file format for expressing data in the Resource Description Framework (RDF) data model.
 | Type-Script | An open-source programming language, is a strict 
 syntactical superset of JavaScript, and adds optional static typing to the language.
 | User | A person who uses a particular application or computer system.
