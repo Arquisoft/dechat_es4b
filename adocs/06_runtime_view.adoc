@@ -11,3 +11,15 @@ Then the user enter his credentials.
 
 The server approve or deny the authentication and the user can start chatting.
 
+
+Chat with added friends
+
+Users use the application to chat with their friends.
+
+User 1 sends the message to user 2.
+
+The application of user 1 post the message on the user 1’s pod.
+
+User 2’s application requests received messages to the pod. The pod makes them available to the application.
+
+User 2 reads the recieved messages from the application.
