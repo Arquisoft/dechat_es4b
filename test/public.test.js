@@ -28,9 +28,9 @@ describe('Private communication testing', function () {
       var friendList = new Array();
       
       
-      friendList.push({username:"troken11",
-                        inbox: "https://troken11.solid.community/inbox/",
-                        webId: "https://troken11.solid.community/profile/card#me"});
+      friendList.push({username:"enriquead",
+                        inbox: "https://enriquead.solid.community/inbox/",
+                        webId: "https://enriquead.solid.community/profile/card#me"});
        friendList.push({username:"enriquead",
                         inbox: "https://enriquead.solid.community/inbox/",
                         webId: "https://enriquead.solid.community/profile/card#me"});
