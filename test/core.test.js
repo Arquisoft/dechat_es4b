@@ -54,9 +54,9 @@ describe('Core testing', function () {
   
   
   it("Obtain chat groups",async function(){
-	 var username = await personal.loadNames("https://enriquead.solid.community/profile/card#me")
+	 var username = await personal.loadNames("https://mariodiaz98.solid.community/profile/card#me")
 	 console.log(username);
-	 await personal.loadInbox();
+	 var loaded = await personal.loadInbox();
 	 var chats = await chat.getChatGroups(personal);
 	 assert.isNotNull(chats);
 	  
