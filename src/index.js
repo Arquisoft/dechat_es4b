@@ -93,7 +93,8 @@ $('#new-btn').click(async () => {
     
     $("#data-name").keydown(function (e) {
       if (e.keyCode == 13) {
-        core.sendMessage(personal);
+        core.sendMessage(personal,$("#data-name").val());
+		("#data-name").val("");
       }
     });
     $('#new-chat-options').removeClass('hidden');
@@ -128,7 +129,8 @@ $('#create-button').click(async () => {
 });
 
 $('#start-new-chat-btn').click(async () => {
-   await core.sendMessage(personal);
+   await core.sendMessage(personal,$("#data-name").val());
+   ("#data-name").val("")
 });
 
 
