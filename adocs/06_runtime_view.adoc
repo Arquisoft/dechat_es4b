@@ -1,5 +1,13 @@
 [[section-runtime-view]]
 == Runtime View
 
-*TO BE DONE*
+Login
+
+Users must log in with their personal data to access the chat.
+
+First, the user clicks the login button, the application asks the user how to login: solid community account...
+
+Then the user enter his credentials.
+
+The server approve or deny the authentication and the user can start chatting.
 
