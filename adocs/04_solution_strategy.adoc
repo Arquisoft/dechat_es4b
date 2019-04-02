@@ -26,6 +26,9 @@ project.
 
 * *Travis*: is a hosted, distributed continuous integration service used to build and test software projects hosted at GitHub.
 
+* *Turtle*:  is a syntax and file format for expressing data in the Resource Description Framework data model, we need it to store information
+on the PODs.
+
 
 
 

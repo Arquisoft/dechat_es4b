@@ -131,10 +131,13 @@ $('#start-new-chat-btn').click(async () => {
    await core.sendMessage(personal);
 });
 
+//////////////////////////////////////////
+$('#addFriend-btn).click(async () =>{
+	var nombre = $('#friend-name).value();
+	personal.addFriend(nombre);
+});
 
-//Aquí añadiría la funcionalidad al botón
-
-
+//////////////////////////////////////////
 
 /**
  * This method checks if a new move has been made by the opponent.
