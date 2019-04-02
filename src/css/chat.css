@@ -143,3 +143,84 @@ img{ max-width:100%;}
 #dateMessage{
 	margin-bottom: 20px;
 }
+.emoji-button {
+    height: 35px;
+    width: 35px;
+    background-image: url('../img/emotes/sunglasses.png');
+    background-color: #0d4261;
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#blush {
+    background-image: url('../img/emotes/blush.png');
+}
+#eyebrow {
+  background-image: url('../img/emotes/eyebrow.png');
+}
+#facehearts {
+  background-image: url('../img/emotes/facehearts.png');
+}
+#hearteyes {
+  background-image: url('../img/emotes/hearteyes.png');
+}
+#hugging {
+  background-image: url('../img/emotes/hugging.png');
+}
+#kissing {
+  background-image: url('../img/emotes/kissing.png');
+}
+#laughing {
+  background-image: url('../img/emotes/laughing.png');
+}
+#neutral {
+  background-image: url('../img/emotes/neutral.png');
+}
+#nomouth {
+  background-image: url('../img/emotes/nomouth.png');
+}
+#openmouth {
+  background-image: url('../img/emotes/openmouth.png');
+}
+#persevere {
+  background-image: url('../img/emotes/persevere.png');
+}
+#rofl {
+  background-image: url('../img/emotes/rofl.png');
+}
+#rolling {
+  background-image: url('../img/emotes/rolling.png');
+}
+#sleeping {
+  background-image: url('../img/emotes/sleeping.png');
+}
+#smile {
+  background-image: url('../img/emotes/smile.png');
+}
+#smiley {
+  background-image: url('../img/emotes/smiley.png');
+}
+#smirk {
+  background-image: url('../img/emotes/smirk.png');
+}
+#stareyes {
+  background-image: url('../img/emotes/stareyes.png');
+}
+#sunglasses {
+  background-image: url('../img/emotes/sunglasses.png');
+}
+#sweatsmile {
+  background-image: url('../img/emotes/sweatsmile.png');
+}
+#thinking {
+  background-image: url('../img/emotes/thinking.png');
+}
+#wink {
+  background-image: url('../img/emotes/wink.png');
+}
+#yum {
+  background-image: url('../img/emotes/yum.png');
+}
+#zipper {
+  background-image: url('../img/emotes/zipper.png');
+}
