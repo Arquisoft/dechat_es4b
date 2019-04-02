@@ -21,7 +21,7 @@ describe('Private communication testing', function () {
 	assert.equal(rdom.length,5);
 
   }) 
-  it("Create core file",function(){
+  it("Create core file",async function(){
       personal.username = "mariodiaz98";
       var rand = publicComm.randomString(6);
       var groupName = "Testing group"+publicComm.randomString(3);
@@ -36,6 +36,8 @@ describe('Private communication testing', function () {
                         webId: "https://enriquead.solid.community/profile/card#me"});
       
      publicComm.createCoreFile(personal,rand,groupName,friendList);
+     var comunicacion = await publicComm.communicationEstablished(personal.username,friendList[0]);
+      assert.equal(comunicacion,true);
 
   })   
 })

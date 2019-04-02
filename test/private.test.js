@@ -20,13 +20,17 @@ describe('Private communication testing', function () {
  
   })
     
-  it("Establish private communication",function(){
+  it("Establish private communication",async function(){
       personal.username = "enriquead";
       var receiver = {username:"troken11",
                         inbox: "https://troken11.solid.community/inbox/",
                         webId: "https://troken11.solid.community/profile/card#me"}
-      privateComm.sendFirstMessage(personal,receiver,"Test");
-      
-      
+      privateComm.sendFirstMessage(personal,receiver,"Test");   
+      var comunicacion = await privateComm.communicationEstablished(personal.username,receiver);
+      assert.equal(comunicacion,true);
   })  
+    
+  
+
+   
 })
