@@ -42,5 +42,11 @@ describe('Private communication testing', function () {
      
   })   
         
+  it("Loads messages properly",async function(){
+      personal.username = "enriquead";
+      var result = await publicComm.loadMessages(personal,"testurl",true);
+      
+      
+  }) 
       
 })

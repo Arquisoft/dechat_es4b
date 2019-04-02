@@ -44,6 +44,11 @@ describe('Simple personal testing', function () {
     
     })
     
+    it('Loads names',async function(){
+        var result = await personal.loadNames("https://enriquead.solid.community/profile/card#me");
+        assert.equal(result,"enriquead");
+    })
+    
     /*WIP
     it("Loads groups",async function(){
         personal.username = "enriquead";  
