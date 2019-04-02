@@ -143,6 +143,10 @@ img{ max-width:100%;}
 #dateMessage{
 	margin-bottom: 20px;
 }
+#emoji-panel{
+    border-style: solid;
+    border-width: thin;
+}
 .emoji-button {
     height: 35px;
     width: 35px;
