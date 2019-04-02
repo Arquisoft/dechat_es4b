@@ -30,6 +30,12 @@ describe('Private communication testing', function () {
       assert.equal(comunicacion,true);
   })  
     
+  it("Loads messages properly",async function(){
+      var result = await privateComm.loadMessages("enriquead","mariodiaz98",true);
+      
+      
+  }) 
+    
   
 
    
