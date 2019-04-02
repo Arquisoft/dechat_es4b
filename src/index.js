@@ -100,6 +100,7 @@ $('#new-btn').click(async () => {
       }
     });
     $('#new-chat-options').removeClass('hidden');
+    $('#emoji-panel').removeClass('hidden');
   } else {
     $('#login-required').modal('show');
   }
@@ -163,6 +164,7 @@ $('.btn-cancel').click(() => {
   $('#continue-chat-options').addClass('hidden');
   $('#chat-options').removeClass('hidden');
   $('#how-it-works').removeClass('hidden');
+  $('#emoji-panel').addClass('hidden');
 });
 
 $("#cancel-group-menu").click(() => {
