@@ -93,7 +93,10 @@ $('#new-btn').click(async () => {
     
     $("#data-name").keydown(function (e) {
       if (e.keyCode == 13) {
-        core.sendMessage(personal);
+        var message = $("#data-name").val();
+        var receiver = $("#possible-people option:selected").val();
+        $("#data-name").val("");
+        core.sendMessage(personal, receiver, message);
       }
     });
     $('#new-chat-options').removeClass('hidden');
@@ -128,7 +131,10 @@ $('#create-button').click(async () => {
 });
 
 $('#start-new-chat-btn').click(async () => {
-   await core.sendMessage(personal);
+	var message = $("#data-name").val();
+    var receiver = $("#possible-people option:selected").val();
+    $("#data-name").val("");
+	core.sendMessage(personal, receiver, message);
 });
 
 
@@ -140,8 +146,9 @@ $('#start-new-chat-btn').click(async () => {
  */
 async function checkForNotifications() {
   var length = $('#mySelectList > option').length;
-  if(length === 0)
-    await core.loadMessages(personal);
+  if(length === 0){
+    await core.loadMessages(personal, $("#possible-people option:selected").val(),false);
+  }   
 }
 
 $('#clear-inbox-btn').click(async () => {
@@ -162,7 +169,7 @@ $("#cancel-group-menu").click(() => {
   $('#create-new-group').addClass('hidden');
 });
 
-$("#possible-people-btn").click( async () => core.loadMessages(personal));
+$("#possible-people-btn").click( async () => core.loadMessages(personal,$("#possible-people option:selected").val(),false));
 
  /////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////// /////////////////////////////////////////////////////////////////////////////////////////
