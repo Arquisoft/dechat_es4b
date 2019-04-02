@@ -16,6 +16,15 @@ friendList.push({username: "userfortesting",
 				inbox: "https://userfortesting.solid.community/inbox/"});
 
 describe('Core testing', function () {
+    
+  it('Getters are working',function(){
+      assert.isNotNull(chat.getInboxUrls());
+      assert.equal(chat.getFetch(),auth.fetch);
+      assert.isNotNull(chat.getAlreadyCheckedResources());
+      assert.isNotNull(chat.getGroupCommunication());
+      assert.isNotNull(chat.getPrivateCommunication());
+      
+  })
   
   it('getUsername test', function() {
 	   assert.equal(chat.getUsername("https://userfortesting.solid.community"),"userfortesting");

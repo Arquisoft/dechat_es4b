@@ -16,6 +16,12 @@ describe('Simple personal testing', function () {
 	 
 	  assert.isNotNull(personal);
     
+    })
+    it('Getters are working',function(){
+      assert.isDefined(personal.getWebIdUrl());
+      assert.equal(personal.getCore(),chat);
+      assert.isNotNull(personal.getFriendList());
+     
   })
   
     it('Clear info test', function() {
