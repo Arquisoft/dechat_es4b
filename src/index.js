@@ -93,7 +93,7 @@ $('#new-btn').click(async () => {
     
     $("#data-name").keydown(function (e) {
       if (e.keyCode == 13) {
-        core.sendMessage(personal,$("#data-name").val());
+        await core.sendMessage(personal,$("#data-name").val());
 		("#data-name").val("");
       }
     });

@@ -25,7 +25,7 @@ describe('Private communication testing', function () {
       var receiver = {username:"troken11",
                         inbox: "https://troken11.solid.community/inbox/",
                         webId: "https://troken11.solid.community/profile/card#me"}
-      privateComm.sendFirstMessage(personal,receiver);
+      privateComm.sendFirstMessage(personal,receiver,"Test");
       
       
   })  

@@ -42,7 +42,15 @@ describe('Simple personal testing', function () {
        var name = await personal.clearInbox(dataSync)
        assert.isNotNull(dataSync);
     
-  })
+    })
+    
+    /*WIP
+    it("Loads groups",async function(){
+        personal.username = "enriquead";  
+        await personal.loadInbox();
+        await personal.loadGroupNames();
+        assert.isNotNull(personal.groupsLoaded);
+    })*/
   
   
   
