@@ -73,7 +73,7 @@ img{ max-width:100%;}
   width: 92%;
  }
  .received_withd_msg p {
-  background: #ebebeb none repeat scroll 0 0;
+  background: #2ad1d3 none repeat scroll 0 0;
   border-radius: 3px;
   color: #646464;
   font-size: 14px;
@@ -113,14 +113,13 @@ img{ max-width:100%;}
 .input_msg_write input {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: medium none;
-  color: black;
+  color: #368b8c;
   font-size: 15px;
   min-height: 48px;
   width: 100%;
 }
 
-.type_msg {border-top: 1px solid black;position: relative;background-color: white;
-	border-radius: 50px;
+.type_msg {position: relative;
 	}
 
 
@@ -147,7 +146,10 @@ img{ max-width:100%;}
 
 
 #data-name{
-	color: white;
+	color: #225c5d;
+	border: medium none;
+	background-color: white;
+	border-radius: 50px;
 }
 
 #userName{
@@ -159,6 +161,10 @@ img{ max-width:100%;}
 #emoji-panel{
     border-style: solid;
     border-width: thin;
+	background-color: #0d4261;
+	border-radius: 10px;
+	padding: 3px;
+	margin:10px;
 }
 #drop_zone{	
 	background-image: url("../img/fondo.jpg");
