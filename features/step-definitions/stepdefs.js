@@ -87,7 +87,7 @@ module.exports = function () {
 
 
     this.When(/^user clicks on "([^"]*)"$/, function (param) {
-        driver.wait(until.elementsLocated(by.xpath('//*[@id="possible-people"]')), 5000).then(() => {
+        driver.wait(until.elementsLocated(by.xpath('//*[@id="new-chat-options" and @class="col-6 hidden"]')), 5000).then(() => {
             return driver.findElement(by.xpath('//*[@id="new-btn"]')).click()
         })
     })
