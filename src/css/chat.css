@@ -1,4 +1,7 @@
-.container{max-width:1170px; margin:auto;}
+.container{
+	max-width:1170px; 
+	margin:auto;
+}
 img{ max-width:100%;}
 .inbox_people {
   background: #f8f8f8 none repeat scroll 0 0;
@@ -7,7 +10,6 @@ img{ max-width:100%;}
   width: 40%; border-right:1px solid #c4c4c4;
 }
 .inbox_msg {
-  border: 1px solid #c4c4c4;
   clear: both;
   overflow: hidden;
 }
@@ -111,16 +113,18 @@ img{ max-width:100%;}
 .input_msg_write input {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: medium none;
-  color: #4c4c4c;
+  color: black;
   font-size: 15px;
   min-height: 48px;
   width: 100%;
 }
 
-.type_msg {border-top: 1px solid #c4c4c4;position: relative;}
+.type_msg {border-top: 1px solid black;position: relative;background-color: white;
+	border-radius: 50px;
+	}
 
 
-.messaging { padding: 0 0 50px 0;}
+.messaging { padding: 50px 0 50px 0;}
 .msg_history {
   overflow-y: auto;
 }
@@ -156,6 +160,11 @@ img{ max-width:100%;}
     border-style: solid;
     border-width: thin;
 }
+#drop_zone{	
+	background-image: url("../img/fondo.jpg");
+    background-repeat: repeat;
+}
+
 .emoji-button {
     height: 35px;
     width: 35px;
