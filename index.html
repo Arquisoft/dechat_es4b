@@ -84,14 +84,41 @@
 												<div class="sent_msg" id="addOtherMessages">
 												</div>
 											</div>
-									</div>
-									
-									
+									</div>								
 									<div class="type_msg">
+										<div id="emoji-panel" class="emoji-panel" hidden=true>
+											<input type="button" class="emoji-button" id="blush"/>
+												<input type="button" class="emoji-button" id="eyebrow"/>
+												<input type="button" class="emoji-button" id="facehearts"/>
+												<input type="button" class="emoji-button" id="hearteyes"/>
+												  <input type="button" class="emoji-button" id="hugging"/>
+												  <input type="button" class="emoji-button" id="kissing"/>
+												  <input type="button" class="emoji-button" id="laughing"/>
+												  <input type="button" class="emoji-button" id="neutral"/>
+												  <input type="button" class="emoji-button" id="nomouth"/>
+												  <input type="button" class="emoji-button" id="openmouth"/>
+												  <input type="button" class="emoji-button" id="persevere"/>
+												  <input type="button" class="emoji-button" id="rofl"/>
+												  <input type="button" class="emoji-button" id="rolling"/>
+												  <input type="button" class="emoji-button" id="sleeping"/>
+												  <input type="button" class="emoji-button" id="smile"/>
+												  <input type="button" class="emoji-button" id="smiley"/>
+												  <input type="button" class="emoji-button" id="smirk"/>
+												  <input type="button" class="emoji-button" id="stareyes"/>
+												  <input type="button" class="emoji-button" id="sunglasses"/>
+												  <input type="button" class="emoji-button" id="sweatsmile"/>
+												  <input type="button" class="emoji-button" id="thinking"/>
+												  <input type="button" class="emoji-button" id="wink"/>
+												  <input type="button" class="emoji-button" id="yum"/>
+												  <input type="button" class="emoji-button" id="zipper"/>
+										  </div>
 										<div class="input_msg_write">
 											<input type="text" name="data-name" id="data-name" class="write_msg" placeholder="Type a message">
-											<button id="start-new-chat-btn" type="submit" class="msg_send_btn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button> 							
-										</div>
+											<div id="btnMessagesSend">
+												<button id="openEmojiBtn" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-smile-o" aria-hidden="true"></i></button>
+												<button id="start-new-chat-btn" type="submit" class="msg_send_btn"><i id = "iconMsg" class="fa fa-paper-plane-o" aria-hidden="true"></i></button> 							
+											</div>
+										</div>											
 									</div>
 								</div>
 							</div>
@@ -127,46 +154,7 @@
         </div>
       </div>
 
-      <div id="emoji-panel" class="emoji-panel hidden">
-        <table id="matrix">
-          <tr>
-            <td><input type="button" class="emoji-button" id="blush"/></td>
-            <td><input type="button" class="emoji-button" id="eyebrow"/></td>
-            <td><input type="button" class="emoji-button" id="facehearts"/></td>
-            <td><input type="button" class="emoji-button" id="hearteyes"/></td>
-          </tr>
-          <tr>
-              <td><input type="button" class="emoji-button" id="hugging"/></td>
-              <td><input type="button" class="emoji-button" id="kissing"/></td>
-              <td><input type="button" class="emoji-button" id="laughing"/></td>
-              <td><input type="button" class="emoji-button" id="neutral"/></td>
-          </tr>
-          <tr>
-              <td><input type="button" class="emoji-button" id="nomouth"/></td>
-              <td><input type="button" class="emoji-button" id="openmouth"/></td>
-              <td><input type="button" class="emoji-button" id="persevere"/></td>
-              <td><input type="button" class="emoji-button" id="rofl"/></td>
-          </tr>
-          <tr>
-              <td><input type="button" class="emoji-button" id="rolling"/></td>
-              <td><input type="button" class="emoji-button" id="sleeping"/></td>
-              <td><input type="button" class="emoji-button" id="smile"/></td>
-              <td><input type="button" class="emoji-button" id="smiley"/></td>
-          </tr>
-          <tr>
-              <td><input type="button" class="emoji-button" id="smirk"/></td>
-              <td><input type="button" class="emoji-button" id="stareyes"/></td>
-              <td><input type="button" class="emoji-button" id="sunglasses"/></td>
-              <td><input type="button" class="emoji-button" id="sweatsmile"/></td>
-          </tr>
-          <tr>
-              <td><input type="button" class="emoji-button" id="thinking"/></td>
-              <td><input type="button" class="emoji-button" id="wink"/></td>
-              <td><input type="button" class="emoji-button" id="yum"/></td>
-              <td><input type="button" class="emoji-button" id="zipper"/></td>
-          </tr>
-        </table>
-      </div>
+      
 
     <div id="how-it-works" class="row justify-content-center">
         <div class="col-6" typeof="SoftwareApplication Chat" about="https://arquisoft.github.io/dechat_es4b/">

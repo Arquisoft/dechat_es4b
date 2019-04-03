@@ -105,6 +105,9 @@ img{ max-width:100%;}
   float: right;
   width: 46%;
 }
+.input_msg_write{
+	display: flex;	
+}
 .input_msg_write input {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: medium none;
@@ -115,7 +118,20 @@ img{ max-width:100%;}
 }
 
 .type_msg {border-top: 1px solid #c4c4c4;position: relative;}
-.msg_send_btn {
+
+
+.messaging { padding: 0 0 50px 0;}
+.msg_history {
+  overflow-y: auto;
+}
+
+#btnMessagesSend{
+  position: absolute;
+  right: 0;
+  margin: 10px;
+}
+
+.msg_send_btn,.emoji_open{	
   background: #05728f none repeat scroll 0 0;
   border: medium none;
   border-radius: 50%;
@@ -123,15 +139,8 @@ img{ max-width:100%;}
   cursor: pointer;
   font-size: 17px;
   height: 33px;
-  position: absolute;
-  right: 0;
-  top: 11px;
-  width: 33px;
 }
-.messaging { padding: 0 0 50px 0;}
-.msg_history {
-  overflow-y: auto;
-}
+
 
 #data-name{
 	color: white;
