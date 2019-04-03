@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
+    <testsuite name="see-friends-to-chat;show-list-of-friends" tests="3" failures="1" skipped="0">
+        <properties>
+            <property name="URI" value="C:/Users/linom/GitHub/dechat_es4b/features/frienlist.feature">
+            </property>
+        </properties>
+        <testcase name="Given user logged with &quot;cuentapruebas&quot; and &quot;monkey&quot;" classname="see-friends-to-chat;show-list-of-friends" time="7.748200531">
+        </testcase>
+        <testcase name="When user clicks on &quot;New chat&quot;" classname="see-friends-to-chat;show-list-of-friends" time="0.000413014">
+        </testcase>
+        <testcase name="Then &quot;linomlt&quot; appers in partner selector menu" classname="see-friends-to-chat;show-list-of-friends" time="0.437581546">
+            <failure message="AssertionError [ERR_ASSERTION]: &apos;&apos; == &apos;linomlt&apos;">AssertionError [ERR_ASSERTION]: &apos;&apos; == &apos;linomlt&apos;
+    at C:\Users\linom\GitHub\dechat_es4b\features\step-definitions\stepdefs.js:97:27
+    at ManagedPromise.invokeCallback_ (C:\Users\linom\GitHub\dechat_es4b\node_modules\selenium-webdriver\lib\promise.js:1384:14)
+    at TaskQueue.execute_ (C:\Users\linom\GitHub\dechat_es4b\node_modules\selenium-webdriver\lib\promise.js:3092:14)
+    at TaskQueue.executeNext_ (C:\Users\linom\GitHub\dechat_es4b\node_modules\selenium-webdriver\lib\promise.js:3075:27)
+    at asyncRun (C:\Users\linom\GitHub\dechat_es4b\node_modules\selenium-webdriver\lib\promise.js:2935:27)
+    at C:\Users\linom\GitHub\dechat_es4b\node_modules\selenium-webdriver\lib\promise.js:676:7
+    at process._tickCallback (internal/process/next_tick.js:68:7)</failure>
+        </testcase>
+    </testsuite>
     <testsuite name="log-in-the-chat;correct-login" tests="2" failures="0" skipped="0">
         <properties>
             <property name="URI" value="C:/Users/linom/GitHub/dechat_es4b/features/login.feature">
             </property>
         </properties>
-        <testcase name="Given user tries to login with valid &quot;cuentaPruebas&quot; and &quot;monkey&quot;" classname="log-in-the-chat;correct-login" time="7.777174659">
+        <testcase name="Given user tries to login with valid &quot;cuentapruebas&quot; and &quot;monkey&quot;" classname="log-in-the-chat;correct-login" time="7.105069406">
         </testcase>
-        <testcase name="Then login successful" classname="log-in-the-chat;correct-login" time="0.081676086">
+        <testcase name="Then login successful as &quot;cuentapruebas&quot;" classname="log-in-the-chat;correct-login" time="0.125547734">
         </testcase>
     </testsuite>
     <testsuite name="log-in-the-chat;wrong-login" tests="2" failures="0" skipped="0">
@@ -15,9 +35,9 @@
             <property name="URI" value="C:/Users/linom/GitHub/dechat_es4b/features/login.feature">
             </property>
         </properties>
-        <testcase name="Given user tries to login with valid &quot;cuentaPruebas&quot; and wrong &quot;fail&quot;" classname="log-in-the-chat;wrong-login" time="7.096222884">
+        <testcase name="Given user tries to login with valid &quot;cuentapruebas&quot; and wrong &quot;fail&quot;" classname="log-in-the-chat;wrong-login" time="6.868602229">
         </testcase>
-        <testcase name="Then login fails and a error message is shown" classname="log-in-the-chat;wrong-login" time="0.0191659">
+        <testcase name="Then login fails and a error message is shown" classname="log-in-the-chat;wrong-login" time="0.020886223">
         </testcase>
     </testsuite>
 </testsuites>
