@@ -4,7 +4,7 @@
 == Deployment View
 
 To use this application you need a computer connected to the Internet.
-At the moment you do not need more permissions than the use of the Internet, we have developed this application for Google Chrome and Firefox, so it is recommended to use these browsers.
+At the moment you do not need more permissions than the use of the Internet, we have developed this application for any browser, but is recommended to use it in Firefox.
 
 === Infrastructure Level 1
 

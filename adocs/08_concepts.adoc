@@ -4,14 +4,20 @@
 This section describes regulation and solution ideas that are relevant in multiple
 parts of our system.
 
+image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/docs/images/crosscuting_concepts.png[align="center"]
+
 === Domain concepts
 
-* *Domain models*
+* *Domain models* We use a domain where we have an index file which depends of libraries, then we have various folders when we
+store testing and documentation.
 
 === User Experience concepts
 
 * *User interface* As user interface we can understand the interface of the application, in this case the interface is a
  normal chat interface like other chats applications.
+ 
+ 
+* *Internationalization* We did the application in English and for the moment we will not add internationalization to other lenguages.
 
 
 === Safety and security concepts
@@ -26,16 +32,26 @@ and responsibilities.
 
 === “Under-the-hood” concepts
 
+* *Session handling* We log in with our user of SOLID in the application, once we are into the service we can communicate with the
+server to interact with other users.
+
 * *Persistence* to save our information, we store it on PODs on SOLID, so we don't use information stored in databases.
 
-* *Communication and integration* in this chat we use asynchronous methods.
+* *Communication and integration* in this chat we use asynchronous methods. We are working on the integration in another sites.
 
 === Development concepts
 
-* *Build and code generation* The build and code generation in our project is done in javascript with Node.js. 
+* *Build and code generation* The build and code generation in our project is done in javascript with Node.js. We must have instaled
+Node in our computer to build the project. 
 
-* *Test and deploy* For testing we use cucumber for acceptance testing and we use BDD. For asynchronous testing we use mocha.
+* *Test and deploy* For testing we use cucumber for acceptance testing and we use BDD. For asynchronous testing we use mocha. To deploy
+the project we must have Node installed.
 
 
 === Operational concepts
+
+* *Administration* For the administration of this project we work as a team so we administrate it equally.
+
+* *Disaster recovery* We have this project in GitHub so if something happened to the project locally, we have a copy there.
+
 
