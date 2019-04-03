@@ -26,3 +26,14 @@ Users will communicate with each other through URLs, through the Internet, witho
 
 image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/docs/images/TechincalContext.PNGPG[align="center"]
 
+Legend of diagram
+
+|======================
+|Object   |Description  
+|DeChat | Is the web application
+|Internet | Represents the communication will be made using internet with the HTTPS protocol.                   
+|Pod | This is a Solid Pod and it will contain all the data from the given user 
+|User | Represents a user that is using the application    
+|SOLID | Is the server in which the Solid pods are stored
+|======================
+
