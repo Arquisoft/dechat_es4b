@@ -7,3 +7,11 @@ Feature: Log in the chat
   Examples:
     | username | password |
     | cuentaPruebas | monkey |
+
+  Scenario Outline: wrong login 
+    Given user tries to login with valid "<username>" and wrong "<password>"
+    Then login fails and a error message is shown
+
+  Examples:
+    | username | password |
+    | cuentaPruebas | fail |

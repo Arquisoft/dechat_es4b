@@ -13,7 +13,7 @@
             "name": "user tries to login with valid \"cuentaPruebas\" and \"monkey\"",
             "result": {
               "status": "passed",
-              "duration": 8969582520
+              "duration": 7777174659
             },
             "line": 4,
             "match": {
@@ -26,7 +26,7 @@
             "name": "login successful",
             "result": {
               "status": "passed",
-              "duration": 111778512
+              "duration": 81676086
             },
             "line": 5,
             "match": {
@@ -38,7 +38,55 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 178781791
+              "duration": 162949825
+            },
+            "hidden": true,
+            "match": {
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "id": "log-in-the-chat;wrong-login",
+        "keyword": "Scenario",
+        "line": 17,
+        "name": "wrong login",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "user tries to login with valid \"cuentaPruebas\" and wrong \"fail\"",
+            "result": {
+              "status": "passed",
+              "duration": 7096222884
+            },
+            "line": 12,
+            "match": {
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\features\\step-definitions\\stepdefs.js:33"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "login fails and a error message is shown",
+            "result": {
+              "status": "passed",
+              "duration": 19165900
+            },
+            "line": 13,
+            "match": {
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\features\\step-definitions\\stepdefs.js:52"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 180238388
             },
             "hidden": true,
             "match": {

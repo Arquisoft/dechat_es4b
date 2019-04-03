@@ -5,9 +5,19 @@
             <property name="URI" value="C:/Users/linom/GitHub/dechat_es4b/features/login.feature">
             </property>
         </properties>
-        <testcase name="Given user tries to login with valid &quot;cuentaPruebas&quot; and &quot;monkey&quot;" classname="log-in-the-chat;correct-login" time="8.96958252">
+        <testcase name="Given user tries to login with valid &quot;cuentaPruebas&quot; and &quot;monkey&quot;" classname="log-in-the-chat;correct-login" time="7.777174659">
         </testcase>
-        <testcase name="Then login successful" classname="log-in-the-chat;correct-login" time="0.111778512">
+        <testcase name="Then login successful" classname="log-in-the-chat;correct-login" time="0.081676086">
+        </testcase>
+    </testsuite>
+    <testsuite name="log-in-the-chat;wrong-login" tests="2" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="C:/Users/linom/GitHub/dechat_es4b/features/login.feature">
+            </property>
+        </properties>
+        <testcase name="Given user tries to login with valid &quot;cuentaPruebas&quot; and wrong &quot;fail&quot;" classname="log-in-the-chat;wrong-login" time="7.096222884">
+        </testcase>
+        <testcase name="Then login fails and a error message is shown" classname="log-in-the-chat;wrong-login" time="0.0191659">
         </testcase>
     </testsuite>
 </testsuites>
