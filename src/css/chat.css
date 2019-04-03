@@ -1,4 +1,4 @@
-.container{
+m.container{
 	max-width:1170px; 
 	margin:auto;
 }
@@ -126,6 +126,7 @@ img{ max-width:100%;}
 .messaging { padding: 50px 0 50px 0;}
 .msg_history {
   overflow-y: auto;
+  height: 350px;
 }
 
 #btnMessagesSend{
@@ -251,4 +252,14 @@ img{ max-width:100%;}
 }
 #zipper {
   background-image: url('../img/emotes/zipper.png');
+}
+
+
+
+#addMessages{
+   height:400px;
+}
+
+#addMessagesGroup{
+  height:133px;
 }

@@ -184,7 +184,9 @@ $(".emoji-button").click(function() {
 // Hide and show emoji panel
 $("#openEmojiBtn").click(() => {
 	var isActivated = ! ($("#emoji-panel").attr("hidden"));
-	$("#emoji-panel").prop("hidden",isActivated);
+  $("#emoji-panel").prop("hidden",isActivated);
+  isActivated = !($("#addMessagesGroup").attr("hidden"));
+  $("#addMessagesGroup").prop("hidden",isActivated);
 });
 
  /////////////////////////////////////////////////////////////////////////////////////////
