@@ -59,14 +59,16 @@
           <button id="cancel-group-menu" type="button" class="btn-cancel btn btn-dark">Cancel</button>
         </div>
 
-        <div id="new-chat-options" class="col-6 hidden">
-            <div class="form-group">
+        <div id="new-chat-options" class="container-fluid hidden">
+            <div id="center" class="form-group">
               <label for="possible-people">Your conversation partner</label>
-              <select id="possible-people"></select>
+			  <div class="content-select">
+			  <select id="possible-people" class="cd-select">
+				</select>
+			  </div>
 			   <button id="possible-people-btn" type="button" class="btn btn-dark">OK</button> 
             </div>
 			      <div class="form-group">
-				      <label for="sent-messages">Messages:</label>
 					  <div id="drop_zone" accept="image/*" class="container">
 						<div class="messaging">
 							<div class="inbox_msg">

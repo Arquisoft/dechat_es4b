@@ -29,6 +29,7 @@ $('#open-btn').click(() => {
 
 
 
+
 auth.trackSession(async session => {
   const loggedIn = !!session;
 
@@ -90,6 +91,7 @@ $('#new-btn').click(async () => {
     for await (const friend of personal.friendList) {
         $('#possible-people').append('<option value='+friend.username+'>'+friend.username+'</option>');
     }
+  $( '#possible-people' ).dropdown();
     
     $("#data-name").keydown(function (e) {
       if (e.keyCode == 13) {

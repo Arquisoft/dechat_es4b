@@ -15,7 +15,13 @@ img{ max-width:100%;}
 }
 .top_spac{ margin: 20px 0 0;}
 
-
+#center{
+  margin: 1rem;
+  padding: 1rem;
+  border: 2px solid #ccc;
+  /* IMPORTANTE */
+  text-align: center;
+}
 .recent_heading {float: left; width:40%;}
 .srch_bar {
   display: inline-block;
