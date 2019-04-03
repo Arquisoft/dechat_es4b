@@ -1,0 +1,60 @@
+[
+  {
+    "elements": [
+      {
+        "id": "log-in-the-chat;correct-login",
+        "keyword": "Scenario",
+        "line": 9,
+        "name": "Correct login",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "user tries to login with valid \"cuentaPruebas\" and \"monkey\"",
+            "result": {
+              "status": "passed",
+              "duration": 8969582520
+            },
+            "line": 4,
+            "match": {
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\features\\step-definitions\\stepdefs.js:6"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "login successful",
+            "result": {
+              "status": "passed",
+              "duration": 111778512
+            },
+            "line": 5,
+            "match": {
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\features\\step-definitions\\stepdefs.js:27"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 178781791
+            },
+            "hidden": true,
+            "match": {
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "log-in-the-chat",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "Log in the chat",
+    "tags": [],
+    "uri": "C:/Users/linom/GitHub/dechat_es4b/features/login.feature"
+  }
+]

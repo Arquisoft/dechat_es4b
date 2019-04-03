@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+    <testsuite name="log-in-the-chat;correct-login" tests="2" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="C:/Users/linom/GitHub/dechat_es4b/features/login.feature">
+            </property>
+        </properties>
+        <testcase name="Given user tries to login with valid &quot;cuentaPruebas&quot; and &quot;monkey&quot;" classname="log-in-the-chat;correct-login" time="8.96958252">
+        </testcase>
+        <testcase name="Then login successful" classname="log-in-the-chat;correct-login" time="0.111778512">
+        </testcase>
+    </testsuite>
+</testsuites>

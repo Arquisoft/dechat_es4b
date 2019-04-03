@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack && node loader.js",
     "test": "nyc --reporter=html --reporter=text mocha",
+    "cucumber": "node ./node_modules/selenium-cucumber-js/index.js -s ./features/step-definitions",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "build:web": "webpack --config webpack.config.js",
     "doc": "./node_modules/.bin/jsdoc -c jsdoc.json ./lib"
@@ -32,6 +33,7 @@
     "jsdom": "14.0.0",
     "jsdom-global": "3.0.2",
     "minami": "^1.2.3",
+    "selenium-cucumber-js": "^1.6.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   },
