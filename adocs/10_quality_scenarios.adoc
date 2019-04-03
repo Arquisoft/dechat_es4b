@@ -3,26 +3,25 @@
 
 
 === Quality Tree
+The project has some important quality requirements.
+They will be presented in a diagram and specified in a table
 
-- Availability: the system will have to be available most of the time
-- Maintainability: software will change and to be able to do these changes software should be manteinable
-- Usability: everyone should use the app whithout problems and fast
-- Testability: all software must be testable
+image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/develop/docs/images/10_quality_tree.png[align="center"]
 
-A first version of the Quality Tree:
-
-image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/docs/images/first_quality_tree.png[align="center"]
-
-*TO BE DONE*
 
 === Quality Scenarios
 
 Here you can see a little more in depth the main quality scenarios that have already been seen before in the quality tree.
 
 |======================
-| Reference | Quality |Scenario | Priority                                                           
-| 1 | Availability | The system must be accessible most of the time | Hight
-| 2| Maintainability | Software will change and to be able to do these changes software should be manteinable | Hight
-| 3 | Testability | All software must be testable | Hight
-| 4 | Usability| Everyone should use the app whithout problems and fast | Medium
+| Reference | Quality  Requirement|Scenario | Priority                                                           
+| 1 | Availability | The system must be accessible most of the time.We set a limit at 95% of the time| Medium
+| 2 | Maintainability | A group of 4 developers should introduce a functionality, such as sending stickers within 2 days.| High
+| 3 | Testability | Good software must be testable. Code coverage should be high. BDD and TDD tests must be done| High
+| 4 | Usability | Everyone should use the app whithout problems regardless of their capabilities| High
+| 5 | Performance | Messages should be sent fast. The user should not perceive waiting time | Medium
+| 6 | Portability | The application should be able to be used on any computer with any browser | Medium
+| 8 | Security | Messages must be stored encrypted | Medium
+| 9 | Security | You will not be able to read chats that you are not a user involved in | High
+| 10 | Availability | A user will be able to access his messages at any time |High
 |======================
