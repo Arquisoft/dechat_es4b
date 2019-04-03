@@ -20,4 +20,9 @@ image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/docs/image
 
 === Technical Context
 
-*TO BE DONE*
+Our application is a decentralized web application, the data will be stored in the Pods of the users. Therefore our application must be connected to the Internet.
+
+Users will communicate with each other through URLs, through the Internet, without the need for a central place to store the data.
+
+image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/docs/images/TechincalContext.PNG[align="center"]
+
