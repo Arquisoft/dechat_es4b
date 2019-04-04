@@ -31,7 +31,7 @@ describe("Simple personal testing", function () {
        personal.friendList.push({username: "userfortesting", 
 				inbox: "https://userfortesting.solid.community/inbox/"});
        assert.isNotNull(personal.username);
-       assert.equal(personal.friendList.length,2);        
+       assert.equal(personal.friendList.length,2);
 	   personal.clearInfo();
        assert.isNull(personal.username);
        assert.equal(personal.friendList.length,0);
@@ -44,7 +44,7 @@ describe("Simple personal testing", function () {
     
   })
     it("Clears inbox",async function() {
-       personal.username = "enriquead";     
+       personal.username = "enriquead";
        var name = await personal.clearInbox(dataSync);
        assert.isNotNull(dataSync);
     
@@ -68,4 +68,4 @@ describe("Simple personal testing", function () {
   
   
 
-})
+});

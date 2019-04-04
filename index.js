@@ -4,8 +4,8 @@ const port = 3000;
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello deChat\n');
+  res.setHeader("Content-Type", "text/plain");
+  res.end("Hello deChat\n");
 });
 
 server.listen(port, hostname, () => {
@@ -13,6 +13,6 @@ server.listen(port, hostname, () => {
 });
 
 module.exports = {
-  Core: require('./lib/core'),
-  DataSync: require('./lib/datasync')
+  Core: require("./lib/core"),
+  DataSync: require("./lib/datasync")
 };
