@@ -29,6 +29,7 @@ $('#open-btn').click(() => {
 
 
 
+
 auth.trackSession(async session => {
   const loggedIn = !!session;
 
@@ -90,6 +91,7 @@ $('#new-btn').click(async () => {
     for await (const friend of personal.friendList) {
         $('#possible-people').append('<option value='+friend.username+'>'+friend.username+'</option>');
     }
+  $( '#possible-people' ).dropdown();
     
     $("#data-name").keydown(function (e) {
       if (e.keyCode == 13) {
@@ -136,6 +138,7 @@ $('#start-new-chat-btn').click(async () => {
     var receiver = $("#possible-people option:selected").val();
     $("#data-name").val("");
 	core.sendMessage(personal, receiver, message);
+	$("#emoji-panel").prop("hidden",true);
 });
 
 
@@ -164,7 +167,6 @@ $('.btn-cancel').click(() => {
   $('#continue-chat-options').addClass('hidden');
   $('#chat-options').removeClass('hidden');
   $('#how-it-works').removeClass('hidden');
-  $('#emoji-panel').addClass('hidden');
 });
 
 $("#cancel-group-menu").click(() => {
@@ -179,6 +181,14 @@ $(".emoji-button").click(function() {
     $("#data-name").val(":"+id+": ");
   else
     $("#data-name").val($("#data-name").val() + " :"+id+": ");
+});
+
+// Hide and show emoji panel
+$("#openEmojiBtn").click(() => {
+	var isActivated = ! ($("#emoji-panel").attr("hidden"));
+  $("#emoji-panel").prop("hidden",isActivated);
+  isActivated = !($("#addMessagesGroup").attr("hidden"));
+  $("#addMessagesGroup").prop("hidden",isActivated);
 });
 
  /////////////////////////////////////////////////////////////////////////////////////////
