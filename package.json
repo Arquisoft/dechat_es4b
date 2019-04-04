@@ -52,7 +52,7 @@
     "prefix-ns": "^0.1.2",
     "q": "^1.5.1",
     "semantic-chess": "0.2.1",
-    "solid-auth-cli": "^0.1.11",
+    "solid-auth-cli": "^0.1.13",
     "solid-auth-client": "^2.3.0",
     "solid-cli": "0.0.3",
     "solid-file-client": "^0.4.9",
