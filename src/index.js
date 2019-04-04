@@ -112,7 +112,7 @@ $("#new-btn").click(async () => {
         var receiver = $("#possible-people option:selected").val();
         $("#data-name").val("");
         core.sendMessage(personal, receiver, message);
-        setTimeout(function(){ moveScrollDown() }, 4000);
+        setTimeout(function(){ moveScrollDown() }, 5000);
       }
     });
     $("#new-chat-options").removeClass("hidden");
@@ -155,7 +155,7 @@ $("#start-new-chat-btn").click(async () => {
   $("#data-name").val("");
 	core.sendMessage(personal, receiver, message);
   $("#emoji-panel").prop("hidden",true);
-  setTimeout(function(){ moveScrollDown() }, 4000);
+  setTimeout(function(){ moveScrollDown() }, 5000);
 });
 
 
