@@ -154,6 +154,8 @@ $("#start-new-chat-btn").click(async () => {
     $("#data-name").val("");
 	core.sendMessage(personal, receiver, message);
 	$("#emoji-panel").prop("hidden",true);
+	$("#addMessages").animate({ scrollTop: document.getElementById("addMessages").scrollHeight }, 1000);
+	$("#addMessagesGroup").animate({ scrollTop: document.getElementById("addMessages").scrollHeight }, 1000);
 });
 
 
