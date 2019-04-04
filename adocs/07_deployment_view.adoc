@@ -9,7 +9,11 @@ and an Internet connection, we developed this application in Firefox and Chrome,
 
 === Infrastructure Level 1
 
-deployment diagram here. 
+image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/docs/images/7-deployment-view.PNG[align="center"]
+
+We can see a first node which is the node of the computer of the user, he connect to the browser with Internet. The second node is the application, we need 
+a server to connect to the chat. Finally we connect to the last node, this node is SOLID Server who provides us user's POD and the receiver or receivers POD,
+we connect to user's pod to store the message and we send it to the receiver or receivers.
 
 The distribution of our system was the same in all scenarios because we only need a computer with internet, we could test it in home and in the
 university the same way.
@@ -18,6 +22,3 @@ a browser like Firefox, so we obviously need a computer with internet connection
 After connecting to the chat in the browser we use internet to connect to the SOLID Server and now we can send messages to another person. 
 
 
-=== Infrastructure Level 2
-
-*TO BE DONE*
