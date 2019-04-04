@@ -4,7 +4,7 @@
 This section describes regulation and solution ideas that are relevant in multiple
 parts of our system.
 
-image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/docs/images/crosscuting_concepts.png[align="center"]
+image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/adocs/images/crosscuting_concepts.png[align="center"]
 
 === Domain concepts
 

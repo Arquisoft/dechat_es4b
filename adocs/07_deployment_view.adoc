@@ -9,7 +9,7 @@ and an Internet connection, we developed this application in Firefox and Chrome,
 
 === Infrastructure Level 1
 
-image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/docs/images/7-deployment-view.PNG[align="center"]
+image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/adocs/images/7-deployment-view.png[align="center"]
 
 We can see a first node which is the node of the computer of the user, he connect to the browser with Internet. The second node is the application, we need 
 a server to connect to the chat. Finally we connect to the last node, this node is SOLID Server who provides us user's POD and the receiver or receivers POD,
