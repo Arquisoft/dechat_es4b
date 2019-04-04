@@ -112,6 +112,7 @@ $("#new-btn").click(async () => {
         var receiver = $("#possible-people option:selected").val();
         $("#data-name").val("");
         core.sendMessage(personal, receiver, message);
+        setTimeout(function(){ moveScrollDown() }, 4000);
       }
     });
     $("#new-chat-options").removeClass("hidden");
@@ -153,7 +154,8 @@ $("#start-new-chat-btn").click(async () => {
   var receiver = $("#possible-people option:selected").val();
   $("#data-name").val("");
 	core.sendMessage(personal, receiver, message);
-	$("#emoji-panel").prop("hidden",true);
+  $("#emoji-panel").prop("hidden",true);
+  setTimeout(function(){ moveScrollDown() }, 4000);
 });
 
 
@@ -177,7 +179,10 @@ $("#cancel-group-menu").click(() => {
   $("#create-new-group").addClass("hidden");
 });
 
-$("#possible-people-btn").click( async () => core.loadMessages(personal,$("#possible-people option:selected").val(),false));
+$("#possible-people-btn").click( async () => {
+  core.loadMessages(personal,$("#possible-people option:selected").val(),false);
+  setTimeout(function(){ moveScrollDown() }, 2000);
+});
 
 $(".emoji-button").click(function() { 
   var id = $(this).attr("id");
@@ -194,6 +199,11 @@ $("#openEmojiBtn").click(() => {
   isActivated = !($("#addMessagesGroup").attr("hidden"));
   $("#addMessagesGroup").prop("hidden",isActivated);
 });
+
+function moveScrollDown() {
+  $("#addMessages").animate({ scrollTop: document.getElementById("addMessages").scrollHeight }, 1000);
+  $("#addMessagesGroup").animate({ scrollTop: document.getElementById("addMessages").scrollHeight }, 1000)
+}
 
  /////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////////////// /////////////////////////////////////////////////////////////////////////////////////////
