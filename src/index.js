@@ -150,12 +150,10 @@ $("#create-button").click(async () => {
 
 $("#start-new-chat-btn").click(async () => {
 	var message = $("#data-name").val();
-    var receiver = $("#possible-people option:selected").val();
-    $("#data-name").val("");
+  var receiver = $("#possible-people option:selected").val();
+  $("#data-name").val("");
 	core.sendMessage(personal, receiver, message);
 	$("#emoji-panel").prop("hidden",true);
-	$("#addMessages").animate({ scrollTop: document.getElementById("addMessages").scrollHeight }, 1000);
-	$("#addMessagesGroup").animate({ scrollTop: document.getElementById("addMessages").scrollHeight }, 1000);
 });
 
 
