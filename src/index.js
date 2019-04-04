@@ -1,11 +1,11 @@
-const auth = require('solid-auth-client');
-const fc = require('solid-file-client');
-const namespaces = require('../lib/namespaces');
-const { default: data } = require('@solid/query-ldflex');
-const Core = require('../lib/core');
-const DataSync = require('../lib/datasync');
+const auth = require("solid-auth-client");
+const fc = require("solid-file-client");
+const namespaces = require("../lib/namespaces");
+const { default: data } = require("@solid/query-ldflex");
+const Core = require("../lib/core");
+const DataSync = require("../lib/datasync");
 
-const Personal = require('../lib/personal');
+const Personal = require("../lib/personal");
 
 let refreshIntervalId;
 let core = new Core(auth.fetch);
@@ -13,17 +13,17 @@ let personal = new Personal(core);
 let dataSync= new DataSync(auth.fetch);
 
 
-$('.login-btn').click(() => {
-  auth.popupLogin({ popupUri: 'https://solid.github.io/solid-auth-client/dist/popup.html' });
+$(".login-btn").click(() => {
+  auth.popupLogin({ popupUri: "https://solid.github.io/solid-auth-client/dist/popup.html" });
 });
 
-$('#logout-btn').click(() => {
+$("#logout-btn").click(() => {
   auth.logout();
 });
 
-$('#refresh-btn').click(checkForNotifications);
+$("#refresh-btn").click(checkForNotifications);
 
-$('#open-btn').click(() => {
+$("#open-btn").click(() => {
   //USE IT FOR TESTING
 });
 
@@ -34,35 +34,35 @@ auth.trackSession(async session => {
   const loggedIn = !!session;
 
   if (loggedIn) {
-    $('#chat-options').addClass('hidden');
-    $('#loading-gif').removeClass('hidden');
+    $("#chat-options").addClass("hidden");
+    $("#loading-gif").removeClass("hidden");
 
     personal.loadNames(session.webId).then(name => {
       personal.loadInbox();
-      $('#user-name').text(name);
-      $('#nav-login-btn').addClass('hidden');
+      $("#user-name").text(name);
+      $("#nav-login-btn").addClass("hidden");
     });
 
     personal.loadFriendList(session.webId).then(() => {
-      $('#chat-options').removeClass('hidden');
-      $('#loading-gif').addClass('hidden');
+      $("#chat-options").removeClass("hidden");
+      $("#loading-gif").addClass("hidden");
     });
 
-    $('#user-menu').removeClass('hidden');
-    $('#login-required').modal('hide');  
+    $("#user-menu").removeClass("hidden");
+    $("#login-required").modal("hide");  
 
     await checkForNotifications();
     // refresh every 5 sec
     refreshIntervalId = setInterval(checkForNotifications, 5000);
   } else {
-    $('#nav-login-btn').removeClass('hidden');
-    $('#user-menu').addClass('hidden');
-    $('#chat').addClass('hidden');
-    $('#new-chat-options').addClass('hidden');
-    $('#join-chat-options').addClass('hidden');
-    $('#continue-chat-options').addClass('hidden');
-    $('#chat-options').removeClass('hidden');
-    $('#how-it-works').removeClass('hidden');
+    $("#nav-login-btn").removeClass("hidden");
+    $("#user-menu").addClass("hidden");
+    $("#chat").addClass("hidden");
+    $("#new-chat-options").addClass("hidden");
+    $("#join-chat-options").addClass("hidden");
+    $("#continue-chat-options").addClass("hidden");
+    $("#chat-options").removeClass("hidden");
+    $("#how-it-works").removeClass("hidden");
     personal.clearInfo();
     clearInterval(refreshIntervalId);
     refreshIntervalId = null;
@@ -74,24 +74,24 @@ auth.trackSession(async session => {
  * This method updates the UI after a chat option has been selected by the user.
  */
 function afterChatOption() {
-  $('#chat-options').addClass('hidden');
-  $('#how-it-works').addClass('hidden');
+  $("#chat-options").addClass("hidden");
+  $("#how-it-works").addClass("hidden");
 }
 
-$('#new-btn').click(async () => { 
+$("#new-btn").click(async () => { 
   if (personal.username) {
     afterChatOption();
     
-    $('#possible-people').empty();
+    $("#possible-people").empty();
     core.getChatGroups(personal).then(groupNames => {
       for(const chat of groupNames) {
-        $('#possible-people').append('<option value='+chat.file.url+'>'+chat.name+'</option>');      
+        $("#possible-people").append("<option value="+chat.file.url+">"+chat.name+"</option>");      
       }
     });
     for await (const friend of personal.friendList) {
-        $('#possible-people').append('<option value='+friend.username+'>'+friend.username+'</option>');
+        $("#possible-people").append("<option value="+friend.username+">"+friend.username+"</option>");
     }
-  $( '#possible-people' ).dropdown();
+  $( "#possible-people" ).dropdown();
     
     $("#data-name").keydown(function (e) {
       if (e.keyCode == 13) {
@@ -101,39 +101,39 @@ $('#new-btn').click(async () => {
         core.sendMessage(personal, receiver, message);
       }
     });
-    $('#new-chat-options').removeClass('hidden');
-    $('#emoji-panel').removeClass('hidden');
+    $("#new-chat-options").removeClass("hidden");
+    $("#emoji-panel").removeClass("hidden");
   } else {
-    $('#login-required').modal('show');
+    $("#login-required").modal("show");
   }
 });
 
-$('#create-group').click(async () => { 
+$("#create-group").click(async () => { 
   if (personal.username) {
     afterChatOption();
-    $('#check-people-group').empty();
+    $("#check-people-group").empty();
     for await (const friend of personal.friendList) {
-      $('#check-people-group').append('<input class="form-check-input" type="checkbox" id="'+friend.username+'"><label class="form-check-label" for="'+friend.username+'">'+friend.username+'</label><br>');
+      $("#check-people-group").append("<input class='form-check-input' type='checkbox' id='"+friend.username+"'><label class='form-check-label' for='"+friend.username+"'>"+friend.username+"</label><br>");
     }
-    $('#create-new-group').removeClass('hidden');
+    $("#create-new-group").removeClass("hidden");
   } else {
-    $('#login-required').modal('show');
+    $("#login-required").modal("show");
   }
 });
 
-$('#create-button').click(async () => { 
+$("#create-button").click(async () => { 
   var friendsGroup = new Array();
   for await (const friend of personal.friendList) {
-    if($('#'+friend.username).prop('checked'))
+    if($("#"+friend.username).prop("checked"))
       friendsGroup.push(friend);
   }
-  $('#create-new-group').addClass('hidden');
+  $("#create-new-group").addClass("hidden");
   // CREAR EL GRUPO AQUI
-  if(friendsGroup.length > 0 && $('#group-name').val().length > 0 &&  $('#group-name').val().trim().length > 0)
+  if(friendsGroup.length > 0 && $("#group-name").val().length > 0 &&  $("#group-name").val().trim().length > 0)
     core.createGroup(personal, friendsGroup);
 });
 
-$('#start-new-chat-btn').click(async () => {
+$("#start-new-chat-btn").click(async () => {
 	var message = $("#data-name").val();
     var receiver = $("#possible-people option:selected").val();
     $("#data-name").val("");
@@ -149,28 +149,28 @@ $('#start-new-chat-btn').click(async () => {
  * @returns {Promise<void>}
  */
 async function checkForNotifications() {
-  var length = $('#mySelectList > option').length;
+  var length = $("#mySelectList > option").length;
   if(length === 0){
     await core.loadMessages(personal, $("#possible-people option:selected").val(),false);
   }   
 }
 
-$('#clear-inbox-btn').click(async () => {
+$("#clear-inbox-btn").click(async () => {
   await personal.clearInbox(dataSync);
 });
 
 
-$('.btn-cancel').click(() => {
-  $('#chat').addClass('hidden');
-  $('#new-chat-options').addClass('hidden');
-  $('#join-chat-options').addClass('hidden');
-  $('#continue-chat-options').addClass('hidden');
-  $('#chat-options').removeClass('hidden');
-  $('#how-it-works').removeClass('hidden');
+$(".btn-cancel").click(() => {
+  $("#chat").addClass("hidden");
+  $("#new-chat-options").addClass("hidden");
+  $("#join-chat-options").addClass("hidden");
+  $("#continue-chat-options").addClass("hidden");
+  $("#chat-options").removeClass("hidden");
+  $("#how-it-works").removeClass("hidden");
 });
 
 $("#cancel-group-menu").click(() => {
-  $('#create-new-group').addClass('hidden');
+  $("#create-new-group").addClass("hidden");
 });
 
 $("#possible-people-btn").click( async () => core.loadMessages(personal,$("#possible-people option:selected").val(),false));
