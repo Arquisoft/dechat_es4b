@@ -21,6 +21,19 @@ $("#logout-btn").click(() => {
   auth.logout();
 });
 
+
+/**
+ * This method checks if a new move has been made by the opponent.
+ * The necessarily data is stored and the UI is updated.
+ * @returns {Promise<void>}
+ */
+async function checkForNotifications() {
+  var length = $("#mySelectList > option").length;
+  if(length === 0){
+    await core.loadMessages(personal, $("#possible-people option:selected").val(),false);
+  }   
+}
+
 $("#refresh-btn").click(checkForNotifications);
 
 $("#open-btn").click(() => {
@@ -94,7 +107,7 @@ $("#new-btn").click(async () => {
   $( "#possible-people" ).dropdown();
     
     $("#data-name").keydown(function (e) {
-      if (e.keyCode == 13) {
+      if (e.keyCode === 13) {
         var message = $("#data-name").val();
         var receiver = $("#possible-people option:selected").val();
         $("#data-name").val("");
@@ -124,13 +137,15 @@ $("#create-group").click(async () => {
 $("#create-button").click(async () => { 
   var friendsGroup = new Array();
   for await (const friend of personal.friendList) {
-    if($("#"+friend.username).prop("checked"))
+    if($("#"+friend.username).prop("checked")){
       friendsGroup.push(friend);
+	}
   }
   $("#create-new-group").addClass("hidden");
   // CREAR EL GRUPO AQUI
-  if(friendsGroup.length > 0 && $("#group-name").val().length > 0 &&  $("#group-name").val().trim().length > 0)
+  if(friendsGroup.length > 0 && $("#group-name").val().length > 0 &&  $("#group-name").val().trim().length > 0){
     core.createGroup(personal, friendsGroup);
+	}
 });
 
 $("#start-new-chat-btn").click(async () => {
@@ -143,17 +158,6 @@ $("#start-new-chat-btn").click(async () => {
 
 
 
-/**
- * This method checks if a new move has been made by the opponent.
- * The necessarily data is stored and the UI is updated.
- * @returns {Promise<void>}
- */
-async function checkForNotifications() {
-  var length = $("#mySelectList > option").length;
-  if(length === 0){
-    await core.loadMessages(personal, $("#possible-people option:selected").val(),false);
-  }   
-}
 
 $("#clear-inbox-btn").click(async () => {
   await personal.clearInbox(dataSync);
@@ -177,7 +181,7 @@ $("#possible-people-btn").click( async () => core.loadMessages(personal,$("#poss
 
 $(".emoji-button").click(function() { 
   var id = $(this).attr("id");
-  if($("#data-name").val().length == 0)
+  if($("#data-name").val().length === 0)
     $("#data-name").val(":"+id+": ");
   else
     $("#data-name").val($("#data-name").val() + " :"+id+": ");
@@ -207,6 +211,15 @@ $("#openEmojiBtn").click(() => {
   /////////////////////////////////////////////////////////////////////////////////////////
 //Images sharing (here for some time)
 
+function dropped(e){
+	e.preventDefault();
+	var files = e.dataTransfer.files;
+	for ( var f=0; f<files.length; f++){
+		console.log("Storing photo");
+//		core.storePhoto(personal,files[f]);
+	}
+}
+
 function start(){
 	var drop = document.getElementById("drop_zone");
 	
@@ -221,14 +234,7 @@ function start(){
 	drop.addEventListener("drop", dropped, false);
 }
 
-function dropped(e){
-	e.preventDefault();
-	var files = e.dataTransfer.files;
-	for ( var f=0; f<files.length; f++){
-		console.log("Storing photo");
-		core.storePhoto(personal,files[f]);
-	}
-}
+
 		// var photoUbication = storePhoto(files[f]);
 		// $("#data-name").val(photoUbication);
 		// await com.sendMessage(personal);

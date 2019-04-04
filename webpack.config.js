@@ -1,18 +1,18 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-  entry: './src/index.js',
+  entry: "./src/index.js",
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'main/dist')
+    filename: "main.js",
+    path: path.resolve(__dirname, "main/dist")
   },
-  mode: 'development',
+  mode: "development",
   externals: {
-    'node-fetch': 'fetch',
-    'text-encoding': 'TextEncoder',
-    'whatwg-url': 'window',
-    'isomorphic-fetch': 'fetch',
-    '@trust/webcrypto': 'crypto',
-    'fs': 'empty'
+    "node-fetch": "fetch",
+    "text-encoding": "TextEncoder",
+    "whatwg-url": "window",
+    "isomorphic-fetch": "fetch",
+    "@trust/webcrypto": "crypto",
+    "fs": "empty"
   }
 };
