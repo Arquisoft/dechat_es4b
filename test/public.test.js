@@ -1,20 +1,20 @@
-var chai = require('chai');
-const auth = require('solid-auth-client');
+var chai = require("chai");
+const auth = require("solid-auth-client");
 
 
 
 var assert = chai.assert;
-const Core = require('../lib/core');
+const Core = require("../lib/core");
 const chat = new Core(auth.fetch);
-const Personal = require('../lib/personal');
+const Personal = require("../lib/personal");
 let personal = new Personal(chat);
 
 
-const Group = require('../lib/commgroup');
+const Group = require("../lib/commgroup");
 
 const publicComm = new Group(auth.fetch);
 
-describe('Private communication testing', function () {
+describe("Private communication testing", function () {
   
   it("Random string generates string",function(){
 	var rdom = publicComm.randomString(5);

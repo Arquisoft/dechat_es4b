@@ -1,30 +1,30 @@
-var chai = require('chai');
-const Core = require('../lib/core');
-const Personal = require ('../lib/personal');
-const auth = require('solid-auth-client');
-const DataSync = require('../lib/datasync');
+var chai = require("chai");
+const Core = require("../lib/core");
+const Personal = require ("../lib/personal");
+const auth = require("solid-auth-client");
+const DataSync = require("../lib/datasync");
 const chat = new Core(auth.fetch);
 const personal = new Personal(chat);
 var assert = chai.assert;
 let dataSync= new DataSync(auth.fetch);
 
 
-describe('Simple personal testing', function () {
+describe("Simple personal testing", function () {
 	
 	
-	it('Test constructor', function() {
+	it("Test constructor", function() {
 	 
 	  assert.isNotNull(personal);
     
     })
-    it('Getters are working',function(){
+    it("Getters are working",function(){
       assert.isDefined(personal.getWebIdUrl());
       assert.equal(personal.getCore(),chat);
       assert.isNotNull(personal.getFriendList());
      
   })
   
-    it('Clear info test', function() {
+    it("Clear info test", function() {
        personal.username = "NameToClear";
        personal.friendList.push({username: "enriquead", 
 				inbox: "https://enriquead.solid.community/inbox/"});  
@@ -38,19 +38,19 @@ describe('Simple personal testing', function () {
     
   })
     
-    it('Loads friends',async function() {
-       var name = await personal.loadFriendList("https://enriquead.solid.community/profile/card#me")
+    it("Loads friends",async function() {
+       var name = await personal.loadFriendList("https://enriquead.solid.community/profile/card#me");
        assert.isNotNull(name);
     
   })
-    it('Clears inbox',async function() {
+    it("Clears inbox",async function() {
        personal.username = "enriquead";     
-       var name = await personal.clearInbox(dataSync)
+       var name = await personal.clearInbox(dataSync);
        assert.isNotNull(dataSync);
     
     })
     
-    it('Loads names',async function(){
+    it("Loads names",async function(){
         var result = await personal.loadNames("https://enriquead.solid.community/profile/card#me");
         assert.equal(result,"enriquead");
     })
