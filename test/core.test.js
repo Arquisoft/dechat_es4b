@@ -57,8 +57,7 @@ describe("Core testing", function () {
   
   it("Someone is not my friend",function(){
 	var result = chat.isFriend ("https://userfortesting.solid.community","https://enriquead.solid.community/profile/card#me");
-	assert.equal(result,false);
-	  
+	assert.equal(result,false); 
   })
   
   

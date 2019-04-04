@@ -15,10 +15,8 @@ describe("Private communication testing", function () {
   
   it("Random string generates string",function(){
 	var rdom = privateComm.randomString(5);
-	assert.equal(rdom.length,5);
-
- 
-  })
+	assert.equal(rdom.length,5); 
+  });
     
   it("Establish private communication",async function(){
       personal.username = "dechat-es4b";
@@ -28,15 +26,9 @@ describe("Private communication testing", function () {
       privateComm.sendFirstMessage(personal,receiver,"Test");   
       var comunicacion = await privateComm.communicationEstablished(personal.username,receiver);
       assert.equal(comunicacion,true);
-  })  
+  });  
     
   it("Loads messages properly",async function(){
-      var result = await privateComm.loadMessages("dechat-es4b","enriquetest2",true);
-      
-      
-  }) 
-    
-  
-
-   
-})
+      var result = await privateComm.loadMessages("dechat-es4b","enriquetest2",true);      
+  });   
+});

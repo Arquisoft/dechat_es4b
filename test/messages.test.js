@@ -27,7 +27,7 @@ describe("Message testing", function () {
   
   it("Message class test set dateTime", function() {
 	var ahora = Date.now();
-	testMessage.dateTime = ahora
+	testMessage.dateTime = ahora;
     assert.equal(testMessage.dateTime, ahora);
   })
 
