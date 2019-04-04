@@ -15,4 +15,12 @@ export class AppPage {
     getDescriptionLogin() {
         return element(by.css('h2')).getText();
     }
+	
+	clickLoginButton() {
+        return  element(by.id('login')).click();
+    }
+	
+	 clickSolidRegistration() {
+        return  element(by.id('solidregister')).click();
+    }
 }
