@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-    <testsuite name="see-friends-to-chat;show-list-of-friends" tests="3" failures="1" skipped="0">
+    <testsuite name="see-friends-to-chat;show-list-of-friends" tests="3" failures="0" skipped="0">
         <properties>
             <property name="URI" value="C:/Users/linom/GitHub/dechat_es4b/features/frienlist.feature">
             </property>
         </properties>
-        <testcase name="Given user logged with &quot;cuentapruebas&quot; and &quot;monkey&quot;" classname="see-friends-to-chat;show-list-of-friends" time="7.748200531">
+        <testcase name="Given user logged with &quot;cuentapruebas&quot; and &quot;monkey&quot;" classname="see-friends-to-chat;show-list-of-friends" time="8.422425534">
         </testcase>
-        <testcase name="When user clicks on &quot;New chat&quot;" classname="see-friends-to-chat;show-list-of-friends" time="0.000413014">
+        <testcase name="When user clicks on &quot;New chat&quot;" classname="see-friends-to-chat;show-list-of-friends" time="0.000435627">
         </testcase>
-        <testcase name="Then &quot;linomlt&quot; appers in partner selector menu" classname="see-friends-to-chat;show-list-of-friends" time="0.437581546">
-            <failure message="AssertionError [ERR_ASSERTION]: &apos;&apos; == &apos;linomlt&apos;">AssertionError [ERR_ASSERTION]: &apos;&apos; == &apos;linomlt&apos;
-    at C:\Users\linom\GitHub\dechat_es4b\features\step-definitions\stepdefs.js:97:27
-    at ManagedPromise.invokeCallback_ (C:\Users\linom\GitHub\dechat_es4b\node_modules\selenium-webdriver\lib\promise.js:1384:14)
-    at TaskQueue.execute_ (C:\Users\linom\GitHub\dechat_es4b\node_modules\selenium-webdriver\lib\promise.js:3092:14)
-    at TaskQueue.executeNext_ (C:\Users\linom\GitHub\dechat_es4b\node_modules\selenium-webdriver\lib\promise.js:3075:27)
-    at asyncRun (C:\Users\linom\GitHub\dechat_es4b\node_modules\selenium-webdriver\lib\promise.js:2935:27)
-    at C:\Users\linom\GitHub\dechat_es4b\node_modules\selenium-webdriver\lib\promise.js:676:7
-    at process._tickCallback (internal/process/next_tick.js:68:7)</failure>
+        <testcase name="Then &quot;dechates4btest1&quot; appers in partner selector menu" classname="see-friends-to-chat;show-list-of-friends" time="0.637907744">
         </testcase>
     </testsuite>
     <testsuite name="log-in-the-chat;correct-login" tests="2" failures="0" skipped="0">
@@ -25,9 +17,9 @@
             <property name="URI" value="C:/Users/linom/GitHub/dechat_es4b/features/login.feature">
             </property>
         </properties>
-        <testcase name="Given user tries to login with valid &quot;cuentapruebas&quot; and &quot;monkey&quot;" classname="log-in-the-chat;correct-login" time="7.105069406">
+        <testcase name="Given user tries to login with valid &quot;cuentapruebas&quot; and &quot;monkey&quot;" classname="log-in-the-chat;correct-login" time="7.086541727">
         </testcase>
-        <testcase name="Then login successful as &quot;cuentapruebas&quot;" classname="log-in-the-chat;correct-login" time="0.125547734">
+        <testcase name="Then login successful as &quot;cuentapruebas&quot;" classname="log-in-the-chat;correct-login" time="0.109823667">
         </testcase>
     </testsuite>
     <testsuite name="log-in-the-chat;wrong-login" tests="2" failures="0" skipped="0">
@@ -35,9 +27,25 @@
             <property name="URI" value="C:/Users/linom/GitHub/dechat_es4b/features/login.feature">
             </property>
         </properties>
-        <testcase name="Given user tries to login with valid &quot;cuentapruebas&quot; and wrong &quot;fail&quot;" classname="log-in-the-chat;wrong-login" time="6.868602229">
+        <testcase name="Given user tries to login with valid &quot;cuentapruebas&quot; and wrong &quot;fail&quot;" classname="log-in-the-chat;wrong-login" time="6.883382087">
         </testcase>
-        <testcase name="Then login fails and a error message is shown" classname="log-in-the-chat;wrong-login" time="0.020886223">
+        <testcase name="Then login fails and a error message is shown" classname="log-in-the-chat;wrong-login" time="0.020381457">
+        </testcase>
+    </testsuite>
+    <testsuite name="send-a-message-to-a-friend;send-one-message-to-friend" tests="5" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="C:/Users/linom/GitHub/dechat_es4b/features/sendMessages.feature">
+            </property>
+        </properties>
+        <testcase name="Given user logged with &quot;cuentapruebas&quot; and &quot;monkey&quot;" classname="send-a-message-to-a-friend;send-one-message-to-friend" time="7.080506522">
+        </testcase>
+        <testcase name="When user clicks on &quot;New chat&quot;" classname="send-a-message-to-a-friend;send-one-message-to-friend" time="0.000267094">
+        </testcase>
+        <testcase name="And &quot;dechates4btest1&quot; appers in partner selector menu" classname="send-a-message-to-a-friend;send-one-message-to-friend" time="0.569959313">
+        </testcase>
+        <testcase name="Then sends a &quot;Hi test user&quot;" classname="send-a-message-to-a-friend;send-one-message-to-friend" time="0.41116067">
+        </testcase>
+        <testcase name="Then new &quot;Hi test user&quot; appears on the chat" classname="send-a-message-to-a-friend;send-one-message-to-friend" time="4.701234092">
         </testcase>
     </testsuite>
 </testsuites>

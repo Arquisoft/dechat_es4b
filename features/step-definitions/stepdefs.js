@@ -166,12 +166,12 @@ module.exports = function() {
     driver
       .wait(
         until.elementsLocated(
-          by.xpath('//*[@id="new-chat-options" and @class="col-6 hidden"]')
+          by.xpath('//*[@id="new-chat-options"]')
         ),
         5000
       )
       .then(() => {
-        return sleep(500).then(() => {
+        return sleep(400).then(() => {
           return driver.findElement(by.xpath('//*[@id="new-btn"]')).click();
         });
       });
@@ -212,8 +212,8 @@ module.exports = function() {
   this.Then(/^new "([^"]*)" appears on the chat$/, function(message) {
     return driver
       .wait(
-        until.elementsLocated(by.name('//*[@id="addOurMessages"]/p')),
-        20000
+        until.elementsLocated(by.xpath('//*[@id="userName"]')),
+        13000
       )
       .then(() => {
         driver
