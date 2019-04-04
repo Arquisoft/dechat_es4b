@@ -7,4 +7,4 @@ Feature: See friends to chat
 
   Examples:
     | username      | password  | friend  |
-    | cuentapruebas | monkey    | linomlt |
+    | cuentapruebas | monkey    | dechates4btest1 |
