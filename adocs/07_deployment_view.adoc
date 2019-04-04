@@ -3,12 +3,20 @@
 
 == Deployment View
 
-To use this application you need a computer connected to the Internet.
-At the moment you do not need more permissions than the use of the Internet, we have developed this application for any browser, but is recommended to use it in Firefox.
+Our chat deChat is a client side application that runs in user's browser to connect to a Solid POD to chat with our friends, so to use it we only need a computer 
+and an Internet connection, we developed this application in Firefox and Chrome, so those are the browsers we recommend to use.
+
 
 === Infrastructure Level 1
 
-*TO BE DONE*
+deployment diagram here. 
+
+The distribution of our system was the same in all scenarios because we only need a computer with internet, we could test it in home and in the
+university the same way.
+Since the start, we knew this was a browser application and SOLID was our system to storage information of our communication, so we implementate the chat for
+a browser like Firefox, so we obviously need a computer with internet connection and the browser. Any computer can use dechat application.
+After connecting to the chat in the browser we use internet to connect to the SOLID Server and now we can send messages to another person. 
+
 
 === Infrastructure Level 2
 
