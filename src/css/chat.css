@@ -267,5 +267,6 @@ img{ max-width:100%;}
 }
 
 #addMessagesGroup{
-  height:133px;
+  height: 63px;
+  overflow-y: hidden;
 }
