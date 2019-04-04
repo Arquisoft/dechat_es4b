@@ -6,11 +6,14 @@
 
     <title>Solid Chat</title>
 
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
-	<link rel="stylesheet" href="src/css/main.css">
-	<link rel="stylesheet" href="src/css/chat.css">
+	  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+	  <link rel="stylesheet" href="src/css/main.css">
+	  <link rel="stylesheet" href="src/css/chat.css">
 
   </head>
   <body vocab="http://schema.org/">
@@ -43,23 +46,37 @@
         </div>
         <div id="chat-options" class="col-6 text-center">
           <button id="new-btn" type="button" class="btn btn-dark btn-lg"> New chat</button>
-          <button id="join-btn" type="button" class="btn btn-dark btn-lg hidden">Accept invitations</button>
+          <button id="create-group" type="button" class="btn btn-dark btn-lg">Create group</button>
           <button id="open-btn" type="button" class="btn btn-dark btn-lg">Open chat</button>
         </div>
 
-        <div id="new-chat-options" class="col-6 hidden">
-            <div class="form-group">
+        <div id="create-new-group" class="col-6 hidden">
+            <input type="text" name="group-name" id="group-name" class="write_msg" placeholder="Group name">
+          <div id="check-people-group">
+            <input class="form-check-input" type="checkbox" id="a"><label class="form-check-label" for="a">Default checkbox</label>
+          </div>
+          <button id="create-button" type="button" class="btn-cancel btn btn-dark">Create</button>
+          <button id="cancel-group-menu" type="button" class="btn-cancel btn btn-dark">Cancel</button>
+        </div>
+
+        <div id="new-chat-options" class="container-fluid hidden">
+            <div id="center" class="form-group">
               <label for="possible-people">Your conversation partner</label>
-              <select id="possible-people"></select>
+			  <div class="content-select">
+			  <select id="possible-people" class="cd-select">
+				</select>
+			  </div>
 			   <button id="possible-people-btn" type="button" class="btn btn-dark">OK</button> 
             </div>
 			      <div class="form-group">
-				      <label for="sent-messages">Messages:</label>
-					  <div class="container">
+					  <div id="drop_zone" accept="image/*" class="container">
 						<div class="messaging">
 							<div class="inbox_msg">
 								<div class="mesgs" id="messages">
-									<div class="msg_history">
+									<div class="msg_history" id="addMessages">										
+									</div>
+									
+									<div class="msg_history" id="addMessagesGroup">
 											<div class="incoming_msg" id="incoming_msg">	
 												<div class="received_msg">
 													<div class="received_withd_msg" id="addOurMessages">
@@ -70,12 +87,41 @@
 												<div class="sent_msg" id="addOtherMessages">
 												</div>
 											</div>
-									</div>
+									</div>								
 									<div class="type_msg">
+										<div id="emoji-panel" class="emoji-panel" hidden=true>
+											<input type="button" class="emoji-button" id="blush"/>
+												<input type="button" class="emoji-button" id="eyebrow"/>
+												<input type="button" class="emoji-button" id="facehearts"/>
+												<input type="button" class="emoji-button" id="hearteyes"/>
+												  <input type="button" class="emoji-button" id="hugging"/>
+												  <input type="button" class="emoji-button" id="kissing"/>
+												  <input type="button" class="emoji-button" id="laughing"/>
+												  <input type="button" class="emoji-button" id="neutral"/>
+												  <input type="button" class="emoji-button" id="nomouth"/>
+												  <input type="button" class="emoji-button" id="openmouth"/>
+												  <input type="button" class="emoji-button" id="persevere"/>
+												  <input type="button" class="emoji-button" id="rofl"/>
+												  <input type="button" class="emoji-button" id="rolling"/>
+												  <input type="button" class="emoji-button" id="sleeping"/>
+												  <input type="button" class="emoji-button" id="smile"/>
+												  <input type="button" class="emoji-button" id="smiley"/>
+												  <input type="button" class="emoji-button" id="smirk"/>
+												  <input type="button" class="emoji-button" id="stareyes"/>
+												  <input type="button" class="emoji-button" id="sunglasses"/>
+												  <input type="button" class="emoji-button" id="sweatsmile"/>
+												  <input type="button" class="emoji-button" id="thinking"/>
+												  <input type="button" class="emoji-button" id="wink"/>
+												  <input type="button" class="emoji-button" id="yum"/>
+												  <input type="button" class="emoji-button" id="zipper"/>
+										  </div>
 										<div class="input_msg_write">
 											<input type="text" name="data-name" id="data-name" class="write_msg" placeholder="Type a message">
-											<button id="start-new-chat-btn" type="submit" class="msg_send_btn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button> 							
-										</div>
+											<div id="btnMessagesSend">
+												<button id="openEmojiBtn" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-smile-o" aria-hidden="true"></i></button>
+												<button id="start-new-chat-btn" type="submit" class="msg_send_btn"><i id = "iconMsg" class="fa fa-paper-plane-o" aria-hidden="true"></i></button> 							
+											</div>
+										</div>											
 									</div>
 								</div>
 							</div>
@@ -111,7 +157,9 @@
         </div>
       </div>
 
-      <div id="how-it-works" class="row justify-content-center">
+      
+
+    <div id="how-it-works" class="row justify-content-center">
         <div class="col-6" typeof="SoftwareApplication Chat" about="https://arquisoft.github.io/dechat_es4b/">
           <h3>Start chatting</h3>
           <p class="text-justify">

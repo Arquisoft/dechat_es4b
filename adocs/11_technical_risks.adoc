@@ -4,12 +4,17 @@
 This page contains a list of all the risks we can encounter during the project as well as measures to try to minimize and solve them.
 
 === Risks:
-* Solid is a completely new technology to the group and it might take us time until we get used to its functionality.
-* Although we've used Javascript in the past, it's not our go-to programming language.
-* None of us have worked with this many people before and some of us didn't know each other  before.
-* English is not our first language and it can lead to some errors in the documentation.
+* *Solid* Is a completely new technology to the group and it might take us time until we get used to its functionality, the concept of POD 
+is not something we are familiariced.
+* *Javascript* lthough we've used it in the past, it's not our go-to programming language.
+* *Teamates* none of us have worked with this many people before and some of us didn't know each other  before. This is a problem we have
+to do this as a team.
+* *English* is not our first language and it can lead to some errors in the documentation.
+* *Turtle* we didn't know this syntax which was a difficult thing to front.
+* *Asynchronous Programming* this is a problem when we try to do testing and functions, because is something we never worked on it.
 
 === Measures to solve them:
 * Try to learn as much as possible about Solid and Javascript before starting to work on the actual code, and keep researching and learning during the whole project.
 * Increasing the communication in the group so everyone know what everyone is doing and has to do.
+* Do some research on Turtle syntax and Asynchronous programming and search examples to work on it.
 

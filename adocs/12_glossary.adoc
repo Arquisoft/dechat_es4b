@@ -5,10 +5,11 @@
 |===
 | Term         | Definition
 | Arc42    |  Template for architecture communication and documentation. It divides the documentation of the architecture in diferentiated sections
-| Decentralized computing | Decentralized computing is the allocation of resources, both hardware and software, to each individual workstation, or office location. In contrast, centralized computing exists when the majority of functions are carried out, or obtained from a remote centralized location.
+| BDD   | Behavior-driven development combines the general techniques and principles of TDD with ideas from domain-driven design and object-oriented analysis and design to provide software development and management teams with shared tools and a shared process to collaborate on software development.
 | Chai | Behavior-driven development assertion library compatible with Mocha and other JavaScript test frameworks.
+| CSS   | Is a style sheet language used for describing the presentation of a document written in a markup language like HTML.
+| Decentralized computing | Decentralized computing is the allocation of resources, both hardware and software, to each individual workstation, or office location. In contrast, centralized computing exists when the majority of functions are carried out, or obtained from a remote centralized location.
 | ECMASCRIPT | Trademarked scripting-language specification standarized by ECMA International. It was created to standardize JavaScript.
-
 | HTML | Hyper Text Markup Language (HTML) describes the structure of Web pages using markup.
 | Integration testing | Is the phase in software testing in which individual software modules are combined and tested as a group.
 | JQuery | Is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and Ajax.
@@ -23,6 +24,8 @@ sent. A POD can store photos, text, contacts or calendar events and many other t
  power to users as they are able to decide where their data is stored or who can read it or write it.
 | SOLID file client | Library that provides a simple interface for logging in and out of a Solid data store, maintaining a persistent session, and for managing files and folders.
 | Stakeholder |Person with an interest or concern in something, in the area we are working on, the decentralized chat.
+| TDD  | Software development process that relies on the repetition of a very short development cycle: requirements are turned into very specific test cases, then the software is improved to pass the new tests, only.
+| Turtle | is a syntax and file format for expressing data in the Resource Description Framework (RDF) data model.
 | Type-Script | An open-source programming language, is a strict 
 syntactical superset of JavaScript, and adds optional static typing to the language.
 | User | A person who uses a particular application or computer system.

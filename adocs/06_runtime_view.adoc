@@ -1,5 +1,48 @@
 [[section-runtime-view]]
 == Runtime View
 
-*TO BE DONE*
+=== Fitst Scenario: Login
+
+*Although basic is one of the most important scenarios because if a user is not logged in can not do anything.*
+
+. User opens the app in his browser. User could be logged or
+not.
+.. If the user is logged in, he will be able to start using the app.
+.. If he is not logged in, he can click the login button. A popup in which the user
+must enter his Solid credentials (from solid community, inrupt, his WebID). In case the user does not have an account
+he will be able to create one.
+
+. Once the user is logged in one way or another, the app will allow him to start a chat, continue a indivudual
+or group chat and create new groups, as friends and groups are loaded 
+as soon as the sing in process is done.
+
+=== Second Scenario: Send a message
+
+*The main functionality of the application is to send messages. Here we show how to di it.*
+
+. We assume that the *user* is logged in. If not he won't be able
+to chat.
+. The user clicks the *New Chat* button. A list of his friends in solid and
+groups he is part of is shown in a ComboBox. 
+. The user looks for his friend or group and selects an option.
+. If the individual or group conversation has already started, messages, images and
+emotes will be loaded from the *POD* to the *panel* by the communication module(Group or individual). If on the other hand the message is the first 
+of the conversation the panel will appear empty.
+. The message is written in the text area and when the user clicks the button
+or enter key, it is sent.
+ .. If the conversation is individual the message will be stored in user´s
+ own *POD* and will give the other user permission to read it.
+ .. If it is a gropup conversation, the message will be stored in group creator's *POD*.
+ . The user or users in the chat will be able to load this message immediately if they are
+ on the chat. If not, the next time they sign up to the app, the message will be loaded.
+
+=== Third Scenario: Create a group
+
+. One more time We assume that the *user* is logged in.
+. The user clicks the *Create Group* button. A list of his friends in solid are
+loaded from his account and a TextBox is displayed to enter a group name.
+. He enters the name and select the checkBoxes of friends he want to be in the grop.
+. Finally the user clicks the *create* button.
+. From the main view of the app, the user will be able to select new chat.
+The name of the newly created group will appear in the combobox mentioned above.
 

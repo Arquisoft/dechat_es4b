@@ -1,4 +1,7 @@
-.container{max-width:1170px; margin:auto;}
+m.container{
+	max-width:1170px; 
+	margin:auto;
+}
 img{ max-width:100%;}
 .inbox_people {
   background: #f8f8f8 none repeat scroll 0 0;
@@ -7,18 +10,26 @@ img{ max-width:100%;}
   width: 40%; border-right:1px solid #c4c4c4;
 }
 .inbox_msg {
-  border: 1px solid #c4c4c4;
   clear: both;
   overflow: hidden;
 }
 .top_spac{ margin: 20px 0 0;}
 
-
+#center{
+  margin: 1rem;
+  padding: 1rem;
+  border: 2px solid #ccc;
+  /* IMPORTANTE */
+  text-align: center;
+}
+#chat-options{
+  margin-top: 50px;
+}
 .recent_heading {float: left; width:40%;}
 .srch_bar {
   display: inline-block;
   text-align: right;
-  width: 60%; padding:
+  width: 60%;
 }
 .headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid #c4c4c4;}
 
@@ -71,7 +82,7 @@ img{ max-width:100%;}
   width: 92%;
  }
  .received_withd_msg p {
-  background: #ebebeb none repeat scroll 0 0;
+  background: #2ad1d3 none repeat scroll 0 0;
   border-radius: 3px;
   color: #646464;
   font-size: 14px;
@@ -105,17 +116,35 @@ img{ max-width:100%;}
   float: right;
   width: 46%;
 }
+.input_msg_write{
+	display: flex;	
+}
 .input_msg_write input {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: medium none;
-  color: #4c4c4c;
+  color: #368b8c;
   font-size: 15px;
   min-height: 48px;
   width: 100%;
 }
 
-.type_msg {border-top: 1px solid #c4c4c4;position: relative;}
-.msg_send_btn {
+.type_msg {position: relative;
+	}
+
+
+.messaging { padding: 50px 0 50px 0;}
+.msg_history {
+  overflow-y: auto;
+  height: 350px;
+}
+
+#btnMessagesSend{
+  position: absolute;
+  right: 0;
+  margin: 10px;
+}
+
+.msg_send_btn,.emoji_open{	
   background: #05728f none repeat scroll 0 0;
   border: medium none;
   border-radius: 50%;
@@ -123,18 +152,14 @@ img{ max-width:100%;}
   cursor: pointer;
   font-size: 17px;
   height: 33px;
-  position: absolute;
-  right: 0;
-  top: 11px;
-  width: 33px;
-}
-.messaging { padding: 0 0 50px 0;}
-.msg_history {
-  overflow-y: auto;
 }
 
+
 #data-name{
-	color: white;
+	color: #225c5d;
+	border: medium none;
+	background-color: white;
+	border-radius: 50px;
 }
 
 #userName{
@@ -142,4 +167,109 @@ img{ max-width:100%;}
 }
 #dateMessage{
 	margin-bottom: 20px;
+}
+#emoji-panel{
+    border-style: solid;
+    border-width: thin;
+	background-color: #0d4261;
+	border-radius: 10px;
+	padding: 3px;
+	margin:10px;
+}
+#drop_zone{	
+	background-image: url("../img/fondo.jpg");
+    background-repeat: repeat;
+}
+
+.emoji-button {
+    height: 35px;
+    width: 35px;
+    background-image: url('../img/emotes/sunglasses.png');
+    background-color: #0d4261;
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#blush {
+    background-image: url('../img/emotes/blush.png');
+}
+#eyebrow {
+  background-image: url('../img/emotes/eyebrow.png');
+}
+#facehearts {
+  background-image: url('../img/emotes/facehearts.png');
+}
+#hearteyes {
+  background-image: url('../img/emotes/hearteyes.png');
+}
+#hugging {
+  background-image: url('../img/emotes/hugging.png');
+}
+#kissing {
+  background-image: url('../img/emotes/kissing.png');
+}
+#laughing {
+  background-image: url('../img/emotes/laughing.png');
+}
+#neutral {
+  background-image: url('../img/emotes/neutral.png');
+}
+#nomouth {
+  background-image: url('../img/emotes/nomouth.png');
+}
+#openmouth {
+  background-image: url('../img/emotes/openmouth.png');
+}
+#persevere {
+  background-image: url('../img/emotes/persevere.png');
+}
+#rofl {
+  background-image: url('../img/emotes/rofl.png');
+}
+#rolling {
+  background-image: url('../img/emotes/rolling.png');
+}
+#sleeping {
+  background-image: url('../img/emotes/sleeping.png');
+}
+#smile {
+  background-image: url('../img/emotes/smile.png');
+}
+#smiley {
+  background-image: url('../img/emotes/smiley.png');
+}
+#smirk {
+  background-image: url('../img/emotes/smirk.png');
+}
+#stareyes {
+  background-image: url('../img/emotes/stareyes.png');
+}
+#sunglasses {
+  background-image: url('../img/emotes/sunglasses.png');
+}
+#sweatsmile {
+  background-image: url('../img/emotes/sweatsmile.png');
+}
+#thinking {
+  background-image: url('../img/emotes/thinking.png');
+}
+#wink {
+  background-image: url('../img/emotes/wink.png');
+}
+#yum {
+  background-image: url('../img/emotes/yum.png');
+}
+#zipper {
+  background-image: url('../img/emotes/zipper.png');
+}
+
+
+
+#addMessages{
+   height:460px;
+}
+
+#addMessagesGroup{
+  height: 63px;
+  overflow-y: hidden;
 }

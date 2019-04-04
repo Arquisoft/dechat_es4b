@@ -1,0 +1,276 @@
+[
+  {
+    "elements": [
+      {
+        "id": "see-friends-to-chat;show-list-of-friends",
+        "keyword": "Scenario",
+        "line": 10,
+        "name": "Show list of friends",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "user logged with \"cuentapruebas\" and \"monkey\"",
+            "result": {
+              "status": "passed",
+              "duration": 9513962228
+            },
+            "line": 4,
+            "match": {
+              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:121"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "user clicks on \"New chat\"",
+            "result": {
+              "status": "passed",
+              "duration": 459093
+            },
+            "line": 5,
+            "match": {
+              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:165"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "\"dechates4btest1\" appers in partner selector menu",
+            "result": {
+              "status": "passed",
+              "duration": 540590472
+            },
+            "line": 6,
+            "match": {
+              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:180"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 96002479
+            },
+            "hidden": true,
+            "match": {
+              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "see-friends-to-chat",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "See friends to chat",
+    "tags": [],
+    "uri": "C:/Users/Enrique/Desktop/ASW/dechat_es4b/features/frienlist.feature"
+  },
+  {
+    "elements": [
+      {
+        "id": "log-in-the-chat;correct-login",
+        "keyword": "Scenario",
+        "line": 9,
+        "name": "Correct login",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "user tries to login with valid \"cuentapruebas\" and \"monkey\"",
+            "result": {
+              "status": "passed",
+              "duration": 8329268199
+            },
+            "line": 4,
+            "match": {
+              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:8"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "login successful as \"cuentapruebas\"",
+            "result": {
+              "status": "passed",
+              "duration": 87044192
+            },
+            "line": 5,
+            "match": {
+              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:55"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 91946588
+            },
+            "hidden": true,
+            "match": {
+              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "id": "log-in-the-chat;wrong-login",
+        "keyword": "Scenario",
+        "line": 17,
+        "name": "Wrong login",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "user tries to login with valid \"cuentapruebas\" and wrong \"fail\"",
+            "result": {
+              "status": "passed",
+              "duration": 8141981319
+            },
+            "line": 12,
+            "match": {
+              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:70"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "login fails and a error message is shown",
+            "result": {
+              "status": "passed",
+              "duration": 17565852
+            },
+            "line": 13,
+            "match": {
+              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:114"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 96334425
+            },
+            "hidden": true,
+            "match": {
+              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "log-in-the-chat",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "Log in the chat",
+    "tags": [],
+    "uri": "C:/Users/Enrique/Desktop/ASW/dechat_es4b/features/login.feature"
+  },
+  {
+    "elements": [
+      {
+        "id": "send-a-message-to-a-friend;send-one-message-to-friend",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "send one message to friend",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "user logged with \"cuentapruebas\" and \"monkey\"",
+            "result": {
+              "status": "passed",
+              "duration": 8574141803
+            },
+            "line": 4,
+            "match": {
+              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:121"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "user clicks on \"New chat\"",
+            "result": {
+              "status": "passed",
+              "duration": 395519
+            },
+            "line": 5,
+            "match": {
+              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:165"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "\"dechates4btest1\" appers in partner selector menu",
+            "result": {
+              "status": "passed",
+              "duration": 535616823
+            },
+            "line": 6,
+            "match": {
+              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:180"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "sends a \"Hi test user\"",
+            "result": {
+              "status": "passed",
+              "duration": 327711721
+            },
+            "line": 7,
+            "match": {
+              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:196"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "new \"Hi test user\" appears on the chat",
+            "result": {
+              "status": "passed",
+              "duration": 4846650158
+            },
+            "line": 8,
+            "match": {
+              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:212"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 134109752
+            },
+            "hidden": true,
+            "match": {
+              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "send-a-message-to-a-friend",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "send a message to a friend",
+    "tags": [],
+    "uri": "C:/Users/Enrique/Desktop/ASW/dechat_es4b/features/sendMessages.feature"
+  }
+]

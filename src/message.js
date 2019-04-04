@@ -1,9 +1,16 @@
 module.exports = class Message {
-  constructor(sender, receiver, content) {
+  constructor(sender, dateTime, content) {
     this._sender = sender;
-    this._receiver = receiver;
+    this._dateTime = dateTime;
     this._content = content;
   }
+
+  // constructor(sender, receiver, content, dateTime) {
+    // this._sender = sender;
+    // this._receiver = receiver;
+    // this._content = content;
+    // this._dateTime = dateTime;
+  // }
 
   get sender() {
     return this._sender;
@@ -11,6 +18,14 @@ module.exports = class Message {
 
   set sender(newSender) {
     this._sender = newSender;
+  }
+
+  get dateTime() {
+    return this._dateTime;
+  }
+
+  set dateTime(newDateTime) {
+    this._dateTime = newDateTime;
   }
 
   get receiver() {
@@ -25,7 +40,7 @@ module.exports = class Message {
     return this._content;
   }
 
-  set sender(newContent) {
+  set content(newContent) {
     this._content = newContent;
   }
 }
