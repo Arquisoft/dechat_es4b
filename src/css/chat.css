@@ -22,6 +22,9 @@ img{ max-width:100%;}
   /* IMPORTANTE */
   text-align: center;
 }
+#chat-options{
+  margin-top: 50px;
+}
 .recent_heading {float: left; width:40%;}
 .srch_bar {
   display: inline-block;
@@ -263,7 +266,7 @@ img{ max-width:100%;}
 
 
 #addMessages{
-   height:400px;
+   height:460px;
 }
 
 #addMessagesGroup{
