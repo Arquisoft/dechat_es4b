@@ -21,7 +21,20 @@ Launch server locally:
  npm run build:web
  http-server
 ----
+
 The application is available in the IP address shown after previous command.
+
+Launch unit tests (Asumming nmp i command has been already executed)
+----
+npm test
+----
+
+Launch BDD tests (Asumming nmp i command has been already executed)
+----
+npm run-script cucumber
+----
+
+
 
 == Authors:
 - Avello Díaz, Enrique
