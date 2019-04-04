@@ -21,17 +21,17 @@ describe('Private communication testing', function () {
   })
     
   it("Establish private communication",async function(){
-      personal.username = "enriquead";
-      var receiver = {username:"mariodiaz98",
-                        inbox: "https://mariodiaz98.solid.community/inbox/",
-                        webId: "https://mariodiaz98.solid.community/profile/card#me"}
+      personal.username = "dechat-es4b";
+      var receiver = {username:"enriquetest2",
+                        inbox: "https://enriquetest2.solid.community/inbox/",
+                        webId: "https://enriquetest2.solid.community/profile/card#me"}
       privateComm.sendFirstMessage(personal,receiver,"Test");   
       var comunicacion = await privateComm.communicationEstablished(personal.username,receiver);
       assert.equal(comunicacion,true);
   })  
     
   it("Loads messages properly",async function(){
-      var result = await privateComm.loadMessages("enriquead","mariodiaz98",true);
+      var result = await privateComm.loadMessages("dechat-es4b","enriquetest2",true);
       
       
   }) 

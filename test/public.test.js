@@ -22,15 +22,15 @@ describe('Private communication testing', function () {
 
   }) 
   it("Create core file and send message",async function(){
-      personal.username = "mariodiaz98";
+      personal.username = "dechat-es4b";
       var rand = publicComm.randomString(6);
       var groupName = "Testing group"+publicComm.randomString(3);
       var friendList = new Array();
       
       
-      friendList.push({username:"enriquead",
-                        inbox: "https://enriquead.solid.community/inbox/",
-                        webId: "https://enriquead.solid.community/profile/card#me"});
+      friendList.push({username:"enriquetest2",
+                        inbox: "https://enriquetest2.solid.community/inbox/",
+                        webId: "https://enriquetest2.solid.community/profile/card#me"});
        friendList.push({username:"enriquead",
                         inbox: "https://enriquead.solid.community/inbox/",
                         webId: "https://enriquead.solid.community/profile/card#me"});
