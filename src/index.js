@@ -149,6 +149,12 @@ $("#create-button").click(async () => {
 	}
 });
 
+
+function moveScrollDown() {
+  $("#addMessages").animate({ scrollTop: document.getElementById("addMessages").scrollHeight; }, 1000);
+  $("#addMessagesGroup").animate({ scrollTop: document.getElementById("addMessages").scrollHeight; }, 1000);
+}
+
 $("#start-new-chat-btn").click(async () => {
 	var message = $("#data-name").val();
   var receiver = $("#possible-people option:selected").val();
@@ -201,10 +207,6 @@ $("#openEmojiBtn").click(() => {
   $("#addMessagesGroup").prop("hidden",isActivated);
 });
 
-function moveScrollDown() {
-  $("#addMessages").animate({ scrollTop: document.getElementById("addMessages").scrollHeight; }, 1000);
-  $("#addMessagesGroup").animate({ scrollTop: document.getElementById("addMessages").scrollHeight; }, 1000);
-}
 
 
 //Images sharing (here for some time)

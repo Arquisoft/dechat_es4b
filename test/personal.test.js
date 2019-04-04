@@ -14,7 +14,7 @@ describe("Simple personal testing", function () {
 	
 	it("Test constructor", function() {
 	 
-	  assert.isNotNull(personal);
+	assert.isNotNull(personal);
     
     })
     it("Getters are working",function(){
