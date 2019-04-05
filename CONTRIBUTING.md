@@ -1,4 +1,4 @@
-# Good code styling
+## Good code styling
 
 - When using String, use "" instead of ', if it's possible
 - If and else statement must be formed by { and }
