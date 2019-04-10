@@ -1,6 +1,7 @@
 const auth = require("solid-auth-client");
 const Core = require("../lib/core");
 const DataSync = require("../lib/datasync");
+const fc = require("solid-file-client");
 
 const Personal = require("../lib/personal");
 
@@ -34,10 +35,20 @@ async function checkForNotifications() {
 $("#refresh-btn").click(checkForNotifications);
 
 $("#open-btn").click(() => {
-  //USE IT FOR TESTING
+  if (personal.username) {
+    afterChatOption();
+    $("#manage-friends").removeClass("hidden");
+  } else {
+    $("#login-required").modal("show");
+  }
 });
 
-
+$("#add-friend-button").click(() => {
+  var friendMe = $("#friend-name").val();
+  core.addFriend(personal, friendMe);
+  $("#friend-name").val("");
+  $("#manage-friends").addClass("hidden");
+});
 
 
 auth.trackSession(async session => {
@@ -102,7 +113,7 @@ $("#new-btn").click(async () => {
     for await (const friend of personal.friendList) {
         $("#possible-people").append("<option value="+friend.username+">"+friend.username+"</option>");
     }
-  $( "#possible-people" ).dropdown();
+    $( "#possible-people" ).dropdown();
     
     $("#data-name").keydown(function (e) {
       if (e.keyCode === 13) {
@@ -181,6 +192,10 @@ $(".btn-cancel").click(() => {
 
 $("#cancel-group-menu").click(() => {
   $("#create-new-group").addClass("hidden");
+});
+
+$("#cancel-manage-friend").click(() => {
+  $("#manage-friends").addClass("hidden");
 });
 
 $("#possible-people-btn").click( async () => {
