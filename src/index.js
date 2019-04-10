@@ -1,7 +1,4 @@
 const auth = require("solid-auth-client");
-const fc = require("solid-file-client");
-const namespaces = require("../lib/namespaces");
-const { default: data } = require("@solid/query-ldflex");
 const Core = require("../lib/core");
 const DataSync = require("../lib/datasync");
 
@@ -9,7 +6,7 @@ const Personal = require("../lib/personal");
 
 let refreshIntervalId;
 let core = new Core(auth.fetch);
-let personal = new Personal(core);
+let personal = null;
 let dataSync= new DataSync(auth.fetch);
 
 
@@ -47,6 +44,7 @@ auth.trackSession(async session => {
   const loggedIn = !!session;
 
   if (loggedIn) {
+    personal = new Personal(core);
     $("#chat-options").addClass("hidden");
     $("#loading-gif").removeClass("hidden");
 
