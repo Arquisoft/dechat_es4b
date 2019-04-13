@@ -220,6 +220,17 @@ $("#openEmojiBtn").click(() => {
   $("#addMessagesGroup").prop("hidden",isActivated);
 });
 
+$("#enable-emojis").click(() => {
+  var a = $("#emojis-enabled").attr("class");
+  if(a.includes("hidden")){
+    $("#emojis-enabled").removeClass("hidden");
+    $("#emojis-disabled").addClass("hidden");
+  }
+  else {
+    $("#emojis-enabled").addClass("hidden");
+    $("#emojis-disabled").removeClass("hidden");
+  }
+});
 
 
 //Images sharing (here for some time)
