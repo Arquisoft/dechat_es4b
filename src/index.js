@@ -221,17 +221,23 @@ $("#openEmojiBtn").click(() => {
 });
 
 $("#enable-emojis").click(() => {
+  changeStateOfEmojis();
+});
+
+async function changeStateOfEmojis(){
   var a = $("#emojis-enabled").attr("class");
   if(a.includes("hidden")){
+    core.changeStateOfEmojis(true);  
     $("#emojis-enabled").removeClass("hidden");
     $("#emojis-disabled").addClass("hidden");
   }
   else {
+    core.changeStateOfEmojis(false);
     $("#emojis-enabled").addClass("hidden");
     $("#emojis-disabled").removeClass("hidden");
   }
-});
-
+  await checkForNotifications();
+}
 
 //Images sharing (here for some time)
 
