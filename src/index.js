@@ -9,6 +9,7 @@ let refreshIntervalId;
 let core = new Core(auth.fetch);
 let personal = null;
 let dataSync= new DataSync(auth.fetch);
+let NotificationManager = require("../lib/notificationmanager");
 
 
 $(".login-btn").click(() => {
@@ -30,7 +31,7 @@ async function loadMessagesFromChat() {
   if(length === 0){
     await core.loadMessages(personal, $("#possible-people option:selected").val(),false);
   }   
-  core.checkForNotifications(personal);
+  core.checkForNotifications(personal, nm);
 }
 
 $("#refresh-btn").click(loadMessagesFromChat);
@@ -61,6 +62,7 @@ auth.trackSession(async session => {
 
   if (loggedIn) {
     personal = new Personal(core);
+    nm = new NotificationManager();
     $("#chat-options").addClass("hidden");
     $("#loading-gif").removeClass("hidden");
 
