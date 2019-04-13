@@ -107,7 +107,8 @@ img{ max-width:100%;}
   background: #05728f none repeat scroll 0 0;
   border-radius: 3px;
   font-size: 14px;
-  margin: 0; color:#fff;
+  margin: 0; 
+  color:#fff;
   padding: 5px 10px 5px 12px;
   width:100%;
 }
@@ -169,8 +170,8 @@ img{ max-width:100%;}
 	margin-bottom: 20px;
 }
 #emoji-panel{
-    border-style: solid;
-    border-width: thin;
+  border-style: solid;
+  border-width: thin;
 	background-color: #0d4261;
 	border-radius: 10px;
 	padding: 3px;
@@ -178,7 +179,7 @@ img{ max-width:100%;}
 }
 #drop_zone{	
 	background-image: url("../img/fondo.jpg");
-    background-repeat: repeat;
+  background-repeat: repeat;
 }
 
 .emoji-button {
@@ -272,4 +273,28 @@ img{ max-width:100%;}
 #addMessagesGroup{
   height: 63px;
   overflow-y: hidden;
+}
+
+.alert-success{
+  position: relative;
+  z-index:-1;
+  right: 0;
+  bottom: 0;
+  margin: 20px 0px 20px 0px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+#notification-box{
+  float: right;
+  position: absolute;
+  z-index: 1;
+  right: 5px;
+  top: 0px;
+  max-width: 400px;
+}
+
+#xNotifications {
+  color: black !important;
+  text-decoration: none;
 }
