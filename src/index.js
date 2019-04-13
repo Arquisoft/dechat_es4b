@@ -25,14 +25,15 @@ $("#logout-btn").click(() => {
  * The necessarily data is stored and the UI is updated.
  * @returns {Promise<void>}
  */
-async function checkForNotifications() {
+async function loadMessagesFromChat() {
   var length = $("#mySelectList > option").length;
   if(length === 0){
     await core.loadMessages(personal, $("#possible-people option:selected").val(),false);
   }   
+  core.checkForNotifications(personal);
 }
 
-$("#refresh-btn").click(checkForNotifications);
+$("#refresh-btn").click(loadMessagesFromChat);
 
 $("#open-btn").click(() => {
   personal.reloadFriendList();
@@ -77,9 +78,9 @@ auth.trackSession(async session => {
     $("#user-menu").removeClass("hidden");
     $("#login-required").modal("hide");  
 
-    await checkForNotifications();
+    await loadMessagesFromChat();
     // refresh every 5 sec
-    refreshIntervalId = setInterval(checkForNotifications, 5000);
+    refreshIntervalId = setInterval(loadMessagesFromChat, 5000);
   } else {
     $("#nav-login-btn").removeClass("hidden");
     $("#user-menu").addClass("hidden");
@@ -240,7 +241,7 @@ async function changeStateOfEmojis(){
     $("#emojis-enabled").addClass("hidden");
     $("#emojis-disabled").removeClass("hidden");
   }
-  await checkForNotifications();
+  await loadMessagesFromChat();
 }
 
 //Images sharing (here for some time)
