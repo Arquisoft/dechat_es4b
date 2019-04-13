@@ -42,8 +42,6 @@ npm run-script cucumber
 
 == Authors:
 - Avello Díaz, Enrique
-- De Benito Álvarez, Carlos
 - Díaz Ceñera, Mario
-- Lera Cuesta, Daniel De
 - Marín Iglesias, Óscar
 - Menéndez De Luarca Trabanco, Lino
