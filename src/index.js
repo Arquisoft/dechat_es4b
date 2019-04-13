@@ -35,6 +35,10 @@ async function checkForNotifications() {
 $("#refresh-btn").click(checkForNotifications);
 
 $("#open-btn").click(() => {
+  personal.reloadFriendList();
+});
+
+$("#add-friend-menu").click(() => {
   if (personal.username) {
     afterChatOption();
     $("#manage-friends").removeClass("hidden");
@@ -48,7 +52,6 @@ $("#add-friend-button").click(() => {
   core.addFriend(personal, friendMe);
   $("#friend-name").val("");
   $("#manage-friends").addClass("hidden");
-  setTimeout(function(){ personal.loadFriendList() }, 2000);
 });
 
 
