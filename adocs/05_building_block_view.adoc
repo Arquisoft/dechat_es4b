@@ -21,8 +21,20 @@ image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/docs/image
 
 === Level 2
 
-*_TO BE DONE_*
+Our chat is built using three main blocks:
+
+User Interface:: An single HTML file to present all the application. To control what we want to display every moment it's used JavaScript, and specially jQuery library.
+Logic:: This block is used to connect PODs administration with User Interface.
+Data Storing :: In this project we are using SOLID PODs. The main reason: each user is owner of his own data. This block will be written and readed by logic, and after that present the data.
+
+image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/adocs/images/5_building_blocks_2-3.JPG[align="center"]
 
 === Level 3
 
-*_TO BE DONE_*
+index:: the main module in the system is index.js. It is used to control every action user does in the page, and call other modules and functions.
+
+core:: is used to administrate the communications. This module uses another more specific modules like the communication of groups or personal (private). They will connect with PODs.
+
+personal:: used to load data from users.
+
+messages:: A simple class with different attributes to store messages

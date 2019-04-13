@@ -506,6 +506,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 	.arc42help {display:hidden;}
 }
 </style>
+</head>
+
 <hr>
 <div style="page-break-after: always;"></div>
 </div>
@@ -835,8 +837,51 @@ know who did any change on the code and of course, GitHub makes easier the colab
 <div class="sect2">
 <h3 id="_technical_context">3.2. Technical Context</h3>
 <div class="paragraph">
-<p><strong>TO BE DONE</strong></p>
+<p>Our application is a decentralized web application, the data will be stored in the Pods of the users. Therefore our application must be connected to the Internet.</p>
 </div>
+<div class="paragraph">
+<p>Users will communicate with each other through URLs, through the Internet, without the need for a central place to store the data.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/adocs/images/TechincalContext.PNG" alt="TechincalContext">
+</div>
+</div>
+<div class="paragraph">
+<p>Legend of diagram</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DeChat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is the web application</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Internet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Represents the communication will be made using internet with the HTTPS protocol.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is a Solid Pod and it will contain all the data from the given user</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Represents a user that is using the application</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SOLID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is the server in which the Solid pods are stored</p></td>
+</tr>
+</tbody>
+</table>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -858,11 +903,17 @@ know who did any change on the code and of course, GitHub makes easier the colab
 <div class="ulist">
 <ul>
 <li>
+<p><strong>Cucumber</strong>: it runs automated acceptance tests written in a behavior-driven development style</p>
+</li>
+<li>
 <p><strong>Javascript</strong>: Is a lenguage based on ECMASCRIPT, with it we can do
 applications in the web.
 We will use Javascript because in the project we will implementate
 a chat, as we know, and this language is the best and easiest for client
 applications.</p>
+</li>
+<li>
+<p><strong>MochaJs</strong>: is a JavaScript test framework for Node.js programs, featuring browser support, asynchronous testing, test coverage reports, and use of any assertion library.</p>
 </li>
 <li>
 <p><strong>Node.js</strong>: Is an open-source, cross-platform JavaScript run-time
@@ -872,13 +923,29 @@ environment that executes JavaScript code outside of a browser.</p>
 <p><strong>Solid</strong>: Is a web decentralization project, just what we need to do the
 project.</p>
 </li>
+<li>
+<p><strong>Travis</strong>: is a hosted, distributed continuous integration service used to build and test software projects hosted at GitHub.</p>
+</li>
+<li>
+<p><strong>Turtle</strong>:  is a syntax and file format for expressing data in the Resource Description Framework data model, we need it to store information
+on the PODs.</p>
+</li>
 </ul>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_solution_aproaches">4.3. Solution Aproaches</h3>
 <div class="paragraph">
-<p>TO BE DONE</p>
+<p>Once we started to do the project of the chat, we took some direct solutions. We started to programming
+in Javascript based in the project of a Solid Chess.  We will implement some integration test with Travis to take advantage of
+the continuous integration service using Mocha and his assertion library to help us to prove and improve the code. We can connect to the pod and
+we can send messages with Javascript using JQuery.
+The project is implementated in Node.js which is better for us than use Angular for all the problems Angular can have for us
+while Node is not difficult because we know some JavaScript.
+We added some TDD testing with cucumber too which is important to prove that our code is working.
+Once we can communicate with other people, that is the main purpose of this application, we added images to the communication
+and chat groups to communicate with more than one person. We added the options to add friends and remove friends.
+Finally we improve all of the interface of the application to make it easier to use, for this we modificate the CSS and HTML files.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -920,13 +987,51 @@ The App will have three main elements: pods, users and DeChat App. These parts w
 <div class="sect2">
 <h3 id="_level_2">5.2. Level 2</h3>
 <div class="paragraph">
-<p><strong><em>TO BE DONE</em></strong></p>
+<p>Our chat is built using three main blocks:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">User Interface</dt>
+<dd>
+<p>An single HTML file to present all the application. To control what we want to display every moment it&#8217;s used JavaScript, and specially jQuery library.</p>
+</dd>
+<dt class="hdlist1">Logic</dt>
+<dd>
+<p>This block is used to connect PODs administration with User Interface.</p>
+</dd>
+<dt class="hdlist1">Data Storing </dt>
+<dd>
+<p>In this project we are using SOLID PODs. The main reason: each user is owner of his own data. This block will be written and readed by logic, and after that present the data.</p>
+</dd>
+</dl>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/adocs/images/5_building_blocks_2-3.JPG" alt="5 building blocks 2 3">
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_level_3">5.3. Level 3</h3>
-<div class="paragraph">
-<p><strong><em>TO BE DONE</em></strong></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">index</dt>
+<dd>
+<p>the main module in the system is index.js. It is used to control every action user does in the page, and call other modules and functions.</p>
+</dd>
+<dt class="hdlist1">core</dt>
+<dd>
+<p>is used to administrate the communications. This module uses another more specific modules like the communication of groups or personal (private). They will connect with PODs.</p>
+</dd>
+<dt class="hdlist1">personal</dt>
+<dd>
+<p>used to load data from users.</p>
+</dd>
+<dt class="hdlist1">messages</dt>
+<dd>
+<p>A simple class with different attributes to store messages</p>
+</dd>
+</dl>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -935,28 +1040,134 @@ The App will have three main elements: pods, users and DeChat App. These parts w
 <div class="sect1">
 <h2 id="section-runtime-view">6. Runtime View</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_fitst_scenario_login">6.1. Fitst Scenario: Login</h3>
 <div class="paragraph">
-<p><strong>TO BE DONE</strong></p>
+<p><strong>Although basic is one of the most important scenarios because if a user is not logged in can not do anything.</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User opens the app in his browser. User could be logged or
+not.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If the user is logged in, he will be able to start using the app.</p>
+</li>
+<li>
+<p>If he is not logged in, he can click the login button. A popup in which the user
+must enter his Solid credentials (from solid community, inrupt, his WebID). In case the user does not have an account
+he will be able to create one.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Once the user is logged in one way or another, the app will allow him to start a chat, continue a indivudual
+or group chat and create new groups, as friends and groups are loaded
+as soon as the sing in process is done.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_second_scenario_send_a_message">6.2. Second Scenario: Send a message</h3>
+<div class="paragraph">
+<p><strong>The main functionality of the application is to send messages. Here we show how to di it.</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We assume that the <strong>user</strong> is logged in. If not he won&#8217;t be able
+to chat.</p>
+</li>
+<li>
+<p>The user clicks the <strong>New Chat</strong> button. A list of his friends in solid and
+groups he is part of is shown in a ComboBox.</p>
+</li>
+<li>
+<p>The user looks for his friend or group and selects an option.</p>
+</li>
+<li>
+<p>If the individual or group conversation has already started, messages, images and
+emotes will be loaded from the <strong>POD</strong> to the <strong>panel</strong> by the communication module(Group or individual). If on the other hand the message is the first
+of the conversation the panel will appear empty.</p>
+</li>
+<li>
+<p>The message is written in the text area and when the user clicks the button
+or enter key, it is sent.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>If the conversation is individual the message will be stored in user´s
+own <strong>POD</strong> and will give the other user permission to read it.</p>
+</li>
+<li>
+<p>If it is a gropup conversation, the message will be stored in group creator&#8217;s <strong>POD</strong>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>The user or users in the chat will be able to load this message immediately if they are
+on the chat. If not, the next time they sign up to the app, the message will be loaded.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_third_scenario_create_a_group">6.3. Third Scenario: Create a group</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>One more time We assume that the <strong>user</strong> is logged in.</p>
+</li>
+<li>
+<p>The user clicks the <strong>Create Group</strong> button. A list of his friends in solid are
+loaded from his account and a TextBox is displayed to enter a group name.</p>
+</li>
+<li>
+<p>He enters the name and select the checkBoxes of friends he want to be in the grop.</p>
+</li>
+<li>
+<p>Finally the user clicks the <strong>create</strong> button.</p>
+</li>
+<li>
+<p>From the main view of the app, the user will be able to select new chat.
+The name of the newly created group will appear in the combobox mentioned above.</p>
+</li>
+</ol>
 </div>
 <div style="page-break-after: always;"></div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="section-deployment-view">7. Deployment View</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>TO BE DONE</strong></p>
+<p>Our chat deChat is a client side application that runs in user&#8217;s browser to connect to a Solid POD to chat with our friends, so to use it we only need a computer
+and an Internet connection, we developed this application in Firefox and Chrome, so those are the browsers we recommend to use.</p>
 </div>
 <div class="sect2">
 <h3 id="_infrastructure_level_1">7.1. Infrastructure Level 1</h3>
-<div class="paragraph">
-<p><strong>TO BE DONE</strong></p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/adocs/images/7-deployment-view.png" alt="7 deployment view">
 </div>
 </div>
-<div class="sect2">
-<h3 id="_infrastructure_level_2">7.2. Infrastructure Level 2</h3>
 <div class="paragraph">
-<p><strong>TO BE DONE</strong></p>
+<p>We can see a first node which is the node of the computer of the user, he connect to the browser with Internet. The second node is the application, we need
+a server to connect to the chat. Finally we connect to the last node, this node is SOLID Server who provides us user&#8217;s POD and the receiver or receivers POD,
+we connect to user&#8217;s pod to store the message and we send it to the receiver or receivers.</p>
+</div>
+<div class="paragraph">
+<p>The distribution of our system was the same in all scenarios because we only need a computer with internet, we could test it in home and in the
+university the same way.
+Since the start, we knew this was a browser application and SOLID was our system to storage information of our communication, so we implementate the chat for
+a browser like Firefox, so we obviously need a computer with internet connection and the browser. Any computer can use dechat application.
+After connecting to the chat in the browser we use internet to connect to the SOLID Server and now we can send messages to another person.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -966,9 +1177,107 @@ The App will have three main elements: pods, users and DeChat App. These parts w
 <h2 id="section-concepts">8. Cross-cutting Concepts</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>TO BE DONE</strong></p>
+<p>This section describes regulation and solution ideas that are relevant in multiple
+parts of our system.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/adocs/images/crosscuting_concepts.png" alt="crosscuting concepts">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_domain_concepts">8.1. Domain concepts</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Domain models</strong> We use a domain where we have an index file which depends of libraries, then we have various folders when we
+store testing and documentation.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_user_experience_concepts">8.2. User Experience concepts</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>User interface</strong> As user interface we can understand the interface of the application, in this case the interface is a
+normal chat interface like other chats applications.</p>
+</li>
+<li>
+<p><strong>Internationalization</strong> We did the application in English and for the moment we will not add internationalization to other lenguages.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_safety_and_security_concepts">8.3. Safety and security concepts</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Security and safety</strong> The security and safety in the project is key because this application is based in Solid which is
+decentralized and safe. We store the information we send in the PODs to avoid  problems in the security.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_architecture_and_design_patterns">8.4. Architecture and design patterns</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>P2P Architecture</strong> is a commonly used computer networking architecture in which each workstation, or node, has the same capabilities
+and responsibilities.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_under_the_hood_concepts">8.5. “Under-the-hood” concepts</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Session handling</strong> We log in with our user of SOLID in the application, once we are into the service we can communicate with the
+server to interact with other users.</p>
+</li>
+<li>
+<p><strong>Persistence</strong> to save our information, we store it on PODs on SOLID, so we don&#8217;t use information stored in databases.</p>
+</li>
+<li>
+<p><strong>Communication and integration</strong> in this chat we use asynchronous methods. We are working on the integration in another sites.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_development_concepts">8.6. Development concepts</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Build and code generation</strong> The build and code generation in our project is done in javascript with Node.js. We must have instaled
+Node in our computer to build the project.</p>
+</li>
+<li>
+<p><strong>Test and deploy</strong> For testing we use cucumber for acceptance testing and we use BDD. For asynchronous testing we use mocha. To deploy
+the project we must have Node installed.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_operational_concepts">8.7. Operational concepts</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Administration</strong> For the administration of this project we work as a team so we administrate it equally.</p>
+</li>
+<li>
+<p><strong>Disaster recovery</strong> We have this project in GitHub so if something happened to the project locally, we have a copy there.</p>
+</li>
+</ul>
 </div>
 <div style="page-break-after: always;"></div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -998,6 +1307,16 @@ The App will have three main elements: pods, users and DeChat App. These parts w
 <td class="tableblock halign-left valign-top"><p class="tableblock">It is mandatory in a decentralized Solid app</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">We started the project with Angular in mind, but we rejected it after see its complexity, the lack of previous experience by all of us and after see other groups complaining about the same decision</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Run-time environment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node.js</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Although Node is not a framework, we chose this technology after abandon Angular because of its simplicity that allows us to deploy a 0.1 version fast.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Database</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">There is no need for a database, each chat user will store their data and messages in their personal POD</p></td>
@@ -1012,39 +1331,91 @@ The App will have three main elements: pods, users and DeChat App. These parts w
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_quality_tree">10.1. Quality Tree</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Availability: the system will have to be available most of the time</p>
-</li>
-<li>
-<p>Maintainability: software will change and to be able to do these changes software should be manteinable</p>
-</li>
-<li>
-<p>Usability: everyone should use the app whithout problems and fast</p>
-</li>
-<li>
-<p>Testability: all software must be testable</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
-<p>A first version of the Quality Tree:</p>
+<p>The project has some important quality requirements.
+They will be presented in a diagram and specified in a table</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/docs/images/first_quality_tree.png" alt="first quality tree">
+<img src="https://raw.githubusercontent.com/Arquisoft/dechat_es4b/develop/docs/images/10_quality_tree.png" alt="10 quality tree">
 </div>
-</div>
-<div class="paragraph">
-<p><strong>TO BE DONE</strong></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_quality_scenarios">10.2. Quality Scenarios</h3>
 <div class="paragraph">
-<p><strong>TO BE DONE</strong></p>
+<p>Here you can see a little more in depth the main quality scenarios that have already been seen before in the quality tree.</p>
 </div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quality  Requirement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scenario</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Priority</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Availability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The system must be accessible most of the time.We set a limit at 95% of the time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maintainability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A group of 4 developers should introduce a functionality, such as sending stickers within 2 days.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Testability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Good software must be testable. Code coverage should be high. BDD and TDD tests must be done</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Everyone should use the app whithout problems regardless of their capabilities</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Performance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Messages should be sent fast. The user should not perceive waiting time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Portability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The application should be able to be used on any computer with any browser</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Security</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Messages must be stored encrypted</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Medium</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Security</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">You will not be able to read chats that you are not a user involved in</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Availability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A user will be able to access his messages at any time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">High</p></td>
+</tr>
+</tbody>
+</table>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1060,16 +1431,24 @@ The App will have three main elements: pods, users and DeChat App. These parts w
 <div class="ulist">
 <ul>
 <li>
-<p>Solid is a completely new technology to the group and it might take us time until we get used to its functionality.</p>
+<p><strong>Solid</strong> Is a completely new technology to the group and it might take us time until we get used to its functionality, the concept of POD
+is not something we are familiariced.</p>
 </li>
 <li>
-<p>Although we&#8217;ve used Javascript in the past, it&#8217;s not our go-to programming language.</p>
+<p><strong>Javascript</strong> lthough we&#8217;ve used it in the past, it&#8217;s not our go-to programming language.</p>
 </li>
 <li>
-<p>None of us have worked with this many people before and some of us didn&#8217;t know each other  before.</p>
+<p><strong>Teamates</strong> none of us have worked with this many people before and some of us didn&#8217;t know each other  before. This is a problem we have
+to do this as a team.</p>
 </li>
 <li>
-<p>English is not our first language and it can lead to some errors in the documentation.</p>
+<p><strong>English</strong> is not our first language and it can lead to some errors in the documentation.</p>
+</li>
+<li>
+<p><strong>Turtle</strong> we didn&#8217;t know this syntax which was a difficult thing to front.</p>
+</li>
+<li>
+<p><strong>Asynchronous Programming</strong> this is a problem when we try to do testing and functions, because is something we never worked on it.</p>
 </li>
 </ul>
 </div>
@@ -1083,6 +1462,9 @@ The App will have three main elements: pods, users and DeChat App. These parts w
 </li>
 <li>
 <p>Increasing the communication in the group so everyone know what everyone is doing and has to do.</p>
+</li>
+<li>
+<p>Do some research on Turtle syntax and Asynchronous programming and search examples to work on it.</p>
 </li>
 </ul>
 </div>
@@ -1110,12 +1492,48 @@ The App will have three main elements: pods, users and DeChat App. These parts w
 <td class="tableblock halign-left valign-top"><p class="tableblock">Template for architecture communication and documentation. It divides the documentation of the architecture in diferentiated sections</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BDD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Behavior-driven development combines the general techniques and principles of TDD with ideas from domain-driven design and object-oriented analysis and design to provide software development and management teams with shared tools and a shared process to collaborate on software development.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chai</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Behavior-driven development assertion library compatible with Mocha and other JavaScript test frameworks.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CSS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is a style sheet language used for describing the presentation of a document written in a markup language like HTML.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decentralized computing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decentralized computing is the allocation of resources, both hardware and software, to each individual workstation, or office location. In contrast, centralized computing exists when the majority of functions are carried out, or obtained from a remote centralized location.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ECMASCRIPT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Trademarked scripting-language specification standarized by ECMA International. It was created to standardize JavaScript.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTML</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hyper Text Markup Language (HTML) describes the structure of Web pages using markup.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Integration testing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is the phase in software testing in which individual software modules are combined and tested as a group.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JQuery</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and Ajax.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MEAN</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set of 4 open source tools used for web development. Its components are MongoDB, Express.js, Angular.js and Node.js.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mocha</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JavaScript framework to run asynchronous tests on Node.js</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MVC architecture</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The MVC or Model-View-Controller is a software architecture pattern that, using 3 components (Views, Models and Controllers) separates the logic of the application from the logic of the view in an application.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POD</p></td>
@@ -1123,18 +1541,42 @@ The App will have three main elements: pods, users and DeChat App. These parts w
 sent. A POD can store photos, text, contacts or calendar events and many other things</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POD Provider</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A person or company that has one or more solid pod servers and uses them to host consumer data.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POD Server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Server that allows the application store POD information on it.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SOLID</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Technology whose goal is to change the way applications interact with user data, giving more decision-making
  power to users as they are able to decide where their data is stored or who can read it or write it.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SOLID file client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Library that provides a simple interface for logging in and out of a Solid data store, maintaining a persistent session, and for managing files and folders.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Stakeholder</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Person with an interest or concern in something, in the area we are working on, the decentralized chat.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TDD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Software development process that relies on the repetition of a very short development cycle: requirements are turned into very specific test cases, then the software is improved to pass the new tests, only.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Turtle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">is a syntax and file format for expressing data in the Resource Description Framework (RDF) data model.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Type-Script</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An open-source programming language, is a strict
 syntactical superset of JavaScript, and adds optional static typing to the language.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A person who uses a particular application or computer system.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1163,7 +1605,7 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-06 18:56:28 +0100
+Last updated 2019-03-23 19:24:32 +0100
 </div>
 </div>
 </body>

@@ -1,15 +1,13 @@
 const auth = require("solid-auth-client");
-const fc = require("solid-file-client");
-const namespaces = require("../lib/namespaces");
-const { default: data } = require("@solid/query-ldflex");
 const Core = require("../lib/core");
 const DataSync = require("../lib/datasync");
+const fc = require("solid-file-client");
 
 const Personal = require("../lib/personal");
 
 let refreshIntervalId;
 let core = new Core(auth.fetch);
-let personal = new Personal(core);
+let personal = null;
 let dataSync= new DataSync(auth.fetch);
 
 
@@ -37,16 +35,28 @@ async function checkForNotifications() {
 $("#refresh-btn").click(checkForNotifications);
 
 $("#open-btn").click(() => {
-  //USE IT FOR TESTING
+  if (personal.username) {
+    afterChatOption();
+    $("#manage-friends").removeClass("hidden");
+  } else {
+    $("#login-required").modal("show");
+  }
 });
 
-
+$("#add-friend-button").click(() => {
+  var friendMe = $("#friend-name").val();
+  core.addFriend(personal, friendMe);
+  $("#friend-name").val("");
+  $("#manage-friends").addClass("hidden");
+  setTimeout(function(){ personal.loadFriendList() }, 2000);
+});
 
 
 auth.trackSession(async session => {
   const loggedIn = !!session;
 
   if (loggedIn) {
+    personal = new Personal(core);
     $("#chat-options").addClass("hidden");
     $("#loading-gif").removeClass("hidden");
 
@@ -56,7 +66,7 @@ auth.trackSession(async session => {
       $("#nav-login-btn").addClass("hidden");
     });
 
-    personal.loadFriendList(session.webId).then(() => {
+    personal.loadFriendList().then(() => {
       $("#chat-options").removeClass("hidden");
       $("#loading-gif").addClass("hidden");
     });
@@ -104,7 +114,7 @@ $("#new-btn").click(async () => {
     for await (const friend of personal.friendList) {
         $("#possible-people").append("<option value="+friend.username+">"+friend.username+"</option>");
     }
-  $( "#possible-people" ).dropdown();
+    $( "#possible-people" ).dropdown();
     
     $("#data-name").keydown(function (e) {
       if (e.keyCode === 13) {
@@ -185,6 +195,10 @@ $("#cancel-group-menu").click(() => {
   $("#create-new-group").addClass("hidden");
 });
 
+$("#cancel-manage-friend").click(() => {
+  $("#manage-friends").addClass("hidden");
+});
+
 $("#possible-people-btn").click( async () => {
   core.loadMessages(personal,$("#possible-people option:selected").val(),false);
   setTimeout(function(){ moveScrollDown(); }, 2000);
@@ -207,7 +221,24 @@ $("#openEmojiBtn").click(() => {
   $("#addMessagesGroup").prop("hidden",isActivated);
 });
 
+$("#enable-emojis").click(() => {
+  changeStateOfEmojis();
+});
 
+async function changeStateOfEmojis(){
+  var a = $("#emojis-enabled").attr("class");
+  if(a.includes("hidden")){
+    core.changeStateOfEmojis(true);  
+    $("#emojis-enabled").removeClass("hidden");
+    $("#emojis-disabled").addClass("hidden");
+  }
+  else {
+    core.changeStateOfEmojis(false);
+    $("#emojis-enabled").addClass("hidden");
+    $("#emojis-disabled").removeClass("hidden");
+  }
+  await checkForNotifications();
+}
 
 //Images sharing (here for some time)
 

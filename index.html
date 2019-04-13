@@ -33,6 +33,9 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <button id="clear-inbox-btn" class="dropdown-item btn btn-outline-danger my-2 my-sm-0" type="button">Clear inbox <i class="fas fa-exclamation-triangle"></i></button>
+                <button id="enable-emojis" class="dropdown-item btn btn-outline-danger my-2 my-sm-0" type="button">
+                                  Enable emojis <b id="emojis-enabled" class="emojis-enabled">&#x2611;</b><b id="emojis-disabled" class="emojis-disabled hidden">&#x2610;</b>
+                </button>
                 <button id="logout-btn" class="dropdown-item btn btn-outline-success my-2 my-sm-0" type="button">Log out</button>
               </div>
             </li>
@@ -47,11 +50,11 @@
         <div id="chat-options" class="col-6 text-center">
           <button id="new-btn" type="button" class="btn btn-dark btn-lg"> New chat</button>
           <button id="create-group" type="button" class="btn btn-dark btn-lg">Create group</button>
-          <button id="open-btn" type="button" class="btn btn-dark btn-lg">Open chat</button>
+          <button id="open-btn" type="button" class="btn btn-dark btn-lg">Manage friends</button>
         </div>
 
         <div id="create-new-group" class="col-6 hidden">
-            <input type="text" name="group-name" id="group-name" class="write_msg" placeholder="Group name">
+          <input type="text" name="group-name" id="group-name" class="write_msg" placeholder="Group name">
           <div id="check-people-group">
             <input class="form-check-input" type="checkbox" id="a"><label class="form-check-label" for="a">Default checkbox</label>
           </div>
@@ -132,6 +135,7 @@
           <button type="button" class="btn-cancel btn btn-dark">Cancel</button>
         </div>
 
+
         <div id="join-chat-options" class="col-6 hidden">
           <div class="form-group">
             <label for="people-invites">Your partner</label>
@@ -155,6 +159,12 @@
           <button id="send-message" type="button" class="btn btn-dark">Send message</button>
           <button id="stop-chatting" type="button" class="btn btn-dark">Stop!</button>
         </div>
+      </div>
+
+      <div id="manage-friends" class="row justify-content-center align-items-center hidden">
+        <input type="text" name="friend-name" id="friend-name" class="write_msg" placeholder="card#me">
+        <button id="add-friend-button" type="button" class="btn-cancel btn btn-dark">Add friend</button>
+        <button id="cancel-manage-friend" type="button" class="btn-cancel btn btn-dark">Cancel</button>
       </div>
 
       

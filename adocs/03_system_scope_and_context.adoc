@@ -24,7 +24,7 @@ Our application is a decentralized web application, the data will be stored in t
 
 Users will communicate with each other through URLs, through the Internet, without the need for a central place to store the data.
 
-image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/docs/images/TechincalContext.PNGPG[align="center"]
+image::https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/adocs/images/TechincalContext.PNG[align="center"]
 
 Legend of diagram
 
