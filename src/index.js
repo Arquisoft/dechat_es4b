@@ -48,6 +48,7 @@ $("#add-friend-button").click(() => {
   core.addFriend(personal, friendMe);
   $("#friend-name").val("");
   $("#manage-friends").addClass("hidden");
+  setTimeout(function(){ personal.loadFriendList() }, 2000);
 });
 
 
@@ -65,7 +66,7 @@ auth.trackSession(async session => {
       $("#nav-login-btn").addClass("hidden");
     });
 
-    personal.loadFriendList(session.webId).then(() => {
+    personal.loadFriendList().then(() => {
       $("#chat-options").removeClass("hidden");
       $("#loading-gif").addClass("hidden");
     });
