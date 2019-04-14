@@ -91,3 +91,12 @@ table.table > tbody > tr > td{
 code {
   color: antiquewhite;
 }
+
+.darkest{
+  background-color: #000;
+}
+
+.subtitle-centered{
+  font-size: 20px;
+  text-align: center;
+}

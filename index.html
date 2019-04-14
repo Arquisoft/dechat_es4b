@@ -51,7 +51,7 @@
           <button id="new-btn" type="button" class="btn btn-dark btn-lg"> New chat</button>
           <button id="create-group" type="button" class="btn btn-dark btn-lg">Create group</button>
           <button id="add-friend-menu" type="button" class="btn btn-dark btn-lg">Add new friend</button>
-          <button id="open-btn" type="button" class="btn btn-dark btn-lg">Test button</button>
+          <button id="test-btn" type="button" class="btn btn-dark btn-lg">Test button</button>
         </div>
 
         <div id="create-new-group" class="col-6 hidden">
@@ -207,6 +207,30 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="login-btn btn btn-dark">Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="inbox-files" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="color: black">Your inbox</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="color: black; margin-left: 20px;">
+              <p class="subtitle-centered">Select files to remove.</p>
+              <div class="all-inbox-to-remove" id="all-inbox-to-remove">
+                
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" id="select-all" class="btn btn-dark darkest">Select all</button>
+              <button type="button" id="remove-selected-files" class="btn btn-dark" data-dismiss="modal">Remove selected</button>
             </div>
           </div>
         </div>

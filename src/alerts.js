@@ -16,6 +16,20 @@ module.exports = class Alerts {
   }
 
   /**
+  *   REMOVE FROM INBOX
+  */
+
+  alertCountRemovedFromInbox(i){
+    var href = "#";
+    var template = '<div id="div-clear-inbox" class="alert alert-info alert-dismissible"><a id="clear-inbox" href="'+href+'" class="xNotifications close" data-dismiss="alert" aria-label="close">&times;</a>'+
+                    '<strong>'+i+' files removed from inbox!</strong></div>';
+    $("#notification-box").append(template);
+    setTimeout(function() {
+      $("#div-clear-inbox").fadeOut().empty();
+    }, 3000);
+  }
+
+  /**
   *   CREATE GROUP
   */
 

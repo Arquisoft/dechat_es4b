@@ -38,12 +38,14 @@ async function loadMessagesFromChat() {
 
 $("#refresh-btn").click(loadMessagesFromChat);
 
-$("#open-btn").click(() => {
-  personal.reloadFriendList();
+$("#test-btn").click(() => {
+  if(personal !== null){
+    personal.reloadFriendList();
+  }
 });
 
 $("#add-friend-menu").click(() => {
-  if (personal.username) {
+  if (personal !== null) {
     afterChatOption();
     $("#manage-friends").removeClass("hidden");
   } else {
@@ -93,7 +95,9 @@ auth.trackSession(async session => {
     $("#continue-chat-options").addClass("hidden");
     $("#chat-options").removeClass("hidden");
     $("#how-it-works").removeClass("hidden");
-    personal.clearInfo();
+    if(personal !== null){
+      personal.clearInfo();
+    }  
     clearInterval(refreshIntervalId);
     refreshIntervalId = null;
   }
@@ -109,7 +113,7 @@ function afterChatOption() {
 }
 
 $("#new-btn").click(async () => { 
-  if (personal.username) {
+  if (personal !== null) {
     afterChatOption();
     
     $("#possible-people").empty();
@@ -140,7 +144,7 @@ $("#new-btn").click(async () => {
 });
 
 $("#create-group").click(async () => { 
-  if (personal.username) {
+  if (personal !== null) {
     afterChatOption();
     $("#check-people-group").empty();
     for await (const friend of personal.friendList) {
@@ -157,7 +161,7 @@ $("#create-button").click(async () => {
   for await (const friend of personal.friendList) {
     if($("#"+friend.username).prop("checked")){
       friendsGroup.push(friend);
-	}
+	  }
   }
   $("#create-new-group").addClass("hidden");
   // CREAR EL GRUPO AQUI
@@ -194,8 +198,42 @@ $("#start-new-chat-btn").click(async () => {
 
 
 $("#clear-inbox-btn").click(async () => {
-  await personal.clearInbox(dataSync);
+  $("#all-inbox-to-remove").empty();
+  for (var file of personal.myInbox) {
+    if(file.url.includes("group_")){
+      var group = personal.getGroupByMyUrl(file.url);
+      $("#all-inbox-to-remove").append(
+            "<input class='form-check-input' type='checkbox' id='"+file.label+"'>"
+              + "<label class='form-check-label' for='"+file.label+"'>"
+                + file.label + "  (Group: "+group.name+")</label><br>");
+    }
+    else{
+      $("#all-inbox-to-remove").append(
+        "<input class='form-check-input' type='checkbox' id='"+file.label+"'>"
+          +"<label class='form-check-label' for='"+file.label+"'>"+file.label+"</label><br>");
+    }
+    
+  }
+  $("#inbox-files").modal("show");
 });
+
+$("#select-all").click(async () => {
+  $(':checkbox').prop("checked", true);
+});
+
+$("#remove-selected-files").click(async () => {
+  var urls = new Array();
+  for (var file of personal.myInbox) {
+    if($('input[id="'+file.label+'"]').prop("checked")){
+      urls.push(file.label);
+	  }
+  }
+  personal.clearInbox(dataSync, urls).then(i => {
+    alerts.alertCountRemovedFromInbox(i);
+    personal.loadInbox();
+  });
+});
+
 
 
 $(".btn-cancel").click(() => {
