@@ -27,8 +27,8 @@ $("#logout-btn").click(() => {
  * @returns {Promise<void>}
  */
 async function loadMessagesFromChat() {
-  var length = $("#mySelectList > option").length;
-  if(length === 0){
+  var length = $("#possible-people > option").length;
+  if(length !== 0){
     await core.loadMessages(personal, $("#possible-people option:selected").val(),false);
   }   
   core.checkForNotifications(personal, nm);
@@ -79,8 +79,7 @@ auth.trackSession(async session => {
 
     $("#user-menu").removeClass("hidden");
     $("#login-required").modal("hide");  
-
-    await loadMessagesFromChat();
+    await core.checkForNotifications(personal, nm);
     // refresh every 5 sec
     refreshIntervalId = setInterval(loadMessagesFromChat, 5000);
   } else {
