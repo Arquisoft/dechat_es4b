@@ -29,7 +29,7 @@ $("#logout-btn").click(() => {
 async function loadMessagesFromChat() {
   var length = $("#possible-people > option").length;
   if(length !== 0){
-    await core.loadMessages(personal, $("#possible-people option:selected").val(),false);
+    await core.loadMessages(personal, $("#possible-people option:selected").val(), nm, false);
   }   
   core.checkForNotifications(personal, nm);
 }
@@ -205,7 +205,7 @@ $("#cancel-manage-friend").click(() => {
 });
 
 $("#possible-people-btn").click( async () => {
-  core.loadMessages(personal,$("#possible-people option:selected").val(),false);
+  core.loadMessages(personal, $("#possible-people option:selected").val(), nm, false);
   setTimeout(function(){ moveScrollDown(); }, 2000);
 });
 

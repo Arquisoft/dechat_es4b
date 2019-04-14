@@ -4,9 +4,13 @@ module.exports = class Alerts {
     
   }
 
+  clickById(id){
+    $("#"+id).click();
+  }
+
   alertMessageReceived(title, message){
     var href = "#";
-    var template = '<div class="alert alert-success alert-dismissible"><a id="xNotifications" href="'+href+'" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
+    var template = '<div class="alert alert-success alert-dismissible"><a id="'+title+'" href="'+href+'" class="xNotifications close" data-dismiss="alert" aria-label="close">&times;</a>'+
                     '<strong>New message!</strong><br>'+title+'<br>'+message+'</div>';
     $("#notification-box").append(template);
   }
