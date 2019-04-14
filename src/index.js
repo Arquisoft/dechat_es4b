@@ -31,9 +31,14 @@ $("#logout-btn").click(() => {
 async function loadMessagesFromChat() {
   var length = $("#possible-people > option").length;
   if(length !== 0){
-    await core.loadMessages(personal, $("#possible-people option:selected").val(), nm, false);
+    core.loadMessages(personal, $("#possible-people option:selected").val(), nm, false).then(() =>{
+      core.checkForNotifications(personal, nm);
+    });
   }   
-  core.checkForNotifications(personal, nm);
+  else{
+    core.checkForNotifications(personal, nm);
+  }
+  
 }
 
 $("#refresh-btn").click(loadMessagesFromChat);
@@ -76,13 +81,15 @@ auth.trackSession(async session => {
       $("#nav-login-btn").addClass("hidden");
     });
 
-    personal.loadFriendList().then(() => {
-      $("#chat-options").removeClass("hidden");
-      $("#loading-gif").addClass("hidden");
+    personal.loadFriendList().then(() => { 
+      setTimeout(function(){
+        $("#loading-gif").addClass("hidden");
+        $("#chat-options").removeClass("hidden");
+        $("#user-menu").removeClass("hidden");
+        $("#login-required").modal("hide");  
+      }, 1000);
     });
 
-    $("#user-menu").removeClass("hidden");
-    $("#login-required").modal("hide");  
     await core.checkForNotifications(personal, nm);
     // refresh every 5 sec
     refreshIntervalId = setInterval(loadMessagesFromChat, 5000);
