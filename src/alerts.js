@@ -15,15 +15,33 @@ module.exports = class Alerts {
     $("#notification-box").append(template);
   }
 
+  /**
+  *   CREATE GROUP
+  */
+
   alertGroupCreated(name){
     var href = "#";
-    var template = '<div class="alert alert-info alert-dismissible"><a id="created-'+name+'" href="'+href+'" class="xNotifications close" data-dismiss="alert" aria-label="close">&times;</a>'+
+    var template = '<div id="div-created-group-'+name+'" class="alert alert-info alert-dismissible"><a id="created-'+name+'" href="'+href+'" class="xNotifications close" data-dismiss="alert" aria-label="close">&times;</a>'+
                     '<strong>Group created!</strong><br>'+name+'</div>';
     $("#notification-box").append(template);
     setTimeout(function() {
-      $("#created-"+name).fadeOut().empty();
+      $("#div-created-group-"+name).fadeOut().empty();
     }, 3000);
   }
+
+  errorGroupCreated(title, subtitle){
+    var href = "#";
+    var template = '<div id="div-create-group-'+title+'" class="alert alert-danger alert-dismissible"><a id="created-'+name+'" href="'+href+'" class="xNotifications close" data-dismiss="alert" aria-label="close">&times;</a>'+
+                    '<strong>'+title+'</strong><br>'+subtitle+'</div>';
+    $("#notification-box").append(template);
+    setTimeout(function() {
+      $("#div-create-group-"+title).fadeOut().empty();
+    }, 3000);
+  }
+
+  /**
+  *   ADDING FRIEND
+  */
 
   alertNewFriendAdded(name){
     var href = "#";
@@ -65,6 +83,9 @@ module.exports = class Alerts {
     }, 3000);
   }
 
+  /**
+   *    OTHERS
+   */
 
   alertGroupCoreRemoved(name){
     var href = "#";

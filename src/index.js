@@ -1,6 +1,7 @@
 const auth = require("solid-auth-client");
 const Core = require("../lib/core");
 const DataSync = require("../lib/datasync");
+const Alerts = require("./alerts");
 const fc = require("solid-file-client");
 
 const Personal = require("../lib/personal");
@@ -10,6 +11,7 @@ let core = new Core(auth.fetch);
 let personal = null;
 let dataSync= new DataSync(auth.fetch);
 let NotificationManager = require("../lib/notificationmanager");
+let alerts = new Alerts();
 
 
 $(".login-btn").click(() => {
@@ -159,9 +161,18 @@ $("#create-button").click(async () => {
   }
   $("#create-new-group").addClass("hidden");
   // CREAR EL GRUPO AQUI
-  if(friendsGroup.length > 0 && $("#group-name").val().length > 0 &&  $("#group-name").val().trim().length > 0){
-    core.createGroup(personal, friendsGroup);
-	}
+  var nameGroup = $('#group-name').val();
+  if(friendsGroup.length > 0){
+    if(nameGroup.length > 0 && nameGroup.trim().length > 0){
+      core.createGroup(personal, friendsGroup);
+    }
+    else{
+      alerts.errorGroupCreated("Error creating new group", "Wrong name");
+    }
+  }
+  else{
+    alerts.errorGroupCreated("Error creating new group", "No friends selected");
+  }
 });
 
 
