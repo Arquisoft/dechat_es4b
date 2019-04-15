@@ -75,10 +75,10 @@ module.exports = class Alerts {
                       + "<a id=\""+idA+"\" href=\"#\" class=\"xNotifications close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>"
                       + "<strong>"+title+"</strong>";
     if(subtitle !== ""){
-      template += "<br>"+subtitle
+      template += "<br>"+subtitle;
     }
     if(subtitle2 !== ""){
-      template += "<br>"+subtitle2
+      template += "<br>"+subtitle2;
     }
     template +="</div>";
     $("#notification-box").append(template);
@@ -93,8 +93,8 @@ module.exports = class Alerts {
     var chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var result = "";
     for (var i = length; i > 0; --i){ 
-      result += chars[Math.floor(Math.random() * chars.length)]
-    };
+      result += chars[Math.floor(Math.random() * chars.length)];
+    }
     return result;
   }
 }
