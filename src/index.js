@@ -19,6 +19,18 @@ let alerts = new Alerts();
  *    CALLING FUNCTIONS
  */
 
+async function loadMessagesFromChat() {
+  var length = $("#possible-people > option").length;
+  if(length !== 0){
+    core.loadMessages(personal, $("#possible-people option:selected").val(), nm, false).then(() => {
+      core.checkForNotifications(personal, nm);
+    });
+  }   
+  else{
+    core.checkForNotifications(personal, nm);
+  }
+}
+
 async function changeStateOfEmojis(){
   var a = $("#emojis-enabled").attr("class");
   if(a.includes("hidden")){
@@ -34,16 +46,13 @@ async function changeStateOfEmojis(){
   await loadMessagesFromChat();
 }
 
-async function loadMessagesFromChat() {
-  var length = $("#possible-people > option").length;
-  if(length !== 0){
-    core.loadMessages(personal, $("#possible-people option:selected").val(), nm, false).then(() => {
-      core.checkForNotifications(personal, nm);
-    });
-  }   
-  else{
-    core.checkForNotifications(personal, nm);
-  }
+function sendMessage(){
+  var message = $("#data-name").val();
+  var receiver = $("#possible-people option:selected").val();
+  $("#data-name").val("");
+  core.sendMessage(personal, receiver, message);
+  $("#emoji-panel").prop("hidden",true);
+  setTimeout(function(){ moveScrollDown(); }, 5000);
 }
 
 /**
@@ -76,7 +85,7 @@ function moveScrollDown() {
  * START
  */
 
-auth.trackSession(async session => {
+auth.trackSession(async (session) => {
   const loggedIn = !!session;
 
   if (loggedIn) {
@@ -84,7 +93,7 @@ auth.trackSession(async session => {
     nm = new NotificationManager();
     loading1();
 
-    personal.loadNames(session.webId).then(name => {
+    personal.loadNames(session.webId).then((name) => {
       personal.loadInbox();
       $("#user-name").text(name);
       $("#nav-login-btn").addClass("hidden");
@@ -168,7 +177,7 @@ $("#new-btn").click(async () => {
     afterChatOption();
     
     $("#possible-people").empty();
-    core.getChatGroups(personal).then(groupNames => {
+    core.getChatGroups(personal).then((groupNames) => {
       for(const chat of groupNames) {
         $("#possible-people").append("<option value="+chat.file.url+">"+chat.name+"</option>");      
       }
@@ -180,11 +189,7 @@ $("#new-btn").click(async () => {
     
     $("#data-name").keydown(function (e) {
       if (e.keyCode === 13) {
-        var message = $("#data-name").val();
-        var receiver = $("#possible-people option:selected").val();
-        $("#data-name").val("");
-        core.sendMessage(personal, receiver, message);
-        setTimeout(function(){ moveScrollDown() }, 5000);
+        sendMessage();
       }
     });
     $("#new-chat-options").removeClass("hidden");
@@ -223,7 +228,7 @@ $("#create-button").click(async () => {
     if(nameGroup.length > 0 && nameGroup.trim().length > 0){
       core.createGroup(personal, friendsGroup);
       loading1();
-      setTimeout(function(){loading2()}, 800);
+      setTimeout(function(){loading2();}, 800);
     }
     else{
       alerts.errorGroupCreated("Error creating new group", "Wrong name");
@@ -239,12 +244,7 @@ $("#create-button").click(async () => {
 
 
 $("#start-new-chat-btn").click(async () => {
-	var message = $("#data-name").val();
-  var receiver = $("#possible-people option:selected").val();
-  $("#data-name").val("");
-	core.sendMessage(personal, receiver, message);
-  $("#emoji-panel").prop("hidden",true);
-  setTimeout(function(){ moveScrollDown(); }, 5000);
+	sendMessage();
 });
 
 
@@ -279,7 +279,7 @@ $("#remove-selected-files").click(async () => {
   for (var file of personal.myInbox) {
     if($("input[id=\""+file.label+"\"]").prop("checked")){
       urls.push(file.label);
-	  }
+    }
   }
   personal.clearInbox(dataSync, urls).then((i) => {
     alerts.alertCountRemovedFromInbox(i);
