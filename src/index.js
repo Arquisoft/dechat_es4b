@@ -16,6 +16,42 @@ let alerts = new Alerts();
 
 
 /**
+ *    UTILITY FUNCTIONS
+ */
+
+function afterChatOption(){
+  $("#chat-options").addClass("hidden");
+  $("#how-it-works").addClass("hidden");
+}
+
+function loading1(){
+  $("#chat-options").addClass("hidden");
+  $("#how-it-works").addClass("hidden");
+  $("#loading-gif").removeClass("hidden"); 
+}
+
+function loading2(){
+  $("#loading-gif").addClass("hidden"); 
+  $("#chat-options").removeClass("hidden");
+  $("#how-it-works").removeClass("hidden");
+}
+
+function moveScrollDown(){
+  $("#addMessages").animate({ scrollTop: document.getElementById("addMessages").scrollHeight }, 1000);
+  $("#addMessagesGroup").animate({ scrollTop: document.getElementById("addMessages").scrollHeight }, 1000);
+}
+
+function showMain(){
+  $("#chat").addClass("hidden");
+  $("#new-chat-options").addClass("hidden");
+  $("#join-chat-options").addClass("hidden");
+  $("#continue-chat-options").addClass("hidden");
+  $("#chat-options").removeClass("hidden");
+  $("#how-it-works").removeClass("hidden");
+}
+
+
+/**
  *    CALLING FUNCTIONS
  */
 
@@ -56,32 +92,6 @@ function sendMessage(){
 }
 
 /**
- *    UTILITY FUNCTIONS
- */
-
-function afterChatOption() {
-  $("#chat-options").addClass("hidden");
-  $("#how-it-works").addClass("hidden");
-}
-
-function loading1(){
-  $("#chat-options").addClass("hidden");
-  $("#how-it-works").addClass("hidden");
-  $("#loading-gif").removeClass("hidden"); 
-}
-
-function loading2(){
-  $("#loading-gif").addClass("hidden"); 
-  $("#chat-options").removeClass("hidden");
-  $("#how-it-works").removeClass("hidden");
-}
-
-function moveScrollDown() {
-  $("#addMessages").animate({ scrollTop: document.getElementById("addMessages").scrollHeight }, 1000);
-  $("#addMessagesGroup").animate({ scrollTop: document.getElementById("addMessages").scrollHeight }, 1000);
-}
-
-/**
  * START
  */
 
@@ -114,12 +124,8 @@ auth.trackSession(async (session) => {
   else {
     $("#nav-login-btn").removeClass("hidden");
     $("#user-menu").addClass("hidden");
-    $("#chat").addClass("hidden");
-    $("#new-chat-options").addClass("hidden");
-    $("#join-chat-options").addClass("hidden");
-    $("#continue-chat-options").addClass("hidden");
-    $("#chat-options").removeClass("hidden");
-    $("#how-it-works").removeClass("hidden");
+    showMain();
+    
     if(personal !== null){
       personal.clearInfo();
     }  
@@ -219,7 +225,7 @@ $("#create-button").click(async () => {
   for await (const friend of personal.friendList) {
     if($("#"+friend.username).prop("checked")){
       friendsGroup.push(friend);
-	  }
+    }
   }
   $("#create-new-group").addClass("hidden");
   // CREAR EL GRUPO AQUI
@@ -290,6 +296,7 @@ $("#remove-selected-files").click(async () => {
 
 
 $(".btn-cancel").click(() => {
+  showMain();
   $("#chat").addClass("hidden");
   $("#new-chat-options").addClass("hidden");
   $("#join-chat-options").addClass("hidden");
