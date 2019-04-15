@@ -1,4 +1,4 @@
-module.exports = class Alerts {
+class Alerts {
 
   constructor() {
     
@@ -98,3 +98,5 @@ module.exports = class Alerts {
     return result;
   }
 }
+
+module.exports = Alerts;

@@ -1,27 +1,23 @@
 var chai = require("chai");
 const auth = require("solid-auth-client");
-
-
-
-var assert = chai.assert;
 const Core = require("../lib/core");
-const chat = new Core(auth.fetch);
 const Personal = require("../lib/personal");
-let personal = new Personal(chat);
-
-
 const Group = require("../lib/commgroup");
 
+var assert = chai.assert;
+const chat = new Core(auth.fetch);
+let personal = new Personal(chat);
 const publicComm = new Group(auth.fetch);
 
 describe("Private communication testing", function () {
   
-  it("Random string generates string",function(){
+  it("Random string generates string", function(){
 	var rdom = publicComm.randomString(5);
 	assert.equal(rdom.length,5);
 
-  }) 
-  it("Create core file and send message",async function(){
+  });
+
+  it("Create core file and send message", async function(){
       personal.username = "dechat-es4b";
       var rand = publicComm.randomString(6);
       var groupName = "Testing group"+publicComm.randomString(3);
@@ -40,13 +36,13 @@ describe("Private communication testing", function () {
      var comunicacion = await publicComm.communicationEstablished(personal.username,friendList[0]);
      assert.equal(comunicacion,true);
      
-  })   
-        
+  }); 
+       
   it("Loads messages properly",async function(){
       personal.username = "enriquead";
       var result = await publicComm.loadMessages(personal,"testurl",true);
       
       
-  }) 
+  });
       
-})
+});
