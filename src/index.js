@@ -2,7 +2,8 @@ const auth = require("solid-auth-client");
 const Core = require("../lib/core");
 const DataSync = require("../lib/datasync");
 const Alerts = require("./alerts");
-const fc = require("solid-file-client");
+const NotificationManager = require("../lib/notificationmanager");
+//const fc = require("solid-file-client");
 
 const Personal = require("../lib/personal");
 
@@ -10,62 +11,70 @@ let refreshIntervalId;
 let core = new Core(auth.fetch);
 let personal = null;
 let dataSync= new DataSync(auth.fetch);
-let NotificationManager = require("../lib/notificationmanager");
+let nm = new NotificationManager();
 let alerts = new Alerts();
 
 
-$(".login-btn").click(() => {
-  auth.popupLogin({ popupUri: "https://solid.github.io/solid-auth-client/dist/popup.html" });
-});
-
-$("#logout-btn").click(() => {
-  auth.logout();
-});
-
-
 /**
- * This method checks if a new move has been made by the opponent.
- * The necessarily data is stored and the UI is updated.
- * @returns {Promise<void>}
+ *    CALLING FUNCTIONS
  */
+
+async function changeStateOfEmojis(){
+  var a = $("#emojis-enabled").attr("class");
+  if(a.includes("hidden")){
+    core.changeStateOfEmojis(true);  
+    $("#emojis-enabled").removeClass("hidden");
+    $("#emojis-disabled").addClass("hidden");
+  }
+  else {
+    core.changeStateOfEmojis(false);
+    $("#emojis-enabled").addClass("hidden");
+    $("#emojis-disabled").removeClass("hidden");
+  }
+  await loadMessagesFromChat();
+}
+
 async function loadMessagesFromChat() {
   var length = $("#possible-people > option").length;
   if(length !== 0){
-    core.loadMessages(personal, $("#possible-people option:selected").val(), nm, false).then(() =>{
+    core.loadMessages(personal, $("#possible-people option:selected").val(), nm, false).then(() => {
       core.checkForNotifications(personal, nm);
     });
   }   
   else{
     core.checkForNotifications(personal, nm);
   }
-  
 }
 
-$("#refresh-btn").click(loadMessagesFromChat);
+/**
+ *    UTILITY FUNCTIONS
+ */
 
-$("#test-btn").click(() => {
-  if(personal !== null){
-    personal.reloadFriendList();
-  }
-});
+function afterChatOption() {
+  $("#chat-options").addClass("hidden");
+  $("#how-it-works").addClass("hidden");
+}
 
-$("#add-friend-menu").click(() => {
-  if (personal !== null) {
-    afterChatOption();
-    $("#manage-friends").removeClass("hidden");
-  } else {
-    $("#login-required").modal("show");
-  }
-});
+function loading1(){
+  $("#chat-options").addClass("hidden");
+  $("#how-it-works").addClass("hidden");
+  $("#loading-gif").removeClass("hidden"); 
+}
 
-$("#add-friend-button").click(() => {
-  var friendMe = $("#friend-name").val();
-  core.addFriend(personal, friendMe);
-  $("#friend-name").val("");
-  $("#manage-friends").addClass("hidden");
-  setTimeout(function(){loading1();setTimeout(function(){loading2()}, 500);}, 50);
-});
+function loading2(){
+  $("#loading-gif").addClass("hidden"); 
+  $("#chat-options").removeClass("hidden");
+  $("#how-it-works").removeClass("hidden");
+}
 
+function moveScrollDown() {
+  $("#addMessages").animate({ scrollTop: document.getElementById("addMessages").scrollHeight }, 1000);
+  $("#addMessagesGroup").animate({ scrollTop: document.getElementById("addMessages").scrollHeight }, 1000);
+}
+
+/**
+ * START
+ */
 
 auth.trackSession(async session => {
   const loggedIn = !!session;
@@ -92,7 +101,8 @@ auth.trackSession(async session => {
     await core.checkForNotifications(personal, nm);
     // refresh every 5 sec
     refreshIntervalId = setInterval(loadMessagesFromChat, 5000);
-  } else {
+  } 
+  else {
     $("#nav-login-btn").removeClass("hidden");
     $("#user-menu").addClass("hidden");
     $("#chat").addClass("hidden");
@@ -107,28 +117,51 @@ auth.trackSession(async session => {
     clearInterval(refreshIntervalId);
     refreshIntervalId = null;
   }
-  
+});
+
+/**
+ * BUTTONS CLICK
+ */
+
+
+
+$(".login-btn").click(() => {
+  auth.popupLogin({ popupUri: "https://solid.github.io/solid-auth-client/dist/popup.html" });
+});
+
+$("#logout-btn").click(() => {
+  auth.logout();
+});
+
+
+$("#refresh-btn").click(loadMessagesFromChat);
+
+$("#test-btn").click(() => {
+  if(personal !== null){
+    personal.reloadFriendList();
+  }
+});
+
+$("#add-friend-menu").click(() => {
+  if (personal !== null) {
+    afterChatOption();
+    $("#manage-friends").removeClass("hidden");
+  } else {
+    $("#login-required").modal("show");
+  }
+});
+
+$("#add-friend-button").click(() => {
+  var friendMe = $("#friend-name").val();
+  core.addFriend(personal, friendMe);
+  $("#friend-name").val("");
+  $("#manage-friends").addClass("hidden");
+  setTimeout(function(){loading1();setTimeout(function(){loading2();}, 500);}, 50);
 });
 
 /**
  * This method updates the UI after a chat option has been selected by the user.
  */
-function afterChatOption() {
-  $("#chat-options").addClass("hidden");
-  $("#how-it-works").addClass("hidden");
-}
-
-function loading1(){
-  $("#chat-options").addClass("hidden");
-  $("#how-it-works").addClass("hidden");
-  $("#loading-gif").removeClass("hidden"); 
-}
-
-function loading2(){
-  $("#loading-gif").addClass("hidden"); 
-  $("#chat-options").removeClass("hidden");
-  $("#how-it-works").removeClass("hidden");
-}
 
 $("#new-btn").click(async () => { 
   if (personal !== null) {
@@ -166,7 +199,9 @@ $("#create-group").click(async () => {
     afterChatOption();
     $("#check-people-group").empty();
     for await (const friend of personal.friendList) {
-      $("#check-people-group").append("<input class='form-check-input' type='checkbox' id='"+friend.username+"'><label class='form-check-label' for='"+friend.username+"'>"+friend.username+"</label><br>");
+      $("#check-people-group").append("<input class=\"form-check-input\" type=\"checkbox\" id=\""+friend.username+
+                                      "\"><label class=\"form-check-label\" for=\""+friend.username+"\">"+
+                                      friend.username+"</label><br>");
     }
     $("#create-new-group").removeClass("hidden");
   } else {
@@ -183,7 +218,7 @@ $("#create-button").click(async () => {
   }
   $("#create-new-group").addClass("hidden");
   // CREAR EL GRUPO AQUI
-  var nameGroup = $('#group-name').val();
+  var nameGroup = $("#group-name").val();
   if(friendsGroup.length > 0){
     if(nameGroup.length > 0 && nameGroup.trim().length > 0){
       core.createGroup(personal, friendsGroup);
@@ -197,14 +232,11 @@ $("#create-button").click(async () => {
   else{
     alerts.errorGroupCreated("Error creating new group", "No friends selected");
   }
-  $('#group-name').val("");
+  $("#group-name").val("");
 });
 
 
-function moveScrollDown() {
-  $("#addMessages").animate({ scrollTop: document.getElementById("addMessages").scrollHeight }, 1000);
-  $("#addMessagesGroup").animate({ scrollTop: document.getElementById("addMessages").scrollHeight }, 1000);
-}
+
 
 $("#start-new-chat-btn").click(async () => {
 	var message = $("#data-name").val();
@@ -224,14 +256,14 @@ $("#clear-inbox-btn").click(async () => {
     if(file.url.includes("group_")){
       var group = personal.getGroupByMyUrl(file.url);
       $("#all-inbox-to-remove").append(
-            "<input class='form-check-input' type='checkbox' id='"+file.label+"'>"
-              + "<label class='form-check-label' for='"+file.label+"'>"
+            "<input class=\"form-check-input\" type=\"checkbox\" id=\""+file.label+"\">"
+              + "<label class=\"form-check-label\" for=\""+file.label+"\">"
                 + file.label + "  (Group: "+group.name+")</label><br>");
     }
     else{
       $("#all-inbox-to-remove").append(
-        "<input class='form-check-input' type='checkbox' id='"+file.label+"'>"
-          +"<label class='form-check-label' for='"+file.label+"'>"+file.label+"</label><br>");
+        "<input class=\"form-check-input\" type=\"checkbox\" id=\""+file.label+"\">"
+          +"<label class=\"form-check-label\" for=\""+file.label+"\">"+file.label+"</label><br>");
     }
     
   }
@@ -239,17 +271,17 @@ $("#clear-inbox-btn").click(async () => {
 });
 
 $("#select-all").click(async () => {
-  $(':checkbox').prop("checked", true);
+  $(":checkbox").prop("checked", true);
 });
 
 $("#remove-selected-files").click(async () => {
   var urls = new Array();
   for (var file of personal.myInbox) {
-    if($('input[id="'+file.label+'"]').prop("checked")){
+    if($("input[id=\""+file.label+"\"]").prop("checked")){
       urls.push(file.label);
 	  }
   }
-  personal.clearInbox(dataSync, urls).then(i => {
+  personal.clearInbox(dataSync, urls).then((i) => {
     alerts.alertCountRemovedFromInbox(i);
     personal.loadInbox();
   });
@@ -300,20 +332,7 @@ $("#enable-emojis").click(() => {
   changeStateOfEmojis();
 });
 
-async function changeStateOfEmojis(){
-  var a = $("#emojis-enabled").attr("class");
-  if(a.includes("hidden")){
-    core.changeStateOfEmojis(true);  
-    $("#emojis-enabled").removeClass("hidden");
-    $("#emojis-disabled").addClass("hidden");
-  }
-  else {
-    core.changeStateOfEmojis(false);
-    $("#emojis-enabled").addClass("hidden");
-    $("#emojis-disabled").removeClass("hidden");
-  }
-  await loadMessagesFromChat();
-}
+
 
 //Images sharing (here for some time)
 
@@ -321,7 +340,7 @@ function dropped(e){
 	e.preventDefault();
 	var files = e.dataTransfer.files;
 	for ( var f=0; f<files.length; f++){
-		console.log("Storing photo");
+		//console.log("Storing photo");
 //		core.storePhoto(personal,files[f]);
 	}
 }
