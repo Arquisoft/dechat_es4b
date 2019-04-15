@@ -97,6 +97,16 @@ module.exports = class Alerts {
     }, 3000);
   }
 
+  errorNeedAFriend(){
+    var href = "#";
+    var template = '<div id="div-error-no-friends" class="alert alert-danger alert-dismissible"><a id="need-a-friend" href="'+href+'" class="xNotifications close" data-dismiss="alert" aria-label="close">&times;</a>'+
+                    '<strong>Error adding friend</strong><br>You need at least a friend<br>added to use this</div>';
+    $("#notification-box").append(template);
+    setTimeout(function() {
+      $("#div-error-no-friends").fadeOut().empty();
+    }, 3000);
+  }
+
   /**
    *    OTHERS
    */

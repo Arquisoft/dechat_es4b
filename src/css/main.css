@@ -100,3 +100,8 @@ code {
   font-size: 20px;
   text-align: center;
 }
+
+#loading-gif{
+  margin-top: 200px;
+  margin-bottom: 200px;
+}

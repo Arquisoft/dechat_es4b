@@ -63,6 +63,7 @@ $("#add-friend-button").click(() => {
   core.addFriend(personal, friendMe);
   $("#friend-name").val("");
   $("#manage-friends").addClass("hidden");
+  setTimeout(function(){loading1();setTimeout(function(){loading2()}, 500);}, 50);
 });
 
 
@@ -72,8 +73,7 @@ auth.trackSession(async session => {
   if (loggedIn) {
     personal = new Personal(core);
     nm = new NotificationManager();
-    $("#chat-options").addClass("hidden");
-    $("#loading-gif").removeClass("hidden");
+    loading1();
 
     personal.loadNames(session.webId).then(name => {
       personal.loadInbox();
@@ -83,8 +83,7 @@ auth.trackSession(async session => {
 
     personal.loadFriendList().then(() => { 
       setTimeout(function(){
-        $("#loading-gif").addClass("hidden");
-        $("#chat-options").removeClass("hidden");
+        loading2();
         $("#user-menu").removeClass("hidden");
         $("#login-required").modal("hide");  
       }, 1000);
@@ -117,6 +116,18 @@ auth.trackSession(async session => {
 function afterChatOption() {
   $("#chat-options").addClass("hidden");
   $("#how-it-works").addClass("hidden");
+}
+
+function loading1(){
+  $("#chat-options").addClass("hidden");
+  $("#how-it-works").addClass("hidden");
+  $("#loading-gif").removeClass("hidden"); 
+}
+
+function loading2(){
+  $("#loading-gif").addClass("hidden"); 
+  $("#chat-options").removeClass("hidden");
+  $("#how-it-works").removeClass("hidden");
 }
 
 $("#new-btn").click(async () => { 
@@ -176,6 +187,9 @@ $("#create-button").click(async () => {
   if(friendsGroup.length > 0){
     if(nameGroup.length > 0 && nameGroup.trim().length > 0){
       core.createGroup(personal, friendsGroup);
+      loading1();
+      setTimeout(function(){loading2()}, 800);
+      $('#group-name').val("");
     }
     else{
       alerts.errorGroupCreated("Error creating new group", "Wrong name");
