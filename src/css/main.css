@@ -8,7 +8,7 @@ body {
 }
 
 a {
-  color: white!important;
+  color: white;
   text-decoration: underline;
 }
 nav{
@@ -56,11 +56,11 @@ nav{
 }
 
 .hidden {
-  display: none!important;
+  display: none;
 }
 
 #continue-chat-table {
-  table-layout: fixed!important;
+  table-layout: fixed;
   word-wrap: break-word;
 }
 

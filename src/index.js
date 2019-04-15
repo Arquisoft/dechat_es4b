@@ -189,7 +189,6 @@ $("#create-button").click(async () => {
       core.createGroup(personal, friendsGroup);
       loading1();
       setTimeout(function(){loading2()}, 800);
-      $('#group-name').val("");
     }
     else{
       alerts.errorGroupCreated("Error creating new group", "Wrong name");
@@ -198,6 +197,7 @@ $("#create-button").click(async () => {
   else{
     alerts.errorGroupCreated("Error creating new group", "No friends selected");
   }
+  $('#group-name').val("");
 });
 
 

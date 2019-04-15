@@ -9,10 +9,7 @@ module.exports = class Alerts {
   }
 
   alertMessageReceived(title, message){
-    var href = "#";
-    var template = '<div class="alert alert-success alert-dismissible"><a id="message-'+title+'" href="'+href+'" class="xNotifications close" data-dismiss="alert" aria-label="close">&times;</a>'+
-                    '<strong>New message!</strong><br>'+title+'<br>'+message+'</div>';
-    $("#notification-box").append(template);
+    this.generalTemplate("success", "div-message-"+title, "message-"+title, "New message!", title, message, 0);
   }
 
   /**
@@ -20,13 +17,7 @@ module.exports = class Alerts {
   */
 
   alertCountRemovedFromInbox(i){
-    var href = "#";
-    var template = '<div id="div-clear-inbox" class="alert alert-info alert-dismissible"><a id="clear-inbox" href="'+href+'" class="xNotifications close" data-dismiss="alert" aria-label="close">&times;</a>'+
-                    '<strong>'+i+' files removed from inbox!</strong></div>';
-    $("#notification-box").append(template);
-    setTimeout(function() {
-      $("#div-clear-inbox").fadeOut().empty();
-    }, 3000);
+    this.generalTemplate("info", "div-clear-inbox", "clear-inbox", i+" files removed from inbox!", "", "", 3000);
   }
 
   /**
@@ -34,23 +25,12 @@ module.exports = class Alerts {
   */
 
   alertGroupCreated(name){
-    var href = "#";
-    var template = '<div id="div-created-group-'+name+'" class="alert alert-info alert-dismissible"><a id="created-'+name+'" href="'+href+'" class="xNotifications close" data-dismiss="alert" aria-label="close">&times;</a>'+
-                    '<strong>Group created!</strong><br>'+name+'</div>';
-    $("#notification-box").append(template);
-    setTimeout(function() {
-      $("#div-created-group-"+name).fadeOut().empty();
-    }, 3000);
+    this.generalTemplate("info", "div-created-group-"+name, "created-group-"+name, "Group created!", name, "", 3000);
   }
 
   errorGroupCreated(title, subtitle){
-    var href = "#";
-    var template = '<div id="div-create-group-'+title+'" class="alert alert-danger alert-dismissible"><a id="created-'+name+'" href="'+href+'" class="xNotifications close" data-dismiss="alert" aria-label="close">&times;</a>'+
-                    '<strong>'+title+'</strong><br>'+subtitle+'</div>';
-    $("#notification-box").append(template);
-    setTimeout(function() {
-      $("#div-create-group-"+title).fadeOut().empty();
-    }, 3000);
+    var rand = this.randomId(3);
+    this.generalTemplate("danger", "error-group-"+rand, "error-group-"+rand, title, subtitle, "", 3000);
   }
 
   /**
@@ -58,53 +38,23 @@ module.exports = class Alerts {
   */
 
   alertNewFriendAdded(name){
-    var href = "#";
-    var template = '<div id="div-new-friend-'+name+'" class="alert alert-info alert-dismissible"><a id="created-'+name+'" href="'+href+'" class="xNotifications close" data-dismiss="alert" aria-label="close">&times;</a>'+
-                    '<strong>New friend added!</strong><br>'+name+'</div>';
-    $("#notification-box").append(template);
-    setTimeout(function() {
-      $("#div-new-friend-"+name).fadeOut().empty();
-    }, 3000);
+    this.generalTemplate("info", "div-new-friend-"+name, "new-friend-"+name, "New friend added!", name, "", 3000);
   }
 
-  alertFriendExisted(name){
-    var href = "#";
-    var template = '<div id="div-new-friend-'+name+'" class="alert alert-info alert-dismissible"><a id="created-'+name+'" href="'+href+'" class="xNotifications close" data-dismiss="alert" aria-label="close">&times;</a>'+
-                    '<strong>This user was in your friends list</strong><br>'+name+'</div>';
-    $("#notification-box").append(template);
-    setTimeout(function() {
-      $("#div-new-friend-"+name).fadeOut().empty();
-    }, 3000);
+  errorFriendExisted(name){
+    this.generalTemplate("danger", "div-error1-friend-"+name, "error1-friend-"+name, "This user was in your friends list", name, "", 3000);
   }
 
   errorNewFriendDontExist(name){
-    var href = "#";
-    var template = '<div id="div-new-friend-'+name+'" class="alert alert-danger alert-dismissible"><a id="created-'+name+'" href="'+href+'" class="xNotifications close" data-dismiss="alert" aria-label="close">&times;</a>'+
-                    '<strong>Can'+"'t find this profile"+'</strong><br>'+name+'</div>';
-    $("#notification-box").append(template);
-    setTimeout(function() {
-      $("#div-new-friend-"+name).fadeOut().empty();
-    }, 3000);
+    this.generalTemplate("danger", "div-error2-friend-"+name, "error2-friend-"+name, "Can't find this profile", name, "", 3000);
   }
 
   errorNewFriendFormat(){
-    var href = "#";
-    var template = '<div id="div-new-friend-format" class="alert alert-danger alert-dismissible"><a id="created-'+name+'" href="'+href+'" class="xNotifications close" data-dismiss="alert" aria-label="close">&times;</a>'+
-                    '<strong>Incorrect format</strong><br>'+name+'</div>';
-    $("#notification-box").append(template);
-    setTimeout(function() {
-      $("#div-new-friend-format").fadeOut().empty();
-    }, 3000);
+    this.generalTemplate("danger", "div-error3-friend-"+name, "error3-friend-"+name, "Incorrect format", "url has to be:", "(...profile/card#me)", 3000);
   }
 
   errorNeedAFriend(){
-    var href = "#";
-    var template = '<div id="div-error-no-friends" class="alert alert-danger alert-dismissible"><a id="need-a-friend" href="'+href+'" class="xNotifications close" data-dismiss="alert" aria-label="close">&times;</a>'+
-                    '<strong>Error adding friend</strong><br>You need at least a friend<br>added to use this</div>';
-    $("#notification-box").append(template);
-    setTimeout(function() {
-      $("#div-error-no-friends").fadeOut().empty();
-    }, 3000);
+    this.generalTemplate("danger", "div-error-no-friends", "error-no-friends", "Error adding friend", "You need at least a friend added", "Add it through your solid POD", 3000);
   }
 
   /**
@@ -112,17 +62,39 @@ module.exports = class Alerts {
    */
 
   alertGroupCoreRemoved(name){
-    var href = "#";
-    var template = '<div class="alert alert-danger alert-dismissible"><a id="xNotifications" href="'+href+'" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
-                    '<strong>Group has been removed!</strong><br>'+name+'</div>';
-    $("#notification-box").append(template);
+    this.generalTemplate("danger", "div-danger-core-removed-"+name, "danger-core-removed-"+name, "Group has been removed!", name, "", 0);
   }
 
   alertExpelledFromGroup(name){
-    var href = "#";
-    var template = '<div class="alert alert-danger alert-dismissible"><a id="xNotifications" href="'+href+'" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
-                    '<strong>Te han echado, maquina</strong><br>Del grupo: '+name+'</div>';
-    $("#notification-box").append(template);
+    this.generalTemplate("danger", "div-danger-expelled-group-"+name, "danger-expelled-group-"+name, "You have been drop out!", "Group: "+name, "", 0);
   }
 
+
+  generalTemplate(typeDiv, idDiv, idA, title, subtitle, subtitle2, time){
+    var template = "<div id=\""+idDiv+"\" class=\"alert alert-"+typeDiv+" alert-dismissible\">"
+                      + "<a id=\""+idA+"\" href=\"#\" class=\"xNotifications close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>"
+                      + "<strong>"+title+"</strong>";
+    if(subtitle !== ""){
+      template += "<br>"+subtitle
+    }
+    if(subtitle2 !== ""){
+      template += "<br>"+subtitle2
+    }
+    template +="</div>";
+    $("#notification-box").append(template);
+    if(time > 0){
+      setTimeout(function() {
+        $("#"+idDiv).fadeOut().empty();
+      }, time);
+    }
+  }
+
+  randomId(length) {
+    var chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var result = "";
+    for (var i = length; i > 0; --i){ 
+      result += chars[Math.floor(Math.random() * chars.length)]
+    };
+    return result;
+  }
 }
