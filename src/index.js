@@ -50,6 +50,15 @@ function showMain(){
   $("#how-it-works").removeClass("hidden");
 }
 
+function optionEnabled(option){
+  $("#"+option+"-enabled").removeClass("hidden");
+  $("#"+option+"-disabled").addClass("hidden");
+}
+
+function optionDisabled(option){
+  $("#"+option+"-enabled").addClass("hidden");
+  $("#"+option+"-disabled").removeClass("hidden");
+}
 
 /**
  *    CALLING FUNCTIONS
@@ -71,15 +80,25 @@ async function changeStateOfEmojis(){
   var a = $("#emojis-enabled").attr("class");
   if(a.includes("hidden")){
     core.changeStateOfEmojis(true);  
-    $("#emojis-enabled").removeClass("hidden");
-    $("#emojis-disabled").addClass("hidden");
+    optionEnabled("emojis");
   }
   else {
     core.changeStateOfEmojis(false);
-    $("#emojis-enabled").addClass("hidden");
-    $("#emojis-disabled").removeClass("hidden");
+    optionDisabled("emojis");
   }
   await loadMessagesFromChat();
+}
+
+async function changeStateOfNotifications(){
+  var a = $("#notifications-enabled").attr("class");
+  if(a.includes("hidden")){
+    $("#notification-box").removeClass("hidden");
+    optionEnabled("notifications");
+  }
+  else {
+    $("#notification-box").addClass("hidden");
+    optionDisabled("notifications");
+  }
 }
 
 function sendMessage(){
@@ -90,6 +109,7 @@ function sendMessage(){
   $("#emoji-panel").prop("hidden",true);
   setTimeout(function(){ moveScrollDown(); }, 5000);
 }
+
 
 /**
  * START
@@ -297,12 +317,6 @@ $("#remove-selected-files").click(async () => {
 
 $(".btn-cancel").click(() => {
   showMain();
-  $("#chat").addClass("hidden");
-  $("#new-chat-options").addClass("hidden");
-  $("#join-chat-options").addClass("hidden");
-  $("#continue-chat-options").addClass("hidden");
-  $("#chat-options").removeClass("hidden");
-  $("#how-it-works").removeClass("hidden");
 });
 
 $("#cancel-group-menu").click(() => {
@@ -339,6 +353,10 @@ $("#enable-emojis").click(() => {
   changeStateOfEmojis();
 });
 
+$("#enable-notifications").click(() => {
+  changeStateOfNotifications();
+});
+
 
 
 //Images sharing (here for some time)
@@ -351,6 +369,8 @@ function dropped(e){
 //		core.storePhoto(personal,files[f]);
 	}
 }
+
+
 
 function start(){
 	var drop = document.getElementById("drop_zone");
@@ -372,5 +392,6 @@ function start(){
 		// await com.sendMessage(personal);
 
 
-window.addEventListener("load",start,false);
+
+window.addEventListener("load", start, false);
 
