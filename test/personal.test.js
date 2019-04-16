@@ -39,13 +39,15 @@ describe("Simple personal testing", function () {
     var name = await personal.loadFriendList("https://enriquead.solid.community/profile/card#me");
     assert.isNotNull(name); 
   });
-
+/*
   it("Clears inbox",async function() {
-    personal.username = "enriquead";
+    personal.username = "enriquetest2";
     var name = await personal.clearInbox(dataSync);
     assert.isNotNull(dataSync);
   });
-    
+  
+*/
+  
   it("Loads names",async function(){
     var result = await personal.loadNames("https://enriquead.solid.community/profile/card#me");
     assert.equal(result,"enriquead");

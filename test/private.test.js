@@ -20,11 +20,12 @@ describe("Private communication testing", function () {
     
   it("Establish private communication",async function(){
       personal.username = "dechat-es4b";
+      personal.inbox = "https://dechat-es4b.solid.community/inbox/";
       var receiver = {username:"enriquetest2",
                         inbox: "https://enriquetest2.solid.community/inbox/",
                         webId: "https://enriquetest2.solid.community/profile/card#me"};
       privateComm.sendFirstMessage(personal,receiver,"Test");   
-      var comunicacion = await privateComm.communicationEstablished(personal.username,receiver);
+      var comunicacion = await privateComm.communicationEstablished(personal,receiver);
       assert.equal(comunicacion,true);
   });  
     
