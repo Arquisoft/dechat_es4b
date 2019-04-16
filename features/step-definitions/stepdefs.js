@@ -54,13 +54,31 @@ module.exports = function() {
 
   this.Then(/^login successful as "([^"]*)"$/, function(username) {
     return driver
-      .wait(until.elementLocated(By.xpath('//*[@id="user-name"]', 5000)))
+      .wait(
+        until.elementLocated(
+          By.xpath(
+            '//*[@id="loading-gif" and @class="col-6 text-center"]',
+            5000
+          )
+        )
+      )
       .then(() => {
         driver
-          .findElement(by.xpath('//*[@id="user-name"]'))
-          .getText()
-          .then(function(actualname) {
-            return assert.equal(actualname, username);
+          .wait(
+            until.elementLocated(
+              By.xpath(
+                '//*[@id="loading-gif" and @class="col-6 text-center hidden"]',
+                10000
+              )
+            )
+          )
+          .then(() => {
+            driver
+              .findElement(by.xpath('//span[@id="user-name"]'))
+              .getText()
+              .then(function(actualname) {
+                return assert.equal(actualname, username);
+              });
           });
       });
   });
@@ -165,9 +183,7 @@ module.exports = function() {
   this.When(/^user clicks on "([^"]*)"$/, function(param) {
     driver
       .wait(
-        until.elementsLocated(
-          by.xpath('//*[@id="new-chat-options"]')
-        ),
+        until.elementsLocated(by.xpath('//*[@id="new-chat-options"]')),
         5000
       )
       .then(() => {
@@ -211,10 +227,7 @@ module.exports = function() {
 
   this.Then(/^new "([^"]*)" appears on the chat$/, function(message) {
     return driver
-      .wait(
-        until.elementsLocated(by.xpath('//*[@id="userName"]')),
-        13000
-      )
+      .wait(until.elementsLocated(by.xpath('//*[@id="userName"]')), 13000)
       .then(() => {
         driver
           .findElement(By.xpath('//*[@id="addOurMessages"]/p'))

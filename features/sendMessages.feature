@@ -8,5 +8,5 @@ Feature: send a message to a friend
     Then new "<message>" appears on the chat
     
   Examples:
-    | username      | password  | friend  | message |
-    | cuentapruebas | monkey    | dechates4btest1 | Hi test user |
+    | username        | password  | friend          | message       |
+    | dechates4btest1 | 123456    | dechates4btest2 | Hi test user  |

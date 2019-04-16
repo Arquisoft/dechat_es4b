@@ -6,5 +6,5 @@ Feature: See friends to chat
     Then "<friend>" appers in partner selector menu
 
   Examples:
-    | username      | password  | friend  |
-    | cuentapruebas | monkey    | dechates4btest1 |
+    | username        | password  | friend          |
+    | dechates4btest1 | 123456    | dechates4btest2 |
