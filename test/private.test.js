@@ -30,6 +30,11 @@ describe("Private communication testing", function () {
   });  
     
   it("Loads messages properly",async function(){
-      var result = await privateComm.loadMessages("dechat-es4b","enriquetest2",true);      
+      personal.username = "dechat-es4b";
+      var receiver = {username:"enriquetest2",
+                        inbox: "https://enriquetest2.solid.community/inbox/",
+                        webId: "https://enriquetest2.solid.community/profile/card#me"};
+      personal.inbox = "https://dechat-es4b.solid.community/inbox/";
+      var result = await privateComm.loadMessages(personal,receiver,true);      
   });   
 });
