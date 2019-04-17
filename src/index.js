@@ -316,45 +316,49 @@ $("#remove-selected-files").click(async () => {
 
 
 $(".btn-cancel").click(() => {
-  showMain();
+	showMain();
 });
 
 $("#cancel-group-menu").click(() => {
-  $("#create-new-group").addClass("hidden");
+	$("#create-new-group").addClass("hidden");
 });
 
 $("#cancel-manage-friend").click(() => {
-  $("#manage-friends").addClass("hidden");
+	$("#manage-friends").addClass("hidden");
 });
 
 $("#possible-people-btn").click( async () => {
-  core.loadMessages(personal, $("#possible-people option:selected").val(), nm, false);
-  setTimeout(function(){ moveScrollDown(); }, 2000);
+	core.loadMessages(personal, $("#possible-people option:selected").val(), nm, false);
+	setTimeout(function(){ moveScrollDown(); }, 2000);
 });
 
 $(".emoji-button").click(function() { 
-  var id = $(this).attr("id");
-  if($("#data-name").val().length === 0) {
-    $("#data-name").val(":"+id+": ");
-  } else {
-    $("#data-name").val($("#data-name").val() + " :"+id+": ");
-  }
+	var id = $(this).attr("id");
+	if($("#data-name").val().length === 0) {
+		$("#data-name").val(":"+id+": ");
+	} else {
+		$("#data-name").val($("#data-name").val() + " :"+id+": ");
+	}
 });
 
 // Hide and show emoji panel
 $("#openEmojiBtn").click(() => {
 	var isActivated = ! ($("#emoji-panel").attr("hidden"));
-  $("#emoji-panel").prop("hidden",isActivated);
-  isActivated = !($("#addMessagesGroup").attr("hidden"));
-  $("#addMessagesGroup").prop("hidden",isActivated);
+	$("#emoji-panel").prop("hidden",isActivated);
+	isActivated = !($("#addMessagesGroup").attr("hidden"));
+	$("#addMessagesGroup").prop("hidden",isActivated);
+});
+
+$("#sendFiles").change(() => {
+	console.log("Hola");
 });
 
 $("#enable-emojis").click(() => {
-  changeStateOfEmojis();
+	changeStateOfEmojis();
 });
 
 $("#enable-notifications").click(() => {
-  changeStateOfNotifications();
+	changeStateOfNotifications();
 });
 
 //Images sharing (here for some time)
@@ -392,4 +396,50 @@ function start(){
 }
 
 window.addEventListener("load", start, false);
+
+
+/* Contacts list */
+
+$(function () {
+    /* BOOTSNIPP FULLSCREEN FIX */
+    if (window.location == window.parent.location) {
+        $('#back-to-bootsnipp').removeClass('hide');
+    }
+    
+    
+    $('[data-toggle="tooltip"]').tooltip();
+    
+    $('#fullscreen').on('click', function(event) {
+        event.preventDefault();
+        window.parent.location = "http://bootsnipp.com/iframe/4l0k2";
+    });
+    $('a[href="#cant-do-all-the-work-for-you"]').on('click', function(event) {
+        event.preventDefault();
+        $('#cant-do-all-the-work-for-you').modal('show');
+    })
+    
+    $('[data-command="toggle-search"]').on('click', function(event) {
+        event.preventDefault();
+        $(this).toggleClass('hide-search');
+        
+        if ($(this).hasClass('hide-search')) {        
+            $('.c-search').closest('.row').slideUp(100);
+        }else{   
+            $('.c-search').closest('.row').slideDown(100);
+        }
+    })
+    
+    $('#contact-list').searchable({
+        searchField: '#contact-list-search',
+        selector: 'li',
+        childSelector: '.col-xs-12',
+        show: function( elem ) {
+            elem.slideDown(100);
+        },
+        hide: function( elem ) {
+            elem.slideUp( 100 );
+        }
+    })
+});
+
 
