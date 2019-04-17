@@ -353,6 +353,37 @@ $("#sendFiles").change(() => {
 	console.log("Hola");
 });
 
+$("#sendUbication").click(() => {
+	
+	navigator.geolocation.getCurrentPosition(getPosicion.bind(this), verErrores.bind(this));
+	
+	function getPosicion(posicion){
+        var longitud = posicion.coords.longitude; 
+        var latitud = posicion.coords.latitude;   
+		$("#data-name").val(latitud + "," + longitud);
+    }
+    function verErrores(error){
+		var mensaje = "";
+        switch(error.code) {
+        case error.PERMISSION_DENIED:
+            mensaje = "El usuario no permite la petición de geolocalización"
+            break;
+        case error.POSITION_UNAVAILABLE:
+            mensaje = "Información de geolocalización no disponible"
+            break;
+        case error.TIMEOUT:
+            mensaje = "La petición de geolocalización ha caducado"
+            break;
+        case error.UNKNOWN_ERROR:
+            mensaje = "Se ha producido un error desconocido"
+            break;
+        }
+		if ( mensaje !== "" )
+			console.log(mensaje);
+
+    }
+});
+
 $("#enable-emojis").click(() => {
 	changeStateOfEmojis();
 });
@@ -396,50 +427,3 @@ function start(){
 }
 
 window.addEventListener("load", start, false);
-
-
-/* Contacts list */
-
-$(function () {
-    /* BOOTSNIPP FULLSCREEN FIX */
-    if (window.location == window.parent.location) {
-        $('#back-to-bootsnipp').removeClass('hide');
-    }
-    
-    
-    $('[data-toggle="tooltip"]').tooltip();
-    
-    $('#fullscreen').on('click', function(event) {
-        event.preventDefault();
-        window.parent.location = "http://bootsnipp.com/iframe/4l0k2";
-    });
-    $('a[href="#cant-do-all-the-work-for-you"]').on('click', function(event) {
-        event.preventDefault();
-        $('#cant-do-all-the-work-for-you').modal('show');
-    })
-    
-    $('[data-command="toggle-search"]').on('click', function(event) {
-        event.preventDefault();
-        $(this).toggleClass('hide-search');
-        
-        if ($(this).hasClass('hide-search')) {        
-            $('.c-search').closest('.row').slideUp(100);
-        }else{   
-            $('.c-search').closest('.row').slideDown(100);
-        }
-    })
-    
-    $('#contact-list').searchable({
-        searchField: '#contact-list-search',
-        selector: 'li',
-        childSelector: '.col-xs-12',
-        show: function( elem ) {
-            elem.slideDown(100);
-        },
-        hide: function( elem ) {
-            elem.slideUp( 100 );
-        }
-    })
-});
-
-
