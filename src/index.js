@@ -14,6 +14,8 @@ let dataSync= new DataSync(auth.fetch);
 let nm = new NotificationManager();
 let alerts = new Alerts();
 
+let recorder = null;
+let audio = null;
 
 /**
  *    UTILITY FUNCTIONS
@@ -360,7 +362,7 @@ $("#sendUbication").click(() => {
 	function getPosicion(posicion){
         var longitud = posicion.coords.longitude; 
         var latitud = posicion.coords.latitude;   
-		$("#data-name").val(latitud + "," + longitud);
+		    $("#data-name").val(latitud + "," + longitud);
     }
     function verErrores(error){
 		var mensaje = "";
@@ -391,6 +393,7 @@ $("#enable-emojis").click(() => {
 $("#enable-notifications").click(() => {
 	changeStateOfNotifications();
 });
+
 
 //Images sharing (here for some time)
 
@@ -425,5 +428,9 @@ function start(){
 	
 	drop.addEventListener("drop", dropped, false);
 }
+
+$("#sendContact").click(() => {
+	recordStop();
+});
 
 window.addEventListener("load", start, false);
