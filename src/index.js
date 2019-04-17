@@ -357,20 +357,25 @@ $("#enable-notifications").click(() => {
   changeStateOfNotifications();
 });
 
-
-
 //Images sharing (here for some time)
 
 function dropped(e){
 	e.preventDefault();
 	var files = e.dataTransfer.files;
+	var receiver = $("#possible-people option:selected").val();
 	for ( var f=0; f<files.length; f++){
-		//console.log("Storing photo");
-//		core.storePhoto(personal,files[f]);
+		if ( files[f].name.endsWith(".png") || files[f].name.endsWith(".jpg") ) {
+			console.log("Storing photo");
+			console.log(files[f].name);
+			var reader = new FileReader();
+			reader.onload = async function (event){
+				$("#data-name").val(event.target.result);
+			};
+			reader.readAsDataURL(files[f]);
+			core.storePhoto(personal,receiver);
+		}
 	}
 }
-
-
 
 function start(){
 	var drop = document.getElementById("drop_zone");
@@ -385,13 +390,6 @@ function start(){
 	
 	drop.addEventListener("drop", dropped, false);
 }
-
-
-		// var photoUbication = storePhoto(files[f]);
-		// $("#data-name").val(photoUbication);
-		// await com.sendMessage(personal);
-
-
 
 window.addEventListener("load", start, false);
 
