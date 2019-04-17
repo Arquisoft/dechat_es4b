@@ -105,9 +105,32 @@ function sendMessage(){
   var message = $("#data-name").val();
   var receiver = $("#possible-people option:selected").val();
   $("#data-name").val("");
+    
+  // Show instantly message on the chat
+  showSentInstantly(message);
+
   core.sendMessage(personal, receiver, message);
   $("#emoji-panel").prop("hidden",true);
   setTimeout(function(){ moveScrollDown(); }, 5000);
+}
+
+function showSentInstantly(message) {
+  var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+  var date = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1);
+  var year = date.split("-")[0];
+  var month = date.split("-")[1];
+  var day = date.split("-")[2].split("T")[0];
+  var hourMinute = date.split("T")[1];
+  var hour = hourMinute.split(":")[0];
+  var minute = hourMinute.split(":")[1];
+  var dateToAdd = year + "-" + month + "-" + day + " - " + hour + ":" + minute;
+
+  var toAppend = "<div class=\"outgoing_msg\" id=\"outgoing_msg\">"+
+  "<div class=\"sent_msg\" id=\"addOurMessages\">" +
+  "<p>"+message+"</p>" + "<span id=\"userName\" class=\"badge badge-secondary\">"+ personal.username +"</span>\n"+
+  "<span id=\"dateMessage\" class=\"badge badge-secondary\">" + dateToAdd +"</span>"+
+  "</div></div>";
+  $("#addMessages").append(toAppend);
 }
 
 
