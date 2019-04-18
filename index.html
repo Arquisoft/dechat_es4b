@@ -128,7 +128,7 @@
 												<button id="sendFiles" type="file" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-paperclip" aria-hidden="true"></i></button>
 												<button id="sendUbication" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-map-marker" aria-hidden="true"></i></button>
 												<button id="sendContact" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-id-card" aria-hidden="true"></i></button>
-                        <button id="sendAudios" type="submit" class="emoji_open" onClick="recordStop()"><i id = "iconEmoticonos" class="fa" aria-hidden="true"></i></button>       
+                        <button id="sendAudios" type="submit" class="emoji_open" onClick="recordStop()"><i id = "iconAudio" class="fa fa-microphone" aria-hidden="true"></i></button>       
                         <button id="openEmojiBtn" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-smile-o" aria-hidden="true"></i></button>
 												<button id="start-new-chat-btn" type="submit" class="msg_send_btn"><i id = "iconMsg" class="fa fa-paper-plane-o" aria-hidden="true"></i></button> 							
 											</div>
@@ -359,13 +359,12 @@ const recordStop = async () => {
       }
     });
     recorder = null;
-    document.querySelector("#record-stop-button").textContent = "Record";
-    document.querySelector("#play-audio-button").removeAttribute("disabled");
+    $("#iconAudio").attr("class", "fa fa-microphone");
     
   } else {
     recorder = await recordAudio();
     recorder.start();
-    document.querySelector("#record-stop-button").textContent = "Stop";
+    $("#iconAudio").attr("class", "fa fa-stop");
   }
 };
 const playAudio = () => {
