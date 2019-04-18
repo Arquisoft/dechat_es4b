@@ -51,7 +51,7 @@
             <img src="/src/img/loading.gif" alt="Loading..." height="72" width="128"/>
         </div>
         <div id="chat-options" class="col-6 text-center">
-          <button id="new-btn" type="button" class="btn btn-dark btn-lg"> New chat</button>
+          <button id="new-btn" type="button" class="btn btn-dark btn-lg">Start chatting</button>
           <button id="create-group" type="button" class="btn btn-dark btn-lg">Create group</button>
           <button id="add-friend-menu" type="button" class="btn btn-dark btn-lg">Add new friend</button>
           <button id="test-btn" type="button" class="btn btn-dark btn-lg">Test button</button>
@@ -75,10 +75,10 @@
 			  </div>
 			   <button id="possible-people-btn" type="button" class="btn btn-dark">OK</button> 
             </div>
-			      <div class="form-group">
+			      <div id="chatting" class="form-group">
 					  <div id="drop_zone" accept="image/*" class="container">
 						<div class="messaging">
-							<div class="inbox_msg">
+							<div class="inbox_msg">							
 								<div class="mesgs" id="messages">
 									<div class="msg_history" id="addMessages">										
 									</div>
@@ -139,9 +139,6 @@
 						</div>
 					</div>
             </div>
-            <div class="form-group">
-          <button type="button" class="btn-cancel btn btn-dark">Cancel</button>
-        </div>
 
 
         <div id="join-chat-options" class="col-6 hidden">

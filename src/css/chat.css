@@ -2,6 +2,14 @@ m.container{
 	max-width:1170px; 
 	margin:auto;
 }
+#new-chat-options{
+	display: flex;
+	flex-direction: row;	
+}
+#chatting{	
+  order: 2;
+  flex-grow: 2;
+}
 img{ max-width:100%;}
 .inbox_people {
   background: #f8f8f8 none repeat scroll 0 0;
@@ -18,9 +26,7 @@ img{ max-width:100%;}
 #center{
   margin: 1rem;
   padding: 1rem;
-  border: 2px solid #ccc;
-  /* IMPORTANTE */
-  text-align: center;
+  order: 1;
 }
 #chat-options{
   margin-top: 50px;
