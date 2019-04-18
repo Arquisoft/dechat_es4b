@@ -2,6 +2,13 @@ m.container{
 	max-width:1170px; 
 	margin:auto;
 }
+img{ max-width:100%;}
+.inbox_msg {
+  clear: both;
+  overflow: hidden;
+}
+.top_spac{ margin: 20px 0 0;}
+
 #new-chat-options{
 	display: flex;
 	flex-direction: row;	
@@ -10,23 +17,16 @@ m.container{
   order: 2;
   flex-grow: 2;
 }
-img{ max-width:100%;}
-.inbox_people {
-  background: #f8f8f8 none repeat scroll 0 0;
-  float: left;
-  overflow: hidden;
-  width: 40%; border-right:1px solid #c4c4c4;
-}
-.inbox_msg {
-  clear: both;
-  overflow: hidden;
-}
-.top_spac{ margin: 20px 0 0;}
-
 #center{
   margin: 1rem;
   padding: 1rem;
   order: 1;
+}
+.inbox_people {
+  background: #f8f8f8 none repeat scroll 0 0;
+  max-width: 50%;
+  overflow: hidden;
+  border-right:1px solid #c4c4c4;
 }
 #chat-options{
   margin-top: 50px;
@@ -139,7 +139,9 @@ img{ max-width:100%;}
 	}
 
 
-.messaging { padding: 50px 0 50px 0;}
+.messaging { padding: 50px 0 50px 0; 
+	background-image: url("../img/fondo.jpg");
+  background-repeat: repeat;}
 .msg_history {
   overflow-y: auto;
   height: 350px;
@@ -183,10 +185,7 @@ img{ max-width:100%;}
 	padding: 3px;
 	margin:10px;
 }
-#drop_zone{	
-	background-image: url("../img/fondo.jpg");
-  background-repeat: repeat;
-}
+
 
 .emoji-button {
     height: 35px;
