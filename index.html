@@ -52,8 +52,6 @@
         </div>
         <div id="chat-options" class="col-6 text-center">
           <button id="new-btn" type="button" class="btn btn-dark btn-lg">Start chatting</button>
-          <button id="create-group" type="button" class="btn btn-dark btn-lg">Create group</button>
-          <button id="add-friend-menu" type="button" class="btn btn-dark btn-lg">Add new friend</button>
           <button id="test-btn" type="button" class="btn btn-dark btn-lg">Test button</button>
         </div>
 
@@ -71,7 +69,20 @@
 			<div class="inbox_people">
           <div class="headind_srch">
             <div class="recent_heading">
-              <h4>Chats</h4>
+			  <ul class="navbar-nav ml-auto">	
+				  <li><h4>Chats</h4></li>
+				  <li id="user-menu" class="nav-item dropdown">
+					  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fa fa-ellipsis-v"></i>
+					  </a>
+					  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<button id="create-group" type="button" class="dropdown-item btn btn-outline-danger my-2 my-sm-0">
+								  Create group</button>
+						<button id="add-friend-menu" class="dropdown-item btn btn-outline-danger my-2 my-sm-0" type="button">
+								  Add new friend</button> 
+					  </div>	
+				</li>
+			</ul>				  
             </div>
             <div class="srch_bar">
               <div class="stylish-input-group hidden">
