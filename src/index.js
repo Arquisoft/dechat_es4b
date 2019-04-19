@@ -112,7 +112,7 @@ function sendMessage(){
   setTimeout(function(){ moveScrollDown(); }, 5000);
 }
 
-async function selectContact(name){	
+async function loadChat(name){		
 	console.log("hola");
 	console.log(name);
 	core.loadMessages(personal, name, nm, false);
@@ -207,38 +207,43 @@ $("#add-friend-button").click(() => {
  * This method updates the UI after a chat option has been selected by the user.
  */
 
+
 $("#new-btn").click(async () => { 
   if (personal !== null) {
     afterChatOption();
-    
     $("#possible-people").empty();
+    var i=0;
     core.getChatGroups(personal).then((groupNames) => {
       for(const chat of groupNames) {
         $("#possible-people").append("<option value="+chat.file.url+">"+chat.name+"</option>");  
-		$("#peopleToChat").append("<div id='clicable' class='chat_list' onclick='selectContact(\""+ chat.name +"\")'>" +
+		$("#peopleToChat").append("<div id='clicable"+i+"' class='chat_list'>" +
               "<div class='chat_people'>" +
                 "<div class='chat_img'> <img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'> </div>" +
                 "<div class='chat_ib'>" +
                   "<h5>"+chat.name+/*"<span class='chat_date'>Dec 25</span>*/"</h5>" +
-                  "<p>Test, which is a new approach to have all solutions" +
-                   " astrology under one roof.</p>" +
+                  /*"<p>Test, which is a new approach to have all solutions" +
+                   " astrology under one roof.</p>" +*/
                 "</div>" +
               "</div>" +
             "</div>");
+		document.getElementById("clicable" + i).addEventListener("click", function(){loadChat(chat.file.url)}, false);
+		i++;
       }
     });
-    for await (const friend of personal.friendList) {
+    for await (const friend of personal.friendList) {		
         $("#possible-people").append("<option value="+friend.username+">"+friend.username+"</option>");
-		$("#peopleToChat").append("<div id='clicable' class='chat_list' onclick='selectContact(\""+ chat.name +"\")'>" +
+		$("#peopleToChat").append("<div id='clicable"+i+"' class='chat_list'>" +
               "<div class='chat_people'>" +
                 "<div class='chat_img'> <img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'> </div>" +
                 "<div class='chat_ib'>" +
                   "<h5>"+friend.username+/*"<span class='chat_date'>Dec 25</span>*/"</h5>" +
-                  "<p>Test, which is a new approach to have all solutions" +
-                   " astrology under one roof.</p>" +
+                  /*"<p>Test, which is a new approach to have all solutions" +
+                   " astrology under one roof.</p>" +*/
                 "</div>" +
               "</div>" +
             "</div>");
+		document.getElementById("clicable" + i).addEventListener("click", function(){loadChat(friend.username)}, false);
+		i++;
     }
     $( "#possible-people" ).dropdown();
     
