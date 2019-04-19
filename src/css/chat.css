@@ -148,8 +148,12 @@ img{ max-width:100%;}
   overflow-y: auto;
   height: 350px;
 }
-
-
+.chat_list{
+	cursor: pointer;
+}
+.chat_list:hover {
+	background: #f6ffe9;
+}
 #btnMessagesSend{
   position: absolute;
   right: 0;

@@ -112,6 +112,13 @@ function sendMessage(){
   setTimeout(function(){ moveScrollDown(); }, 5000);
 }
 
+async function selectContact(name){	
+	console.log("hola");
+	console.log(name);
+	core.loadMessages(personal, name, nm, false);
+	setTimeout(function(){ moveScrollDown(); }, 2000);
+}
+
 
 /**
  * START
@@ -207,11 +214,31 @@ $("#new-btn").click(async () => {
     $("#possible-people").empty();
     core.getChatGroups(personal).then((groupNames) => {
       for(const chat of groupNames) {
-        $("#possible-people").append("<option value="+chat.file.url+">"+chat.name+"</option>");      
+        $("#possible-people").append("<option value="+chat.file.url+">"+chat.name+"</option>");  
+		$("#peopleToChat").append("<div id='clicable' class='chat_list' onclick='selectContact(\""+ chat.name +"\")'>" +
+              "<div class='chat_people'>" +
+                "<div class='chat_img'> <img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'> </div>" +
+                "<div class='chat_ib'>" +
+                  "<h5>"+chat.name+/*"<span class='chat_date'>Dec 25</span>*/"</h5>" +
+                  "<p>Test, which is a new approach to have all solutions" +
+                   " astrology under one roof.</p>" +
+                "</div>" +
+              "</div>" +
+            "</div>");
       }
     });
     for await (const friend of personal.friendList) {
         $("#possible-people").append("<option value="+friend.username+">"+friend.username+"</option>");
+		$("#peopleToChat").append("<div id='clicable' class='chat_list' onclick='selectContact(\""+ chat.name +"\")'>" +
+              "<div class='chat_people'>" +
+                "<div class='chat_img'> <img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'> </div>" +
+                "<div class='chat_ib'>" +
+                  "<h5>"+friend.username+/*"<span class='chat_date'>Dec 25</span>*/"</h5>" +
+                  "<p>Test, which is a new approach to have all solutions" +
+                   " astrology under one roof.</p>" +
+                "</div>" +
+              "</div>" +
+            "</div>");
     }
     $( "#possible-people" ).dropdown();
     
@@ -327,11 +354,6 @@ $("#cancel-group-menu").click(() => {
 
 $("#cancel-manage-friend").click(() => {
 	$("#manage-friends").addClass("hidden");
-});
-
-$("#possible-people-btn").click( async () => {
-	core.loadMessages(personal, $("#possible-people option:selected").val(), nm, false);
-	setTimeout(function(){ moveScrollDown(); }, 2000);
 });
 
 $(".emoji-button").click(function() { 
