@@ -19,7 +19,7 @@
   <body vocab="http://schema.org/">
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <span class="navbar-brand"></i>Solid Chat</span>
+        <span class="navbar-brand">Solid Chat</span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -66,14 +66,12 @@
 
         <div id="new-chat-options" class="container-fluid hidden">
             <div id="center" class="form-group">
-			<div class="inbox_people">
-          <div class="headind_srch">
-            <div class="recent_heading">
-			  <ul class="navbar-nav ml-auto">	
-				  <li><h4>Chats</h4></li>
-				  <li id="user-menu" class="nav-item dropdown">
-					  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fa fa-ellipsis-v"></i>
+			<div id="inboxPeople" class="inbox_people">
+            <div id="tocenter">
+				  <span id="chatsText" class="navbar-brand">Chats</span>
+				  <div id="optionsChat">
+					  <a id="menuuu" class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fa fa-ellipsis-v"></i>
 					  </a>
 					  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<button id="create-group" type="button" class="dropdown-item btn btn-outline-danger my-2 my-sm-0">
@@ -81,17 +79,15 @@
 						<button id="add-friend-menu" class="dropdown-item btn btn-outline-danger my-2 my-sm-0" type="button">
 								  Add new friend</button> 
 					  </div>	
-				</li>
-			</ul>				  
+				 </div>
             </div>
-            <div class="srch_bar">
-              <div class="stylish-input-group hidden">
-                <input type="text" class="search-bar"  placeholder="Search" >
-                <span class="input-group-addon">
-                <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
-                </span> </div>
-            </div>
-          </div>
+            <!-- <div class="srch_bar"> -->
+              <!-- <div class="stylish-input-group hidden"> -->
+                <!-- <input type="text" class="search-bar"  placeholder="Search" > -->
+                <!-- <span class="input-group-addon"> -->
+                <!-- <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button> -->
+                <!-- </span> </div> -->
+            <!-- </div> -->
           <div class="inbox_chat" id="peopleToChat">            
           </div>
         </div>

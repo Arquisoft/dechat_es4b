@@ -20,19 +20,45 @@ img{ max-width:100%;}
 #chatting{	
   order: 2;
   flex-grow: 2;
+  border: #343A40 5px solid;  
 }
 #center{
   order: 1;
   max-width: 30%;
+  border: #343A40 5px solid;
 }
-.inbox_people {
-  background: #f8f8f8 none repeat scroll 0 0;
-  overflow: hidden;
-  border-right:1px solid #c4c4c4;
+
+#tocenter{
+	display:flex;
+	justify-content: space-between;
+	border-bottom: #343A40 5px solid;
 }
+
+#menuuu{
+	color: #343A40;
+	cursor: pointer;
+}
+
 #chat-options{
   margin-top: 50px;
 }
+
+#optionsChat{
+	order:2;
+}
+
+#inboxPeople{
+	display:flex;
+	flex-direction: column;
+}
+
+#chatsText{
+	order: 1;
+	margin-left: 10px;
+	color: #343A40;
+}
+
+
 .recent_heading {float: left; width:40%;}
 .srch_bar {
   display: inline-block;
@@ -41,11 +67,6 @@ img{ max-width:100%;}
 }
 .headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid #c4c4c4;}
 
-.recent_heading h4 {
-  color: #05728f;
-  font-size: 21px;
-  margin: auto;
-}
 .srch_bar input{ border:1px solid #cdcdcd; border-width:0 0 1px 0; width:80%; padding:2px 0 4px 6px; background:none;}
 .srch_bar .input-group-addon button {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
@@ -139,6 +160,7 @@ img{ max-width:100%;}
 
 .type_msg {position: relative;
 	}
+
 
 
 .messaging { padding: 50px 0 50px 0; 

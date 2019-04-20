@@ -10,7 +10,6 @@ a {
 }
 nav{
 	color: #363b3f;
-	 border-radius: 50px;
 }
 
 #login-required, #theme-selector, #write-permission, #invitation-response {
