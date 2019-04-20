@@ -12,7 +12,7 @@ let personal = new Personal(chat);
 const publicComm = new Group(auth.fetch);
 const privateComm = new Private(auth.fetch);
 
-describe("Private communication testing", function () {
+describe("Group communication testing", function () {
   
   it("Random string generates string", function(){
 	var rdom = publicComm.randomString(5);
