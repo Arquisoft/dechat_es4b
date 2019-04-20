@@ -23,6 +23,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+		<button id="goBack" type="button" class="btn btn-dark">Principal page</button>
 
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
@@ -64,134 +65,134 @@
           <button id="cancel-group-menu" type="button" class="btn-cancel btn btn-dark">Cancel</button>
         </div>
 
-        <div id="new-chat-options" class="container-fluid hidden">
-            <div id="center" class="form-group">
-			<div id="inboxPeople" class="inbox_people">
-            <div id="tocenter">
-				  <span id="chatsText" class="navbar-brand">Chats</span>
-				  <div id="optionsChat">
-					  <a id="menuuu" class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fa fa-ellipsis-v"></i>
-					  </a>
-					  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<button id="create-group" type="button" class="dropdown-item btn btn-outline-danger my-2 my-sm-0">
-								  Create group</button>
-						<button id="add-friend-menu" class="dropdown-item btn btn-outline-danger my-2 my-sm-0" type="button">
-								  Add new friend</button> 
-					  </div>	
-				 </div>
-            </div>
-            <!-- <div class="srch_bar"> -->
-              <!-- <div class="stylish-input-group hidden"> -->
-                <!-- <input type="text" class="search-bar"  placeholder="Search" > -->
-                <!-- <span class="input-group-addon"> -->
-                <!-- <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button> -->
-                <!-- </span> </div> -->
-            <!-- </div> -->
-          <div class="inbox_chat" id="peopleToChat">            
-          </div>
-        </div>
-		<label for="possible-people">Your conversation partner</label>
-			  <div class="content-select">
-			  <select id="possible-people" class="cd-select">
-				</select>
+		<div id="toHide" class="hidden">
+			<div id="new-chat-options" class="container-fluid hidden">
+				<div id="center" class="form-group">
+				<div id="inboxPeople" class="inbox_people">
+				<div id="tocenter">
+					  <span id="chatsText" class="navbar-brand">Chats</span>
+					  <div id="optionsChat">
+						  <a id="menuuu" class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="fa fa-ellipsis-v"></i>
+						  </a>
+						  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<button id="create-group" type="button" class="dropdown-item btn btn-outline-danger my-2 my-sm-0">
+									  Create group</button>
+							<button id="add-friend-menu" class="dropdown-item btn btn-outline-danger my-2 my-sm-0" type="button">
+									  Add new friend</button> 
+						  </div>	
+					 </div>
+				</div>
+				<!-- <div class="srch_bar"> -->
+				  <!-- <div class="stylish-input-group hidden"> -->
+					<!-- <input type="text" class="search-bar"  placeholder="Search" > -->
+					<!-- <span class="input-group-addon"> -->
+					<!-- <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button> -->
+					<!-- </span> </div> -->
+				<!-- </div> -->
+			  <div class="inbox_chat" id="peopleToChat">            
 			  </div>
-			   <button id="possible-people-btn" type="button" class="btn btn-dark">OK</button> 
-            </div>
-			      <div id="chatting" class="form-group">
-					  <div id="drop_zone" accept="image/*" class="container">
-						<div class="messaging">
-							<div class="inbox_msg">							
-								<div class="mesgs" id="messages">
-									<div class="msg_history" id="addMessages">										
-									</div>
-									
-									<div class="msg_history" id="addMessagesGroup">
-											<div class="incoming_msg" id="incoming_msg">	
-												<div class="received_msg">
-													<div class="received_withd_msg" id="addOurMessages">
+			</div>
+			<label for="possible-people">Your conversation partner</label>
+				  <div class="content-select">
+				  <select id="possible-people" class="cd-select">
+					</select>
+				  </div>
+				   <button id="possible-people-btn" type="button" class="btn btn-dark">OK</button> 
+				</div>
+					  <div id="chatting" class="form-group">
+						  <div id="drop_zone" accept="image/*" class="container">
+							<div class="messaging">
+								<div class="inbox_msg">							
+									<div class="mesgs" id="messages">
+										<div class="msg_history" id="addMessages">										
+										</div>
+										
+										<div class="msg_history" id="addMessagesGroup">
+												<div class="incoming_msg" id="incoming_msg">	
+													<div class="received_msg">
+														<div class="received_withd_msg" id="addOurMessages">
+														</div>
 													</div>
 												</div>
-											</div>
-											<div class="outgoing_msg" id="outgoing_msg">								
-												<div class="sent_msg" id="addOtherMessages">
+												<div class="outgoing_msg" id="outgoing_msg">								
+													<div class="sent_msg" id="addOtherMessages">
+													</div>
 												</div>
-											</div>
-									</div>								
-									<div class="type_msg">
-										<div id="emoji-panel" class="emoji-panel" hidden=true>
-											<input type="button" class="emoji-button" id="blush"/>
-												<input type="button" class="emoji-button" id="eyebrow"/>
-												<input type="button" class="emoji-button" id="facehearts"/>
-												<input type="button" class="emoji-button" id="hearteyes"/>
-												  <input type="button" class="emoji-button" id="hugging"/>
-												  <input type="button" class="emoji-button" id="kissing"/>
-												  <input type="button" class="emoji-button" id="laughing"/>
-												  <input type="button" class="emoji-button" id="neutral"/>
-												  <input type="button" class="emoji-button" id="nomouth"/>
-												  <input type="button" class="emoji-button" id="openmouth"/>
-												  <input type="button" class="emoji-button" id="persevere"/>
-												  <input type="button" class="emoji-button" id="rofl"/>
-												  <input type="button" class="emoji-button" id="rolling"/>
-												  <input type="button" class="emoji-button" id="sleeping"/>
-												  <input type="button" class="emoji-button" id="smile"/>
-												  <input type="button" class="emoji-button" id="smiley"/>
-												  <input type="button" class="emoji-button" id="smirk"/>
-												  <input type="button" class="emoji-button" id="stareyes"/>
-												  <input type="button" class="emoji-button" id="sunglasses"/>
-												  <input type="button" class="emoji-button" id="sweatsmile"/>
-												  <input type="button" class="emoji-button" id="thinking"/>
-												  <input type="button" class="emoji-button" id="wink"/>
-												  <input type="button" class="emoji-button" id="yum"/>
-												  <input type="button" class="emoji-button" id="zipper"/>
-										  </div>
-										<div class="input_msg_write">
-											<input type="text" name="data-name" id="data-name" class="write_msg" placeholder="Type a message"> 
-											<div id="btnMessagesSend">
-												<button id="sendFiles" type="file" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-paperclip" aria-hidden="true"></i></button>
-												<button id="sendUbication" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-map-marker" aria-hidden="true"></i></button>
-												<button id="sendContact" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-id-card" aria-hidden="true"></i></button>
-                        <button id="sendAudios" type="submit" class="emoji_open" onClick="recordStop()"><i id = "iconAudio" class="fa fa-microphone" aria-hidden="true"></i></button>       
-                        <button id="openEmojiBtn" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-smile-o" aria-hidden="true"></i></button>
-												<button id="start-new-chat-btn" type="submit" class="msg_send_btn"><i id = "iconMsg" class="fa fa-paper-plane-o" aria-hidden="true"></i></button> 							
-											</div>
-										</div>											
+										</div>								
+										<div class="type_msg">
+											<div id="emoji-panel" class="emoji-panel" hidden=true>
+												<input type="button" class="emoji-button" id="blush"/>
+													<input type="button" class="emoji-button" id="eyebrow"/>
+													<input type="button" class="emoji-button" id="facehearts"/>
+													<input type="button" class="emoji-button" id="hearteyes"/>
+													  <input type="button" class="emoji-button" id="hugging"/>
+													  <input type="button" class="emoji-button" id="kissing"/>
+													  <input type="button" class="emoji-button" id="laughing"/>
+													  <input type="button" class="emoji-button" id="neutral"/>
+													  <input type="button" class="emoji-button" id="nomouth"/>
+													  <input type="button" class="emoji-button" id="openmouth"/>
+													  <input type="button" class="emoji-button" id="persevere"/>
+													  <input type="button" class="emoji-button" id="rofl"/>
+													  <input type="button" class="emoji-button" id="rolling"/>
+													  <input type="button" class="emoji-button" id="sleeping"/>
+													  <input type="button" class="emoji-button" id="smile"/>
+													  <input type="button" class="emoji-button" id="smiley"/>
+													  <input type="button" class="emoji-button" id="smirk"/>
+													  <input type="button" class="emoji-button" id="stareyes"/>
+													  <input type="button" class="emoji-button" id="sunglasses"/>
+													  <input type="button" class="emoji-button" id="sweatsmile"/>
+													  <input type="button" class="emoji-button" id="thinking"/>
+													  <input type="button" class="emoji-button" id="wink"/>
+													  <input type="button" class="emoji-button" id="yum"/>
+													  <input type="button" class="emoji-button" id="zipper"/>
+											  </div>
+											<div class="input_msg_write">
+												<input type="text" name="data-name" id="data-name" class="write_msg" placeholder="Type a message"> 
+												<div id="btnMessagesSend">
+													<button id="sendFiles" type="file" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-paperclip" aria-hidden="true"></i></button>
+													<button id="sendUbication" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-map-marker" aria-hidden="true"></i></button>
+													<button id="sendContact" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-id-card" aria-hidden="true"></i></button>
+							<button id="sendAudios" type="submit" class="emoji_open" onClick="recordStop()"><i id = "iconAudio" class="fa fa-microphone" aria-hidden="true"></i></button>       
+							<button id="openEmojiBtn" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-smile-o" aria-hidden="true"></i></button>
+													<button id="start-new-chat-btn" type="submit" class="msg_send_btn"><i id = "iconMsg" class="fa fa-paper-plane-o" aria-hidden="true"></i></button> 							
+												</div>
+											</div>											
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-          <button type="button" class="btn-cancel btn btn-dark">Cancel</button>
-        </div>
-            </div>
+						<div class="form-group">          
+			</div>
+				</div>
 
 
-        <div id="join-chat-options" class="col-6 hidden">
-          <div class="form-group">
-            <label for="people-invites">Your partner</label>
-            <select id="people-invites"></select>
-          </div>
-          <button id="accept-inv" type="submit" class="btn btn-dark">Accept it</button>     
-          <button type="button" class="btn-cancel btn btn-dark">Cancel</button>
-        </div>
+			<div id="join-chat-options" class="col-6 hidden">
+			  <div class="form-group">
+				<label for="people-invites">Your partner</label>
+				<select id="people-invites"></select>
+			  </div>
+			  <button id="accept-inv" type="submit" class="btn btn-dark">Accept it</button>     
+			  <button type="button" class="btn-cancel btn btn-dark">Cancel</button>
+			</div>
 
-        <div id='chat-loading' class="hidden">
-          <span>Loading your chat...</span>
-        </div>
+			<div id='chat-loading' class="hidden">
+			  <span>Loading your chat...</span>
+			</div>
 
-        <div id="chat" class="hidden" >
-          <p>Name: <span id="name-of-the-chat"></span></p>
-          <div id="conversation" style="width: 400px"></div>
-          <div id="chat-details">
-            <p>Status: <span id="status"></span></p>
-            <p>Partner: <span id="partner-name"></span></p>
-          </div>
-          <button id="send-message" type="button" class="btn btn-dark">Send message</button>
-          <button id="stop-chatting" type="button" class="btn btn-dark">Stop!</button>
-        </div>
-      </div>
-
+			<div id="chat" class="hidden" >
+			  <p>Name: <span id="name-of-the-chat"></span></p>
+			  <div id="conversation" style="width: 400px"></div>
+			  <div id="chat-details">
+				<p>Status: <span id="status"></span></p>
+				<p>Partner: <span id="partner-name"></span></p>
+			  </div>
+			  <button id="send-message" type="button" class="btn btn-dark">Send message</button>
+			  <button id="stop-chatting" type="button" class="btn btn-dark">Stop!</button>
+			</div>
+		  </div>
+	</div>
       <div id="manage-friends" class="row justify-content-center align-items-center hidden">
         <input type="text" name="friend-name" id="friend-name" class="write_msg" placeholder="card#me">
         <button id="add-friend-button" type="button" class="btn-cancel btn btn-dark">Add friend</button>

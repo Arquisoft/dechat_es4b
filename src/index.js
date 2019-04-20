@@ -45,7 +45,7 @@ function moveScrollDown(){
 
 function showMain(){
   $("#chat").addClass("hidden");
-  $("#new-chat-options").addClass("hidden");
+  $("#toHide").addClass("hidden");
   $("#join-chat-options").addClass("hidden");
   $("#continue-chat-options").addClass("hidden");
   $("#chat-options").removeClass("hidden");
@@ -61,6 +61,7 @@ function optionDisabled(option){
   $("#"+option+"-enabled").addClass("hidden");
   $("#"+option+"-disabled").removeClass("hidden");
 }
+
 
 /**
  *    CALLING FUNCTIONS
@@ -252,7 +253,7 @@ $("#new-btn").click(async () => {
         sendMessage();
       }
     });
-    $("#new-chat-options").removeClass("hidden");
+    $("#toHide").removeClass("hidden");
     $("#emoji-panel").removeClass("hidden");
   } else {
     $("#login-required").modal("show");
@@ -349,7 +350,7 @@ $("#remove-selected-files").click(async () => {
 
 
 
-$(".btn-cancel").click(() => {
+$("#goBack").click(() => {
 	showMain();
 });
 
