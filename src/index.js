@@ -68,9 +68,9 @@ function optionDisabled(option){
  */
 
 async function loadMessagesFromChat() {
-  var texto = $("#contactName").text();
-  if(text !== "Select a contact to start chatting"){
-    core.loadMessages(personal, $("#contactName").val(), nm, false).then(() => {
+  var texto = $("#urlContact").text();
+  if(texto !== "Select a contact to start chatting"){
+    core.loadMessages(personal, texto, nm, false).then(() => {
       core.checkForNotifications(personal, nm);
     });
   }   
@@ -106,8 +106,8 @@ async function changeStateOfNotifications(){
 
 function sendMessage(){
   var message = $("#data-name").val();
-  var receiver = $("#contactName").text();
-  if (receiver !== "Select a contact to start chatting"){
+  var receiver = $("#urlContact").text();
+  if (receiver.length !== 0){
 	  $("#data-name").val("");
 	  core.sendMessage(personal, receiver, message);
 	  $("#emoji-panel").prop("hidden",true);
