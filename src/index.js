@@ -68,9 +68,9 @@ function optionDisabled(option){
  */
 
 async function loadMessagesFromChat() {
-  var length = $("#possible-people > option").length;
-  if(length !== 0){
-    core.loadMessages(personal, $("#possible-people option:selected").val(), nm, false).then(() => {
+  var texto = $("#contactName").text();
+  if(text !== "Select a contact to start chatting"){
+    core.loadMessages(personal, $("#contactName").val(), nm, false).then(() => {
       core.checkForNotifications(personal, nm);
     });
   }   
@@ -106,17 +106,26 @@ async function changeStateOfNotifications(){
 
 function sendMessage(){
   var message = $("#data-name").val();
-  var receiver = $("#possible-people option:selected").val();
-  $("#data-name").val("");
-  core.sendMessage(personal, receiver, message);
-  $("#emoji-panel").prop("hidden",true);
-  setTimeout(function(){ moveScrollDown(); }, 5000);
+  var receiver = $("#contactName").text();
+  if (receiver !== "Select a contact to start chatting"){
+	  $("#data-name").val("");
+	  core.sendMessage(personal, receiver, message);
+	  $("#emoji-panel").prop("hidden",true);
+	  setTimeout(function(){ moveScrollDown(); }, 5000);
+  }
+  else
+	  alert("Select a contact to send a message, please");
 }
 
-async function loadChat(name){		
-	console.log("hola");
-	console.log(name);
-	core.loadMessages(personal, name, nm, false);
+async function loadChat(name, urlgroup){	
+	$("#contactName").text(name);
+	if ( urlgroup !== null ) {
+		core.loadMessages(personal, urlgroup, nm, false);
+		$("#urlContact").text(urlgroup);
+	} else {		
+		core.loadMessages(personal, name, nm, false);
+		$("#urlContact").text(name);
+	}
 	setTimeout(function(){ moveScrollDown(); }, 2000);
 }
 
@@ -212,11 +221,12 @@ $("#add-friend-button").click(() => {
 $("#new-btn").click(async () => { 
   if (personal !== null) {
     afterChatOption();
-    $("#possible-people").empty();
+    //$("#possible-people").empty();
+	$("#peopleToChat").empty();
     var i=0;
     core.getChatGroups(personal).then((groupNames) => {
       for(const chat of groupNames) {
-        $("#possible-people").append("<option value="+chat.file.url+">"+chat.name+"</option>");  
+        //$("#possible-people").append("<option value="+chat.file.url+">"+chat.name+"</option>");  
 		$("#peopleToChat").append("<div id='clicable"+i+"' class='chat_list'>" +
               "<div class='chat_people'>" +
                 "<div class='chat_img'> <img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'> </div>" +
@@ -227,12 +237,12 @@ $("#new-btn").click(async () => {
                 "</div>" +
               "</div>" +
             "</div>");
-		document.getElementById("clicable" + i).addEventListener("click", function(){loadChat(chat.file.url)}, false);
+		document.getElementById("clicable" + i).addEventListener("click", function(){loadChat(chat.name,chat.file.url)}, false);
 		i++;
       }
     });
     for await (const friend of personal.friendList) {		
-        $("#possible-people").append("<option value="+friend.username+">"+friend.username+"</option>");
+       // $("#possible-people").append("<option value="+friend.username+">"+friend.username+"</option>");
 		$("#peopleToChat").append("<div id='clicable"+i+"' class='chat_list'>" +
               "<div class='chat_people'>" +
                 "<div class='chat_img'> <img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'> </div>" +
@@ -243,7 +253,7 @@ $("#new-btn").click(async () => {
                 "</div>" +
               "</div>" +
             "</div>");
-		document.getElementById("clicable" + i).addEventListener("click", function(){loadChat(friend.username)}, false);
+		document.getElementById("clicable" + i).addEventListener("click", function(){loadChat(friend.username,null)}, false);
 		i++;
     }
     $( "#possible-people" ).dropdown();
@@ -428,7 +438,7 @@ $("#enable-notifications").click(() => {
 function dropped(e){
 	e.preventDefault();
 	var files = e.dataTransfer.files;
-	var receiver = $("#possible-people option:selected").val();
+	var receiver = $("#contactName").text();
 	for ( var f=0; f<files.length; f++){
 		if ( files[f].name.endsWith(".png") || files[f].name.endsWith(".jpg") ) {
 			console.log("Storing photo");

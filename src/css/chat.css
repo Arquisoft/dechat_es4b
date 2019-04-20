@@ -13,6 +13,10 @@ img{ max-width:100%;}
 }
 .top_spac{ margin: 20px 0 0;}
 
+#toHide{
+
+}
+
 #new-chat-options{
 	display: flex;
 	flex-direction: row;	
@@ -20,7 +24,12 @@ img{ max-width:100%;}
 #chatting{	
   order: 2;
   flex-grow: 2;
+  display: flex;
+  flex-direction: column;
   border: #343A40 5px solid;  
+}
+#drop_zone{
+	order: 2;
 }
 #center{
   order: 1;
@@ -37,6 +46,12 @@ img{ max-width:100%;}
 #menuuu{
 	color: #343A40;
 	cursor: pointer;
+}
+
+#contactName{
+	color: #343A40;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 #chat-options{

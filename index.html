@@ -23,7 +23,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-		<button id="goBack" type="button" class="btn btn-dark">Principal page</button>
+		<button id="goBack" type="button" class="btn btn-dark">Main page</button>
 
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
@@ -66,41 +66,47 @@
         </div>
 
 		<div id="toHide" class="hidden">
-			<div id="new-chat-options" class="container-fluid hidden">
+			<div id="new-chat-options" class="container-fluid">
 				<div id="center" class="form-group">
-				<div id="inboxPeople" class="inbox_people">
-				<div id="tocenter">
-					  <span id="chatsText" class="navbar-brand">Chats</span>
-					  <div id="optionsChat">
-						  <a id="menuuu" class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fa fa-ellipsis-v"></i>
-						  </a>
-						  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<button id="create-group" type="button" class="dropdown-item btn btn-outline-danger my-2 my-sm-0">
-									  Create group</button>
-							<button id="add-friend-menu" class="dropdown-item btn btn-outline-danger my-2 my-sm-0" type="button">
-									  Add new friend</button> 
-						  </div>	
-					 </div>
-				</div>
-				<!-- <div class="srch_bar"> -->
-				  <!-- <div class="stylish-input-group hidden"> -->
-					<!-- <input type="text" class="search-bar"  placeholder="Search" > -->
-					<!-- <span class="input-group-addon"> -->
-					<!-- <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button> -->
-					<!-- </span> </div> -->
-				<!-- </div> -->
-			  <div class="inbox_chat" id="peopleToChat">            
-			  </div>
-			</div>
-			<label for="possible-people">Your conversation partner</label>
-				  <div class="content-select">
-				  <select id="possible-people" class="cd-select">
-					</select>
+					<div id="inboxPeople" class="inbox_people">
+						<div id="tocenter">
+							  <span id="chatsText" class="navbar-brand">Chats</span>
+							  <div id="optionsChat">
+								  <a id="menuuu" class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<i class="fa fa-ellipsis-v"></i>
+								  </a>
+								  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<button id="create-group" type="button" class="dropdown-item btn btn-outline-danger my-2 my-sm-0">
+											  Create group</button>
+									<button id="add-friend-menu" class="dropdown-item btn btn-outline-danger my-2 my-sm-0" type="button">
+											  Add new friend</button> 
+								  </div>	
+							 </div>
+						</div>
+					<!-- <div class="srch_bar"> -->
+					  <!-- <div class="stylish-input-group hidden"> -->
+						<!-- <input type="text" class="search-bar"  placeholder="Search" > -->
+						<!-- <span class="input-group-addon"> -->
+						<!-- <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button> -->
+						<!-- </span> </div> -->
+					<!-- </div> -->
+				  <div class="inbox_chat" id="peopleToChat">            
 				  </div>
-				   <button id="possible-people-btn" type="button" class="btn btn-dark">OK</button> 
+				</div>
+				<!-- <label for="possible-people">Your conversation partner</label> -->
+					  <!-- <div class="content-select"> -->
+					  <!-- <select id="possible-people" class="cd-select"> -->
+						<!-- </select> -->
+					  <!-- </div> -->
+					   <!-- <button id="possible-people-btn" type="button" class="btn btn-dark">OK</button>  -->
 				</div>
 					  <div id="chatting" class="form-group">
+						<div id="tocenter">
+							  <!-- Aqui iria la futura foto -->
+							  <!--<img id="userPhoto" src="">-->
+							  <span id="contactName" class="navbar-brand">Select a contact to start chatting</span>
+							  <div id="urlContact" class="hidden"></div>
+						</div>
 						  <div id="drop_zone" accept="image/*" class="container">
 							<div class="messaging">
 								<div class="inbox_msg">							
