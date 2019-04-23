@@ -1,10 +1,10 @@
 var chai = require("chai");
-const Core = require("../lib/core");
-const Personal = require ("../lib/personal");
+var Core = require("../lib/core");
+var Personal = require ("../lib/personal");
 const auth = require("solid-auth-client");
 const DataSync = require("../lib/datasync");
-const chat = new Core(auth.fetch);
-const personal = new Personal(chat);
+var chat = new Core(auth.fetch);
+var personal = new Personal(chat);
 var assert = chai.assert;
 let dataSync= new DataSync(auth.fetch);
 
@@ -35,10 +35,6 @@ describe("Simple personal testing", function () {
     assert.equal(personal.friendList.length,0);  
   });
     
-  it("Loads friends",async function() {
-    var name = await personal.loadFriendList("https://enriquead.solid.community/profile/card#me");
-    assert.isNotNull(name); 
-  });
 /*
   it("Clears inbox",async function() {
     personal.username = "enriquetest2";
@@ -51,6 +47,13 @@ describe("Simple personal testing", function () {
   it("Loads names",async function(){
     var result = await personal.loadNames("https://enriquead.solid.community/profile/card#me");
     assert.equal(result,"enriquead");
+  });
+    
+    it("Reload friends",async function() {
+    personal.userWebId = "https://enriquead.solid.community/profile/card#me";
+    personal.friendList = new Array();
+    await personal.reloadFriendList();
+    assert.isTrue(personal.friendList.length>0); 
   });
     
   /*WIP
