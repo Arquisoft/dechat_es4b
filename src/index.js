@@ -353,8 +353,8 @@ $("#remove-selected-files").click(async () => {
     }
   }
   personal.clearInbox(dataSync, urls).then((i) => {
+    personal.loadInbox(true);
     alerts.alertCountRemovedFromInbox(i);
-    personal.loadInbox();
   });
 });
 
