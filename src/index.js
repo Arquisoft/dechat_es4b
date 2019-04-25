@@ -223,7 +223,7 @@ $("#new-btn").click(async () => {
   if (personal !== null) {
     afterChatOption();
     //$("#possible-people").empty();
-	$("#peopleToChat").empty();
+	  $("#peopleToChat").empty();
     var i=0;
     core.getChatGroups(personal).then((groupNames) => {
       for(const chat of groupNames) {
@@ -299,12 +299,7 @@ $("#create-button").click(async () => {
   var nameGroup = $("#group-name").val();
   if(friendsGroup.length > 0){
     if(nameGroup.length > 0 && nameGroup.trim().length > 0){
-		core.createGroup(personal, friendsGroup);
-		// personal.loadFriendList().then(() => { 
-		// setTimeout(function(){
-		// }, 1000);
-		// $("#new-btn").click();
-    //});
+		  core.createGroup(personal, friendsGroup);
     }
     else{
       alerts.errorGroupCreated("Error creating new group", "Wrong name");
