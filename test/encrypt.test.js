@@ -21,4 +21,11 @@ describe("Encrypt/Decrypt testing", function () {
     var after = encryptor.decrypt(encrypted1);
     assert.equal(plainText1,after);
   });
+    
+    
+  it("No encoded text remains the same",function(){
+    var noEncryptedText = "Esto no está encriptado"
+    var after = encryptor.decrypt(noEncryptedText);
+    assert.equal(noEncryptedText,after);
+  });
 });
