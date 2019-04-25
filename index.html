@@ -56,14 +56,6 @@
           <button id="test-btn" type="button" class="btn btn-dark btn-lg">Test button</button>
         </div>
 
-        <div id="create-new-group" class="col-6 hidden">
-          <input type="text" name="group-name" id="group-name" class="write_msg" placeholder="Group name">
-          <div id="check-people-group">
-            <input class="form-check-input" type="checkbox" id="a"><label class="form-check-label" for="a">Default checkbox</label>
-          </div>
-          <button id="create-button" type="button" class="btn-cancel btn btn-dark">Create</button>
-          <button id="cancel-group-menu" type="button" class="btn-cancel btn btn-dark">Cancel</button>
-        </div>
 
 		<div id="toHide" class="hidden">
 			<div id="new-chat-options" class="container-fluid">
@@ -159,8 +151,8 @@
 													<button id="sendFiles" type="file" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-paperclip" aria-hidden="true"></i></button>
 													<button id="sendUbication" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-map-marker" aria-hidden="true"></i></button>
 													<button id="sendContact" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-id-card" aria-hidden="true"></i></button>
-							<button id="sendAudios" type="submit" class="emoji_open" onClick="recordStop()"><i id = "iconAudio" class="fa fa-microphone" aria-hidden="true"></i></button>       
-							<button id="openEmojiBtn" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-smile-o" aria-hidden="true"></i></button>
+													<button id="sendAudios" type="submit" class="emoji_open" onClick="recordStop()"><i id = "iconAudio" class="fa fa-microphone" aria-hidden="true"></i></button>       
+													<button id="openEmojiBtn" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-smile-o" aria-hidden="true"></i></button>
 													<button id="start-new-chat-btn" type="submit" class="msg_send_btn"><i id = "iconMsg" class="fa fa-paper-plane-o" aria-hidden="true"></i></button> 							
 												</div>
 											</div>											
@@ -199,11 +191,6 @@
 			</div>
 		  </div>
 	</div>
-      <div id="manage-friends" class="row justify-content-center align-items-center hidden">
-        <input type="text" name="friend-name" id="friend-name" class="write_msg" placeholder="card#me">
-        <button id="add-friend-button" type="button" class="btn-cancel btn btn-dark">Add friend</button>
-        <button id="cancel-manage-friend" type="button" class="btn-cancel btn btn-dark">Cancel</button>
-      </div>
 
       
 
@@ -320,6 +307,76 @@
           </div>
         </div>
       </div>
+	  
+	  <div class="modal fade" id="create-new-group" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="color: black">Select your friends!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="color: black; margin-left: 20px;">
+              <input type="text" name="group-name" id="group-name" class="write_msg" placeholder="Group name">
+			  <div id="check-people-group">
+				<input class="form-check-input" type="checkbox" id="a"><label class="form-check-label" for="a">Default checkbox</label>
+			  </div>
+            </div>
+            <div class="modal-footer">				  
+			  <button id="create-button" type="button" class="btn btn-secondary" data-dismiss="modal">Create</button>
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+	  
+	  
+	  <div class="modal fade" id="manage-friends" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel5" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="color: black">Enter friend name!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="color: black; margin-left: 20px;">	  
+				<input type="text" name="friend-name" id="friend-name" class="write_msg" placeholder="card#me">              
+            </div>
+            <div class="modal-footer">				  
+			  <button id="add-friend-button" type="button" class="btn btn-secondary" data-dismiss="modal">Add friend</button>
+			  <button type="button" id="cancel-manage-friend" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+	  
+	  <div class="modal fade" id="share-friend" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel6" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="color: black">Enter friend name!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="color: black; margin-left: 20px;">	
+				<input id="inr" type = "radio" name = "preg1" value = "inrupt" /> INRUPT
+				<input id="comm" type = "radio" name = "preg1" value = "community" /> COMMUNITY
+				<input id="oth" type = "radio" name = "preg1" value = "other" /> OTHER
+				<input type="text" name="friend-name" id="share-name" class="write_msg hidden" placeholder="card#me">              
+            </div>
+            <div class="modal-footer">				  
+			  <button id="share-friend-button" type="button" class="btn btn-secondary" data-dismiss="modal">Share friend</button>
+			  <button type="button" id="cancel-manage-friend" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+	  
+	  
+	  
     </div> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

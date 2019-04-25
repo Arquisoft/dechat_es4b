@@ -38,6 +38,7 @@ function loading2(){
   $("#how-it-works").removeClass("hidden");
 }
 
+
 function moveScrollDown(){
   $("#addMessages").animate({ scrollTop: document.getElementById("addMessages").scrollHeight }, 1000);
   $("#addMessagesGroup").animate({ scrollTop: document.getElementById("addMessages").scrollHeight }, 1000);
@@ -118,6 +119,7 @@ function sendMessage(){
 }
 
 async function loadChat(name, urlgroup){	
+	$("#drop_zone").removeClass("hidden");
 	$("#contactName").text(name);
 	if ( urlgroup !== null ) {
 		core.loadMessages(personal, urlgroup, nm, false);
@@ -199,7 +201,7 @@ $("#test-btn").click(() => {
 $("#add-friend-menu").click(() => {
   if (personal !== null) {
     afterChatOption();
-    $("#manage-friends").removeClass("hidden");
+    $("#manage-friends").modal("show");
   } else {
     $("#login-required").modal("show");
   }
@@ -209,8 +211,7 @@ $("#add-friend-button").click(() => {
   var friendMe = $("#friend-name").val();
   core.addFriend(personal, friendMe);
   $("#friend-name").val("");
-  $("#manage-friends").addClass("hidden");
-  setTimeout(function(){loading1();setTimeout(function(){loading2();}, 500);}, 50);
+  setTimeout(function(){;setTimeout(function(){;}, 500);}, 50);
 });
 
 /**
@@ -264,6 +265,7 @@ $("#new-btn").click(async () => {
       }
     });
     $("#toHide").removeClass("hidden");
+	$("#drop_zone").addClass("hidden");
     $("#emoji-panel").removeClass("hidden");
   } else {
     $("#login-required").modal("show");
@@ -279,7 +281,7 @@ $("#create-group").click(async () => {
                                       "\"><label class=\"form-check-label\" for=\""+friend.username+"\">"+
                                       friend.username+"</label><br>");
     }
-    $("#create-new-group").removeClass("hidden");
+    $("#create-new-group").modal("show");
   } else {
     $("#login-required").modal("show");
   }
@@ -292,14 +294,17 @@ $("#create-button").click(async () => {
       friendsGroup.push(friend);
     }
   }
-  $("#create-new-group").addClass("hidden");
+  //$("#create-new-group").addClass("hidden");
   // CREAR EL GRUPO AQUI
   var nameGroup = $("#group-name").val();
   if(friendsGroup.length > 0){
     if(nameGroup.length > 0 && nameGroup.trim().length > 0){
-      core.createGroup(personal, friendsGroup);
-      loading1();
-      setTimeout(function(){loading2();}, 800);
+		core.createGroup(personal, friendsGroup);
+		// personal.loadFriendList().then(() => { 
+		// setTimeout(function(){
+		// }, 1000);
+		// $("#new-btn").click();
+    //});
     }
     else{
       alerts.errorGroupCreated("Error creating new group", "Wrong name");
@@ -364,13 +369,6 @@ $("#goBack").click(() => {
 	showMain();
 });
 
-$("#cancel-group-menu").click(() => {
-	$("#create-new-group").addClass("hidden");
-});
-
-$("#cancel-manage-friend").click(() => {
-	$("#manage-friends").addClass("hidden");
-});
 
 $(".emoji-button").click(function() { 
 	var id = $(this).attr("id");
@@ -389,8 +387,21 @@ $("#openEmojiBtn").click(() => {
 	$("#addMessagesGroup").prop("hidden",isActivated);
 });
 
-$("#sendFiles").change(() => {
+$("#sendFiles").click(() => {
 	console.log("Hola");
+});
+
+$("#share-friend-button").click(() => {
+	var friendMe = $("#share-name").val();
+	var platform = $(".input:radio[name=preg1]:checked").val();
+	console.log(platform);
+	  // core.addFriend(personal, friendMe);
+	  // $("#friend-name").val("");
+	  // setTimeout(function(){;setTimeout(function(){;}, 500);}, 50);
+});
+
+$("#sendContact").click(() => {
+	$("#share-friend").modal("show");
 });
 
 $("#sendUbication").click(() => {
@@ -467,8 +478,8 @@ function start(){
 	drop.addEventListener("drop", dropped, false);
 }
 
-$("#sendContact").click(() => {
-	recordStop();
-});
+// $("#sendContact").click(() => {
+	// recordStop();
+// });
 
 window.addEventListener("load", start, false);
