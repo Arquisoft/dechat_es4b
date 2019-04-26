@@ -36,5 +36,16 @@ describe("Private communication testing", function () {
                         webId: "https://enriquetest2.solid.community/profile/card#me"};
       personal.inbox = "https://dechat-es4b.solid.community/inbox/";
       var result = await privateComm.loadMessages(personal,receiver,true);      
-  });   
+  });
+    
+  it("Get true emojis",async function(){
+      var emoji1 = ":blush:";
+      var emoji2 = ":sleeping:";
+      var thisIsNotAnEmoji = "noEmoji";
+      var looksLikeAnEmojiButItsNot = ":thisIsNotAnEmoji:";
+      var numberEmojis = privateComm.getTrueEmojis(" "+emoji1+" "+emoji2+" "+thisIsNotAnEmoji + " "+looksLikeAnEmojiButItsNot);
+      assert.equal(numberEmojis.length,2);
+  });
+ 
+ 
 });
