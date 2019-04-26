@@ -5,11 +5,11 @@ const Private = require("../lib/commprivate");
 
 var assert = chai.assert;
 const Core = require("../lib/core");
-const chat = new Core(auth.fetch);
+let chat = new Core(auth.fetch);
 const Personal = require("../lib/personal");
 let personal = new Personal(chat);
 
-const privateComm = new Private(auth.fetch);
+let privateComm = new Private(auth.fetch);
 
 describe("Private communication testing", function () {
   
@@ -45,6 +45,17 @@ describe("Private communication testing", function () {
       var looksLikeAnEmojiButItsNot = ":thisIsNotAnEmoji:";
       var numberEmojis = privateComm.getTrueEmojis(" "+emoji1+" "+emoji2+" "+thisIsNotAnEmoji + " "+looksLikeAnEmojiButItsNot);
       assert.equal(numberEmojis.length,2);
+  });
+    
+  it("Test last date",function(){
+      privateComm.addNewDateRead({"other": "user", "lastDate": 33});
+      
+    privateComm.changeDateRead({"other": "user", "lastDate": 34});
+     
+      var result = privateComm.getDateRead({"other": "user", "lastDate": 34});
+    //  assert.equal(personal.datesRead[0].lastDate,34);
+      
+      
   });
  
  
