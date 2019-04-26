@@ -388,11 +388,33 @@ $("#sendFiles").click(() => {
 
 $("#share-friend-button").click(() => {
 	var friendMe = $("#share-name").val();
-	var platform = $(".input:radio[name=preg1]:checked").val();
-	console.log(platform);
-	  // core.addFriend(personal, friendMe);
-	  // $("#friend-name").val("");
-	  // setTimeout(function(){;setTimeout(function(){;}, 500);}, 50);
+	var platform = $("input[name=preg1]:checked").val();
+	var toShare = "https://" + friendMe;
+	switch ( platform ) {
+		case "community":
+			toShare += ".solid.community/profile/card#me";
+			break;
+		case "inrupt":
+			toShare += ".inrupt.net/profile/card#me";
+			break;
+		default:
+			toShare = friendMe;
+			break;
+	}
+	var receiver = $("#contactName").text();
+	core.sendContact(personal,receiver,toShare);
+});
+
+$("#inr").change(() => {
+	$("#share-name").removeClass("hidden");
+});
+
+$("#oth").change(() => {
+	$("#share-name").removeClass("hidden");
+});
+
+$("#comm").change(() => {
+	$("#share-name").removeClass("hidden");
 });
 
 $("#sendContact").click(() => {
@@ -446,21 +468,19 @@ function dropped(e){
 	var files = e.dataTransfer.files;
 	var receiver = $("#contactName").text();
 	for ( var f=0; f<files.length; f++){
-		if ( files[f].name.endsWith(".png") || files[f].name.endsWith(".jpg") ) {
-			console.log("Storing photo");
-			console.log(files[f].name);
+		if ( files[f].name.endsWith(".png") || files[f].name.endsWith(".jpg") 
+			|| files[f].name.endsWith(".jpeg")) {
 			var reader = new FileReader();
 			reader.onload = async function (event){
-				$("#data-name").val(event.target.result);
+				core.storePhoto(personal,receiver,event.target.result);
 			};
 			reader.readAsDataURL(files[f]);
-			core.storePhoto(personal,receiver);
 		}
 	}
 }
 
 function start(){
-	var drop = document.getElementById("drop_zone");
+	var drop = document.getElementById("toHide");
 	
 	drop.addEventListener("dragenter",function(e){
 		e.preventDefault();
