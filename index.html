@@ -351,8 +351,16 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body" style="color: black; margin-left: 20px;">	  
-				<input type="text" name="friend-name" id="friend-name" class="write_msg" placeholder="card#me">              
+            <div class="modal-body" style="color: black; margin-left: 20px;">	
+				<h5>Select your platform</h5>
+				<div id="platforms">
+					<input id="inr2" type = "radio" name = "preg2" value = "inrupt" /> Inrupt
+					<input id="comm2" type = "radio" name = "preg2" value = "community" /> Community
+					<input id="oth2" type = "radio" name = "preg2" value = "other" /> Other
+				</div>
+				<div id="tocenter2">
+					<input type="text" name="friend-name" id="friend-name" class="write_msg hidden" placeholder="Enter friend username">   
+				</div>            
             </div>
             <div class="modal-footer">				  
 			  <button id="add-friend-button" type="button" class="btn btn-secondary" data-dismiss="modal">Add friend</button>
@@ -372,11 +380,15 @@
               </button>
             </div>
             <div class="modal-body" style="color: black; margin-left: 20px;">	
-				<h3>Select your platform</h3>
-				<input id="inr" type = "radio" name = "preg1" value = "inrupt" /> Inrupt
-				<input id="comm" type = "radio" name = "preg1" value = "community" /> Community
-				<input id="oth" type = "radio" name = "preg1" value = "other" /> Other
-				<input type="text" name="friend-name" id="share-name" class="write_msg hidden" placeholder="card#me">              
+				<h5>Select your platform</h5>
+				<div id="platforms">
+					<input id="inr" type = "radio" name = "preg1" value = "inrupt" /> Inrupt
+					<input id="comm" type = "radio" name = "preg1" value = "community" /> Community
+					<input id="oth" type = "radio" name = "preg1" value = "other" /> Other
+				</div>
+				<div id="tocenter2">
+					<input type="text" name="friend-name" id="share-name" class="write_msg hidden" placeholder="Enter friend username">   
+				</div>
             </div>
             <div class="modal-footer">				  
 			  <button id="share-friend-button" type="button" class="btn btn-secondary" data-dismiss="modal">Share friend</button>

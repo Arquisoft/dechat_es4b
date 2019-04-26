@@ -17,6 +17,45 @@ img{ max-width:100%;}
 
 }
 
+h5{
+	text-align: center;
+}
+
+#platforms{
+	text-align: center;
+	border: #343A40 2px solid;
+	margin: 20px;
+}
+
+#tocenter2{
+	text-align:center;
+}
+
+#share-name{
+	margin: 0 auto;
+	text-align: center;
+}
+
+#friend-name{
+	margin: 0 auto;
+	text-align: center;
+}
+
+#inr{
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+#comm{
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+#oth{
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
 #new-chat-options{
 	display: flex;
 	flex-direction: row;	

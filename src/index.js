@@ -209,8 +209,22 @@ $("#add-friend-menu").click(() => {
 
 $("#add-friend-button").click(() => {
   var friendMe = $("#friend-name").val();
-  core.addFriend(personal, friendMe);
+  var platform = $("input[name=preg2]:checked").val();
+  var toShare = "https://" + friendMe;
+	switch ( platform ) {
+		case "community":
+			toShare += ".solid.community/profile/card#me";
+			break;
+		case "inrupt":
+			toShare += ".inrupt.net/profile/card#me";
+			break;
+		default:
+			toShare = friendMe;
+			break;
+	}
+  core.addFriend(personal, toShare);
   $("#friend-name").val("");
+  document.querySelectorAll('[name=preg2]').forEach((x) => x.checked = false);
   setTimeout(function(){;setTimeout(function(){;}, 500);}, 50);
 });
 
@@ -402,6 +416,8 @@ $("#share-friend-button").click(() => {
 			break;
 	}
 	var receiver = $("#contactName").text();
+	$("#share-name").val("");
+	document.querySelectorAll('[name=preg1]').forEach((x) => x.checked = false);
 	core.sendContact(personal,receiver,toShare);
 });
 
@@ -415,6 +431,18 @@ $("#oth").change(() => {
 
 $("#comm").change(() => {
 	$("#share-name").removeClass("hidden");
+});
+
+$("#inr2").change(() => {
+	$("#friend-name").removeClass("hidden");
+});
+
+$("#oth2").change(() => {
+	$("#friend-name").removeClass("hidden");
+});
+
+$("#comm2").change(() => {
+	$("#friend-name").removeClass("hidden");
 });
 
 $("#sendContact").click(() => {
