@@ -17,6 +17,13 @@ img{ max-width:100%;}
 
 }
 
+
+.map {
+	height: 400px;
+	width: 100%;
+}
+  
+
 h5{
 	text-align: center;
 }

@@ -4,6 +4,12 @@ const DataSync = require("../lib/datasync");
 const Alerts = require("./alerts");
 const NotificationManager = require("../lib/notificationmanager");
 //const fc = require("solid-file-client");
+import Map from "ol/Map";
+import View from "ol/View";
+import TileLayer from "ol/layer/Tile";
+import XYZ from "ol/source/XYZ";
+import { fromLonLat } from "ol/proj.js";
+
 
 const Personal = require("../lib/personal");
 
@@ -223,7 +229,7 @@ $("#add-friend-button").click(() => {
 	}
   core.addFriend(personal, toShare);
   $("#friend-name").val("");
-  document.querySelectorAll('[name=preg2]').forEach((x) => x.checked = false);
+  document.querySelectorAll("[name=preg2]").forEach((x) => x.checked = false);
   setTimeout(function(){;setTimeout(function(){;}, 500);}, 50);
 });
 
@@ -524,13 +530,36 @@ $("#sendContact").click(() => {
 
 $("#sendUbication").click(() => {
 	
+	$("#map").empty();
+	
+	$("#share-ubication").modal("show");
+	
 	navigator.geolocation.getCurrentPosition(getPosicion.bind(this), verErrores.bind(this));
 	
 	function getPosicion(posicion){
         var longitud = posicion.coords.longitude; 
-        var latitud = posicion.coords.latitude;   
-		    $("#data-name").val(latitud + "," + longitud);
-    }
+        var latitud = posicion.coords.latitude; 
+		var map = new Map({
+			target: 'map',
+			layers: [
+				new TileLayer({
+					source: new XYZ({
+						url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+					})
+				})
+			],
+			view: new View({
+				projection: 'EPSG:900913',
+				center: fromLonLat(
+					[longitud, latitud],
+					'EPSG:900913'
+				),
+				zoom: 15
+			})		
+		});	
+		var ubicationToShare = "data/ubication:" +longitud + "," + latitud;
+		$("#ubicationLongLat").text(ubicationToShare);
+	}
     function verErrores(error){
 		var mensaje = "";
         switch(error.code) {
@@ -552,6 +581,14 @@ $("#sendUbication").click(() => {
 
     }
 });
+
+$("#share-ubication-button").click( () => {
+	var ubicationToShare = $("#ubicationLongLat").text();
+	$("#ubicationLongLat").text("");
+	var receiver = $("#urlContact").text();
+	core.storeUbication(personal,receiver,ubicationToShare);
+});
+
 
 $("#enable-emojis").click(() => {
 	changeStateOfEmojis();
@@ -631,7 +668,7 @@ $('.button-checkbox').each(function () {
 function dropped(e){
 	e.preventDefault();
 	var files = e.dataTransfer.files;
-	var receiver = $("#contactName").text();
+	var receiver = $("#urlContact").text();
 	for ( var f=0; f<files.length; f++){
 		if ( files[f].name.endsWith(".png") || files[f].name.endsWith(".jpg") 
 			|| files[f].name.endsWith(".jpeg")) {
