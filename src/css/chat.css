@@ -21,6 +21,15 @@ h5{
 	text-align: center;
 }
 
+#group-name{
+	margin: 0 auto;
+	text-align: center;
+}
+
+#check-people-group{
+	margin-top: 10px;
+}
+
 #platforms{
 	text-align: center;
 	border: #343A40 2px solid;

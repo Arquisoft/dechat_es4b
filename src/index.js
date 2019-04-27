@@ -131,7 +131,6 @@ async function loadChat(name, urlgroup){
 	setTimeout(function(){ moveScrollDown(); }, 2000);
 }
 
-
 /**
  * START
  */
@@ -291,11 +290,85 @@ $("#create-group").click(async () => {
     afterChatOption();
     $("#check-people-group").empty();
     for await (const friend of personal.friendList) {
-      $("#check-people-group").append("<input class=\"form-check-input\" type=\"checkbox\" id=\""+friend.username+
-                                      "\"><label class=\"form-check-label\" for=\""+friend.username+"\">"+
-                                      friend.username+"</label><br>");
+		
+		$("#check-people-group").append("<span id='check-people-group' class='button-checkbox'>" + 
+											"<button type='button' class='btn' data-color='primary'>"+friend.username+"</button>"+
+											"<input  id=\""+friend.username+"\" type='checkbox' class='hidden' />"+
+                                      "</span>");
+		
+		
+      // $("#check-people-group").append("<input class=\"form-check-input\" type=\"checkbox\" id=\""+friend.username+
+                                      // "\"><label class=\"form-check-label\" for=\""+friend.username+"\">"+
+                                      // friend.username+"</label><br>");
     }
-    $("#create-new-group").modal("show");
+	
+	$('.button-checkbox').each(function () {
+
+        // Settings
+        var $widget = $(this),
+            $button = $widget.find('button'),
+            $checkbox = $widget.find('input:checkbox'),
+            color = $button.data('color'),
+            settings = {
+                on: {
+                    icon: 'glyphicon glyphicon-check'
+                },
+                off: {
+                    icon: 'glyphicon glyphicon-unchecked'
+                }
+            };
+
+        // Event Handlers
+        $button.on('click', function () {
+            $checkbox.prop('checked', !$checkbox.is(':checked'));
+            $checkbox.triggerHandler('change');
+            updateDisplay();
+        });
+        $checkbox.on('change', function () {
+            updateDisplay();
+        });
+		
+		// Actions
+		function updateDisplay() {
+			var isChecked = $checkbox.is(':checked');
+
+			// Set the button's state
+			$button.data('state', (isChecked) ? "on" : "off");
+
+			// Set the button's icon
+			$button.find('.state-icon')
+				.removeClass()
+				.addClass('state-icon ' + settings[$button.data('state')].icon);
+
+			// Update the button's color
+			if (isChecked) {
+				$button
+					.removeClass('btn-default')
+					.addClass('btn-' + color + ' active');
+			}
+			else {
+				$button
+					.removeClass('btn-' + color + ' active')
+					.addClass('btn-default');
+			}
+		}
+
+		// Initialization
+		function init() {
+
+			updateDisplay();
+
+			// Inject the icon if applicable
+			if ($button.find('.state-icon').length == 0) {
+				$button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+			}
+		}
+
+		init();
+		
+		});
+		
+		$("#create-new-group").modal("show");
   } else {
     $("#login-required").modal("show");
   }
@@ -487,6 +560,70 @@ $("#enable-emojis").click(() => {
 $("#enable-notifications").click(() => {
 	changeStateOfNotifications();
 });
+
+$('.button-checkbox').each(function () {
+
+        // Settings
+        var $widget = $(this),
+            $button = $widget.find('button'),
+            $checkbox = $widget.find('input:checkbox'),
+            color = $button.data('color'),
+            settings = {
+                on: {
+                    icon: 'glyphicon glyphicon-check'
+                },
+                off: {
+                    icon: 'glyphicon glyphicon-unchecked'
+                }
+            };
+
+        // Event Handlers
+        $button.on('click', function () {
+            $checkbox.prop('checked', !$checkbox.is(':checked'));
+            $checkbox.triggerHandler('change');
+            updateDisplay();
+        });
+        $checkbox.on('change', function () {
+            updateDisplay();
+        });
+
+        // Actions
+        function updateDisplay() {
+            var isChecked = $checkbox.is(':checked');
+
+            // Set the button's state
+            $button.data('state', (isChecked) ? "on" : "off");
+
+            // Set the button's icon
+            $button.find('.state-icon')
+                .removeClass()
+                .addClass('state-icon ' + settings[$button.data('state')].icon);
+
+            // Update the button's color
+            if (isChecked) {
+                $button
+                    .removeClass('btn-default')
+                    .addClass('btn-' + color + ' active');
+            }
+            else {
+                $button
+                    .removeClass('btn-' + color + ' active')
+                    .addClass('btn-default');
+            }
+        }
+
+        // Initialization
+        function init() {
+
+            updateDisplay();
+
+            // Inject the icon if applicable
+            if ($button.find('.state-icon').length == 0) {
+                $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+            }
+        }
+        init();
+    });
 
 
 //Images sharing (here for some time)
