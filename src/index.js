@@ -172,7 +172,7 @@ auth.trackSession(async (session) => {
     $("#user-menu").addClass("hidden");
     showMain();
     
-    if(personal !== null){
+    if(personal !== null && personal.running){
       personal.clearInfo();
     }  
     clearInterval(refreshIntervalId);
@@ -198,16 +198,18 @@ $("#logout-btn").click(() => {
 $("#refresh-btn").click(loadMessagesFromChat);
 
 $("#test-btn").click(() => {
-  if(personal !== null){
+  if(personal !== null && personal.running){
     personal.reloadFriendList();
   }
 });
 
 $("#add-friend-menu").click(() => {
-  if (personal !== null) {
+  if (personal !== null && personal.running) {
     afterChatOption();
     $("#manage-friends").modal("show");
   } else {
+    $("#nav-login-btn").removeClass("hidden");
+    $("#user-menu").addClass("hidden");
     $("#login-required").modal("show");
   }
 });
@@ -239,7 +241,7 @@ $("#add-friend-button").click(() => {
 
 
 $("#new-btn").click(async () => { 
-  if (personal !== null) {
+  if (personal !== null && personal.running) {
     afterChatOption();
     //$("#possible-people").empty();
 	  $("#peopleToChat").empty();
@@ -287,12 +289,14 @@ $("#new-btn").click(async () => {
 	$("#drop_zone").addClass("hidden");
     $("#emoji-panel").removeClass("hidden");
   } else {
+    $("#nav-login-btn").removeClass("hidden");
+    $("#user-menu").addClass("hidden");
     $("#login-required").modal("show");
   }
 });
 
 $("#create-group").click(async () => { 
-  if (personal !== null) {
+  if (personal !== null && personal.running) {
     afterChatOption();
     $("#check-people-group").empty();
     for await (const friend of personal.friendList) {
@@ -308,77 +312,79 @@ $("#create-group").click(async () => {
                                       // friend.username+"</label><br>");
     }
 	
-	$('.button-checkbox').each(function () {
+    $('.button-checkbox').each(function () {
 
-        // Settings
-        var $widget = $(this),
-            $button = $widget.find('button'),
-            $checkbox = $widget.find('input:checkbox'),
-            color = $button.data('color'),
-            settings = {
-                on: {
-                    icon: 'glyphicon glyphicon-check'
-                },
-                off: {
-                    icon: 'glyphicon glyphicon-unchecked'
-                }
-            };
+    // Settings
+    var $widget = $(this),
+        $button = $widget.find('button'),
+        $checkbox = $widget.find('input:checkbox'),
+        color = $button.data('color'),
+        settings = {
+            on: {
+                icon: 'glyphicon glyphicon-check'
+            },
+            off: {
+                icon: 'glyphicon glyphicon-unchecked'
+            }
+        };
 
-        // Event Handlers
-        $button.on('click', function () {
-            $checkbox.prop('checked', !$checkbox.is(':checked'));
-            $checkbox.triggerHandler('change');
-            updateDisplay();
-        });
-        $checkbox.on('change', function () {
-            updateDisplay();
-        });
-		
-		// Actions
-		function updateDisplay() {
-			var isChecked = $checkbox.is(':checked');
+    // Event Handlers
+    $button.on('click', function () {
+        $checkbox.prop('checked', !$checkbox.is(':checked'));
+        $checkbox.triggerHandler('change');
+        updateDisplay();
+    });
+    $checkbox.on('change', function () {
+        updateDisplay();
+    });
+      
+      // Actions
+      function updateDisplay() {
+        var isChecked = $checkbox.is(':checked');
 
-			// Set the button's state
-			$button.data('state', (isChecked) ? "on" : "off");
+        // Set the button's state
+        $button.data('state', (isChecked) ? "on" : "off");
 
-			// Set the button's icon
-			$button.find('.state-icon')
-				.removeClass()
-				.addClass('state-icon ' + settings[$button.data('state')].icon);
+        // Set the button's icon
+        $button.find('.state-icon')
+          .removeClass()
+          .addClass('state-icon ' + settings[$button.data('state')].icon);
 
-			// Update the button's color
-			if (isChecked) {
-				$button
-					.removeClass('btn-default')
-					.addClass('btn-' + color + ' active');
-			}
-			else {
-				$button
-					.removeClass('btn-' + color + ' active')
-					.addClass('btn-default');
-			}
-		}
+        // Update the button's color
+        if (isChecked) {
+          $button
+            .removeClass('btn-default')
+            .addClass('btn-' + color + ' active');
+        }
+        else {
+          $button
+            .removeClass('btn-' + color + ' active')
+            .addClass('btn-default');
+        }
+      }
 
-		// Initialization
-		function init() {
+      // Initialization
+      function init() {
 
-			updateDisplay();
+        updateDisplay();
 
-			// Inject the icon if applicable
-			if ($button.find('.state-icon').length == 0) {
-				$button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
-			}
-		}
+        // Inject the icon if applicable
+        if ($button.find('.state-icon').length == 0) {
+          $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+        }
+      }
 
-		init();
-		
-		});
-		
-		$("#create-new-group").modal("show");
-  } else {
-    $("#login-required").modal("show");
-  }
-});
+      init();
+      
+      });
+      
+      $("#create-new-group").modal("show");
+    } else {
+      $("#nav-login-btn").removeClass("hidden");
+      $("#user-menu").addClass("hidden");
+      $("#login-required").modal("show");
+    }
+  });
 
 $("#create-button").click(async () => { 
   var friendsGroup = new Array();
