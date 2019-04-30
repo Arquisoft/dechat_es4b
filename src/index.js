@@ -301,7 +301,7 @@ $("#create-group").click(async () => {
     $("#check-people-group").empty();
     for await (const friend of personal.friendList) {
 		
-		$("#check-people-group").append("<span id='check-people-group' class='button-checkbox'>" + 
+		$("#check-people-group").append("<span id='check-people-group2' class='button-checkbox'>" + 
 											"<button type='button' class='btn' data-color='primary'>"+friend.username+"</button>"+
 											"<input  id=\""+friend.username+"\" type='checkbox' class='hidden' />"+
                                       "</span>");
@@ -534,6 +534,22 @@ $("#sendContact").click(() => {
 	$("#share-friend").modal("show");
 });
 
+$("#change-chat-image").click(() => {
+	$("#backgrounds").empty();
+	$("#changeeee").modal("show");
+	var img = new Array();
+	img.push("src/img/backgrounds/1.jpg");
+	img.push("src/img/backgrounds/2.png");
+	img.push("src/img/backgrounds/3.jpg");
+	img.push("src/img/backgrounds/4.jpg");
+	img.push("src/img/backgrounds/5.jpg");
+	for ( var i=0; i<img.length; i++ ){
+		$("#backgrounds").append("<img class='selectionOfBackground' id='selectedImage" + i + "' src='" + img[i] + "' alt='"+i+"'>");
+	}
+});
+
+$(".selectionOfBackground")
+
 $("#sendUbication").click(() => {
 	
 	$("#map").empty();
@@ -677,14 +693,15 @@ function dropped(e){
 	var receiver = $("#urlContact").text();
 	for ( var f=0; f<files.length; f++){
 		var fileType = files[f].name;
-		if ( fileType.endsWith(".mp3") || fileType.endsWith(".mp4") || fileType.endsWith(".png") || fileType.endsWith(".jpg") 
+		if ( fileType.endsWith(".gif") || fileType.endsWith(".mp3") || fileType.endsWith(".mp4") 
+			|| fileType.endsWith(".png") || fileType.endsWith(".jpg") 
 			|| fileType.endsWith(".jpeg")) {
 			var reader = new FileReader();
 			reader.onload = async function (event){
 				if ( fileType.endsWith(".mp3") )
-					core.storePhoto(personal,receiver,"data/audio$" + event.target.result);
+					core.storeAudio(personal,receiver,event.target.result);
 				else if ( fileType.endsWith(".mp4") )
-					core.storePhoto(personal,receiver,"data/video$" + event.target.result);
+					core.storeVideo(personal,receiver,event.target.result);
 				else
 					core.storePhoto(personal,receiver,event.target.result);
 			};
@@ -712,3 +729,28 @@ function start(){
 // });
 
 window.addEventListener("load", start, false);
+
+// The other way to share-friend
+
+$('#sendFiles').on('change', function() {
+    var files = this.files;
+	var receiver = $("#urlContact").text();
+    for ( var f=0; f<files.length; f++){
+		var fileType = files[f].name;
+		console.log(fileType);
+		if ( fileType.endsWith(".gif") || fileType.endsWith(".mp3") || fileType.endsWith(".mp4") 
+			|| fileType.endsWith(".png") || fileType.endsWith(".jpg") 
+			|| fileType.endsWith(".jpeg")) {
+			var reader = new FileReader();
+			reader.onload = async function (event){
+				if ( fileType.endsWith(".mp3") )
+					core.storeAudio(personal,receiver,event.target.result);
+				else if ( fileType.endsWith(".mp4") )
+					core.storeVideo(personal,receiver,event.target.result);
+				else
+					core.storePhoto(personal,receiver,event.target.result);
+			};
+			reader.readAsDataURL(files[f]);
+		}
+	}    
+});

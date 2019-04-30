@@ -37,6 +37,10 @@ h5{
 	margin-top: 10px;
 }
 
+#check-people-group2{
+	margin:5px;
+}
+
 #platforms{
 	text-align: center;
 	border: #343A40 2px solid;
@@ -231,10 +235,14 @@ h5{
 .type_msg {position: relative;
 	}
 
-
+.selectionOfBackground{
+	height: 250px;
+	width: 100px;
+	margin: 10px;
+}
 
 .messaging { padding: 50px 0 50px 0; 
-	background-image: url("../img/fondo.jpg");
+	background-image: url("../img/backgrounds/1.jpg");
   background-repeat: repeat;}
 .msg_history {
   overflow-y: auto;
@@ -260,6 +268,18 @@ h5{
   cursor: pointer;
   font-size: 17px;
   height: 33px;
+}
+
+#anotherChatOption{
+	  background: #05728f none repeat scroll 0 0;
+	  border: medium none;
+	  border-radius: 100%;
+	  color: #fff;
+	  cursor: pointer;
+	  font-size: 17px;
+	  height: 27px;
+	  width: 27px;
+	  text-align: center;
 }
 
 
