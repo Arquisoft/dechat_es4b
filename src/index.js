@@ -771,6 +771,8 @@ $('#sendFiles').on('change', function() {
 			};
 			reader.readAsDataURL(files[f]);
 		}
+		else
+			alert("File not suported");
 	}    
 });
 

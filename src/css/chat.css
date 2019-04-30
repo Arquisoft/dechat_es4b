@@ -170,7 +170,7 @@ h5{
   margin: 0;
   padding: 18px 16px 10px;
 }
-.inbox_chat { height: 550px; overflow-y: scroll;}
+.inbox_chat { height: auto; overflow-y: scroll;}
 
 .active_chat{ background:#ebebeb;}
 
