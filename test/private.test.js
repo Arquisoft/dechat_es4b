@@ -21,6 +21,7 @@ describe("Private communication testing", function () {
       assert.isDefined(privateComm.getDatesRead());
       assert.isDefined(privateComm.getChatShowed());
       assert.isDefined(privateComm.getChatSelected());
+      assert.isDefined(privateComm.getEmojisEnabled());
       
    
   });       
