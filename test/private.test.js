@@ -51,9 +51,11 @@ describe("Private communication testing", function () {
       privateComm.addNewDateRead({"other": "user", "lastDate": 33});
       
     privateComm.changeDateRead({"other": "user", "lastDate": 34});
+
      
-      var result = privateComm.getDateRead({"other": "user", "lastDate": 34});
-    //  assert.equal(personal.datesRead[0].lastDate,34);
+    var result = privateComm.getDateRead("user");
+    assert.equal(result,34);
+      
       
       
   });
