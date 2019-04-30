@@ -1,23 +1,15 @@
 body {
-  background-image: url("../img/solid.png");
-  background-repeat: repeat;
   background-color: ghostwhite;
-  color: white;
-  border-radius: 25px;
+  color: black;
   font-family: 'Roboto';
 }
 
 a {
-  color: white;
+  color: #343A40;
   text-decoration: underline;
 }
 nav{
 	color: #363b3f;
-	 border-radius: 50px;
-}
-.container {
-  background-color: #0d4261;
-  border-radius: 50px;
 }
 
 #login-required, #theme-selector, #write-permission, #invitation-response {
