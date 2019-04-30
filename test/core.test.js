@@ -48,10 +48,6 @@ describe("Core testing", function () {
 		assert.isNull(friend);
 	});
 
-  it("Random string generates string",function(){
-		var rdom = chat.randomString(5);
-		assert.equal(rdom.length,5);
-	})
   
   it("Someone is not my friend",function(){
 		var result = chat.isFriend ("https://userfortesting.solid.community","https://enriquead.solid.community/profile/card#me");
@@ -64,4 +60,15 @@ describe("Core testing", function () {
 		var chats = await chat.getChatGroups(personal);
 		assert.isNotNull(chats);		
 	});
+    
+  it("Get inbox for platform",async function(){
+      var url1 = "https://userfortesting.solid.community";
+      var url2 = "https://userfortesting.inrupt.net";
+      assert.equal(chat.getInbox(url1),"https://userfortesting.solid.community/inbox/");
+      assert.equal(chat.getInbox(url2),"https://userfortesting.inrupt.net/inbox/");    
+		
+  });
+    
+    
+ 
 });
