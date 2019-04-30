@@ -239,14 +239,15 @@ h5{
 	height: 250px;
 	width: 100px;
 	margin: 10px;
+	cursor: pointer;
 }
 
-.messaging { padding: 50px 0 50px 0; 
-	background-image: url("../img/backgrounds/1.jpg");
-  background-repeat: repeat;}
+.messaging { 
+	padding: 50px 0 50px 0; 
+	background-repeat: repeat;}
 .msg_history {
-  overflow-y: auto;
-  height: 350px;
+	overflow-y: auto;
+	height: 350px;
 }
 .chat_list{
 	cursor: pointer;

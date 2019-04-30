@@ -138,10 +138,29 @@ async function loadChat(name, urlgroup){
 }
 
 /**
+*	This method is used to change the display of a selected or
+*	not selected background image in that option.
+*
+*/
+function changeState(i){
+	$("#hiddenNumberBackground").text(i);
+	var nuevoCSS = {"border" : "5px solid blue"};
+	var oldCSS = {"border" : "none"};
+	$(".selectionOfBackground").each(function(index){		
+		$("#selectedImage" + (index+1)).css(oldCSS);
+	});
+	$("#selectedImage" + i).css(nuevoCSS);
+}
+
+/**
  * START
  */
 
 auth.trackSession(async (session) => {
+	
+	var newCSS = { "background-image": "url('src/img/backgrounds/1.jpg')" };	//default background 
+	$("#toChangeCSS").css(newCSS);
+  
   const loggedIn = !!session;
 
   if (loggedIn) {
@@ -535,20 +554,20 @@ $("#sendContact").click(() => {
 });
 
 $("#change-chat-image").click(() => {
+	$("hiddenNumberBackground").text("1");	//default
 	$("#backgrounds").empty();
 	$("#changeeee").modal("show");
 	var img = new Array();
 	img.push("src/img/backgrounds/1.jpg");
-	img.push("src/img/backgrounds/2.png");
+	img.push("src/img/backgrounds/2.jpg");
 	img.push("src/img/backgrounds/3.jpg");
 	img.push("src/img/backgrounds/4.jpg");
 	img.push("src/img/backgrounds/5.jpg");
 	for ( var i=0; i<img.length; i++ ){
-		$("#backgrounds").append("<img class='selectionOfBackground' id='selectedImage" + i + "' src='" + img[i] + "' alt='"+i+"'>");
+		$("#backgrounds").append("<img class='selectionOfBackground' id='selectedImage" + (i+1) + "' src='" + img[i] + "' alt='"+(i+1)+"'>");
+		document.getElementById("selectedImage" + (i+1)).addEventListener("click", function(){changeState($(this).attr("alt"));}, false);
 	}
 });
-
-$(".selectionOfBackground")
 
 $("#sendUbication").click(() => {
 	
@@ -753,4 +772,10 @@ $('#sendFiles').on('change', function() {
 			reader.readAsDataURL(files[f]);
 		}
 	}    
+});
+
+$( "#change-image-button" ).click(function(){
+	var backgroundNumber = $("#hiddenNumberBackground").text();
+	var nuevoCSS = { "background-image": "url('src/img/backgrounds/" + backgroundNumber + ".jpg')" };
+	$("#toChangeCSS").css(nuevoCSS);	
 });
