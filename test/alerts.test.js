@@ -31,6 +31,43 @@ describe("Alerts testing", function () {
       assert.isTrue(template.includes("alert")); 
       assert.isTrue(template.includes("TestGroup")); 
       assert.isTrue(typeof(template) == "string");
+      template = alerts.alertNewFriendAdded("Juan");
+      assert.isTrue(template.includes("alert")); 
+      assert.isTrue(template.includes("Juan")); 
+      assert.isTrue(typeof(template) == "string");
+      template = alerts.errorFriendExisted("Juan");
+      assert.isTrue(template.includes("alert")); 
+      assert.isTrue(template.includes("Juan")); 
+      assert.isTrue(typeof(template) == "string");
+      template = alerts.errorNewFriendDontExist("Juan");
+      assert.isTrue(template.includes("alert")); 
+      assert.isTrue(template.includes("Juan")); 
+      assert.isTrue(typeof(template) == "string");
+      template = alerts.errorNewFriendFormat("Juan");
+      assert.isTrue(template.includes("alert")); 
+      assert.isTrue(typeof(template) == "string");
+      template = alerts.errorNeedAFriend();
+      assert.isTrue(template.includes("alert")); 
+      assert.isTrue(typeof(template) == "string");
+      template = alerts.alertGroupCoreRemoved("Grupo test");
+      assert.isTrue(template.includes("alert")); 
+      assert.isTrue(template.includes("Grupo test")); 
+      assert.isTrue(typeof(template) == "string");
+      template = alerts.alertExpelledFromGroup("Grupo test");
+      assert.isTrue(template.includes("alert")); 
+      assert.isTrue(template.includes("Grupo test")); 
+      assert.isTrue(typeof(template) == "string");
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
       
       

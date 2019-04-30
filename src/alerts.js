@@ -49,7 +49,7 @@ class Alerts {
     return this.generalTemplate("danger", "div-error2-friend-"+name, "error2-friend-"+name, "Can't find this profile", name, "", 3000);
   }
 
-  errorNewFriendFormat(){
+  errorNewFriendFormat(name){
    return this.generalTemplate("danger", "div-error3-friend-"+name, "error3-friend-"+name, "Incorrect format", "url has to be:", "(...profile/card#me)", 3000);
   }
 
