@@ -17,9 +17,13 @@ describe("Simple personal testing", function () {
   });
 
   it("Getters are working",function(){
+      personal.username = "SomeUser";
+    assert.isNull(personal.getAllInfoFromUsername("noEnrique"));
     assert.isDefined(personal.getWebIdUrl());
     assert.equal(personal.getCore(),chat);
     assert.isNotNull(personal.getFriendList()); 
+    personal.clearInfo();
+      
   });
   
   it("Clear info test", function() {
@@ -28,6 +32,8 @@ describe("Simple personal testing", function () {
     inbox: "https://enriquead.solid.community/inbox/"});  
     personal.friendList.push({username: "userfortesting", 
     inbox: "https://userfortesting.solid.community/inbox/"});
+    
+    assert.isNotNull(personal.getAllInfoFromUsername("enriquead"));
     assert.isNotNull(personal.username);
     assert.equal(personal.friendList.length,2);
     personal.clearInfo();
@@ -55,6 +61,33 @@ describe("Simple personal testing", function () {
     await personal.reloadFriendList();
     assert.isTrue(personal.friendList.length>0); 
   });
+    
+    it("Checks if file exists properly",function(){
+        personal.myInbox = new Array();
+        personal.myInbox.push({label: "enriquead.ttl"});
+        personal.myInbox.push({label: "enriquetest.ttl"});
+        assert.isTrue(personal.fileExists("enriquead"));
+        assert.isFalse(personal.fileExists("noExiste"));
+        
+    });
+    
+    it("Search groups by id or url",function(){
+        var chat = {url: "id1testing"};
+        personal.groupsLoaded.push(
+        {"file":chat, "name": "name", "type": "group", "urlCore": "test"});
+        chat = {url: "id2testing"};
+         personal.groupsLoaded.push(
+        {"file":chat, "name": "name", "type": "group", "urlCore": "test"});
+        
+        assert.equal(personal.getAllGroups().length,2);  
+        assert.isNull(personal.getGroupByMyUrl("false"));
+         assert.isNotNull(personal.getGroupByMyUrl("id1testing"));
+         assert.isNull(personal.getGroupByID("false"));
+         assert.isNotNull(personal.getGroupByID("id1"));
+        
+        
+        
+    });
     
   /*WIP
   it("Loads groups",async function(){
