@@ -1,7 +1,7 @@
 class Alerts {
 
-  constructor() {
-    
+  constructor(testing) {
+    this.testing = testing;
   }
 
   clickById(id){
@@ -9,7 +9,7 @@ class Alerts {
   }
 
   alertMessageReceived(title, message){
-    this.generalTemplate("success", "div-message-"+title, "message-"+title, "New message!", title, message, 0);
+    return this.generalTemplate("success", "div-message-"+title, "message-"+title, "New message!", title, message, 0);
   }
 
   /**
@@ -17,7 +17,7 @@ class Alerts {
   */
 
   alertCountRemovedFromInbox(i){
-    this.generalTemplate("info", "div-clear-inbox", "clear-inbox", i+" files removed from inbox!", "", "", 3000);
+    return this.generalTemplate("info", "div-clear-inbox", "clear-inbox", i+" files removed from inbox!", "", "", 3000);
   }
 
   /**
@@ -25,12 +25,12 @@ class Alerts {
   */
 
   alertGroupCreated(name){
-    this.generalTemplate("info", "div-created-group-"+name, "created-group-"+name, "Group created!", name, "", 3000);
+   return this.generalTemplate("info", "div-created-group-"+name, "created-group-"+name, "Group created!", name, "", 3000);
   }
 
   errorGroupCreated(title, subtitle){
     var rand = this.randomId(3);
-    this.generalTemplate("danger", "error-group-"+rand, "error-group-"+rand, title, subtitle, "", 3000);
+    return this.generalTemplate("danger", "error-group-"+rand, "error-group-"+rand, title, subtitle, "", 3000);
   }
 
   /**
@@ -38,23 +38,23 @@ class Alerts {
   */
 
   alertNewFriendAdded(name){
-    this.generalTemplate("info", "div-new-friend-"+name, "new-friend-"+name, "New friend added!", name, "", 3000);
+    return this.generalTemplate("info", "div-new-friend-"+name, "new-friend-"+name, "New friend added!", name, "", 3000);
   }
 
   errorFriendExisted(name){
-    this.generalTemplate("danger", "div-error1-friend-"+name, "error1-friend-"+name, "This user was in your friends list", name, "", 3000);
+    return this.generalTemplate("danger", "div-error1-friend-"+name, "error1-friend-"+name, "This user was in your friends list", name, "", 3000);
   }
 
   errorNewFriendDontExist(name){
-    this.generalTemplate("danger", "div-error2-friend-"+name, "error2-friend-"+name, "Can't find this profile", name, "", 3000);
+    return this.generalTemplate("danger", "div-error2-friend-"+name, "error2-friend-"+name, "Can't find this profile", name, "", 3000);
   }
 
   errorNewFriendFormat(){
-    this.generalTemplate("danger", "div-error3-friend-"+name, "error3-friend-"+name, "Incorrect format", "url has to be:", "(...profile/card#me)", 3000);
+   return this.generalTemplate("danger", "div-error3-friend-"+name, "error3-friend-"+name, "Incorrect format", "url has to be:", "(...profile/card#me)", 3000);
   }
 
   errorNeedAFriend(){
-    this.generalTemplate("danger", "div-error-no-friends", "error-no-friends", "Error adding friend", "You need at least a friend added", "Add it through your solid POD", 3000);
+    return this.generalTemplate("danger", "div-error-no-friends", "error-no-friends", "Error adding friend", "You need at least a friend added", "Add it through your solid POD", 3000);
   }
 
   /**
@@ -62,11 +62,11 @@ class Alerts {
    */
 
   alertGroupCoreRemoved(name){
-    this.generalTemplate("danger", "div-danger-core-removed-"+name, "danger-core-removed-"+name, "Group has been removed!", name, "", 0);
+    return this.generalTemplate("danger", "div-danger-core-removed-"+name, "danger-core-removed-"+name, "Group has been removed!", name, "", 0);
   }
 
   alertExpelledFromGroup(name){
-    this.generalTemplate("danger", "div-danger-expelled-group-"+name, "danger-expelled-group-"+name, "You have been drop out!", "Group: "+name, "", 0);
+    return this.generalTemplate("danger", "div-danger-expelled-group-"+name, "danger-expelled-group-"+name, "You have been drop out!", "Group: "+name, "", 0);
   }
 
 
@@ -81,12 +81,16 @@ class Alerts {
       template += "<br>"+subtitle2;
     }
     template +="</div>";
-    $("#notification-box").append(template);
+    if(!this.testing){
+        $("#notification-box").append(template);
     if(time > 0){
       setTimeout(function() {
         $("#"+idDiv).fadeOut().empty();
       }, time);
+        
     }
+    }
+      return template;
   }
 
   randomId(length) {
