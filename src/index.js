@@ -676,11 +676,17 @@ function dropped(e){
 	var files = e.dataTransfer.files;
 	var receiver = $("#urlContact").text();
 	for ( var f=0; f<files.length; f++){
-		if ( files[f].name.endsWith(".png") || files[f].name.endsWith(".jpg") 
-			|| files[f].name.endsWith(".jpeg")) {
+		var fileType = files[f].name;
+		if ( fileType.endsWith(".mp3") || fileType.endsWith(".mp4") || fileType.endsWith(".png") || fileType.endsWith(".jpg") 
+			|| fileType.endsWith(".jpeg")) {
 			var reader = new FileReader();
 			reader.onload = async function (event){
-				core.storePhoto(personal,receiver,event.target.result);
+				if ( fileType.endsWith(".mp3") )
+					core.storePhoto(personal,receiver,"data/audio$" + event.target.result);
+				else if ( fileType.endsWith(".mp4") )
+					core.storePhoto(personal,receiver,"data/video$" + event.target.result);
+				else
+					core.storePhoto(personal,receiver,event.target.result);
 			};
 			reader.readAsDataURL(files[f]);
 		}
