@@ -13,6 +13,16 @@ const publicComm = new Group(auth.fetch);
 const privateComm = new Private(auth.fetch);
 
 describe("Group communication testing", function () {
+    
+  it("Constructor and getters are working properly",function(){
+      assert.isDefined(publicComm.getDataSync());
+      assert.isDefined(publicComm.getEncryptor());
+      assert.isDefined(publicComm.getFetch());
+      assert.isDefined(publicComm.getAlerts());
+      assert.isDefined(publicComm.getCurrentUrlFile());
+      assert.isDefined(publicComm.getChatShowed());
+    
+  });
   
   it("Random string generates string", function(){
 	var rdom = publicComm.randomString(5);
@@ -45,6 +55,17 @@ describe("Group communication testing", function () {
   it("Loads messages properly",async function(){
       personal.username = "enriquead";
       var result = await publicComm.loadMessages(personal,"testurl",true);
+      assert.isNotNull(result);
+  });
+    
+  it("Check notifications",async function(){ //See console log
+       var group = {"file": {"url":"https://enriquead.solid.community/public/mariodiaz98.ttl"}, "name": "testChat", "type": "group", "urlCore": "https://enriquead.solid.community/public/mariodiaz98.ttl"};
+       await publicComm.checkForNotifications(group,null);  
+  }); 
+    
+  it("Reads chat groups",function(){
+      personal.inbox = "https://enriquead.solid.community/public/";
+      var result = publicComm.readChatGroups(personal);
       assert.isNotNull(result);
       
       

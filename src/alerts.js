@@ -101,6 +101,10 @@ class Alerts {
     }
     return result;
   }
+    
+  getTesting(){
+      return this.testing;
+  }
 }
 
 module.exports = Alerts;

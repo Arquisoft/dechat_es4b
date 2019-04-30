@@ -12,6 +12,18 @@ let personal = new Personal(chat);
 let privateComm = new Private(auth.fetch);
 
 describe("Private communication testing", function () {
+    
+  it("Constructor and getters are working properly",function(){
+      assert.isDefined(privateComm.getDataSync());
+      assert.isDefined(privateComm.getEncryptor());
+      assert.isDefined(privateComm.getFetch());
+      assert.isDefined(privateComm.getMessageToAdd());
+      assert.isDefined(privateComm.getDatesRead());
+      assert.isDefined(privateComm.getChatShowed());
+      assert.isDefined(privateComm.getChatSelected());
+      
+   
+  });       
   
   it("Random string generates string",function(){
 	var rdom = privateComm.randomString(5);
@@ -36,6 +48,7 @@ describe("Private communication testing", function () {
                         webId: "https://mariodiaz98.solid.community/profile/card#me"};
       personal.inbox = "https://mariodiaz98.solid.community/inbox/";
       var result = await privateComm.loadMessages(personal,receiver,true);      
+      assert.isNotNull(result);
   });
     
   it("Get true emojis",async function(){
@@ -55,9 +68,16 @@ describe("Private communication testing", function () {
      
     var result = privateComm.getDateRead("user");
     assert.equal(result,34);
-      
-      
-      
+         
+  });
+    
+    it("Check last message",async function(){ //See console log
+        personal.myInbox = new Array();
+        var other = {username:"mariodiaz98",
+                        inbox: "https://mariodiaz98.solid.community/inbox/",
+                        webId: "https://mariodiaz98.solid.community/profile/card#me"};
+        await privateComm.checkHisLastMessage("https://mariodiaz98.solid.community/public/enriquead.ttl",other,"NEVER",null,personal);
+         
   });
  
  

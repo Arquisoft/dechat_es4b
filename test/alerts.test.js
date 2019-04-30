@@ -15,6 +15,8 @@ describe("Alerts testing", function () {
     
     
   it("Testing different alerts",function(){
+      //Test mode activated
+      assert.isTrue(alerts.getTesting());
       // Look at console to see html generated
       var template = alerts.alertMessageReceived("Hola","Mensaje de prueba");
       assert.isTrue(template.includes("alert")); 
