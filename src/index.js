@@ -305,7 +305,7 @@ $("#new-btn").click(async () => {
       }
     });
     $("#toHide").removeClass("hidden");
-	$("#drop_zone").addClass("hidden");
+	  $("#drop_zone").addClass("hidden");
     $("#emoji-panel").removeClass("hidden");
   } else {
     $("#nav-login-btn").removeClass("hidden");

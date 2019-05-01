@@ -324,6 +324,12 @@ h5{
 #eyebrow {
   background-image: url('../img/emotes/eyebrow.png');
 }
+#explodehead{
+  background-image: url('../img/emotes/explodehead.png');
+}
+#eyebrow {
+  background-image: url('../img/emotes/eyebrow.png');
+}
 #facehearts {
   background-image: url('../img/emotes/facehearts.png');
 }
@@ -350,6 +356,12 @@ h5{
 }
 #persevere {
   background-image: url('../img/emotes/persevere.png');
+}
+#poo {
+  background-image: url('../img/emotes/poo.png');
+}
+#rage {
+  background-image: url('../img/emotes/rage.png');
 }
 #rofl {
   background-image: url('../img/emotes/rofl.png');
@@ -380,6 +392,12 @@ h5{
 }
 #thinking {
   background-image: url('../img/emotes/thinking.png');
+}
+#thumbdown {
+  background-image: url('../img/emotes/thumbdown.png');
+}
+#thumbup {
+  background-image: url('../img/emotes/thumbup.png');
 }
 #wink {
   background-image: url('../img/emotes/wink.png');
