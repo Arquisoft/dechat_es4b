@@ -1,0 +1,10 @@
+{
+  "simulation": "dechates4b",
+  "simulationId": "dechates4b",
+  "start": 1556834369217,
+  "description": "",
+  "scenarios": ["dechates4b"],
+  "assertions": [
+
+  ]
+}

@@ -29,6 +29,7 @@
     "@babel/register": "^7.4.0",
     "asciidoctor-cli": "^1.5.6-rc.1",
     "asciidoctor.js": "^1.5.9",
+    "gatlingjs": "0.0.7",
     "jsdoc": "^3.5.5",
     "jsdom": "14.0.0",
     "jsdom-global": "3.0.2",
