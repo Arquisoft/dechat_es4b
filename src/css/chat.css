@@ -86,7 +86,12 @@ h5{
   display: flex;
   flex-direction: column;
   border: #343A40 5px solid;  
-  min-width: 800px;
+}
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (min-width: 1000px) {
+  #chatting{	
+    min-width: 800px;
+  }
 }
 #drop_zone{
 	order: 2;
@@ -428,6 +433,7 @@ h5{
   bottom: 0;
   overflow: hidden;
   text-overflow:ellipsis;
+  max-height: 300px;
 }
 
 #notification-box{
