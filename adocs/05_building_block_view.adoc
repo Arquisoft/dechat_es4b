@@ -35,6 +35,14 @@ index:: the main module in the system is index.js. It is used to control every a
 
 core:: is used to administrate the communications. This module uses another more specific modules like the communication of groups or personal (private). They will connect with PODs.
 
+private communication :: Responsible for communications between users, sending and retrieval of messages.
+
+group communication :: Responsible for communications between users that share a group, sending and retrieval of messages.
+
+encrypt :: Codes from plain text to base64 and vice versa.
+
+notification manager :: Manages the occurrence of notifications when a message is received or a group is created
+
 personal:: used to load data from users.
 
 messages:: A simple class with different attributes to store messages

@@ -22,21 +22,16 @@ With this project we want to achieve a private and point to point communication,
 .Use cases
 				
 * UC1. Add Friends
-* UC2. Delete Friend
-* UC3. New Chat
+* UC2. New Chat
 	** REQ001. The user will be able to add friend to the chat tool
 	** REQ002. The user will be able to start a chat with one or more Friends
-	** REQ003. The user will be able to créate new chat groups
-* UC4. Replay message
+	** REQ003. The user will be able to create new chat groups
+* UC3. Replay message
 	** REQ004. The user will be able to answer to a message sent to him
-* UC5. Multimedia files to a message
+* UC4. Multimedia files to a message
 	** REQ005. The user will be able to send multimedia files in an attachment
 
 === Quality Goals
-
-The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. We really mean quality goals for the architecture. Don't confuse them with project goals. They are not necessarily identical.
-You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. Make sure to be very concrete about these qualities, avoid buzzwords.
-If you as an architect do not know how the quality of your work will be judged …
 
 |======================
 |Priority   |Quality            |Motivation                                                             
@@ -49,18 +44,6 @@ If you as an architect do not know how the quality of your work will be judged �
 === Stakeholders
 
 
-Explicit overview of stakeholders of the system, i.e. all person, roles or organizations that
-
-* should know the architecture
-* have to be convinced of the architecture
-* have to work with the architecture or with code
-* need the documentation of the architecture for their work
-* have to come up with decisions about the system or its development
-
-
-You should know all parties involved in development of the system or affected by the system.
-Otherwise, you may get nasty surprises later in the development process.
-These stakeholders determine the extent and the level of detail of your work and its results.
 
 The following table contains the persons who are specifically targeted by the application
 
@@ -68,6 +51,6 @@ The following table contains the persons who are specifically targeted by the ap
 |Role/Name   |Contact            |Expectations                                                             
 | Project sponsor  |  SOLID |  Determine which is the best chat and which best meets the requirements 
 | Professor  | Jose Emilio Labra Gayo  | Proof that the requirements are met and follow the project evolution
-| Development Team | Team4B   | To develop the application that has been entrusted to us in the framework of the subject of architecture of the software
+| Development Team | Team4B   | Develop the application that has been entrusted to us in the framework of the subject of architecture of the software
 |======================
 

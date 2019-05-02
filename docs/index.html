@@ -506,8 +506,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 	.arc42help {display:hidden;}
 }
 </style>
-</head>
-
 <hr>
 <div style="page-break-after: always;"></div>
 </div>
@@ -550,10 +548,7 @@ General overview of high-level requirements:</p>
 <p>UC1. Add Friends</p>
 </li>
 <li>
-<p>UC2. Delete Friend</p>
-</li>
-<li>
-<p>UC3. New Chat</p>
+<p>UC2. New Chat</p>
 <div class="ulist">
 <ul>
 <li>
@@ -563,13 +558,13 @@ General overview of high-level requirements:</p>
 <p>REQ002. The user will be able to start a chat with one or more Friends</p>
 </li>
 <li>
-<p>REQ003. The user will be able to créate new chat groups</p>
+<p>REQ003. The user will be able to create new chat groups</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>UC4. Replay message</p>
+<p>UC3. Replay message</p>
 <div class="ulist">
 <ul>
 <li>
@@ -579,7 +574,7 @@ General overview of high-level requirements:</p>
 </div>
 </li>
 <li>
-<p>UC5. Multimedia files to a message</p>
+<p>UC4. Multimedia files to a message</p>
 <div class="ulist">
 <ul>
 <li>
@@ -593,11 +588,6 @@ General overview of high-level requirements:</p>
 </div>
 <div class="sect2">
 <h3 id="_quality_goals">1.2. Quality Goals</h3>
-<div class="paragraph">
-<p>The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. We really mean quality goals for the architecture. Don&#8217;t confuse them with project goals. They are not necessarily identical.
-You should know the quality goals of your most important stakeholders, since they will influence fundamental architectural decisions. Make sure to be very concrete about these qualities, avoid buzzwords.
-If you as an architect do not know how the quality of your work will be judged …</p>
-</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -636,33 +626,6 @@ If you as an architect do not know how the quality of your work will be judged �
 <div class="sect2">
 <h3 id="_stakeholders">1.3. Stakeholders</h3>
 <div class="paragraph">
-<p>Explicit overview of stakeholders of the system, i.e. all person, roles or organizations that</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>should know the architecture</p>
-</li>
-<li>
-<p>have to be convinced of the architecture</p>
-</li>
-<li>
-<p>have to work with the architecture or with code</p>
-</li>
-<li>
-<p>need the documentation of the architecture for their work</p>
-</li>
-<li>
-<p>have to come up with decisions about the system or its development</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>You should know all parties involved in development of the system or affected by the system.
-Otherwise, you may get nasty surprises later in the development process.
-These stakeholders determine the extent and the level of detail of your work and its results.</p>
-</div>
-<div class="paragraph">
 <p>The following table contains the persons who are specifically targeted by the application</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -690,7 +653,7 @@ These stakeholders determine the extent and the level of detail of your work and
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Development Team</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Team4B</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">To develop the application that has been entrusted to us in the framework of the subject of architecture of the software</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Develop the application that has been entrusted to us in the framework of the subject of architecture of the software</p></td>
 </tr>
 </tbody>
 </table>
@@ -825,7 +788,7 @@ know who did any change on the code and of course, GitHub makes easier the colab
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Get notifications</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">When some friend wants to chat with you. You will receive a notification.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When some friend sends you a message. You will receive a notification.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Store data</p></td>
@@ -940,12 +903,12 @@ on the PODs.</p>
 in Javascript based in the project of a Solid Chess.  We will implement some integration test with Travis to take advantage of
 the continuous integration service using Mocha and his assertion library to help us to prove and improve the code. We can connect to the pod and
 we can send messages with Javascript using JQuery.
-The project is implementated in Node.js which is better for us than use Angular for all the problems Angular can have for us
+The project is developed in Node.js which is better for us than use Angular for all the problems Angular can have for us
 while Node is not difficult because we know some JavaScript.
 We added some TDD testing with cucumber too which is important to prove that our code is working.
 Once we can communicate with other people, that is the main purpose of this application, we added images to the communication
-and chat groups to communicate with more than one person. We added the options to add friends and remove friends.
-Finally we improve all of the interface of the application to make it easier to use, for this we modificate the CSS and HTML files.</p>
+and chat groups to communicate with more than one person. We added an option to add friends.
+Finally we improve all of the interface of the application to make it easier to use, for this we improve the CSS and HTML files.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1022,6 +985,22 @@ The App will have three main elements: pods, users and DeChat App. These parts w
 <dt class="hdlist1">core</dt>
 <dd>
 <p>is used to administrate the communications. This module uses another more specific modules like the communication of groups or personal (private). They will connect with PODs.</p>
+</dd>
+<dt class="hdlist1">private communication </dt>
+<dd>
+<p>Responsible for communications between users, sending and retrieval of messages.</p>
+</dd>
+<dt class="hdlist1">group communication </dt>
+<dd>
+<p>Responsible for communications between users that share a group, sending and retrieval of messages.</p>
+</dd>
+<dt class="hdlist1">encrypt </dt>
+<dd>
+<p>Codes from plain text to base64 and vice versa.</p>
+</dd>
+<dt class="hdlist1">notification manager </dt>
+<dd>
+<p>Manages the occurrence of notifications when a message is received or a group is created</p>
 </dd>
 <dt class="hdlist1">personal</dt>
 <dd>
@@ -1287,7 +1266,7 @@ the project we must have Node installed.</p>
 <p>At this stage of the project few design decisions have been taken.</p>
 </div>
 <div class="paragraph">
-<p>We will follow a P2P architecture without a dedicated database, all users information will be stores in their PODs. If this approach does not fit well as the project progresses, we could use <a href="https://www.mongodb.com/">MongoDB</a> because it connects well with Angular and it is also a popular combination part of the <a href="https://en.wikipedia.org/wiki/MEAN_(software_bundle)">MEAN stack</a>.</p>
+<p>We will follow a P2P architecture without a dedicated database, all users information will be stores in their PODs.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1605,7 +1584,7 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-23 19:24:32 +0100
+Last updated 2019-04-30 11:44:46 +0200
 </div>
 </div>
 </body>
