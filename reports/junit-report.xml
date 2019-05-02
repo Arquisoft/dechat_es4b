@@ -2,50 +2,50 @@
 <testsuites>
     <testsuite name="see-friends-to-chat;show-list-of-friends" tests="3" failures="0" skipped="0">
         <properties>
-            <property name="URI" value="C:/Users/Enrique/Desktop/ASW/dechat_es4b/features/frienlist.feature">
+            <property name="URI" value="C:/Users/linom/GitHub/dechat_es4b/features/friendlist.feature">
             </property>
         </properties>
-        <testcase name="Given user logged with &quot;cuentapruebas&quot; and &quot;monkey&quot;" classname="see-friends-to-chat;show-list-of-friends" time="9.513962228">
+        <testcase name="Given user logged with &quot;dechates4btest1&quot; and &quot;123456&quot;" classname="see-friends-to-chat;show-list-of-friends" time="9.749111574">
         </testcase>
-        <testcase name="When user clicks on &quot;New chat&quot;" classname="see-friends-to-chat;show-list-of-friends" time="0.000459093">
+        <testcase name="When user clicks on &quot;New chat&quot;" classname="see-friends-to-chat;show-list-of-friends" time="0.00063616">
         </testcase>
-        <testcase name="Then &quot;dechates4btest1&quot; appers in partner selector menu" classname="see-friends-to-chat;show-list-of-friends" time="0.540590472">
+        <testcase name="Then &quot;dechates4btest2&quot; appers in partner selector menu" classname="see-friends-to-chat;show-list-of-friends" time="2.161783398">
         </testcase>
     </testsuite>
     <testsuite name="log-in-the-chat;correct-login" tests="2" failures="0" skipped="0">
         <properties>
-            <property name="URI" value="C:/Users/Enrique/Desktop/ASW/dechat_es4b/features/login.feature">
+            <property name="URI" value="C:/Users/linom/GitHub/dechat_es4b/features/login.feature">
             </property>
         </properties>
-        <testcase name="Given user tries to login with valid &quot;cuentapruebas&quot; and &quot;monkey&quot;" classname="log-in-the-chat;correct-login" time="8.329268199">
+        <testcase name="Given user tries to login with valid &quot;dechates4btest1&quot; and &quot;123456&quot;" classname="log-in-the-chat;correct-login" time="8.420296781">
         </testcase>
-        <testcase name="Then login successful as &quot;cuentapruebas&quot;" classname="log-in-the-chat;correct-login" time="0.087044192">
+        <testcase name="Then login successful as &quot;dechates4btest1&quot;" classname="log-in-the-chat;correct-login" time="1.602831103">
         </testcase>
     </testsuite>
     <testsuite name="log-in-the-chat;wrong-login" tests="2" failures="0" skipped="0">
         <properties>
-            <property name="URI" value="C:/Users/Enrique/Desktop/ASW/dechat_es4b/features/login.feature">
+            <property name="URI" value="C:/Users/linom/GitHub/dechat_es4b/features/login.feature">
             </property>
         </properties>
-        <testcase name="Given user tries to login with valid &quot;cuentapruebas&quot; and wrong &quot;fail&quot;" classname="log-in-the-chat;wrong-login" time="8.141981319">
+        <testcase name="Given user tries to login with valid &quot;dechates4btest1&quot; and wrong &quot;fail&quot;" classname="log-in-the-chat;wrong-login" time="8.040268356">
         </testcase>
-        <testcase name="Then login fails and a error message is shown" classname="log-in-the-chat;wrong-login" time="0.017565852">
+        <testcase name="Then login fails and a error message is shown" classname="log-in-the-chat;wrong-login" time="0.022054391">
         </testcase>
     </testsuite>
     <testsuite name="send-a-message-to-a-friend;send-one-message-to-friend" tests="5" failures="0" skipped="0">
         <properties>
-            <property name="URI" value="C:/Users/Enrique/Desktop/ASW/dechat_es4b/features/sendMessages.feature">
+            <property name="URI" value="C:/Users/linom/GitHub/dechat_es4b/features/sendMessages.feature">
             </property>
         </properties>
-        <testcase name="Given user logged with &quot;cuentapruebas&quot; and &quot;monkey&quot;" classname="send-a-message-to-a-friend;send-one-message-to-friend" time="8.574141803">
+        <testcase name="Given user logged with &quot;dechates4btest1&quot; and &quot;123456&quot;" classname="send-a-message-to-a-friend;send-one-message-to-friend" time="8.541268676">
         </testcase>
-        <testcase name="When user clicks on &quot;New chat&quot;" classname="send-a-message-to-a-friend;send-one-message-to-friend" time="0.000395519">
+        <testcase name="When user clicks on &quot;New chat&quot;" classname="send-a-message-to-a-friend;send-one-message-to-friend" time="0.000255146">
         </testcase>
-        <testcase name="And &quot;dechates4btest1&quot; appers in partner selector menu" classname="send-a-message-to-a-friend;send-one-message-to-friend" time="0.535616823">
+        <testcase name="And &quot;dechates4btest2&quot; appers in partner selector menu" classname="send-a-message-to-a-friend;send-one-message-to-friend" time="2.146799724">
         </testcase>
-        <testcase name="Then sends a &quot;Hi test user&quot;" classname="send-a-message-to-a-friend;send-one-message-to-friend" time="0.327711721">
+        <testcase name="Then sends a &quot;Hi test user&quot;" classname="send-a-message-to-a-friend;send-one-message-to-friend" time="0.363943098">
         </testcase>
-        <testcase name="Then new &quot;Hi test user&quot; appears on the chat" classname="send-a-message-to-a-friend;send-one-message-to-friend" time="4.846650158">
+        <testcase name="Then new &quot;Hi test user&quot; appears on the chat" classname="send-a-message-to-a-friend;send-one-message-to-friend" time="1.761708048">
         </testcase>
     </testsuite>
 </testsuites>

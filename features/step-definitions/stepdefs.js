@@ -187,7 +187,7 @@ module.exports = function() {
         5000
       )
       .then(() => {
-        return sleep(400).then(() => {
+        return sleep(2000).then(() => {
           return driver.findElement(by.xpath('//*[@id="new-btn"]')).click();
         });
       });
@@ -195,7 +195,7 @@ module.exports = function() {
 
   this.Then(/^"([^"]*)" appers in partner selector menu$/, function(friend) {
     return driver
-      .findElement(by.xpath('//*[@id="possible-people"]'))
+      .findElement(by.xpath('//*[@class="chat_ib"]/h5'))
       .getText()
       .then(function(actualFriend) {
         return assert.equal(actualFriend, friend);
@@ -211,7 +211,7 @@ module.exports = function() {
 
   this.Then(/^sends a "([^"]*)"$/, function(message) {
     return driver
-      .findElement(by.xpath('//*[@id="possible-people"]/option'))
+      .findElement(by.xpath('//*[@id="clicable0"]/div/div[2]/h5'))
       .click()
       .then(() => {
         return driver

@@ -10,14 +10,14 @@
           {
             "arguments": [],
             "keyword": "Given ",
-            "name": "user logged with \"cuentapruebas\" and \"monkey\"",
+            "name": "user logged with \"dechates4btest1\" and \"123456\"",
             "result": {
               "status": "passed",
-              "duration": 9513962228
+              "duration": 9749111574
             },
             "line": 4,
             "match": {
-              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:121"
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\features\\step-definitions\\stepdefs.js:139"
             }
           },
           {
@@ -26,24 +26,24 @@
             "name": "user clicks on \"New chat\"",
             "result": {
               "status": "passed",
-              "duration": 459093
+              "duration": 636160
             },
             "line": 5,
             "match": {
-              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:165"
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\features\\step-definitions\\stepdefs.js:183"
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "name": "\"dechates4btest1\" appers in partner selector menu",
+            "name": "\"dechates4btest2\" appers in partner selector menu",
             "result": {
               "status": "passed",
-              "duration": 540590472
+              "duration": 2161783398
             },
             "line": 6,
             "match": {
-              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:180"
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\features\\step-definitions\\stepdefs.js:196"
             }
           },
           {
@@ -51,11 +51,11 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 96002479
+              "duration": 147699990
             },
             "hidden": true,
             "match": {
-              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
             }
           }
         ],
@@ -68,7 +68,7 @@
     "line": 1,
     "name": "See friends to chat",
     "tags": [],
-    "uri": "C:/Users/Enrique/Desktop/ASW/dechat_es4b/features/frienlist.feature"
+    "uri": "C:/Users/linom/GitHub/dechat_es4b/features/friendlist.feature"
   },
   {
     "elements": [
@@ -81,27 +81,27 @@
           {
             "arguments": [],
             "keyword": "Given ",
-            "name": "user tries to login with valid \"cuentapruebas\" and \"monkey\"",
+            "name": "user tries to login with valid \"dechates4btest1\" and \"123456\"",
             "result": {
               "status": "passed",
-              "duration": 8329268199
+              "duration": 8420296781
             },
             "line": 4,
             "match": {
-              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:8"
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\features\\step-definitions\\stepdefs.js:8"
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "name": "login successful as \"cuentapruebas\"",
+            "name": "login successful as \"dechates4btest1\"",
             "result": {
               "status": "passed",
-              "duration": 87044192
+              "duration": 1602831103
             },
             "line": 5,
             "match": {
-              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:55"
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\features\\step-definitions\\stepdefs.js:55"
             }
           },
           {
@@ -109,11 +109,11 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 91946588
+              "duration": 145404098
             },
             "hidden": true,
             "match": {
-              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
             }
           }
         ],
@@ -129,14 +129,14 @@
           {
             "arguments": [],
             "keyword": "Given ",
-            "name": "user tries to login with valid \"cuentapruebas\" and wrong \"fail\"",
+            "name": "user tries to login with valid \"dechates4btest1\" and wrong \"fail\"",
             "result": {
               "status": "passed",
-              "duration": 8141981319
+              "duration": 8040268356
             },
             "line": 12,
             "match": {
-              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:70"
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\features\\step-definitions\\stepdefs.js:88"
             }
           },
           {
@@ -145,11 +145,11 @@
             "name": "login fails and a error message is shown",
             "result": {
               "status": "passed",
-              "duration": 17565852
+              "duration": 22054391
             },
             "line": 13,
             "match": {
-              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:114"
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\features\\step-definitions\\stepdefs.js:132"
             }
           },
           {
@@ -157,11 +157,11 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 96334425
+              "duration": 125822667
             },
             "hidden": true,
             "match": {
-              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
             }
           }
         ],
@@ -174,7 +174,7 @@
     "line": 1,
     "name": "Log in the chat",
     "tags": [],
-    "uri": "C:/Users/Enrique/Desktop/ASW/dechat_es4b/features/login.feature"
+    "uri": "C:/Users/linom/GitHub/dechat_es4b/features/login.feature"
   },
   {
     "elements": [
@@ -187,14 +187,14 @@
           {
             "arguments": [],
             "keyword": "Given ",
-            "name": "user logged with \"cuentapruebas\" and \"monkey\"",
+            "name": "user logged with \"dechates4btest1\" and \"123456\"",
             "result": {
               "status": "passed",
-              "duration": 8574141803
+              "duration": 8541268676
             },
             "line": 4,
             "match": {
-              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:121"
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\features\\step-definitions\\stepdefs.js:139"
             }
           },
           {
@@ -203,24 +203,24 @@
             "name": "user clicks on \"New chat\"",
             "result": {
               "status": "passed",
-              "duration": 395519
+              "duration": 255146
             },
             "line": 5,
             "match": {
-              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:165"
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\features\\step-definitions\\stepdefs.js:183"
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "name": "\"dechates4btest1\" appers in partner selector menu",
+            "name": "\"dechates4btest2\" appers in partner selector menu",
             "result": {
               "status": "passed",
-              "duration": 535616823
+              "duration": 2146799724
             },
             "line": 6,
             "match": {
-              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:180"
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\features\\step-definitions\\stepdefs.js:196"
             }
           },
           {
@@ -229,11 +229,11 @@
             "name": "sends a \"Hi test user\"",
             "result": {
               "status": "passed",
-              "duration": 327711721
+              "duration": 363943098
             },
             "line": 7,
             "match": {
-              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:196"
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\features\\step-definitions\\stepdefs.js:212"
             }
           },
           {
@@ -242,11 +242,11 @@
             "name": "new \"Hi test user\" appears on the chat",
             "result": {
               "status": "passed",
-              "duration": 4846650158
+              "duration": 1761708048
             },
             "line": 8,
             "match": {
-              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\features\\step-definitions\\stepdefs.js:212"
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\features\\step-definitions\\stepdefs.js:228"
             }
           },
           {
@@ -254,11 +254,11 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 134109752
+              "duration": 136274288
             },
             "hidden": true,
             "match": {
-              "location": "C:\\Users\\Enrique\\Desktop\\ASW\\dechat_es4b\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+              "location": "C:\\Users\\linom\\GitHub\\dechat_es4b\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
             }
           }
         ],
@@ -271,6 +271,6 @@
     "line": 1,
     "name": "send a message to a friend",
     "tags": [],
-    "uri": "C:/Users/Enrique/Desktop/ASW/dechat_es4b/features/sendMessages.feature"
+    "uri": "C:/Users/linom/GitHub/dechat_es4b/features/sendMessages.feature"
   }
 ]
