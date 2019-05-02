@@ -22,18 +22,18 @@ Launch server locally:
  http-server
 ----
 
+
+The application is available in the IP address shown after previous command.
 If you prefer you can try the app here:
 
 https://arquisoft.github.io/dechat_es4b/app
-
-The application is available in the IP address shown after previous command.
 
 Launch unit tests (Asumming nmp i command has been already executed)
 ----
 npm test
 ----
 
-Launch BDD tests (Asumming nmp i command has been already executed)
+Launch BDD tests (Asumming nmp i command has been already executed and you are running the application at localhost)
 ----
 npm run-script cucumber
 ----
