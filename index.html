@@ -19,10 +19,21 @@
   <body vocab="http://schema.org/">
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <span class="navbar-brand"></i>Solid Chat</span>
+        <span class="navbar-brand">Solid Chat</span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+		<button id="goBack" type="button" class="btn btn-dark">Main page</button>
+		
+		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarSupportedContent">
+			<div class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Help</a>
+				<div class="dropdown-menu"  aria-labelledby="navbarDropdown">
+					<button id="showHelpBtn" class="dropdown-item btn btn-outline-danger my-2 my-sm-0" type="button">Show help</button>
+					<button id="aboutBtn" class="dropdown-item btn btn-outline my-2 my-sm-0" type="button">About</button>
+				</div>
+			</div>
+		</div>
 
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
@@ -33,9 +44,15 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <button id="clear-inbox-btn" class="dropdown-item btn btn-outline-danger my-2 my-sm-0" type="button">Clear inbox <i class="fas fa-exclamation-triangle"></i></button>
-                <button id="enable-emojis" class="dropdown-item btn btn-outline-danger my-2 my-sm-0" type="button">
-                                  Enable emojis <b id="emojis-enabled" class="emojis-enabled">&#x2611;</b><b id="emojis-disabled" class="emojis-disabled hidden">&#x2610;</b>
+                <button id="enable-emojis" class="dropdown-item btn btn-outline my-2 my-sm-0" type="button">
+                          Enable emojis <b id="emojis-enabled" class="emojis-enabled">&#x2611;</b><b id="emojis-disabled" class="emojis-disabled hidden">&#x2610;</b>
                 </button>
+                <button id="enable-notifications" class="dropdown-item btn btn-outline my-2 my-sm-0" type="button">
+                          Enable notifications <b id="notifications-enabled" class="notifications-enabled">&#x2611;</b><b id="notifications-disabled" class="notifications-disabled hidden">&#x2610;</b>
+                </button> 
+				<button id="change-chat-image" class="dropdown-item btn btn-outline my-2 my-sm-0" type="button">
+                          Change chat background
+                </button> 
                 <button id="logout-btn" class="dropdown-item btn btn-outline-success my-2 my-sm-0" type="button">Log out</button>
               </div>
             </li>
@@ -48,124 +65,152 @@
             <img src="/src/img/loading.gif" alt="Loading..." height="72" width="128"/>
         </div>
         <div id="chat-options" class="col-6 text-center">
-          <button id="new-btn" type="button" class="btn btn-dark btn-lg"> New chat</button>
-          <button id="create-group" type="button" class="btn btn-dark btn-lg">Create group</button>
-          <button id="open-btn" type="button" class="btn btn-dark btn-lg">Manage friends</button>
+          <button id="new-btn" type="button" class="btn btn-dark btn-lg">Start chatting</button>
         </div>
 
-        <div id="create-new-group" class="col-6 hidden">
-          <input type="text" name="group-name" id="group-name" class="write_msg" placeholder="Group name">
-          <div id="check-people-group">
-            <input class="form-check-input" type="checkbox" id="a"><label class="form-check-label" for="a">Default checkbox</label>
-          </div>
-          <button id="create-button" type="button" class="btn-cancel btn btn-dark">Create</button>
-          <button id="cancel-group-menu" type="button" class="btn-cancel btn btn-dark">Cancel</button>
-        </div>
 
-        <div id="new-chat-options" class="container-fluid hidden">
-            <div id="center" class="form-group">
-              <label for="possible-people">Your conversation partner</label>
-			  <div class="content-select">
-			  <select id="possible-people" class="cd-select">
-				</select>
-			  </div>
-			   <button id="possible-people-btn" type="button" class="btn btn-dark">OK</button> 
-            </div>
-			      <div class="form-group">
-					  <div id="drop_zone" accept="image/*" class="container">
-						<div class="messaging">
-							<div class="inbox_msg">
-								<div class="mesgs" id="messages">
-									<div class="msg_history" id="addMessages">										
-									</div>
-									
-									<div class="msg_history" id="addMessagesGroup">
-											<div class="incoming_msg" id="incoming_msg">	
-												<div class="received_msg">
-													<div class="received_withd_msg" id="addOurMessages">
+		<div id="toHide" class="hidden">
+			<div id="new-chat-options" class="container-fluid">
+				<div id="center" class="form-group">
+					<div id="inboxPeople" class="inbox_people">
+						<div id="tocenter">
+							  <span id="chatsText" class="navbar-brand">Chats</span>
+							  <div id="optionsChat">
+								  <a id="menuuu" class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<i class="fa fa-ellipsis-v"></i>
+								  </a>
+								  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<button id="create-group" type="button" class="dropdown-item btn btn-outline my-2 my-sm-0">
+											  Create group</button>
+									<button id="add-friend-menu" class="dropdown-item btn btn-outline my-2 my-sm-0" type="button">
+											  Add new friend</button> 
+								  </div>	
+							 </div>
+						</div>
+					<!-- <div class="srch_bar"> -->
+					  <!-- <div class="stylish-input-group hidden"> -->
+						<!-- <input type="text" class="search-bar"  placeholder="Search" > -->
+						<!-- <span class="input-group-addon"> -->
+						<!-- <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button> -->
+						<!-- </span> </div> -->
+					<!-- </div> -->
+				  <div class="inbox_chat" id="peopleToChat">            
+				  </div>
+				</div>
+				<!-- <label for="possible-people">Your conversation partner</label> -->
+					  <!-- <div class="content-select"> -->
+					  <!-- <select id="possible-people" class="cd-select"> -->
+						<!-- </select> -->
+					  <!-- </div> -->
+					   <!-- <button id="possible-people-btn" type="button" class="btn btn-dark">OK</button>  -->
+				</div>
+					  <div id="chatting" class="form-group">
+						<div id="tocenter">
+							  <!-- Aqui iria la futura foto -->
+							  <!--<img id="userPhoto" src="">-->
+							  <span id="contactName" class="navbar-brand">Select a contact to start chatting</span>
+							  <div id="urlContact" class="hidden"></div>
+						</div>
+						  <div id="drop_zone" accept="image/*" class="container">
+							<div class="messaging" id="toChangeCSS">
+								<div class="inbox_msg">							
+									<div class="mesgs" id="messages">
+										<div class="msg_history" id="addMessages">										
+										</div>
+										
+										<div class="msg_history" id="addMessagesGroup">
+												<div class="incoming_msg" id="incoming_msg">	
+													<div class="received_msg">
+														<div class="received_withd_msg" id="addOurMessages">
+														</div>
 													</div>
 												</div>
-											</div>
-											<div class="outgoing_msg" id="outgoing_msg">								
-												<div class="sent_msg" id="addOtherMessages">
+												<div class="outgoing_msg" id="outgoing_msg">								
+													<div class="sent_msg" id="addOtherMessages">
+													</div>
 												</div>
+										</div>								
+										<div class="type_msg">
+											<div id="emoji-panel" class="emoji-panel" hidden=true>
+                        <input type="button" class="emoji-button" id="blush"/>
+                        <input type="button" class="emoji-button" id="explodehead"/>
+                        <input type="button" class="emoji-button" id="eyebrow"/>
+                        <input type="button" class="emoji-button" id="facehearts"/>
+                        <input type="button" class="emoji-button" id="hearteyes"/>
+                        <input type="button" class="emoji-button" id="hugging"/>
+                        <input type="button" class="emoji-button" id="kissing"/>
+                        <input type="button" class="emoji-button" id="laughing"/>
+                        <input type="button" class="emoji-button" id="neutral"/>
+                        <input type="button" class="emoji-button" id="nomouth"/>
+                        <input type="button" class="emoji-button" id="openmouth"/>
+                        <input type="button" class="emoji-button" id="persevere"/>
+                        <input type="button" class="emoji-button" id="poo"/>
+                        <input type="button" class="emoji-button" id="rage"/>
+                        <input type="button" class="emoji-button" id="rofl"/>
+                        <input type="button" class="emoji-button" id="rolling"/>
+                        <input type="button" class="emoji-button" id="sleeping"/>
+                        <input type="button" class="emoji-button" id="smile"/>
+                        <input type="button" class="emoji-button" id="smiley"/>
+                        <input type="button" class="emoji-button" id="smirk"/>
+                        <input type="button" class="emoji-button" id="stareyes"/>
+                        <input type="button" class="emoji-button" id="sunglasses"/>
+                        <input type="button" class="emoji-button" id="sweatsmile"/>
+                        <input type="button" class="emoji-button" id="thinking"/>
+                        <input type="button" class="emoji-button" id="thumbdown"/>
+                        <input type="button" class="emoji-button" id="thumbup"/>
+                        <input type="button" class="emoji-button" id="wink"/>
+                        <input type="button" class="emoji-button" id="yum"/>
+                        <input type="button" class="emoji-button" id="zipper"/>
 											</div>
-									</div>								
-									<div class="type_msg">
-										<div id="emoji-panel" class="emoji-panel" hidden=true>
-											<input type="button" class="emoji-button" id="blush"/>
-												<input type="button" class="emoji-button" id="eyebrow"/>
-												<input type="button" class="emoji-button" id="facehearts"/>
-												<input type="button" class="emoji-button" id="hearteyes"/>
-												  <input type="button" class="emoji-button" id="hugging"/>
-												  <input type="button" class="emoji-button" id="kissing"/>
-												  <input type="button" class="emoji-button" id="laughing"/>
-												  <input type="button" class="emoji-button" id="neutral"/>
-												  <input type="button" class="emoji-button" id="nomouth"/>
-												  <input type="button" class="emoji-button" id="openmouth"/>
-												  <input type="button" class="emoji-button" id="persevere"/>
-												  <input type="button" class="emoji-button" id="rofl"/>
-												  <input type="button" class="emoji-button" id="rolling"/>
-												  <input type="button" class="emoji-button" id="sleeping"/>
-												  <input type="button" class="emoji-button" id="smile"/>
-												  <input type="button" class="emoji-button" id="smiley"/>
-												  <input type="button" class="emoji-button" id="smirk"/>
-												  <input type="button" class="emoji-button" id="stareyes"/>
-												  <input type="button" class="emoji-button" id="sunglasses"/>
-												  <input type="button" class="emoji-button" id="sweatsmile"/>
-												  <input type="button" class="emoji-button" id="thinking"/>
-												  <input type="button" class="emoji-button" id="wink"/>
-												  <input type="button" class="emoji-button" id="yum"/>
-												  <input type="button" class="emoji-button" id="zipper"/>
-										  </div>
-										<div class="input_msg_write">
-											<input type="text" name="data-name" id="data-name" class="write_msg" placeholder="Type a message">
-											<div id="btnMessagesSend">
-												<button id="openEmojiBtn" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-smile-o" aria-hidden="true"></i></button>
-												<button id="start-new-chat-btn" type="submit" class="msg_send_btn"><i id = "iconMsg" class="fa fa-paper-plane-o" aria-hidden="true"></i></button> 							
-											</div>
-										</div>											
+											<div class="input_msg_write">
+												<input type="text" name="data-name" id="data-name" class="write_msg" placeholder="Type a message"> 
+												<div id="btnMessagesSend">
+													<label for="sendFiles" id="anotherChatOption">
+														<input id="sendFiles" type="file" class="hidden" accept="image/png, .jpeg, .jpg, image/gif,video/mp4,audio/mp3">
+														<i id = "iconEmoticonos" class="fa fa-paperclip" aria-hidden="true"></i>												
+													</label>
+													<button id="sendUbication" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-map-marker" aria-hidden="true"></i></button>
+													<button id="sendContact" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-id-card" aria-hidden="true"></i></button>
+													<button id="sendAudios" type="submit" class="emoji_open" onClick="recordStop()"><i id = "iconAudio" class="fa fa-microphone" aria-hidden="true"></i></button>       
+													<button id="openEmojiBtn" type="submit" class="emoji_open"><i id = "iconEmoticonos" class="fa fa-smile-o" aria-hidden="true"></i></button>
+													<button id="start-new-chat-btn" type="submit" class="msg_send_btn"><i id = "iconMsg" class="fa fa-paper-plane-o" aria-hidden="true"></i></button> 							
+												</div>
+											</div>											
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-            </div>
-            <div class="form-group">
-          <button type="button" class="btn-cancel btn btn-dark">Cancel</button>
-        </div>
+						<div class="form-group">          
+			</div>
+				</div>
 
 
-        <div id="join-chat-options" class="col-6 hidden">
-          <div class="form-group">
-            <label for="people-invites">Your partner</label>
-            <select id="people-invites"></select>
-          </div>
-          <button id="accept-inv" type="submit" class="btn btn-dark">Accept it</button>     
-          <button type="button" class="btn-cancel btn btn-dark">Cancel</button>
-        </div>
+			<div id="join-chat-options" class="col-6 hidden">
+			  <div class="form-group">
+				<label for="people-invites">Your partner</label>
+				<select id="people-invites"></select>
+			  </div>
+			  <button id="accept-inv" type="submit" class="btn btn-dark">Accept it</button>     
+			  <button type="button" class="btn-cancel btn btn-dark">Cancel</button>
+			</div>
 
-        <div id='chat-loading' class="hidden">
-          <span>Loading your chat...</span>
-        </div>
+			<div id='chat-loading' class="hidden">
+			  <span>Loading your chat...</span>
+			</div>
 
-        <div id="chat" class="hidden" >
-          <p>Name: <span id="name-of-the-chat"></span></p>
-          <div id="conversation" style="width: 400px"></div>
-          <div id="chat-details">
-            <p>Status: <span id="status"></span></p>
-            <p>Partner: <span id="partner-name"></span></p>
-          </div>
-          <button id="send-message" type="button" class="btn btn-dark">Send message</button>
-          <button id="stop-chatting" type="button" class="btn btn-dark">Stop!</button>
-        </div>
-      </div>
-
-      <div id="manage-friends" class="row justify-content-center align-items-center hidden">
-        <input type="text" name="friend-name" id="friend-name" class="write_msg" placeholder="card#me">
-        <button id="add-friend-button" type="button" class="btn-cancel btn btn-dark">Add friend</button>
-        <button id="cancel-manage-friend" type="button" class="btn-cancel btn btn-dark">Cancel</button>
-      </div>
+			<div id="chat" class="hidden" >
+			  <p>Name: <span id="name-of-the-chat"></span></p>
+			  <div id="conversation" style="width: 400px"></div>
+			  <div id="chat-details">
+				<p>Status: <span id="status"></span></p>
+				<p>Partner: <span id="partner-name"></span></p>
+			  </div>
+			  <button id="send-message" type="button" class="btn btn-dark">Send message</button>
+			  <button id="stop-chatting" type="button" class="btn btn-dark">Stop!</button>
+			</div>
+		  </div>
+	</div>
 
       
 
@@ -173,20 +218,30 @@
         <div class="col-6" typeof="SoftwareApplication Chat" about="https://arquisoft.github.io/dechat_es4b/">
           <h3>Start chatting</h3>
           <p class="text-justify">
-            Do you want to play the chat in your <b>browser</b>? Great!
-            Just log in (top right) and start chatting.
+            Do you want to the chat in your <b>browser</b>? 
+			It's very simple, just log in with your solid 
+			account (If you don't have a POD yet, create one at 
+			<a href="https://solid.inrupt.com/get-a-solid-pod" >Solid</a>).
+            Once this is done click on start chatting, select any friend who uses SOLID 
+			and that's it, you will be able to chat through the application.
+			If you prefer, you will have the option to create a group with several of your friends 
+			and chat with all of them at once.
+			Enjoy the conversation! <img src="https://raw.githubusercontent.com/Arquisoft/dechat_es4b/master/src/img/emotes/wink.png" alt="Wink"/>
           </p>
+
 
           <h3>How it works</h3>
           <p class="text-justify">
-            <span property="name">Solid Chat</span> is a decentralized Chat, build on top of <a href="https://solid.inrupt.com/" property="storageRequirements">Solid</a>.
+            <span property="name">Solid Chat</span> is a decentralized Chat, 
+			build on top of <a href="https://solid.inrupt.com/" property="storageRequirements">Solid</a>.
             No central sever is required to run or set up a chat.
             All personal data about the chat is stored on your POD.
-            Requests to join and updates of a chat are sent to the inbox of your opponent directly.
+            Updates of a chat are sent to the inbox. Your partner will have permission to read the messages pertaining to your conversation.
           </p>
 
           <p class="text-justify">
             The source of this app can be found on <a href="https://github.com/Arquisoft/dechat_es4b" target="_blank">Github</a>.
+			If you find a bug do not hesitate to create an issue in our project
           </p>
         </div>
       </div>
@@ -201,11 +256,35 @@
               </button>
             </div>
             <div class="modal-body">
-              Please login to play a chat.
+              Please login to start a chat.
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="login-btn btn btn-dark">Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="inbox-files" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="color: black">Your inbox</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="color: black; margin-left: 20px;">
+              <p class="subtitle-centered">Select files to remove.</p>
+              <div class="all-inbox-to-remove" id="all-inbox-to-remove">
+                
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" id="select-all" class="btn btn-dark darkest">Select all</button>
+              <button type="button" id="remove-selected-files" class="btn btn-dark" data-dismiss="modal">Remove selected</button>
             </div>
           </div>
         </div>
@@ -230,6 +309,8 @@
         </div>
       </div>
 
+      
+
       <div class="modal fade" id="invitation-response" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -246,10 +327,235 @@
           </div>
         </div>
       </div>
+	  
+	  <div class="modal fade" id="create-new-group" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="color: black">Select your friends!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="color: black; margin-left: 20px;">
+				<div id="tocenter2">
+					<input type="text" name="group-name" id="group-name" class="write_msg" placeholder="Group name">
+				</div>
+				<div id="check-people-group">					
+				</div>
+			</div>
+            <div class="modal-footer">				  
+			  <button id="create-button" type="button" class="btn btn-secondary" data-dismiss="modal">Create</button>
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+	  
+	  
+	  <div class="modal fade" id="manage-friends" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel5" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="color: black">Enter friend name!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="color: black; margin-left: 20px;">	
+				<h5>Select your platform</h5>
+				<div id="platforms">
+					<input id="inr2" type = "radio" name = "preg2" value = "inrupt" /> Inrupt
+					<input id="comm2" type = "radio" name = "preg2" value = "community" /> Community
+					<input id="oth2" type = "radio" name = "preg2" value = "other" /> Other
+				</div>
+				<div id="tocenter2">
+					<input type="text" name="friend-name" id="friend-name" class="write_msg hidden" placeholder="Enter friend username">   
+				</div>            
+            </div>
+            <div class="modal-footer">				  
+			  <button id="add-friend-button" type="button" class="btn btn-secondary" data-dismiss="modal">Add friend</button>
+			  <button type="button" id="cancel-manage-friend" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+	  
+	  <div class="modal fade" id="share-friend" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel6" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="color: black">Enter friend name!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="color: black; margin-left: 20px;">	
+				<h5>Select your platform</h5>
+				<div id="platforms">
+					<input id="inr" type = "radio" name = "preg1" value = "inrupt" /> Inrupt
+					<input id="comm" type = "radio" name = "preg1" value = "community" /> Community
+					<input id="oth" type = "radio" name = "preg1" value = "other" /> Other
+				</div>
+				<div id="tocenter2">
+					<input type="text" name="friend-name" id="share-name" class="write_msg hidden" placeholder="Enter friend username">   
+				</div>
+            </div>
+            <div class="modal-footer">				  
+			  <button id="share-friend-button" type="button" class="btn btn-secondary" data-dismiss="modal">Share friend</button>
+			  <button type="button" id="cancel-manage-friend" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+	  
+	  <div class="modal fade" id="share-ubication" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel7" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="color: black">Share your ubication!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="color: black; margin-left: 20px;">	
+				<h5>You're here</h5>
+				<div id="tocenter2">
+					<div id="map" class="map"></div>  
+				</div>
+				<div class="hidden" id="ubicationLongLat"></div>
+            </div>
+            <div class="modal-footer">				  
+			  <button id="share-ubication-button" type="button" class="btn btn-secondary" data-dismiss="modal">Share my ubication</button>
+			  <button type="button" id="cancel-send-ubication" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+	  
+	  <div class="modal fade" id="changeeee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel8" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="color: black">Change chat background!!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="color: black; margin-left: 20px;">	
+				<h5>Select your favourite:</h5>
+				<div id="backgrounds">
+					
+				</div>
+				<div id="hiddenNumberBackground" class="hidden"></div>
+            </div>
+            <div class="modal-footer">				  
+			  <button id="change-image-button" type="button" class="btn btn-secondary" data-dismiss="modal">Change</button>
+			  <button type="button" id="cancel-change-background" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+	  
+	  
+	  
+    </div> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="main/dist/main.js"></script>
+  </div>
+
+  <div class="notification-box" id="notification-box">
+    <!--
+    <div class="alert alert-success alert-dismissible">
+      <a id="xNotifications" href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>New message 1!</strong><br>From linomlt<br>Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    </div>
+    <div class="alert alert-success alert-dismissible">
+      <a id="xNotifications" href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>New message 2!</strong>
+    </div>
+    <div class="alert alert-danger alert-dismissible">
+        <a id="xNotifications" href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Removed from a chat!</strong>
+    </div>
+    <div class="alert alert-warning alert-dismissible">
+      <a id="xNotifications" href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>New message 3!</strong>
+    </div>
+    <div class="alert alert-info alert-dismissible">
+        <a id="xNotifications" href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Removed from a chat!</strong>
+    </div>
+    <div class="alert alert-success alert-dismissible">
+      <a id="xNotifications" href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>New message 3!</strong>
+    </div>
+    //-->
+  </div>
+
+  <!--
+  <audio controls="controls" autobuffer="autobuffer" autoplay="autoplay">
+    <source src="data:audio/wav;base64,UklGRhwMAABXQVZFZm10IBAAAAABAAEAgD4AAIA+AAABAAgAZGF0Ya4LAACAgICAgICAgICAgICAgICAgICAgICAgICAf3hxeH+AfXZ1eHx6dnR5fYGFgoOKi42aloubq6GOjI2Op7ythXJ0eYF5aV1AOFFib32HmZSHhpCalIiYi4SRkZaLfnhxaWptb21qaWBea2BRYmZTVmFgWFNXVVVhaGdbYGhZbXh1gXZ1goeIlot1k6yxtKaOkaWhq7KonKCZoaCjoKWuqqmurK6ztrO7tbTAvru/vb68vbW6vLGqsLOfm5yal5KKhoyBeHt2dXBnbmljVlJWUEBBPDw9Mi4zKRwhIBYaGRQcHBURGB0XFxwhGxocJSstMjg6PTc6PUxVV1lWV2JqaXN0coCHhIyPjpOenqWppK6xu72yxMu9us7Pw83Wy9nY29ve6OPr6uvs6ezu6ejk6erm3uPj3dbT1sjBzdDFuMHAt7m1r7W6qaCupJOTkpWPgHqAd3JrbGlnY1peX1hTUk9PTFRKR0RFQkRBRUVEQkdBPjs9Pzo6NT04Njs+PTxAPzo/Ojk6PEA5PUJAQD04PkRCREZLUk1KT1BRUVdXU1VRV1tZV1xgXltcXF9hXl9eY2VmZmlna3J0b3F3eHyBfX+JgIWJiouTlZCTmpybnqSgnqyrqrO3srK2uL2/u7jAwMLFxsfEv8XLzcrIy83JzcrP0s3M0dTP0drY1dPR1dzc19za19XX2dnU1NjU0dXPzdHQy8rMysfGxMLBvLu3ta+sraeioJ2YlI+MioeFfX55cnJsaWVjXVlbVE5RTktHRUVAPDw3NC8uLyknKSIiJiUdHiEeGx4eHRwZHB8cHiAfHh8eHSEhISMoJyMnKisrLCszNy8yOTg9QEJFRUVITVFOTlJVWltaXmNfX2ZqZ21xb3R3eHqAhoeJkZKTlZmhpJ6kqKeur6yxtLW1trW4t6+us7axrbK2tLa6ury7u7u9u7vCwb+/vr7Ev7y9v8G8vby6vru4uLq+tri8ubi5t7W4uLW5uLKxs7G0tLGwt7Wvs7avr7O0tLW4trS4uLO1trW1trm1tLm0r7Kyr66wramsqaKlp52bmpeWl5KQkImEhIB8fXh3eHJrbW5mYGNcWFhUUE1LRENDQUI9ODcxLy8vMCsqLCgoKCgpKScoKCYoKygpKyssLi0sLi0uMDIwMTIuLzQ0Njg4Njc8ODlBQ0A/RUdGSU5RUVFUV1pdXWFjZGdpbG1vcXJ2eXh6fICAgIWIio2OkJGSlJWanJqbnZ2cn6Kkp6enq62srbCysrO1uLy4uL+/vL7CwMHAvb/Cvbq9vLm5uba2t7Sysq+urqyqqaalpqShoJ+enZuamZqXlZWTkpGSkpCNjpCMioqLioiHhoeGhYSGg4GDhoKDg4GBg4GBgoGBgoOChISChISChIWDg4WEgoSEgYODgYGCgYGAgICAgX99f398fX18e3p6e3t7enp7fHx4e3x6e3x7fHx9fX59fn1+fX19fH19fnx9fn19fX18fHx7fHx6fH18fXx8fHx7fH1+fXx+f319fn19fn1+gH9+f4B/fn+AgICAgH+AgICAgIGAgICAgH9+f4B+f35+fn58e3t8e3p5eXh4d3Z1dHRzcXBvb21sbmxqaWhlZmVjYmFfX2BfXV1cXFxaWVlaWVlYV1hYV1hYWVhZWFlaWllbXFpbXV5fX15fYWJhYmNiYWJhYWJjZGVmZ2hqbG1ub3Fxc3V3dnd6e3t8e3x+f3+AgICAgoGBgoKDhISFh4aHiYqKi4uMjYyOj4+QkZKUlZWXmJmbm52enqCioqSlpqeoqaqrrK2ur7CxsrGys7O0tbW2tba3t7i3uLe4t7a3t7i3tre2tba1tLSzsrKysbCvrq2sq6qop6alo6OioJ+dnJqZmJeWlJKSkI+OjoyLioiIh4WEg4GBgH9+fXt6eXh3d3V0c3JxcG9ubWxsamppaWhnZmVlZGRjYmNiYWBhYGBfYF9fXl5fXl1dXVxdXF1dXF1cXF1cXF1dXV5dXV5fXl9eX19gYGFgYWJhYmFiY2NiY2RjZGNkZWRlZGVmZmVmZmVmZ2dmZ2hnaGhnaGloZ2hpaWhpamlqaWpqa2pra2xtbGxtbm1ubm5vcG9wcXBxcnFycnN0c3N0dXV2d3d4eHh5ent6e3x9fn5/f4CAgIGCg4SEhYaGh4iIiYqLi4uMjY2Oj5CQkZGSk5OUlJWWlpeYl5iZmZqbm5ybnJ2cnZ6en56fn6ChoKChoqGio6KjpKOko6SjpKWkpaSkpKSlpKWkpaSlpKSlpKOkpKOko6KioaKhoaCfoJ+enp2dnJybmpmZmJeXlpWUk5STkZGQj4+OjYyLioqJh4eGhYSEgoKBgIB/fn59fHt7enl5eHd3dnZ1dHRzc3JycXBxcG9vbm5tbWxrbGxraWppaWhpaGdnZ2dmZ2ZlZmVmZWRlZGVkY2RjZGNkZGRkZGRkZGRkZGRjZGRkY2RjZGNkZWRlZGVmZWZmZ2ZnZ2doaWhpaWpra2xsbW5tbm9ub29wcXFycnNzdHV1dXZ2d3d4eXl6enp7fHx9fX5+f4CAgIGAgYGCgoOEhISFhoWGhoeIh4iJiImKiYqLiouLjI2MjI2OjY6Pj46PkI+QkZCRkJGQkZGSkZKRkpGSkZGRkZKRkpKRkpGSkZKRkpGSkZKRkpGSkZCRkZCRkI+Qj5CPkI+Pjo+OjY6Njo2MjYyLjIuMi4qLioqJiomJiImIh4iHh4aHhoaFhoWFhIWEg4SDg4KDgoKBgoGAgYCBgICAgICAf4CAf39+f35/fn1+fX59fHx9fH18e3x7fHt6e3p7ent6e3p5enl6enl6eXp5eXl4eXh5eHl4eXh5eHl4eXh5eHh3eHh4d3h4d3h3d3h4d3l4eHd4d3h3eHd4d3h3eHh4eXh5eHl4eHl4eXh5enl6eXp5enl6eXp5ent6ent6e3x7fHx9fH18fX19fn1+fX5/fn9+f4B/gH+Af4CAgICAgIGAgYCBgoGCgYKCgoKDgoOEg4OEg4SFhIWEhYSFhoWGhYaHhoeHhoeGh4iHiIiHiImIiImKiYqJiYqJiouKi4qLiouKi4qLiouKi4qLiouKi4qLi4qLiouKi4qLiomJiomIiYiJiImIh4iIh4iHhoeGhYWGhYaFhIWEg4OEg4KDgoOCgYKBgIGAgICAgH+Af39+f359fn18fX19fHx8e3t6e3p7enl6eXp5enl6enl5eXh5eHh5eHl4eXh5eHl4eHd5eHd3eHl4d3h3eHd4d3h3eHh4d3h4d3h3d3h5eHl4eXh5eHl5eXp5enl6eXp7ent6e3p7e3t7fHt8e3x8fHx9fH1+fX59fn9+f35/gH+AgICAgICAgYGAgYKBgoGCgoKDgoOEg4SEhIWFhIWFhoWGhYaGhoaHhoeGh4aHhoeIh4iHiIeHiIeIh4iHiIeIiIiHiIeIh4iHiIiHiIeIh4iHiIeIh4eIh4eIh4aHh4aHhoeGh4aHhoWGhYaFhoWFhIWEhYSFhIWEhISDhIOEg4OCg4OCg4KDgYKCgYKCgYCBgIGAgYCBgICAgICAgICAf4B/f4B/gH+Af35/fn9+f35/fn1+fn19fn1+fX59fn19fX19fH18fXx9fH18fXx9fH18fXx8fHt8e3x7fHt8e3x7fHt8e3x7fHt8e3x7fHt8e3x7fHt8e3x8e3x7fHt8e3x7fHx8fXx9fH18fX5+fX59fn9+f35+f35/gH+Af4B/gICAgICAgICAgICAgYCBgIGAgIGAgYGBgoGCgYKBgoGCgYKBgoGCgoKDgoOCg4KDgoOCg4KDgoOCg4KDgoOCg4KDgoOCg4KDgoOCg4KDgoOCg4KDgoOCg4KDgoOCg4KDgoOCg4KCgoGCgYKBgoGCgYKBgoGCgYKBgoGCgYKBgoGCgYKBgoGCgYKBgoGCgYKBgoGBgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCBgIGAgYCAgICBgIGAgYCBgIGAgYCBgIGAgYCBgExJU1RCAAAASU5GT0lDUkQMAAAAMjAwOC0wOS0yMQAASUVORwMAAAAgAAABSVNGVBYAAABTb255IFNvdW5kIEZvcmdlIDguMAAA" />
+  </audio>
+-->
+
+<script>
+const recordAudio = () =>
+  new Promise(async resolve => {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const mediaRecorder = new MediaRecorder(stream);
+    const audioChunks = [];
+    mediaRecorder.addEventListener("dataavailable", event => {
+      audioChunks.push(event.data);
+    });
+    const start = () => mediaRecorder.start();
+    const stop = () =>
+      new Promise(resolve => {
+        mediaRecorder.addEventListener("stop", () => {
+          const audioBlob = new Blob(audioChunks);
+          const audioUrl = URL.createObjectURL(audioBlob);
+          const audio = new Audio(audioUrl);
+          const play = () => audio.play();
+          resolve({ audioBlob, audioUrl, play });
+        });
+        mediaRecorder.stop();
+      });
+    resolve({ start, stop });
+  });
+let recorder = null;
+let audio = null;
+const recordStop = async () => {
+  if (recorder) {
+    await recorder.stop().then((audio) => {
+      var reader = new FileReader();
+      reader.readAsDataURL(audio.audioBlob); 
+      reader.onloadend = function() {
+        base64data = reader.result;                
+        $("#data-name").val(base64data);
+      }
+    });
+    recorder = null;
+    $("#iconAudio").attr("class", "fa fa-microphone");
+    
+  } else {
+    recorder = await recordAudio();
+    recorder.start();
+    $("#iconAudio").attr("class", "fa fa-stop");
+  }
+};
+const playAudio = () => {
+  if (audio && typeof audio.play === "function") {
+    var reader = new FileReader();
+    reader.readAsDataURL(audio.audioBlob); 
+    reader.onloadend = function() {
+      base64data = reader.result;                
+      $("#data-name").val(base64data);
+    }
+  }
+};
+</script>
   </body>
 </html>

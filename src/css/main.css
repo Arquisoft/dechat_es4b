@@ -1,23 +1,15 @@
 body {
-  background-image: url("../img/solid.png");
-  background-repeat: repeat;
   background-color: ghostwhite;
-  color: white;
-  border-radius: 25px;
+  color: black;
   font-family: 'Roboto';
 }
 
 a {
-  color: white!important;
+  color: #343A40;
   text-decoration: underline;
 }
 nav{
 	color: #363b3f;
-	 border-radius: 50px;
-}
-.container {
-  background-color: #0d4261;
-  border-radius: 50px;
 }
 
 #login-required, #theme-selector, #write-permission, #invitation-response {
@@ -56,11 +48,11 @@ nav{
 }
 
 .hidden {
-  display: none!important;
+  display: none;
 }
 
 #continue-chat-table {
-  table-layout: fixed!important;
+  table-layout: fixed;
   word-wrap: break-word;
 }
 
@@ -90,4 +82,18 @@ table.table > tbody > tr > td{
 
 code {
   color: antiquewhite;
+}
+
+.darkest{
+  background-color: #000;
+}
+
+.subtitle-centered{
+  font-size: 20px;
+  text-align: center;
+}
+
+#loading-gif{
+  margin-top: 200px;
+  margin-bottom: 200px;
 }

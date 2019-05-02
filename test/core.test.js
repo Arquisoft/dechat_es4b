@@ -24,41 +24,51 @@ describe("Core testing", function () {
       assert.isNotNull(chat.getGroupCommunication());
       assert.isNotNull(chat.getPrivateCommunication());
       
-  })
+  });
   
   it("getUsername test", function() {
 		assert.equal(chat.getUsername("https://userfortesting.solid.community"),"userfortesting");
-})
+	});
+
   it("Check not me when it must return true", function() {
 		assert.equal(chat.checkNotMe("https://userfortesting.solid.community/profile/card#me","enriquead"),true);
-})
+	});
+
   it("Check not me when it must return false", function() {
 		assert.equal(chat.checkNotMe("https://userfortesting.solid.community/profile/card#me","userfortesting"),false);
-})
+	});
+
   it("Friend from list is expected",function() {
-	var friend = chat.getFriendOfList(friendList,"enriquead");
-	assert.isNotNull(friend);
-})
+		var friend = chat.getFriendOfList(friendList,"enriquead");
+		assert.isNotNull(friend);
+	});
+
   it("Friend does not exist on list",function() {
-	var friend = chat.getFriendOfList(friendList,"thisUserDoesNotExist");
-	assert.isNull(friend);
-})
-  it("Random string generates string",function(){
-	var rdom = chat.randomString(5);
-	assert.equal(rdom.length,5);
-})
+		var friend = chat.getFriendOfList(friendList,"thisUserDoesNotExist");
+		assert.isNull(friend);
+	});
+
   
   it("Someone is not my friend",function(){
-	var result = chat.isFriend ("https://userfortesting.solid.community","https://enriquead.solid.community/profile/card#me");
-	assert.equal(result,false); 
-})
-  
+		var result = chat.isFriend ("https://userfortesting.solid.community","https://enriquead.solid.community/profile/card#me");
+		assert.equal(result,false); 
+	});
   
   it("Obtain chat groups",async function(){
 		personal.username="enriquead";
 		var loaded = await personal.loadInbox();
 		var chats = await chat.getChatGroups(personal);
-		assert.isNotNull(chats);
+		assert.isNotNull(chats);		
+	});
+    
+  it("Get inbox for platform",async function(){
+      var url1 = "https://userfortesting.solid.community";
+      var url2 = "https://userfortesting.inrupt.net";
+      assert.equal(chat.getInbox(url1),"https://userfortesting.solid.community/inbox/");
+      assert.equal(chat.getInbox(url2),"https://userfortesting.inrupt.net/inbox/");    
 		
-})
-})
+  });
+    
+    
+ 
+});
