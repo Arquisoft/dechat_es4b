@@ -1,0 +1,48 @@
+= User Help
+
+== Login
+To use this app you have to login first with your Solid account. If you don't have a POD yet, you can create a new one in few minutes totally free https://solid.inrupt.com/get-a-solid-pod[here]. You have to click the login button, in the top right corner. 
+
+image::./images/1-login.png[]
+
+Then you can login with your preferred alternative:
+
+.	Typing your POD provider URL
+.	solid.github.io
+.	solid Community
+
+image::./images/2-login.png[]
+
+== Friends
+To enjoy this app you need some friends to chat with. This friends can be the friends that you already have linked to your POD profile, de_chat will load them automatically after login. Besides you can add new friends faster from the chat, following this steps:
+
+.	Click on the hamburger button next to “Chats” image:./images/3-friends.png[]
+. Enter its user name if you choose Inrupt or Community. If you select “other” you have to type a complete WebID, for example: https://carlos.solid.community/profile/card#me image:./images/4-friends.png[]
+. Now your friend appears in the contacts list (you can refresh the page to force it) image:./images/5-friends.png[]
+
+== Groups
+de_chat allow you to create a group and chat with multiple friends, however you must keep in mind that group members cannot be changed after its creation. Future versions of de_chat will include this function. Follow these steps:
+
+. Click on "Create group" button image:./images/6-groups.png[]
+. Chose group members and type its name  image:./images/7-groups.png[]
+. The new created group is listed on the left panel image:./images/8-groups.png[]
+
+== Chat extra features
+With de_chat you cand send regular text and you also have many nice extra features, next to the send button:
+
+image::./images/9-features.png[]
+
+. Attach multimedia files: .png[], .gif, .mp4, .mp3, .jpeg, .jpg
+. Send current location image:./images/10-features.png[]
+. Send contact image:./images/11-features.png[]
+. Voice recording
+. Emojis image:./images/12-features.png[]
+
+== App preferences
+The application offers some general configuration. Clear your POD inbox, enable/disable emojis and notifications.
+
+image::./images/13-preferences.png[]
+
+Background image can be changed.
+
+image::./images/14-preferences.png[]
